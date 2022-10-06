@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -129,10 +131,14 @@ public class UserController {
 	@GetMapping("allUser")
 	public ResponseEntity<List<User>>  getAllUser(){
 		logger.debug("getting all users.");
-	return  new ResponseEntity<List<User>>(userService.showAllUser(),HttpStatus.OK);		
+	return  new ResponseEntity<List<User>>(userService.showAllUser().stream().filter(user->user.getUserRole().equals("user")).collect(Collectors.toList()),HttpStatus.OK);		
 			
 	}
 	
+	@GetMapping("/get-user-by-email/{email}")
+	public ResponseEntity<?> getUserByEmailId(@PathVariable String email){
+		return new ResponseEntity<>( userService.findByUserEmail(email), HttpStatus.OK);
+	}
 	
 	
 }
