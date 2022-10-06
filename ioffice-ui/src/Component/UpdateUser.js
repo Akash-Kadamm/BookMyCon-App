@@ -21,7 +21,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import './Login.css'
-import './Registration.css'
+
 import { toast } from 'react-toastify';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
@@ -47,7 +47,7 @@ export default function UpdateUser() {
     // const navigate = useNavigate();
 
     const onSubmit = data => {
-
+   console.log(user.userEmail);
         console.log(data);
         // axios.post("", data, { headers: { "Content-Type": "application/json", }, })
         //     .then((response) => {
@@ -183,14 +183,14 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    {...register("userContact", { required: true ,minLength: 10,maxLength:10})}
+                                    {...register("userContact", { required: true ,maxLength: 10})}
 
                                 />
                                 {
                                         errors.userContact?.type === "required" && <Box  id="error" sx={{ color: 'error.main' }}>Please enter Valid Contact Number </Box>
                                     }
                                     
-                                 </Grid>
+                                 </Grid> 
                            
                             <Button
                                 type="submit"

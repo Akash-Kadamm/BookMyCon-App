@@ -63,6 +63,12 @@ const Navigation = () => {
                 </li>
 
                 <li className="nav-item">
+                  <Link className="nav-link" to="/auditorium-list">
+                   List Conference Hall
+                  </Link>
+                </li>
+
+                <li className="nav-item">
                   <Link className="nav-link" to="/user-list">
                     Users
                   </Link>
@@ -95,7 +101,7 @@ const Navigation = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/user-bookings">
+                  <Link className="nav-link" to="/auditorium-Booking">
                     {" "}
                     Bookings
                   </Link>

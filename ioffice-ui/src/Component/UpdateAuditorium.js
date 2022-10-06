@@ -26,18 +26,19 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import RadioGroup from '@mui/material/RadioGroup';
+import { json, useParams } from 'react-router';
 
 const theme = createTheme();
 
 export default function UpdateAuditorium() {
 
-  
    
+    const params = useParams();
     const { register, handleSubmit, errors } = useForm()
    
-    // const navigate = useNavigate();
+     const navigate = useNavigate();
 
-    const[auditorium,setAuditorium]=useState({});
+    const[auditorium,setAuditorium]=useState();
     const [message, setMessage] = useState("");
     
     useEffect(()=>{
@@ -46,16 +47,23 @@ export default function UpdateAuditorium() {
 
     const getAuditoriumDetails=()=> {
         axios
-        .get("")
-        .then(response => setAuditorium(response.data)).catch((error=>setMessage("error occered ")));
+        .get(`http://localhost:8080/admin/getAudi/${params.id}`)
+        .then(response =>{ 
+            setAuditorium(response.data.Auditorium);
+        console.log(response.data.Auditorium);
+   
+       //  console.log(auditorium);
+        
+    }).catch((error=>setMessage("error occered ")));
     }
     const onSubmit = data => {
+        console.log(data);
 
-        axios.put("", data, { headers: { "Content-Type": "application/json", }, })
+        axios.put(`http://localhost:8080/admin/${params.id}`, data, { headers: { "Content-Type": "application/json", }, })
             .then((response) => {
-
+                toast.success(response.data);
                
-                // navigate('');
+                navigate('/auditorium-list');
 
             })
             .catch((err) => {
@@ -69,7 +77,7 @@ export default function UpdateAuditorium() {
 
 
     return (<>
-
+{auditorium!=null ?
         <div id='Registration-div'>
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
@@ -77,15 +85,14 @@ export default function UpdateAuditorium() {
 
                     <Box id="Registration-card"
                         sx={{
+                            
                             marginTop: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, ml: 3, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
+                       
                         <Typography component="h1" variant="h5" sx={{ color: 'secondary.main' }}>
                             Update  Auditorium Details
                         </Typography>
@@ -101,14 +108,8 @@ export default function UpdateAuditorium() {
                                     id="auditoriumId"
                                     label="Auditorium ID"
                                     autoFocus
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    {...register("auditoriumId")}
+                                    
+                                    {...register("auditoriumId",{required:true})}
 
                                 />
 
@@ -123,14 +124,8 @@ export default function UpdateAuditorium() {
                                     id="auditoriumName"
                                     label="Auditorium Name"
                                     autoFocus
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    {...register("auditoriumName")}
+                                    
+                                    {...register("auditoriumName",{required:true})}
 
                                 />
 
@@ -143,16 +138,10 @@ export default function UpdateAuditorium() {
                                     id="auditoriumLocation"
                                     label="Auditorium Location"
                                     name="auditoriumLocation"
-                                    defaultValue={auditorium.auditoriumLocation}
+                                defaultValue={auditorium.auditoriumLocation}
                                     autoComplete="family-name"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    {...register("auditoriumLocation")}
+                                    
+                                    {...register("auditoriumLocation",{required:true})}
 
                                 />
 
@@ -168,14 +157,8 @@ export default function UpdateAuditorium() {
                                     defaultValue={auditorium.auditoriumCapacity}
                                     name="auditoriumCapacity"
                                     autoComplete="family-name"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    {...register("auditoriumCapacity")}
+                                    
+                                    {...register("auditoriumCapacity",{required:true})}
 
                                 /> </Grid>
                             <br />
@@ -187,7 +170,7 @@ export default function UpdateAuditorium() {
                                 variant="contained"
                                 color='primary'
                                 sx={{ mt: 3, mb: 2, color: 'black' }}
-                                startIcon={< AssignmentIndIcon />}
+                               
                             >
                                 Update Auditorium
                             </Button>
@@ -196,6 +179,6 @@ export default function UpdateAuditorium() {
                     </Box>
 
                 </Container>
-            </ThemeProvider></div></>
+            </ThemeProvider></div>:null}</>
     );
 }

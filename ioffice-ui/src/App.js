@@ -12,6 +12,9 @@ import AddAudi from './Component/AddAudi';
 import { AuditoriumList } from './Component/AuditoriumList';
 import Register from './Component/Register';
  import UpdateAuditorium from './Component/UpdateAuditorium';
+import BookMeeting from './Component/BookMeeting';
+
+
 
 
 function App() {
@@ -30,12 +33,14 @@ function App() {
         <Route path="/signup" element={<Register/>}/>
         <Route path="/user-update" element={<UpdateUser/>}/>
         <Route path="/user-list" element={<UserList/>}/>
-        <Route path="/auditorium-update" element={<UpdateAuditorium/>}/>
+        <Route path="/auditorium-update/:id" element={<UpdateAuditorium/>}/>
         <Route path="/add-auditorium" element={<AddAudi/> }/>
         <Route path="/auditorium-list" element={<AuditoriumList/> }/>
+        <Route path="/auditorium-Booking" element={<BookMeeting/> }/>
       </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored'/>
+     {/* <BookMeeting/> */}
       {/* <AddAudi/> */}
       {/* <AuditoriumList/> */}
     </div>

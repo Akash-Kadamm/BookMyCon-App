@@ -9,7 +9,10 @@ public enum ResponseMessage {
 	USER_ALREADY_EXISTS_WITH_THIS_EMAIL("Email is already taken"),
 	USER_FAILED_TO_UPDATE_PROFILE("Failed to update profile"),
 	USER_UPDATED_SUCCESSFULLY("User Updated Successfully"),
-	USER_ADDED_FAILED("User Updated Failed");
+	USER_ADDED_FAILED("User Updated Failed"),
+	AUDITORIUM_UPDATED("Auditorium Updated Successfully"),
+	AUDITORIUM_ADDED("Auditorium Added Successfully"),
+	GETTING_AUDITORIUM("get the auditorim ");
 	
    private String message;
 	

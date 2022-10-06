@@ -12,6 +12,8 @@ import axios from 'axios'
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteAudi } from "./DeleteAudi";
+import UpdateAuditorium from "./UpdateAuditorium";
+import { Navigate, useNavigate } from 'react-router';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -37,8 +39,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
   
 export const AuditoriumList = () => {
+  const navigate = useNavigate();
     let [auditorium,setAuditorium]=useState([]);
     let[errorMsg,setErrorMsg]=useState('');
+    const [message, setMessage]=useState('')
 
     useEffect(()=>
     {
@@ -51,6 +55,9 @@ export const AuditoriumList = () => {
         .then(response => setAuditorium(response.data)).catch((error=>setErrorMsg("error occered ")));
     }
    
+    const editAuditorium=(id)=>{
+    navigate(`/auditorium-update/${id}`)
+    }
 
   return (
     <>
@@ -66,7 +73,7 @@ export const AuditoriumList = () => {
             <StyledTableCell align='center'>Auditorium Capacity</StyledTableCell>
             <StyledTableCell align='center'>Auditorium Type</StyledTableCell>
             <StyledTableCell align='center'>Auditorium Amenities</StyledTableCell>
-            <StyledTableCell align='center'>Edit</StyledTableCell>
+            <StyledTableCell align='center'>Action</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -79,14 +86,14 @@ export const AuditoriumList = () => {
               <StyledTableCell align='center'>{auditorium.auditoriumType}</StyledTableCell>
               <StyledTableCell align='center'>{auditorium.auditoriumAminity}</StyledTableCell>
               <StyledTableCell align='center'>
-              <Button variant="outlined">UPDATE</Button>
+              <Button className="m-2"  onClick={()=>{editAuditorium(auditorium.auditoriumId)}}  variant="outlined">UPDATE</Button>
                 <Button onClick={() =>{ 
                     DeleteAudi(auditorium.auditoriumId)}} variant="outlined" startIcon={<DeleteIcon />}>
                             Delete
                     </Button>
                 </StyledTableCell>
               
-              
+                {/* */}
 
             </StyledTableRow>
           ))}

@@ -1,6 +1,8 @@
 package com.ioffice.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ioffice.model.Auditoriums;
 import com.ioffice.service.AuditoriumService;
+import com.ioffice.utils.ResponseMessage;
 
 @CrossOrigin("*")
 @RestController
@@ -26,30 +29,28 @@ public class AuditoriumController {
 	private AuditoriumService auditoriumService;
 
 	@PostMapping("/addAudi")
-	public ResponseEntity<Auditoriums> addAuditorium(@RequestBody Auditoriums auditorium) {
+	public ResponseEntity<Object> addAuditorium(@RequestBody Auditoriums auditorium) {
 		System.out.println("in controller");
 		auditoriumService.addAuditorium(auditorium);
-		return new ResponseEntity<Auditoriums>(HttpStatus.CREATED);
+		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_ADDED.getMessage(),HttpStatus.CREATED);
 
 	}
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Auditoriums>> getAllAuditoriums()
-
-	{
+	public ResponseEntity<List<Auditoriums>> getAllAuditoriums(){
 		return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
 	}
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<String> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
+	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
 		System.out.println("Is in controlleer");
 		System.out.println(auditorium);
 		auditorium.setAuditoriumId(id);
 		auditoriumService.updateAuditorium(id, auditorium);
 
 		System.out.println(auditorium);
-		return new ResponseEntity<String>("record updated", HttpStatus.OK);
+		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
@@ -58,6 +59,13 @@ public class AuditoriumController {
 		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
 	}
 	
+	@GetMapping("/getAudi/{id}")
+	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
+		Map<String, Object> response=new HashMap<>();
+		response=auditoriumService.getAuditoriumById(id);
+		response.put("message", ResponseMessage.GETTING_AUDITORIUM.getMessage());
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+	}
 	
 
 }

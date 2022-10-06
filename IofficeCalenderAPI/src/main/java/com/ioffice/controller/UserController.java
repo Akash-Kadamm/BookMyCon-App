@@ -115,10 +115,7 @@ public class UserController {
 	
 	
 	
-//	public String getEnumMessage(String message) {
-//		return ResponseMessage.valueOf(message).getMessage();
-//	}
-	
+
 	
 	
 	

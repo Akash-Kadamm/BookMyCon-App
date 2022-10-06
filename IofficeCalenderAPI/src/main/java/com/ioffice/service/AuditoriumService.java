@@ -1,6 +1,8 @@
 package com.ioffice.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +26,9 @@ public class AuditoriumService {
 
 		updateAuditorium.setAuditoriumName(auditorium.getAuditoriumName());
 		updateAuditorium.setAuditoriumLocation(auditorium.getAuditoriumLocation());
-		updateAuditorium.setAuditoriumType(auditorium.getAuditoriumType());
+//		updateAuditorium.setAuditoriumType(auditorium.getAuditoriumType());
 		updateAuditorium.setAuditoriumCapacity(auditorium.getAuditoriumCapacity());
-		updateAuditorium.setAuditoriumAminity(auditorium.getAuditoriumAminity());
+//		updateAuditorium.setAuditoriumAminity(auditorium.getAuditoriumAminity());
 		auditoriumRepo.save(updateAuditorium);
 	}
 
@@ -39,4 +41,10 @@ public class AuditoriumService {
 
 	}
 	
+	public  Map<String, Object> getAuditoriumById(int id) {
+		Map<String, Object> response=new HashMap<>();
+		Auditoriums audi= auditoriumRepo.findById(id).orElse(null);
+		response.put("Auditorium", audi);
+	  return response;
+	}
 }

@@ -47,6 +47,7 @@ function Login() {
         sessionStorage.setItem("userLogin", JSON.stringify(res.data.user));
      
         if (res.data.user.userRole === "user") {
+          console.log(res.data.user.userName);
           toast.success(res.data.user.userName+" Login successfully");
           navigate("/");
           window.location.reload();

@@ -91,14 +91,14 @@ export default function BookMeeting() {
     let data = {
       bookingDateFrom: dateFrom,
       bookingDateTo: dateTo,
-       bookingTimeFrom: checkTimeFrom,
-       bookingTimeTO: checkTimeTo,
+        bookingTimeFrom: checkTimeFrom,
+        bookingTimeTO: checkTimeTo,
       bookingAgenda: checkBookingAgenda,
     };
     console.log(data);
 
     axios
-      .post("http://localhost:8081/booking/addBooking", data, {
+      .post("http://localhost:8080/admins/addBooking", data, {
         headers: {
           "Content-Type": "application/json",
         },

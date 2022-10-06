@@ -12,7 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { FormGroup, Icon } from "@mui/material";
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const theme = createTheme();
 
@@ -33,10 +34,10 @@ export default function AddAudi() {
 
   const aminityList = ["AC", "Network", "Housekeeping","screen"];
 
-  // const navigate = useNavigate();
+   const navigate = useNavigate();
 
   const onSubmitAll = (e) => {
-    e.preventDefault();
+  
 
     const data = {
       auditoriumName,
@@ -50,8 +51,9 @@ export default function AddAudi() {
     axios
       .post(url, data)
       .then((response) => {
-        alert("successfully");
+        toast.success(response.data);
         console.log(response);
+       
       })
 
       .catch((error) => console.log("error:"));

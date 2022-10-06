@@ -14,7 +14,7 @@ export const DeleteAudi = (id) => {
                 console.log(response)}).catch((error=>console.log("error:")));
                 alert("deleted successfully")
 
-            //navigate('/AuditoriumList')
+           // navigate('/auditorium-list')
   return (
     <div></div>
   )
