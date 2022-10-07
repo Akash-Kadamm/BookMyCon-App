@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ioffice.model.User;
+import com.ioffice.repository.LoginRepository;
 import com.ioffice.repository.UserRepository;
 import com.ioffice.utils.ResponseMessage;
 
@@ -16,6 +17,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private LoginRepository loginRepo;
 	
 	static Logger logger=Logger.getLogger(UserService.class);
 	
@@ -99,6 +103,10 @@ public class UserService {
 		}
 		return response;
 		
+	}
+	
+	public User findByUserEmail(String email){
+		return loginRepo.findByUserEmail(email);
 	}
 	
 }

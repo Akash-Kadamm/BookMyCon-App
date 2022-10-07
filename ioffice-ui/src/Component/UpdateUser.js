@@ -1,67 +1,57 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import EmailRounded from '@mui/icons-material/EmailRounded';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import VpnKey from '@mui/icons-material/VpnKey';
-import { InputAdornment, Radio } from '@mui/material';
+import { InputAdornment } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
 import './Login.css'
-
-import { toast } from 'react-toastify';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import RadioGroup from '@mui/material/RadioGroup';
+import './Registration.css'
 
 const theme = createTheme();
 
 export default function UpdateUser() {
 
-    
 
-    const[user,setUser]=useState({
-        userName:"Akash Kadam",
-        userEmail:"akashkad@cybage.com",
-        userPassword:"ak@123",
-        userContact:"1234567891"
-    });
-    
+    const [user, setUser] = useState({
+        userName: "",
+        userPassword: "",
+        userEmail: "",
+        userContact: ""
+    })
+
+    const getData = () => {
+        if (sessionStorage.getItem("userLogin")) {
+            axios.get('http://localhost:8080/user/get-user-by-email/' + JSON.parse(sessionStorage.getItem("userLogin")).userEmail)
+                .then(response => {
+                    console.log("Data", response.data)
+                    setUser(response.data)
+                });
+        }
+    }
+    useEffect(() => {
+        getData()
+    }, [])
+
     const [message, setMessage] = useState("");
-    const { register, handleSubmit, formState:{errors} } = useForm()
-    
-    // const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     const onSubmit = data => {
-   console.log(user.userEmail);
+
         console.log(data);
-        // axios.post("", data, { headers: { "Content-Type": "application/json", }, })
-        //     .then((response) => {
-
-        //        
-        //         // navigate('');
-
-        //     })
-        //     .catch((err) => {
-        //         console.log(err.response);
-
-
-        //     });
-
+        axios.put('http://localhost:8080/user/updateProfile', user)
+            .then(response => {
+                console.log(response)
+            })
 
     };
 
@@ -90,7 +80,6 @@ export default function UpdateUser() {
                         <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, width: '80%' }}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    
                                     autoComplete="given-name"
                                     name="userName"
                                     fullWidth
@@ -98,6 +87,9 @@ export default function UpdateUser() {
                                     id="userName"
                                     label="Name"
                                     autoFocus
+                                    onChange={(e) => {
+                                        setUser({ ...user, userName: e.target.value })
+                                    }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -105,20 +97,21 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    {...register("userName",{required:true})}
+
+                                    // {...register("userName", { required: true })}
 
                                 />{
-                                    errors.userName?.type === "required" && <Box  id="error" sx={{ color: 'error.main' }}>Please enter Name </Box>
+                                    errors.userName?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Name </Box>
                                 }
-                                 
+
                             </Grid><br />
-                            <Grid item xs={12} sm={6}>
+
+                            <Grid item xm={12} sm={6}>
                                 <TextField
                                     autoComplete="given-name"
                                     name="userEmail"
-                                    required
                                     fullWidth
-                                    Value={user.userEmail}
+                                    value={user.userEmail}
                                     id="userEmail"
                                     label="Email"
                                     autoFocus
@@ -129,21 +122,27 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    {...register("userEmail",{required:true})}
+                                    onChange={(e) => {
+                                        setUser({ ...user, userEmail: e.target.value })
+                                    }}
+                                    // {...register("userEmail", { required: true, minLength: 6 })}
 
                                 />
-
+                                {
+                                    errors.userEmail?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Email </Box>
+                                }
                             </Grid>
                             <br />
-                            <Grid item xm={12} sm={6}>
+
+                            <Grid item xs={12} sm={6}>
                                 <TextField
-                                    required
-                                    fullWidth
-                                    id="userPassword"
-                                    label="Password"
+                                    autoComplete="given-name"
                                     name="userPassword"
-                                    defaultValue={user.userPassword}
-                                    autoComplete="family-name"
+                                    fullWidth
+                                    value={user.userPassword}
+                                    id="userName"
+                                    label="Password"
+                                    autoFocus
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -151,19 +150,17 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    {...register("userPassword", { required: true ,minLength: 6})}
-                                    
-                                />
-                                {
-                                        errors.userPassword?.type === "required" && <Box  id="error" sx={{ color: 'error.main' }}>Please enter your Password </Box>
-                                    }
-                                     {errors.userPassword && errors.userPassword.type === "minLength" && (
-                                            <p className="text-danger errorMsg">
-                                            Password should be at-least 6 characters.
-                                            </p>
-                                        )}
-                                    <Box sx={{ color: 'error.main' }}>{(message != null) && <span>{message}</span>} </Box>
-                                   
+                                    onChange={(e) => {
+                                        setUser({ ...user, userPassword: e.target.value })
+                                    }}
+                                    // {...register("userPassword", { required: true })}
+                                />{errors.userPassword && errors.userPassword.type === "minLength" && (
+                                    <p className="text-danger errorMsg">
+                                        Password should be at-least 6 characters.
+                                    </p>
+                                )}
+                                <Box sx={{ color: 'error.main' }}>{(message != null) && <span>{message}</span>} </Box>
+
 
                             </Grid>
                             <br />
@@ -183,15 +180,18 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    {...register("userContact", { required: true ,maxLength: 10})}
+                                    onChange={(e) => {
+                                        setUser({ ...user, userContact: e.target.value })
+                                    }}
+                                    // {...register("userContact", { required: true, minLength: 10, maxLength: 10 })}
 
                                 />
                                 {
-                                        errors.userContact?.type === "required" && <Box  id="error" sx={{ color: 'error.main' }}>Please enter Valid Contact Number </Box>
-                                    }
-                                    
-                                 </Grid> 
-                           
+                                    errors.userContact?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Valid Contact Number </Box>
+                                }
+
+                            </Grid>
+
                             <Button
                                 type="submit"
                                 fullWidth
@@ -202,7 +202,7 @@ export default function UpdateUser() {
                             >
                                 Update Profile
                             </Button>
-                           
+
                         </Box>
                     </Box>
 
