@@ -35,11 +35,11 @@ public class Booking {
     @Column(name="booking_id")
     private int bookingId;
     
-    @OneToOne(cascade = CascadeType.ALL) 
+    @OneToOne 
     @JoinColumn(name = "aduitoriam_id")
     private Auditoriums aduitoriamId;
     
-    @ManyToOne (cascade = CascadeType.ALL) 
+    @ManyToOne 
     @JoinColumn(name = "user_id")
     private User userId;
     

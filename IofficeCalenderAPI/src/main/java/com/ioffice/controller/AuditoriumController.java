@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ioffice.model.Auditoriums;
+import com.ioffice.model.Booking;
+import com.ioffice.repository.AuditoriumRepository;
+import com.ioffice.repository.BookingRepository;
 import com.ioffice.service.AuditoriumService;
+import com.ioffice.service.BookingService;
 import com.ioffice.utils.ResponseMessage;
 
 @CrossOrigin("*")
@@ -27,10 +32,17 @@ import com.ioffice.utils.ResponseMessage;
 public class AuditoriumController {
 	@Autowired
 	private AuditoriumService auditoriumService;
+	@Autowired
+	private BookingService bookingService;
+	@Autowired
+	private AuditoriumRepository auditoriumRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
+	
+	Logger logger=Logger.getLogger(AuditoriumController.class);
 
 	@PostMapping("/addAudi")
 	public ResponseEntity<Object> addAuditorium(@RequestBody Auditoriums auditorium) {
-		System.out.println("in controller");
 		auditoriumService.addAuditorium(auditorium);
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_ADDED.getMessage(),HttpStatus.CREATED);
 
@@ -42,20 +54,43 @@ public class AuditoriumController {
 	}
 	
 	
+	
+	
+	/*
+	 * Update Auditorium
+	 * 
+	 * @param Auditorium Id- Path Variable and Auditorium object
+	 * @return Updated Auditorium Object
+	 *  
+	 * 
+	 * */
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
-		System.out.println("Is in controlleer");
-		System.out.println(auditorium);
-		auditorium.setAuditoriumId(id);
+	    logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
+		logger.debug("Calling the Update Auditorium service method");
 		auditoriumService.updateAuditorium(id, auditorium);
-
-		System.out.println(auditorium);
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
 	}
 	
+	
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
+		
+		System.out.println(id);
+		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
+		
+		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
+		
+	//	Booking objBooking= listBooking.get(0);
+		for  (Booking booking : listBooking) {
+			booking.setAduitoriamId(null);
+			bookingService.addBooking(booking);
+		}
+	
+	
 		auditoriumService.deleteById(id);
+		
 		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
 	}
 	
