@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from 'react-router';
 
 export const DeleteAudi = (id) => {
             
-    
+    console.log(id);
 
             const url = `http://localhost:8080/admin/${id}`;
             axios.delete(url)
