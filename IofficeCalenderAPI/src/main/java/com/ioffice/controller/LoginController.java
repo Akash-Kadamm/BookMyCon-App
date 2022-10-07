@@ -29,6 +29,7 @@ public class LoginController {
     Logger logger=Logger.getLogger(LoginController.class);
 	
     
+    
 	/*
 	 * Login according to role of user
 	 * 
@@ -47,6 +48,7 @@ public class LoginController {
 			logger.debug("Pattern Matched.");
 			return new ResponseEntity<>(loginService.loginCheckByEmailAndPassword(login),HttpStatus.OK);	
 		}
+		
 		logger.error("Pattern not matched Invalid email and password");
 		return new ResponseEntity<>(ResponseMessage.INVALID_EMAIL_AND_PASSWORD.getMessage(),HttpStatus.OK);
 			
