@@ -61,12 +61,11 @@ public class AuditoriumController {
 	 * 
 	 * @param Auditorium Id- Path Variable and Auditorium object
 	 * @return Updated Auditorium Object
-	 *  
 	 * 
 	 * */
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
-	    logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
+	    logger.info("Auditorium id: "+id+" Auditorium object: "+auditorium);
 		logger.debug("Calling the Update Auditorium service method");
 		auditoriumService.updateAuditorium(id, auditorium);
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
@@ -76,23 +75,19 @@ public class AuditoriumController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
-		
 		System.out.println(id);
 		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
-		
 		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
-		
 	//	Booking objBooking= listBooking.get(0);
 		for  (Booking booking : listBooking) {
 			booking.setAduitoriamId(null);
 			bookingService.addBooking(booking);
 		}
-	
-	
 		auditoriumService.deleteById(id);
-		
 		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
 	}
+	
+	
 	
 	@GetMapping("/getAudi/{id}")
 	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {

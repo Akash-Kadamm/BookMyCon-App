@@ -70,14 +70,14 @@ public class LoginServiceTest {
 	public void testloginCheckByEmailAndPassword_ConditionPasswordMattached() {
 		when(loginRepo.findByUserEmail(EMAIL)).thenReturn(user);
 		Map<String, Object> actual = loginService.loginCheckByEmailAndPassword(new Login(EMAIL, "ak@123"));
-		assertEquals(actual.get("user"), user);
+		assertEquals( user,actual.get("user"));
 	}
 	
 	@Test
 	public void testloginCheckByEmailAndPassword_ConditionPasswordNotMattached() {
 		when(loginRepo.findByUserEmail(EMAIL)).thenReturn(user);
 		Map<String, Object> actual = loginService.loginCheckByEmailAndPassword(new Login(EMAIL, "ak@1234"));
-		assertEquals(actual.get("message"), ResponseMessage.WRONG_PASSWORD.getMessage());
+		assertEquals(ResponseMessage.WRONG_PASSWORD.getMessage(),actual.get("message"));
 		
 	}
 	
@@ -85,7 +85,7 @@ public class LoginServiceTest {
 	public void testloginCheckByEmailAndPassword_ConditionUserNotFound() {
 		when(loginRepo.findByUserEmail("ak@cybage.com")).thenReturn(null);
 		Map<String, Object> actual = loginService.loginCheckByEmailAndPassword(new Login("ak@cybage.com", "ak@1234"));
-		assertEquals(actual.get("message"), ResponseMessage.USER_NOT_FOUND.getMessage());
+		assertEquals( ResponseMessage.USER_NOT_FOUND.getMessage(),actual.get("message"));
 		
 	}
 

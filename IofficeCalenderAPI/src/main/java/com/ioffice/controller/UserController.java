@@ -59,7 +59,8 @@ public class UserController {
 				&& Pattern.matches(passwordPattern,user.getUserPassword())){
 				logger.debug("Pattern Matched.");
 				
-				if(loginService.isUserExists(user.getUserEmail())) {
+				if(loginService.isUserExists(user.getUserEmail())
+						) {
 					logger.debug("Check email is already exists.");
 					 response=userService.userRegistration(user);
 					 
@@ -69,6 +70,7 @@ public class UserController {
 							return new ResponseEntity<>(response, HttpStatus.OK);
 						}else {
 							logger.error("User failed to register.");
+							response = new HashMap<>();
 							response.put("message",ResponseMessage.USER_ADDED_FAILED.getMessage());
 							return new ResponseEntity<>(response, HttpStatus.OK);
 						}

@@ -40,7 +40,7 @@ public class UserServiceTest {
 	public  void testUserRegistration_conditionReturnUserObject() {
 		when(userRepo.save(user)).thenReturn(user);
 		Map<String, Object> response=userService.userRegistration(user);
-		assertEquals(response.get("user"),user);
+		assertEquals(user,response.get("user"));
 	}
 
 	
@@ -49,7 +49,7 @@ public class UserServiceTest {
 		when(userRepo.findByID(user.getUserId())).thenReturn(user);
 		when(userRepo.save(user)).thenReturn(user);
 		Map<String, Object> actual=userService.updateUserProfile(user);
-		assertEquals(actual.get("user"),user);	
+		assertEquals(user,actual.get("user"));	
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class UserServiceTest {
 		when(userRepo.findByID(user.getUserId())).thenReturn(user);
 		when(userRepo.save(user)).thenReturn(null);
 		Map<String, Object> actual=userService.updateUserProfile(user);
-		assertEquals(actual.get("message"),ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage());	
+		assertEquals(ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage(),actual.get("message"));	
 	}
 	
 	
@@ -69,7 +69,7 @@ public class UserServiceTest {
 		userList.add(user2);
 		when(userRepo.findAll()).thenReturn(userList);
 		List<User> actual=userService.showAllUser();
-		assertEquals(actual, userList);
+		assertEquals( userList,actual);
 		
 	}
 }
