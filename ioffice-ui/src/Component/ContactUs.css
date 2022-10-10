@@ -1,0 +1,10 @@
+.contact-group{
+    background-color: azure;
+    height: 600px;  
+    border-radius:15px ; 
+  }
+
+  .table{
+      text-align: center;
+      margin-left: 30%;
+  }
