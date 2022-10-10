@@ -9,7 +9,4 @@ import com.ioffice.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
-
-	@Query(value="select * from users where user_id=?",nativeQuery = true)
-	public User findByID(int id);
 }

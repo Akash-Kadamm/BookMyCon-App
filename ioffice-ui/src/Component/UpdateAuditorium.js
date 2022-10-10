@@ -1,11 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import EmailRounded from '@mui/icons-material/EmailRounded';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import VpnKey from '@mui/icons-material/VpnKey';
-import { InputAdornment, Radio } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -19,13 +11,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import './Registration.css'
 import { toast } from 'react-toastify';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import RadioGroup from '@mui/material/RadioGroup';
 import { json, useParams } from 'react-router';
 
 const theme = createTheme();

@@ -3,14 +3,12 @@
     float: left;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 30px;
-   text-decoration: none;
+    text-decoration: none;
 }
 
 .navbar{
-    /* float: right; */
     margin-top:10px ;
     flex-wrap: wrap;
-    margin-right: 30px;
     background-color: black;
 }
 .navbar-b{

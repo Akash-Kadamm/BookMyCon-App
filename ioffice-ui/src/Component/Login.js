@@ -16,6 +16,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import PasswordTwoToneIcon from "@mui/icons-material/PasswordTwoTone";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Grid  from '@mui/material/Grid';
+import  Link  from '@mui/material/Link';
 
 const theme = createTheme();
 
@@ -42,21 +44,21 @@ function Login() {
         },
       })
       .then((res) => {
-      
+
         toast.error(res.data.message);
         sessionStorage.setItem("userLogin", JSON.stringify(res.data.user));
-     
+
         if (res.data.user.userRole === "user") {
           console.log(res.data.user.userName);
-          toast.success(res.data.user.userName+" Login successfully");
+          toast.success(res.data.user.userName + " Login successfully");
           navigate("/");
           window.location.reload();
         } else {
-          toast.success(res.data.user.userName+" Login successfully");
+          toast.success(res.data.user.userName + " Login successfully");
           navigate("/admin-home");
           window.location.reload();
         }
-        
+
       })
       .catch((err) => {
         console.log(err.response);
@@ -176,6 +178,13 @@ function Login() {
                   >
                     Login
                   </Button>
+                  <Grid container justifyContent="flex-end">
+                    <Grid item>
+                      <Link href="/signup" variant="body2">
+                        Don't have an account? Sign Up
+                      </Link>
+                    </Grid>
+                  </Grid>
                 </Box>
               </Box>
             </Container>

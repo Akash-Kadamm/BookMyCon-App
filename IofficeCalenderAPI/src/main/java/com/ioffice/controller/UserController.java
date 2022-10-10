@@ -48,7 +48,7 @@ public class UserController {
 	 * @return Response entity contain object and httpStatus code
 	 *  
 	 * */
-	@PostMapping("registration")
+	@PostMapping("/registration")
 	public ResponseEntity<Object> registerUser(@RequestBody User user){
 		
 		Map<String, Object> response=new HashMap<>();
@@ -64,10 +64,12 @@ public class UserController {
 				if(loginService.isUserExists(user.getUserEmail())
 						) {
 					logger.debug("Check email is already exists.");
+					 user.setUserRole("user");
 					 response=userService.userRegistration(user);
 					 
 					 if(response!=null) {
 						    logger.info("user object: "+response);
+						   
 							response.put("message", ResponseMessage.USER_ADDED_SUCCESSFULLY.getMessage());
 							return new ResponseEntity<>(response, HttpStatus.OK);
 						}else {
