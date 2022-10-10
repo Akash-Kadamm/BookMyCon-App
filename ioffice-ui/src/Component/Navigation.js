@@ -20,7 +20,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
 const commonPages = ['Profile', 'Logout'];
-const userPages = ['Home', 'Auditorium', 'Bookings']
+const userPages = ['Home', 'Auditorium', 'Bookings', 'About Us', 'Contact Us']
 const nonLoginUser = ['Home', 'About Us', 'Contact Us']
 const login = 'Login'
 
@@ -89,208 +89,207 @@ const Navigation = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            BookMyCoN
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
               sx={{
-                display: { xs: 'block', md: 'none' },
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+              BookMyCoN
+            </Typography>
 
-
-
-          {userSignIn && userSignIn.userRole === "admin" && (
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              ))}
-            </Box>
-          )}
-
-
-          {userSignIn && userSignIn.userRole === "user" && (
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {userPages.map((userPage) => (
-                <Button
-                  key={userPage}
-                  onClick={() => handleCloseNavMenu(userPage)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {userPage}
-                </Button>
-              ))}
-            </Box>
-          )}
-
-
-
-          {userSignIn && userSignIn.userRole === 'admin' &&
-            (<Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
               <Menu
-                sx={{ mt: '45px' }}
                 id="menu-appbar"
-                anchorEl={anchorElUser}
+                anchorEl={anchorElNav}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: 'bottom',
+                  horizontal: 'left',
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'left',
                 }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
               >
-                {commonPages.map((commonPage) => (
-                  <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                    <Typography textAlign="center">{commonPage}</Typography>
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            )}
+            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              BookMyCoN
+            </Typography>
 
 
-          {userSignIn && userSignIn.userRole === 'user' &&
-            (<Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {commonPages.map((commonPage) => (
-                  <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                    <Typography textAlign="center">{commonPage}</Typography>
-                  </MenuItem>
+            {userSignIn && userSignIn.userRole === "admin" && (
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page}
+                    onClick={() => handleCloseNavMenu(page)}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {page}
+                  </Button>
                 ))}
-              </Menu>
-            </Box>
+              </Box>
             )}
 
 
-          {!userSignIn && (
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {nonLoginUser.map((nonLoginUserPage) => (
-                <Button
-                  key={nonLoginUserPage}
-                  onClick={() => handleCloseNavMenu(nonLoginUserPage)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+            {userSignIn && userSignIn.userRole === "user" && (
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {userPages.map((userPage) => (
+                  <Button
+                    key={userPage}
+                    onClick={() => handleCloseNavMenu(userPage)}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {userPage}
+                  </Button>
+                ))}
+              </Box>
+            )}
+
+
+
+            {userSignIn && userSignIn.userRole === 'admin' &&
+              (<Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
                 >
-                  {nonLoginUserPage}
-                </Button>
-              ))}
-            </Box>
-          )}
+                  {commonPages.map((commonPage) => (
+                    <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
+                      <Typography textAlign="center">{commonPage}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              )}
 
 
-          {!userSignIn && (
-            <Box sx={{ flexGrow: 0 }}>
+            {userSignIn && userSignIn.userRole === 'user' &&
+              (<Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {commonPages.map((commonPage) => (
+                    <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
+                      <Typography textAlign="center">{commonPage}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              )}
+
+
+            {!userSignIn && (
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {nonLoginUser.map((nonLoginUserPage) => (
+                  <Button
+                    key={nonLoginUserPage}
+                    onClick={() => handleCloseNavMenu(nonLoginUserPage)}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {nonLoginUserPage}
+                  </Button>
+                ))}
+              </Box>
+            )}
+
+
+            {!userSignIn && (
+              <Box sx={{ flexGrow: 0 }}>
                 <Button key={login} sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => handleCloseUserMenu(login)}>
                   {login}
                 </Button>
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
+              </Box>
+            )}
+          </Toolbar>
+        </Container>
+      </AppBar>
     </ThemeProvider>
 
     // <div>

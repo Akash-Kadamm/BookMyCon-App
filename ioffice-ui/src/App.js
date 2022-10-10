@@ -10,36 +10,33 @@ import Navigation from './Component/Navigation';
 import Home from './Component/Home';
 import AddAudi from './Component/AddAudi';
 import { AuditoriumList } from './Component/AuditoriumList';
- import UpdateAuditorium from './Component/UpdateAuditorium';
+import UpdateAuditorium from './Component/UpdateAuditorium';
 import BookMeeting from './Component/BookMeeting';
 import Registration from './Component/Registration';
+import AboutUs from './Component/AboutUs';
+import ContactUs from './Component/ContactUs';
 
 function App() {
   return (
     <div className="App">
-     
-      {/* <Login/> */}
-       {/* <UserList/> */} 
-        {/* <UpdateUser/> */}
-        <BrowserRouter>
-      <Navigation/>
-      <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route path="/signin" element={<Login/>}/>
-        <Route path="/admin-home" element={<Home/>}/>
-        <Route path="/signup" element={<Registration/>}/>
-        <Route path="/user-update" element={<UpdateUser/>}/>
-        <Route path="/user-list" element={<UserList/>}/>
-        <Route path="/auditorium-update/:id" element={<UpdateAuditorium/>}/>
-        <Route path="/add-auditorium" element={<AddAudi/> }/>
-        <Route path="/auditorium-list" element={<AuditoriumList/> }/>
-        <Route path="/auditorium-Booking" element={<BookMeeting/> }/>
-      </Routes>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/admin-home" element={<Home />} />
+          <Route path="/signup" element={<Registration />} />
+          <Route path="/user-update" element={<UpdateUser />} />
+          <Route path="/user-list" element={<UserList />} />
+          <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
+          <Route path="/add-auditorium" element={<AddAudi />} />
+          <Route path="/auditorium-list" element={<AuditoriumList />} />
+          <Route path="/auditorium-Booking" element={<BookMeeting />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+        </Routes>
       </BrowserRouter>
-      <ToastContainer theme='colored'/>
-     {/* <BookMeeting/> */}
-      {/* <AddAudi/> */}
-      {/* <AuditoriumList/> */}
+      <ToastContainer theme='colored' />
     </div>
   );
 }
