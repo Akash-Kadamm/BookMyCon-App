@@ -10,12 +10,9 @@ import Navigation from './Component/Navigation';
 import Home from './Component/Home';
 import AddAudi from './Component/AddAudi';
 import { AuditoriumList } from './Component/AuditoriumList';
-import Register from './Component/Register';
  import UpdateAuditorium from './Component/UpdateAuditorium';
 import BookMeeting from './Component/BookMeeting';
-
-
-
+import Registration from './Component/Registration';
 
 function App() {
   return (
@@ -30,7 +27,7 @@ function App() {
         <Route exact path="/" element={<Home/>}/>
         <Route path="/signin" element={<Login/>}/>
         <Route path="/admin-home" element={<Home/>}/>
-        <Route path="/signup" element={<Register/>}/>
+        <Route path="/signup" element={<Registration/>}/>
         <Route path="/user-update" element={<UpdateUser/>}/>
         <Route path="/user-list" element={<UserList/>}/>
         <Route path="/auditorium-update/:id" element={<UpdateAuditorium/>}/>

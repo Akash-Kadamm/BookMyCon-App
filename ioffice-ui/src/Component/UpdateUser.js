@@ -15,7 +15,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import './Login.css'
-import './Registration.css'
+
 
 const theme = createTheme();
 
@@ -60,7 +60,7 @@ export default function UpdateUser() {
 
         <div id='Login-div'>
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
+                <Container component="main" maxWidth="xs" >
                     <CssBaseline />
 
                     <Box id="Login-card"
@@ -97,9 +97,6 @@ export default function UpdateUser() {
                                             </InputAdornment>
                                         ),
                                     }}
-
-                                    // {...register("userName", { required: true })}
-
                                 />{
                                     errors.userName?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Name </Box>
                                 }
@@ -125,8 +122,6 @@ export default function UpdateUser() {
                                     onChange={(e) => {
                                         setUser({ ...user, userEmail: e.target.value })
                                     }}
-                                    // {...register("userEmail", { required: true, minLength: 6 })}
-
                                 />
                                 {
                                     errors.userEmail?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Email </Box>
@@ -153,7 +148,6 @@ export default function UpdateUser() {
                                     onChange={(e) => {
                                         setUser({ ...user, userPassword: e.target.value })
                                     }}
-                                    // {...register("userPassword", { required: true })}
                                 />{errors.userPassword && errors.userPassword.type === "minLength" && (
                                     <p className="text-danger errorMsg">
                                         Password should be at-least 6 characters.
@@ -183,7 +177,6 @@ export default function UpdateUser() {
                                     onChange={(e) => {
                                         setUser({ ...user, userContact: e.target.value })
                                     }}
-                                    // {...register("userContact", { required: true, minLength: 10, maxLength: 10 })}
 
                                 />
                                 {

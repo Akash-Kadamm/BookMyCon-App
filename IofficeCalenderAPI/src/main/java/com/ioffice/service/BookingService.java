@@ -16,10 +16,7 @@ public class BookingService {
 	BookingRepository bookingRepository;
 	public List<com.ioffice.model.Booking> showAll() {
 		return bookingRepository.findAll();
-
 	}
-	
-	
 
     public void addBooking(Booking booking) {
 		
@@ -28,9 +25,7 @@ public class BookingService {
 	}
 
 	
-
 	public Optional<Booking> getBookingById(int  bookingId) {
-		
 		return bookingRepository.findById(bookingId);
 	}
 
