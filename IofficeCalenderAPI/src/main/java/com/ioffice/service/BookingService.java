@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ioffice.model.Auditoriums;
 import com.ioffice.model.Booking;
 import com.ioffice.repository.BookingRepository;
 
@@ -35,6 +36,10 @@ public class BookingService {
 
 	public void editBooking(int id,Booking booking) {
 		bookingRepository.save(booking);	
+	}
+	
+	public List<Booking> getByAuditoriumId(Auditoriums auditoriums  ) {
+		return bookingRepository.findByAduitoriamId(auditoriums);	
 	}
 
 }

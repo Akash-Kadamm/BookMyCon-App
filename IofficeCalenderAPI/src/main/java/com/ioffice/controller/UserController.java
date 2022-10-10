@@ -37,9 +37,11 @@ public class UserController {
 	Logger logger=Logger.getLogger(UserController.class);
 	
 	
+	
+	
 	/*
 	 * Register new user
-	 * l
+	 * 
 	 * check-upcoming user object , pattern check , is user already exists
 	 * 
 	 * @param User
@@ -94,6 +96,8 @@ public class UserController {
 	}
 	
 	
+	
+	
 	/*
 	 * Update User Profile
 	 * 
@@ -133,7 +137,9 @@ public class UserController {
 	@GetMapping("allUser")
 	public ResponseEntity<List<User>>  getAllUser(){
 		logger.debug("getting all users.");
+
 	return  new ResponseEntity<List<User>>(userService.showAllUser().stream().filter(user->user.getUserRole().equals("user")).collect(Collectors.toList()),HttpStatus.OK);		
+
 			
 	}
 	
@@ -141,6 +147,7 @@ public class UserController {
 	public ResponseEntity<?> getUserByEmailId(@PathVariable String email){
 		return new ResponseEntity<>( userService.findByUserEmail(email), HttpStatus.OK);
 	}
+	
 	
 	
 }
