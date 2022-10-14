@@ -36,9 +36,12 @@ public class BookingController {
 	
 	
 	@PostMapping("/addBooking")
-	public ResponseEntity<String> addBooking(@RequestBody Booking booking){	
-	System.out.println(booking);
+	public ResponseEntity<String> addBooking(@RequestBody Booking booking ){	
 		
+		
+		
+	System.out.println(booking);
+	
 
 		bookingService.addBooking(booking);
 		System.out.println(booking);

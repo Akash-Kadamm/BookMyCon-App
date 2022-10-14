@@ -8,17 +8,18 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
+import org.mockito.junit.MockitoJUnitRunner;
 import com.ioffice.model.User;
 import com.ioffice.repository.UserRepository;
 import com.ioffice.utils.ResponseMessage;
 
+
+@RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
 
     @Mock
@@ -28,12 +29,13 @@ public class UserServiceTest {
     UserService userService;
     
     User user;
+    
+ 
 	
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		 user=new User(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693");
-	}
+		}
 
 	
 	@Test
@@ -59,7 +61,6 @@ public class UserServiceTest {
 		Map<String, Object> actual=userService.updateUserProfile(user);
 		assertEquals(ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage(),actual.get("message"));	
 	}
-	
 	
 	@Test
 	public void testShowAllUser() {

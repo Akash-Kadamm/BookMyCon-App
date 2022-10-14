@@ -14,15 +14,16 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
-
 import com.ioffice.model.Auditoriums;
 import com.ioffice.service.AuditoriumService;
 import com.ioffice.utils.ResponseMessage;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AuditoriumControllerTest {
 	
 	@Mock
@@ -37,7 +38,6 @@ public class AuditoriumControllerTest {
 	
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		setData();
 	}
 	

@@ -2,6 +2,8 @@ package com.ioffice.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,23 +46,23 @@ public class Booking {
     private User userId;
     
     @Column(name="booking_date_from")
-    private Date bookingDateFrom;
+    private LocalDate bookingDateFrom;
     
     @Column(name="booking_date_to")
-    private Date bookingDateTo;
+    private LocalDate bookingDateTo;
     
-    @JsonFormat(pattern = "HH:mm")
-    @JsonDeserialize(using = SQLTimeDeserializer.class)
-  
+//    @JsonFormat(pattern = "HH:mm")
+//    @JsonDeserialize(using = SQLTimeDeserializer.class)
+//  
 
 	@Column(name="booking_time_from")
-	private Time bookingTimeFrom;
+	private LocalTime bookingTimeFrom;
 	
-    @JsonFormat(pattern = "HH:mm")
-    @JsonDeserialize(using = SQLTimeDeserializer.class)
-  
+//    @JsonFormat(pattern = "HH:mm")
+//    @JsonDeserialize(using = SQLTimeDeserializer.class)
+//  
 	@Column(name="booking_time_to")
-	private Time bookingTimeTO;
+	private LocalTime bookingTimeTO;
     
     @Column(name="booking_agenda")
     private String bookingAgenda;

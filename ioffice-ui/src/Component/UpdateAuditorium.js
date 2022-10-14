@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { json, useParams } from 'react-router';
-
+import "./Registration.css";
 const theme = createTheme();
 
 export default function UpdateAuditorium() {

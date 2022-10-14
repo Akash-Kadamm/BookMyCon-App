@@ -13,9 +13,10 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 
 import com.ioffice.model.User;
@@ -23,6 +24,7 @@ import com.ioffice.service.LoginService;
 import com.ioffice.service.UserService;
 import com.ioffice.utils.ResponseMessage;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 	
 	@Mock
@@ -40,7 +42,6 @@ public class UserControllerTest {
 	
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		setData();
 		setMock();
 	}

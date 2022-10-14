@@ -8,16 +8,17 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-
+import org.mockito.junit.MockitoJUnitRunner;
 import com.ioffice.model.Login;
 import com.ioffice.model.User;
 import com.ioffice.repository.LoginRepository;
 import com.ioffice.utils.ResponseMessage;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LoginServiceTest {
    
 	@Mock
@@ -32,7 +33,6 @@ public class LoginServiceTest {
 	
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		 user=new User(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693");
 	}
 

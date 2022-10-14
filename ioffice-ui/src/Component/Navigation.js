@@ -45,13 +45,15 @@ const Navigation = () => {
     } else if (page === 'List of Auditoriums') {
       navigate("/auditorium-list")
     } else if (page === 'Auditorium') {
-      navigate("/auditorium-list")
+      navigate("/auditorium-view")
     } else if (page === 'Bookings') {
       navigate("/auditorium-Booking")
     } else if (page === 'About Us') {
       navigate("/about-us")
     } else if (page === 'Contact Us') {
       navigate("/contact-us")
+    } else if (page === 'Auditoriums') {
+      navigate("/auditorium-view")
     } else {
       navigate("/user-list")
     }
@@ -203,7 +205,7 @@ const Navigation = () => {
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="A" src="/static/images/avatar/2.jpg" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -236,7 +238,7 @@ const Navigation = () => {
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="U" src="/static/images/avatar/2.jpg" />
                   </IconButton>
                 </Tooltip>
                 <Menu

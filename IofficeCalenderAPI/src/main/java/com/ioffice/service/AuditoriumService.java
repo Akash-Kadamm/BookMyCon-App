@@ -53,6 +53,12 @@ public class AuditoriumService {
 	}
 	
 	
+	
+	public List<Auditoriums> findByAuditoriumByName(String name ) {
+		return auditoriumRepo.findByAuditoriumName(name);
+
+	}
+	
 	/*
 	 * Get the Auditorium By Its Id
 	 * 

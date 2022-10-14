@@ -11,13 +11,14 @@ import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
+import org.mockito.junit.MockitoJUnitRunner;
 import com.ioffice.model.Auditoriums;
 import com.ioffice.repository.AuditoriumRepository;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AuditoriumServiceTest {
 
 	@Mock
@@ -32,7 +33,6 @@ public class AuditoriumServiceTest {
 	
 	@Before
 	public void setUp() {
-		MockitoAnnotations.initMocks(this);
 		setData();
 		setMocks();
 	}
@@ -46,6 +46,8 @@ public class AuditoriumServiceTest {
 		auditoriums=new Auditoriums("Audi1", "CT1", 120, "small", "AC,Network");
 	}
 
+	
+	
 	@Test
 	public void testGetAuditoriumById_ConditionReturnAuditorium() {
 		Map<String, Object> actual=auditoriumService.getAuditoriumById(1);
@@ -53,6 +55,7 @@ public class AuditoriumServiceTest {
 		
 	}
 
+	
 	@Test
 	public void testupdateAuditorium() {
 		auditoriumService.updateAuditorium(1, auditoriums);

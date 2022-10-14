@@ -53,7 +53,13 @@ public class AuditoriumController {
 		return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
 	}
 	
-	
+	@GetMapping("/getAuditoriunByName/{name}")
+	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
+	List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
+	Auditoriums adui=audiList.get(0);
+		
+		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
+	}
 	
 	
 	/*

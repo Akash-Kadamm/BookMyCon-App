@@ -15,6 +15,7 @@ import BookMeeting from './Component/BookMeeting';
 import Registration from './Component/Registration';
 import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
+import { View } from './Component/View';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<Home />} />
+           <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
@@ -37,6 +39,8 @@ function App() {
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
+     
+
     </div>
   );
 }
