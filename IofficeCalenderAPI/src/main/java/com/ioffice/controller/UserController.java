@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -105,10 +106,10 @@ public class UserController {
 	 * @return updated User object
 	 * 
 	 * */
-	@PostMapping("updateProfile")
+	@PutMapping("/updateProfile")
 	public ResponseEntity<Object> updateProfile(@RequestBody User user){
 		Map<String, Object> response=new HashMap<>();
-				
+				System.out.println(user+"user      ");
 		if(user!=null) {
 			logger.debug("User object is not nulll");
 			logger.info("user object: "+user);
@@ -122,9 +123,7 @@ public class UserController {
 	}
 	
 	
-	
 
-	
 	
 	
 	/*

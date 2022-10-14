@@ -6,26 +6,30 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ioffice.dto.BookingDTO;
 import com.ioffice.model.Auditoriums;
 import com.ioffice.model.Booking;
 import com.ioffice.repository.BookingRepository;
+import com.ioffice.repository.UserRepository;
 
 @Service
 public class BookingService {
 
 	@Autowired
-	BookingRepository bookingRepository;
-	public List<com.ioffice.model.Booking> showAll() {
+	private BookingRepository bookingRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	public List<Booking> showAll() {
 		return bookingRepository.findAll();
 	}
 
     public void addBooking(Booking booking) {
-		
 		System.out.println(booking);
 		bookingRepository.save(booking);
 	}
 
-	
 	public Optional<Booking> getBookingById(int  bookingId) {
 		return bookingRepository.findById(bookingId);
 	}
@@ -40,6 +44,10 @@ public class BookingService {
 	
 	public List<Booking> getByAuditoriumId(Auditoriums auditoriums  ) {
 		return bookingRepository.findByAduitoriamId(auditoriums);	
+	}
+	
+	public List<Booking> getBookingByUserId(int userId) {
+		return bookingRepository.findByUserId(userRepository.findById(userId).get());	
 	}
 
 }

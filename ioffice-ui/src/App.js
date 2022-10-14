@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './Component/Login';
 import UpdateUser from './Component/UpdateUser';
@@ -7,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UserList } from './Component/UserList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Component/Navigation';
-import Home from './Component/Home';
 import AddAudi from './Component/AddAudi';
 import { AuditoriumList } from './Component/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
@@ -15,6 +13,7 @@ import BookMeeting from './Component/BookMeeting';
 import Registration from './Component/Registration';
 import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
+import HomePage from './Component/HomePage'
 
 function App() {
   return (
@@ -22,9 +21,8 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<HomePage />} />
           <Route path="/signin" element={<Login />} />
-          <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/user-list" element={<UserList />} />

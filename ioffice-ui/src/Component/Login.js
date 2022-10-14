@@ -55,7 +55,7 @@ function Login() {
           window.location.reload();
         } else {
           toast.success(res.data.user.userName + " Login successfully");
-          navigate("/admin-home");
+          navigate("/");
           window.location.reload();
         }
 

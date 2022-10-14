@@ -15,12 +15,14 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import './Login.css'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const theme = createTheme();
 
 export default function UpdateUser() {
-
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         userName: "",
@@ -33,7 +35,6 @@ export default function UpdateUser() {
         if (sessionStorage.getItem("userLogin")) {
             axios.get('http://localhost:8080/user/get-user-by-email/' + JSON.parse(sessionStorage.getItem("userLogin")).userEmail)
                 .then(response => {
-                    console.log("Data", response.data)
                     setUser(response.data)
                 });
         }
@@ -46,18 +47,16 @@ export default function UpdateUser() {
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const onSubmit = data => {
-
-        console.log(data);
+       
         axios.put('http://localhost:8080/user/updateProfile', user)
             .then(response => {
-                console.log(response)
+                toast.success(response.data.message);
+                navigate("/")
             })
-
     };
 
 
-    return (<>
-
+    return (
         <div id='Login-div'>
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs" >
@@ -200,6 +199,6 @@ export default function UpdateUser() {
                     </Box>
 
                 </Container>
-            </ThemeProvider></div></>
+            </ThemeProvider></div>
     );
 }

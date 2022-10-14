@@ -15,15 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
 import dayjs from "dayjs";
-import Stack from "@mui/material/Stack";
-import { useNavigate } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import axios from "axios";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { style } from "@mui/system";
 
 function Copyright(props) {
   return (
@@ -75,12 +69,12 @@ export default function BookMeeting() {
     setBookingAgenda(e.target.value);
   };
 
-  const [dateFrom, setdateFrom] = React.useState(dayjs("2014-08-18T21:11:54"));
+  const [dateFrom, setdateFrom] = React.useState(dayjs(Date.now()));
 
   const handleDateFrom = (newValue) => {
     setdateFrom(newValue);
   };
-  const [dateTo, setdateTo] = React.useState(dayjs("2014-08-18T21:11:54"));
+  const [dateTo, setdateTo] = React.useState(dayjs(Date.now()));
 
   const handleDateTo = (newValue) => {
     setdateTo(newValue);

@@ -18,29 +18,29 @@ const theme = createTheme();
 
 export default function UpdateAuditorium() {
 
-   
+
     const params = useParams();
     const { register, handleSubmit, errors } = useForm()
-   
-     const navigate = useNavigate();
 
-    const[auditorium,setAuditorium]=useState();
+    const navigate = useNavigate();
+
+    const [auditorium, setAuditorium] = useState();
     const [message, setMessage] = useState("");
-    
-    useEffect(()=>{
-        getAuditoriumDetails();
-    },[]);
 
-    const getAuditoriumDetails=()=> {
+    useEffect(() => {
+        getAuditoriumDetails();
+    }, []);
+
+    const getAuditoriumDetails = () => {
         axios
-        .get(`http://localhost:8080/admin/getAudi/${params.id}`)
-        .then(response =>{ 
-            setAuditorium(response.data.Auditorium);
-        console.log(response.data.Auditorium);
-   
-       //  console.log(auditorium);
-        
-    }).catch((error=>setMessage("error occered ")));
+            .get(`http://localhost:8080/admin/getAudi/${params.id}`)
+            .then(response => {
+                setAuditorium(response.data.Auditorium);
+                console.log(response.data.Auditorium);
+
+                //  console.log(auditorium);
+
+            }).catch((error => setMessage("error occered ")));
     }
     const onSubmit = data => {
         console.log(data);
@@ -48,14 +48,10 @@ export default function UpdateAuditorium() {
         axios.put(`http://localhost:8080/admin/${params.id}`, data, { headers: { "Content-Type": "application/json", }, })
             .then((response) => {
                 toast.success(response.data);
-               
                 navigate('/auditorium-list');
-
             })
             .catch((err) => {
                 console.log(err.response);
-
-
             });
 
 
@@ -63,108 +59,108 @@ export default function UpdateAuditorium() {
 
 
     return (<>
-{auditorium!=null ?
-        <div id='Registration-div'>
-            <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
-                    <CssBaseline />
+        {auditorium != null ?
+            <div id='Registration-div'>
+                <ThemeProvider theme={theme}>
+                    <Container component="main" maxWidth="xs">
+                        <CssBaseline />
 
-                    <Box id="Registration-card"
-                        sx={{
-                            
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                       
-                        <Typography component="h1" variant="h5" sx={{ color: 'secondary.main' }}>
-                            Update  Auditorium Details
-                        </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, width: '80%' }}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    
-                                    autoComplete="given-name"
-                                    name="Auditorium ID"
-                                    readOnly
+                        <Box id="Registration-card"
+                            sx={{
+
+                                marginTop: 8,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+
+                            <Typography component="h1" variant="h5" sx={{ color: 'secondary.main' }}>
+                                Update  Auditorium Details
+                            </Typography>
+                            <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, width: '80%' }}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+
+                                        autoComplete="given-name"
+                                        name="Auditorium ID"
+                                        readOnly
+                                        fullWidth
+                                        value={auditorium.auditoriumId}
+                                        id="auditoriumId"
+                                        label="Auditorium ID"
+                                        autoFocus
+
+                                        {...register("auditoriumId", { required: true })}
+
+                                    />
+
+                                </Grid><br />
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        autoComplete="given-name"
+                                        name="auditoriumName"
+                                        required
+                                        fullWidth
+                                        defaultValue={auditorium.auditoriumName}
+                                        id="auditoriumName"
+                                        label="Auditorium Name"
+                                        autoFocus
+
+                                        {...register("auditoriumName", { required: true })}
+
+                                    />
+
+                                </Grid>
+                                <br />
+                                <Grid item xm={12} sm={6}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="auditoriumLocation"
+                                        label="Auditorium Location"
+                                        name="auditoriumLocation"
+                                        defaultValue={auditorium.auditoriumLocation}
+                                        autoComplete="family-name"
+
+                                        {...register("auditoriumLocation", { required: true })}
+
+                                    />
+
+                                </Grid>
+                                <br />
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        type="number"
+                                        id="auditoriumCapacity"
+                                        label="Auditorium Capacity"
+                                        defaultValue={auditorium.auditoriumCapacity}
+                                        name="auditoriumCapacity"
+                                        autoComplete="family-name"
+
+                                        {...register("auditoriumCapacity", { required: true })}
+
+                                    /> </Grid>
+                                <br />
+
+
+                                <Button
+                                    type="submit"
                                     fullWidth
-                                    value={auditorium.auditoriumId}
-                                    id="auditoriumId"
-                                    label="Auditorium ID"
-                                    autoFocus
-                                    
-                                    {...register("auditoriumId",{required:true})}
+                                    variant="contained"
+                                    color='primary'
+                                    sx={{ mt: 3, mb: 2, color: 'black' }}
 
-                                />
+                                >
+                                    Update Auditorium
+                                </Button>
 
-                            </Grid><br />
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    autoComplete="given-name"
-                                    name="auditoriumName"
-                                    required
-                                    fullWidth
-                                    defaultValue={auditorium.auditoriumName}
-                                    id="auditoriumName"
-                                    label="Auditorium Name"
-                                    autoFocus
-                                    
-                                    {...register("auditoriumName",{required:true})}
-
-                                />
-
-                            </Grid>
-                            <br />
-                            <Grid item xm={12} sm={6}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="auditoriumLocation"
-                                    label="Auditorium Location"
-                                    name="auditoriumLocation"
-                                defaultValue={auditorium.auditoriumLocation}
-                                    autoComplete="family-name"
-                                    
-                                    {...register("auditoriumLocation",{required:true})}
-
-                                />
-
-                            </Grid>
-                            <br />
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    type="number"
-                                    id="auditoriumCapacity"
-                                    label="Auditorium Capacity"
-                                    defaultValue={auditorium.auditoriumCapacity}
-                                    name="auditoriumCapacity"
-                                    autoComplete="family-name"
-                                    
-                                    {...register("auditoriumCapacity",{required:true})}
-
-                                /> </Grid>
-                            <br />
-                            
-
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color='primary'
-                                sx={{ mt: 3, mb: 2, color: 'black' }}
-                               
-                            >
-                                Update Auditorium
-                            </Button>
-                           
+                            </Box>
                         </Box>
-                    </Box>
 
-                </Container>
-            </ThemeProvider></div>:null}</>
+                    </Container>
+                </ThemeProvider></div> : null}</>
     );
 }

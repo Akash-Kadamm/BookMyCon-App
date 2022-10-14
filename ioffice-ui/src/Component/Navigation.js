@@ -38,9 +38,14 @@ const Navigation = () => {
 
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+    console.log(page)
     if (page === 'Home') {
       navigate("/")
-    } else if (page === 'Add Auditorium') {
+    } 
+    //else if(page ==='Home '){
+    //   navigate("/home-page")
+    // }
+    else if (page === 'Add Auditorium') {
       navigate("/add-auditorium")
     } else if (page === 'List of Auditoriums') {
       navigate("/auditorium-list")
@@ -140,11 +145,16 @@ const Navigation = () => {
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                {userSignIn && userSignIn.userRole === "admin" &&( pages.map((page) => (
+                  <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}>
+                    <Typography  sx={{color:"white"}} textAlign="center">{page}</Typography>
                   </MenuItem>
-                ))}
+                )))}
+                {userSignIn && userSignIn.userRole === "user" &&(userPages.map((page) => (
+                  <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}>
+                    <Typography  sx={{color:"white"}} textAlign="center">{page}</Typography>
+                  </MenuItem>
+                )))}
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -203,7 +213,7 @@ const Navigation = () => {
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar sx={{ backgroundColor: "white" }} variant="soft" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -224,7 +234,7 @@ const Navigation = () => {
                 >
                   {commonPages.map((commonPage) => (
                     <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                      <Typography textAlign="center">{commonPage}</Typography>
+                      <Typography sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -236,7 +246,7 @@ const Navigation = () => {
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar sx={{ backgroundColor: "white" }} variant="soft" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -257,7 +267,7 @@ const Navigation = () => {
                 >
                   {commonPages.map((commonPage) => (
                     <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                      <Typography textAlign="center">{commonPage}</Typography>
+                      <Typography sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>

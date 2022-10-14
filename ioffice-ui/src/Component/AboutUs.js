@@ -3,9 +3,7 @@ import "./AboutUs.css"
 
 const AboutUs = () => {
     return (
-      <>
       <div className='container AboutUs-Container'>
-          
           <div className='myAboutUs'>
           <h1 className='heading-center'>About Us</h1>
           <p>The conference room continues to be a focal point in the corporate world for planning, brainstorming, managing crises, and communicating.
@@ -16,7 +14,6 @@ const AboutUs = () => {
           WorkInSync fulfills this need gap by providing a conference room reservation system that is easy to use, implement, and integrate. Cost-effective as it is, it also helps you realize a higher return per dollar invested.</p>
           </div>
       </div>
-      </>
     )
   }
   
