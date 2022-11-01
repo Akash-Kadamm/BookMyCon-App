@@ -84,7 +84,7 @@ public class UserService {
 		Map<String, Object> response = new HashMap<>();	
 		
 		logger.debug("Geting old usre by its id ");
-		User oldUser=userRepository.findById(user.getUserId()).get();
+		User oldUser=userRepository.findByUserId(user.getUserId());
 		logger.info("old user object: "+oldUser);
 		
 		logger.info("Setting all values");

@@ -48,7 +48,8 @@ public class UserServiceTest {
 	
 	@Test
 	public void testUpdateUserProfile_ConditionUpdateed() {
-		when(userRepo.findById(user.getUserId()).get()).thenReturn(user);
+		when(userRepo.findByUserId(user.getUserId())).thenReturn(user);
+		System.out.println(user);
 		when(userRepo.save(user)).thenReturn(user);
 		Map<String, Object> actual=userService.updateUserProfile(user);
 		assertEquals(user,actual.get("user"));	
@@ -56,7 +57,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testUpdateUserProfile_ConditionFailedToUpdat() {
-		when(userRepo.findById(user.getUserId()).get()).thenReturn(user);
+		when(userRepo.findByUserId(user.getUserId())).thenReturn(user);
 		when(userRepo.save(user)).thenReturn(null);
 		Map<String, Object> actual=userService.updateUserProfile(user);
 		assertEquals(ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage(),actual.get("message"));	

@@ -1,5 +1,6 @@
 package com.ioffice.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +10,9 @@ import com.ioffice.model.Auditoriums;
 import com.ioffice.model.Booking;
 
 @Repository
-public interface BookingRepository extends JpaRepository<Booking, Integer>{
-	List<Booking> findByAduitoriamId(Auditoriums  adudiAuditoriums);
+public interface BookingRepository extends JpaRepository<Booking, Integer> {
+	List<Booking> findByAduitoriamId(Auditoriums adudiAuditoriums);
+
+	List<Booking> findByBookingDateFromAndBookingDateTo(LocalDate dateFrom, LocalDate dateTo);
+
 }

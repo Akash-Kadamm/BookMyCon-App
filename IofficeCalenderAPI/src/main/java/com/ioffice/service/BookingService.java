@@ -1,5 +1,6 @@
 package com.ioffice.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,18 +16,18 @@ public class BookingService {
 
 	@Autowired
 	BookingRepository bookingRepository;
+
 	public List<com.ioffice.model.Booking> showAll() {
 		return bookingRepository.findAll();
 	}
 
-    public void addBooking(Booking booking) {
-		
+	public void addBooking(Booking booking) {
+
 		System.out.println(booking);
 		bookingRepository.save(booking);
 	}
 
-	
-	public Optional<Booking> getBookingById(int  bookingId) {
+	public Optional<Booking> getBookingById(int bookingId) {
 		return bookingRepository.findById(bookingId);
 	}
 
@@ -34,12 +35,16 @@ public class BookingService {
 		bookingRepository.deleteById(id);
 	}
 
-	public void editBooking(int id,Booking booking) {
-		bookingRepository.save(booking);	
+	public void editBooking(int id, Booking booking) {
+		bookingRepository.save(booking);
 	}
-	
-	public List<Booking> getByAuditoriumId(Auditoriums auditoriums  ) {
-		return bookingRepository.findByAduitoriamId(auditoriums);	
+
+	public List<Booking> getByDateFromDateTo(LocalDate dateFrom, LocalDate dateTo) {
+		return bookingRepository.findByBookingDateFromAndBookingDateTo(dateFrom, dateTo);
+	}
+
+	public List<Booking> getByAuditoriumId(Auditoriums auditoriums) {
+		return bookingRepository.findByAduitoriamId(auditoriums);
 	}
 
 }

@@ -9,7 +9,7 @@ import com.ioffice.controller.LoginControllerTest;
 import com.ioffice.controller.UserControllerTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AuditoriumServiceTest.class, LoginServiceTest.class,
+@SuiteClasses({ AuditoriumServiceTest.class, LoginServiceTest.class, UserServiceTest.class,
 	UserControllerTest.class,AuditoriumControllerTest.class,
 	LoginControllerTest.class})
 public class AllTests {
