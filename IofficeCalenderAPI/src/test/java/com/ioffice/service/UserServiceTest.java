@@ -45,6 +45,13 @@ public class UserServiceTest {
 		assertEquals(user,response.get("user"));
 	}
 
+	@Test
+	public void testUserRegistration_ConditionException() {
+		when(userRepo.save(null)).thenReturn(new Exception());
+		Map<String, Object> response=userService.userRegistration(null);
+		assertEquals(ResponseMessage.USER_ADDED_FAILED.getMessage(), response.get("message"));
+		
+	}
 	
 	@Test
 	public void testUpdateUserProfile_ConditionUpdateed() {
@@ -64,7 +71,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testShowAllUser() {
+	public void testShowAllUser_ConditionReturnUserList() {
 		List<User> userList=new ArrayList<>();
 		User user2=new User(2, "Admin", "admin@cybage.com", "admin@123", "admin", "7038967694");
 		userList.add(user);
@@ -74,4 +81,13 @@ public class UserServiceTest {
 		assertEquals( userList,actual);
 		
 	}
+	
+	@Test(expected=Exception.class)
+	public void testShowAllUser_ConditionException() {
+		when(userRepo.findAll()).thenReturn(null);
+		List<User> actual=userService.showAllUser();
+		actual.size();
+	}
+	
+	
 }

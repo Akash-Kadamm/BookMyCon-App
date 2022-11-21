@@ -1,21 +1,27 @@
 package com.ioffice.service;
 
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ioffice.model.Auditoriums;
 import com.ioffice.model.Booking;
+
 import com.ioffice.repository.BookingRepository;
+import com.ioffice.repository.UserRepository;
 
 @Service
 public class BookingService {
 
 	@Autowired
 	BookingRepository bookingRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	public List<com.ioffice.model.Booking> showAll() {
 		return bookingRepository.findAll();
@@ -47,4 +53,10 @@ public class BookingService {
 		return bookingRepository.findByAduitoriamId(auditoriums);
 	}
 
+	
+	
+	public List<Booking> getAllBookingOfUser(int userId){   
+		List<Booking> bookings=bookingRepository.findByUserId(userId);
+	    return bookings;
+	}
 }

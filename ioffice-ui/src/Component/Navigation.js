@@ -20,7 +20,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
 const commonPages = ['Profile', 'Logout'];
-const userPages = ['Home', 'Auditorium', 'Bookings', 'About Us', 'Contact Us']
+const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us']
 const nonLoginUser = ['Home', 'About Us', 'Contact Us']
 const login = 'Login'
 
@@ -35,7 +35,7 @@ const Navigation = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-
+  
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     if (page === 'Home') {
@@ -46,7 +46,7 @@ const Navigation = () => {
       navigate("/auditorium-list")
     } else if (page === 'Auditorium') {
       navigate("/auditorium-view")
-    } else if (page === 'Bookings') {
+    } else if (page === 'Booking') {
       navigate("/auditorium-Booking")
     } else if (page === 'About Us') {
       navigate("/about-us")
@@ -54,7 +54,9 @@ const Navigation = () => {
       navigate("/contact-us")
     } else if (page === 'Auditoriums') {
       navigate("/auditorium-view")
-    } else {
+    } else if (page === 'User Bookings') {
+      navigate("/booking-List-user")
+    }else {
       navigate("/user-list")
     }
   };

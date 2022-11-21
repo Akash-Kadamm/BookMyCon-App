@@ -16,6 +16,7 @@ import Registration from './Component/Registration';
 import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
+import BookingListOfUser from './Component/BookingListOfUser';
 
 function App() {
   return (
@@ -36,9 +37,11 @@ function App() {
           <Route path="/auditorium-Booking" element={<BookMeeting />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/booking-List-user" element={<BookingListOfUser/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
+     
      
 
     </div>

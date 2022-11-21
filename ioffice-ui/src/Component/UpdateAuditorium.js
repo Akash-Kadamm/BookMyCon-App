@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { json, useParams } from 'react-router';
-import "./Registration.css";
+import "./UpdateAuditorium.css";
 const theme = createTheme();
 
 export default function UpdateAuditorium() {
@@ -64,12 +64,12 @@ export default function UpdateAuditorium() {
 
     return (<>
 {auditorium!=null ?
-        <div id='Registration-div'>
+        <div id='update-div'>
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
 
-                    <Box id="Registration-card"
+                    <Box id="update-card"
                         sx={{
                             
                             marginTop: 8,
@@ -151,10 +151,11 @@ export default function UpdateAuditorium() {
                             
 
                             <Button
+                            id='btn-update'
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color='primary'
+                                color='success'
                                 sx={{ mt: 3, mb: 2, color: 'black' }}
                                
                             >

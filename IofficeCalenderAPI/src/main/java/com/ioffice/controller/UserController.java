@@ -27,129 +27,116 @@ import com.ioffice.utils.ResponseMessage;
 @RestController
 @RequestMapping("user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
 
 	@Autowired
 	private LoginService loginService;
-	
-	Logger logger=Logger.getLogger(UserController.class);
-	
-	
-	
-	
+
+	Logger logger = Logger.getLogger(UserController.class);
+
 	/*
 	 * Register new user
 	 * 
 	 * check-upcoming user object , pattern check , is user already exists
 	 * 
 	 * @param User
+	 * 
 	 * @return Response entity contain object and httpStatus code
-	 *  
-	 * */
+	 * 
+	 */
 	@PostMapping("/registration")
-	public ResponseEntity<Object> registerUser(@RequestBody User user){
-		
-		Map<String, Object> response=new HashMap<>();
-		String emailPattern="^[^@ ]+@[^@ ]+\\.[^@ .]{2,}$";
-		String passwordPattern=".{6}.*";
-		
-		if(user!=null) {
+	public ResponseEntity<Object> registerUser(@RequestBody User user) {
+
+		Map<String, Object> response = new HashMap<>();
+		String emailPattern = "^[^@ ]+@[^@ ]+\\.[^@ .]{2,}$";
+		String passwordPattern = ".{6}.*";
+
+		if (user != null) {
 			logger.debug("User  object is not null ");
-			if( Pattern.matches(emailPattern,user.getUserEmail()) 
-				&& Pattern.matches(passwordPattern,user.getUserPassword())){
+			if (Pattern.matches(emailPattern, user.getUserEmail())
+					&& Pattern.matches(passwordPattern, user.getUserPassword())) {
 				logger.debug("Pattern Matched.");
-				
-				if(loginService.isUserExists(user.getUserEmail())
-						) {
+
+				if (loginService.isUserExists(user.getUserEmail())) {
 					logger.debug("Check email is already exists.");
-					 user.setUserRole("user");
-					 response=userService.userRegistration(user);
-					 
-					 if(response!=null) {
-						    logger.info("user object: "+response);
-						   
-							response.put("message", ResponseMessage.USER_ADDED_SUCCESSFULLY.getMessage());
-							return new ResponseEntity<>(response, HttpStatus.OK);
-						}else {
-							logger.error("User failed to register.");
-							response = new HashMap<>();
-							response.put("message",ResponseMessage.USER_ADDED_FAILED.getMessage());
-							return new ResponseEntity<>(response, HttpStatus.OK);
-						}
-				}else {
-					logger.error("User already exists with this email"+user.getUserEmail());
+					user.setUserRole("user");
+					response = userService.userRegistration(user);
+
+					if (response != null) {
+						logger.info("user object: " + response);
+
+						response.put("message", ResponseMessage.USER_ADDED_SUCCESSFULLY.getMessage());
+						return new ResponseEntity<>(response, HttpStatus.OK);
+					} else {
+						logger.error("User failed to register.");
+						response = new HashMap<>();
+						response.put("message", ResponseMessage.USER_ADDED_FAILED.getMessage());
+						return new ResponseEntity<>(response, HttpStatus.OK);
+					}
+				} else {
+					logger.error("User already exists with this email" + user.getUserEmail());
 					response.put("message", ResponseMessage.USER_ALREADY_EXISTS_WITH_THIS_EMAIL.getMessage());
 					return new ResponseEntity<>(response, HttpStatus.OK);
 				}
-			}else {
+			} else {
 				logger.error("Patterns are not matched ");
 				response.put("message", ResponseMessage.INVALID_EMAIL_AND_PASSWORD.getMessage());
 				return new ResponseEntity<>(response, HttpStatus.OK);
 			}
-		}else {
+		} else {
 			logger.error("Upcoming user object is getting null");
-			response.put("message",ResponseMessage.USER_ADDED_FAILED.getMessage());	
+			response.put("message", ResponseMessage.USER_ADDED_FAILED.getMessage());
 		}
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
-		
 	}
-	
-	
-	
-	
+
 	/*
 	 * Update User Profile
 	 * 
 	 * @param User
-	 * @return updated User object
 	 * 
-	 * */
+	 * @return updated User object
+	 *
+	 */
 	@PostMapping("updateProfile")
-	public ResponseEntity<Object> updateProfile(@RequestBody User user){
-		Map<String, Object> response=new HashMap<>();
-				
-		if(user!=null) {
+	public ResponseEntity<Object> updateProfile(@RequestBody User user) {
+		Map<String, Object> response = new HashMap<>();
+
+		if (user != null) {
 			logger.debug("User object is not nulll");
-			logger.info("user object: "+user);
-			response=userService.updateUserProfile(user);
+			logger.info("user object: " + user);
+			response = userService.updateUserProfile(user);
 			response.put("message", ResponseMessage.USER_UPDATED_SUCCESSFULLY.getMessage());
-		}else {
+		} else {
 			logger.error("Getting user object null");
 			response.put("message", ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage());
 		}
-		return new ResponseEntity<Object>(response,HttpStatus.OK);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
-	
-	
-	
 
-	
-	
-	
 	/*
-	 * Retrieves all users which are register  
+	 * Retrieves all users which are register
 	 * 
-	 * @param 
+	 * @param
+	 * 
 	 * @return List of users
 	 * 
-	 * */
+	 */
 	@GetMapping("allUser")
-	public ResponseEntity<List<User>>  getAllUser(){
+	public ResponseEntity<List<User>> getAllUser() {
 		logger.debug("getting all users.");
 
-	return  new ResponseEntity<List<User>>(userService.showAllUser().stream().filter(user->user.getUserRole().equals("user")).collect(Collectors.toList()),HttpStatus.OK);		
+		return new ResponseEntity<List<User>>(userService.showAllUser().stream()
+				.filter(user -> user.getUserRole().equals("user")).collect(Collectors.toList()), HttpStatus.OK);
 
-			
 	}
-	
+
 	@GetMapping("/get-user-by-email/{email}")
-	public ResponseEntity<?> getUserByEmailId(@PathVariable String email){
-		return new ResponseEntity<>( userService.findByUserEmail(email), HttpStatus.OK);
+	public ResponseEntity<?> getUserByEmailId(@PathVariable String email) {
+		return new ResponseEntity<>(userService.findByUserEmail(email), HttpStatus.OK);
 	}
-	
-	
-	
+
 }

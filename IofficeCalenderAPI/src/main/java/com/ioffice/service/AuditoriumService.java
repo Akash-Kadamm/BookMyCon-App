@@ -27,6 +27,7 @@ public class AuditoriumService {
 	 * Update the Auditorium
 	 * 
 	 * @param Auditorium Id- Path Variable and Auditorium object
+	 * @param Auditorium
 	 * @return void
 	 * 
 	 * */

@@ -49,7 +49,6 @@ public class UserService {
 	
 	
 	
-	
 	/*
 	 * Retrieves all users which are register  
 	 * 

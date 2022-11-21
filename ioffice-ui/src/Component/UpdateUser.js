@@ -48,7 +48,7 @@ export default function UpdateUser() {
     const onSubmit = data => {
 
         console.log(data);
-        axios.put('http://localhost:8080/user/updateProfile', user)
+        axios.post('http://localhost:8080/user/updateProfile', user)
             .then(response => {
                 console.log(response)
             })

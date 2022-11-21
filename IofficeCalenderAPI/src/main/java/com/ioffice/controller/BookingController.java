@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ioffice.model.Booking;
+import com.ioffice.model.User;
 import com.ioffice.service.BookingService;
 
 @CrossOrigin("*")
@@ -84,6 +85,14 @@ public class BookingController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteBookingById(@PathVariable int id) {
 		bookingService.deleteBooking(id);
-		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
+		return new ResponseEntity<String>("Booking Deleted", HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("getAllBookings/{id}")
+	public ResponseEntity<List<Booking>> getAllBookingsOfUser(@PathVariable(value = "id") int userId){
+		System.out.println("in booking controller and user id is :"+userId);
+		return new ResponseEntity<List<Booking>>(bookingService.getAllBookingOfUser(userId),HttpStatus.OK);
+	}
+
 }

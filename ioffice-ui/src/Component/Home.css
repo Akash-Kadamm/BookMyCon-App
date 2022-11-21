@@ -1,5 +1,5 @@
 #home-div {
-    background-image: url(office_background.webp);
+    background-image: url("../Image/office_background.webp");
      background-repeat: no-repeat;
      background-size: cover;
      width: 100%;
