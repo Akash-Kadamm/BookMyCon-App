@@ -3,10 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useEffect } from "react";
-import { textAlign } from "@mui/system";
 
 const localizer = momentLocalizer(moment);
 
@@ -39,7 +37,6 @@ const HomePage = () => {
   console.log(selectedDateData)
   return (
       <div>
-        {/* {userSignIn && userSignIn.userRole === "user" && ( */}
         <Calendar
           localizer={localizer}
           events={selectedDateData.map((element) => {
