@@ -19,6 +19,8 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
 	@Query(value = "select * from booking where user_id=?1 and booking_date_from >= CURDATE()",nativeQuery = true)
 	List<Booking> findByUserId(int userId);
+	
+	List<Booking> findByUserId(User userId);
 
 
 }

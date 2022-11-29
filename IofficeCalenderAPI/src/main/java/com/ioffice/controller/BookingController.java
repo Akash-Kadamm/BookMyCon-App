@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ioffice.model.Booking;
 import com.ioffice.model.User;
 import com.ioffice.service.BookingService;
+import com.ioffice.dto.BookingDTO;
 
 @CrossOrigin("*")
 @RestController
@@ -93,6 +95,16 @@ public class BookingController {
 	public ResponseEntity<List<Booking>> getAllBookingsOfUser(@PathVariable(value = "id") int userId){
 		System.out.println("in booking controller and user id is :"+userId);
 		return new ResponseEntity<List<Booking>>(bookingService.getAllBookingOfUser(userId),HttpStatus.OK);
+	}
+	
+	@GetMapping("/get-all-bookings/{userId}")
+	public ResponseEntity<Stream<BookingDTO>> getAlllBookingsOfUser(@PathVariable int userId){
+		return new ResponseEntity<Stream<BookingDTO>>(bookingService.getBookingByUserId(userId).stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get-all-bookings")
+	public ResponseEntity<Stream<BookingDTO>> findAllBookings(){		
+		return new ResponseEntity<Stream<BookingDTO>>(bookingService.showAll().stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
 	}
 
 }
