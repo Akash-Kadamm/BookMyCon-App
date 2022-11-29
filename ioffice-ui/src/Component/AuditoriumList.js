@@ -57,7 +57,7 @@ export const AuditoriumList = () => {
   };
 
   const deleteAudi = (id) => {
-    prompt("Sure?")
+  
     console.log(id);
 
     const url = `http://localhost:8080/admin/${id}`;
