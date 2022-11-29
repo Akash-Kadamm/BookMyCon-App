@@ -11,9 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { DeleteAudi } from "./DeleteAudi";
-import UpdateAuditorium from "./UpdateAuditorium";
-import { Navigate, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
