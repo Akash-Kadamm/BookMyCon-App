@@ -16,9 +16,7 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
-
 import ConfirmDialog from './Component/ConfirmDialog';
-
 import HomePage from './Component/HomePage';
 
 
@@ -46,8 +44,6 @@ function App() {
       </BrowserRouter>
       <ToastContainer theme='colored' />
      
-     {/* <ConfirmDialog/>
-     <BookingListOfUser/> */}
 
 
     </div>
