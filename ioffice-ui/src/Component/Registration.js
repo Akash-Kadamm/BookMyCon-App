@@ -18,6 +18,7 @@ import  MailIcon  from '@mui/icons-material/Mail';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import  PasswordTwoToneIcon  from '@mui/icons-material/PasswordTwoTone';
 import { useNavigate } from 'react-router';
+import { toast } from "react-toastify";
 
 const Registration = () => {
 
@@ -30,6 +31,7 @@ const Registration = () => {
     } = useForm()
 
     const [message, setMessage] = useState("");
+    const [user, setUser] = useState({});
 
     const theme = createTheme();
 
@@ -37,9 +39,26 @@ const Registration = () => {
        
         axios.post("http://localhost:8080/user/registration", data)
             .then((result) => {
-                navigate("/signin")
+                console.log(result.data)
+                // toast.success("Register sucessfully. please Login in")
+                // console.log(result.data)
+                // navigate("/signin")
+                if(result.data.user.userRole === 'user'){
+                    toast.success("Register sucessfully. please Login in")
+                    console.log(result.data.message)
+                    navigate("/signin")
+                }
+                toast.error(result.data.message)
+                navigate("/signup")
+                // }else{
+                //     toast.error(result.data.message)
+                //     console.log("failed to registration")
+                //     navigate("/signup")
+                // }
             }).catch((err) => {
-                console.log(err)
+                // toast.error(err.data)
+                // console.log(err.data)
+                navigate("/signup")
             });
     };
 

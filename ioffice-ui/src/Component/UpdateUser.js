@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import "../css/Login.css";
@@ -21,7 +23,8 @@ const theme = createTheme();
 
 export default function UpdateUser() {
 
-
+   
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         userName: "",
         userPassword: "",
@@ -50,8 +53,14 @@ export default function UpdateUser() {
         console.log(data);
         axios.post('http://localhost:8080/user/updateProfile', user)
             .then(response => {
+                toast.success(user.userName + "Your Profile Updated successfully");
                 console.log(response)
-            })
+                navigate("/");
+            }).catch((error) =>{
+              toast.error("Failed to update your profile")
+                console.log(error)
+              navigate("/");
+            });
 
     };
 
