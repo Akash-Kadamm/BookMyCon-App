@@ -54,6 +54,10 @@ public class BookingService {
 	}
 
 	
+	public List<Booking> getBookingByUserId(int userId) {
+		return bookingRepository.findByUserId(userRepository.findById(userId).get());	
+	}
+
 	
 	public List<Booking> getAllBookingOfUser(int userId){   
 		List<Booking> bookings=bookingRepository.findByUserId(userId);
