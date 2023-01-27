@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ioffice.dto.AreasDto;
 import com.ioffice.dto.DataDto;
 import com.ioffice.model.Areas;
 import com.ioffice.model.UserLayout;
@@ -57,23 +58,23 @@ public class UserLayoutController {
 //          return responseHandler.generateResponse("ak", responseHandler);
 // }
 //
-//	@GetMapping(value = "/areasList")
-//    public ResponseEntity<List<AreasDto>>  GetAreas() {
-//		
-//		List<AreasDto> areasList=new ArrayList<>();
-//		
-//		for (Areas areas : areasRepository.findByUserLayout(userLayoutRepository.findById("ak").get())) {
-//			
-//			AreasDto areasDto=new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(),areas.getPreFillColor(), areas.getFillColor());
-//			if(areasDto.getCoords()!=null) {
-//				areasDto.setPreFillColor("transperant");
-//				areasDto.setFillColor("black");
-//				areasList.add(areasDto);
-//			}
-//		}
-//		
-//          return  new ResponseEntity<List<AreasDto>>(areasList,HttpStatus.OK);
-// }
+	@GetMapping(value = "/areasList")
+    public ResponseEntity<List<AreasDto>>  GetAreas() {
+		
+		List<AreasDto> areasList=new ArrayList<>();
+		
+		for (Areas areas : areasRepository.findByUserLayout(userLayoutRepository.findById("UserLayout").get())) {
+			
+			AreasDto areasDto=new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(),areas.getPreFillColor(), areas.getFillColor());
+			if(areasDto.getCoords()!=null) {
+				areasDto.setPreFillColor("transperant");
+				areasDto.setFillColor("black");
+				areasList.add(areasDto);
+			}
+		}
+		
+          return  new ResponseEntity<List<AreasDto>>(areasList,HttpStatus.OK);
+}
 	
 	
 	
