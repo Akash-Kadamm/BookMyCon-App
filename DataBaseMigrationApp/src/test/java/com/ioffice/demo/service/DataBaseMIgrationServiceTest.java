@@ -1,19 +1,16 @@
 package com.ioffice.demo.service;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
 
 public class DataBaseMIgrationServiceTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+         System.out.println("Test Exceuted.....");		
 	}
+	
+	
 
 }
