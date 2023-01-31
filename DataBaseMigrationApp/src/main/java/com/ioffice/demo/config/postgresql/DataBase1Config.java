@@ -18,8 +18,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import jakarta.persistence.EntityManagerFactory;
 
-
-// ########################################### POSTGRESQL DataBase Config ##########################
+/*
+ * ****  Postgresql configurations ********
+ * 
+ * */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
@@ -31,7 +33,12 @@ import jakarta.persistence.EntityManagerFactory;
 public class DataBase1Config {
 
 	
-	// DataSource
+	/*
+	 * Create DataSource object which make database connection.
+	 * 
+	 * @param 
+	 * @return DataSource object
+	 * */
 	@Bean
 	@ConfigurationProperties(prefix="db1.datasource")
 	public DataSource db1DataSource() {
@@ -39,7 +46,13 @@ public class DataBase1Config {
 	}
 	
 	
-	//EntityManagerFactory
+	/*
+	 * Creating EntityManagerFactoryBean object which provides all the operation of database.
+	 * 
+	 * @param EntityManagerFactoryBuilder
+	 * @return LocalContainerEntityManagerFactoryBean object
+	 * 
+	 * */
 	@Bean
 	public LocalContainerEntityManagerFactoryBean db1EntityManagerFactory(
 			EntityManagerFactoryBuilder builder
@@ -55,7 +68,13 @@ public class DataBase1Config {
 				.build();
 	}
 	
-	//TransactionManager
+	/*
+	 * Creating Transaction Manager bean for making transactions.
+	 * 
+	 * @param EntityManagerFactory object
+	 * @return JpaTransactionManager object
+	 * 
+	 * */
 	@Bean
 	public PlatformTransactionManager db1TransactionManager(
 			@Qualifier("db1EntityManagerFactory")

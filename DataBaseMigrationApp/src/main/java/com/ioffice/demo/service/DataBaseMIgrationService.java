@@ -25,18 +25,20 @@ public class DataBaseMIgrationService {
 	private Boolean canStop;
 	
 	
-	//@Scheduled(cron="${corn.expression}")
+	/*
+	 * Migration service which execute after fix delay.
+	 * 
+	 * @param 
+	 * @return 
+	 * 
+	 * */
 	@Scheduled(cron="5 * * ? * *")
 	public void migrationService() {
 		logger.info("Migration Service is executed.... after each 5 Sec.");
 		logger.info("value from application.properties file :-"+canStop);
 		
 	List<Account> accounts=	mysqlRepo.getAllAccountsForMigration();
-	
 
-	    accounts.forEach(System.out::println);
-
-		
 		accounts.stream()
 				.forEach(account -> {
 					System.out.println(account.getCustomerName()+" "
@@ -54,6 +56,14 @@ public class DataBaseMIgrationService {
 	}
 	
 	
+	
+	/*
+	 * Set migration flag to true after migration.
+	 * 
+	 * @param Account
+	 * @return Account
+	 * 
+	 * */
 	public static void setFlag(Account account) {
 		account.setIsMigrate(true);
 	}

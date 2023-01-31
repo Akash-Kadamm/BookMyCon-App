@@ -20,7 +20,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import jakarta.persistence.EntityManagerFactory;
 
 
-// ##################################### MYSQL DataBase Config ###############################
+/*
+ * ***** Mysql Database Configurations ******
+ * 
+ * */
 
 @Configuration
 @EnableTransactionManagement
@@ -33,7 +36,12 @@ import jakarta.persistence.EntityManagerFactory;
 public class DataBase2Config {
 
 	
-	// DataSource
+	/*
+	 * Create DataSource object which make database connection.
+	 * 
+	 * @param 
+	 * @return DataSource object
+	 * */
 	@Primary
 	@Bean
 	@ConfigurationProperties(prefix="db2.datasource")
@@ -42,7 +50,13 @@ public class DataBase2Config {
 	}
 	
 	
-	//EntityManagerFactory
+	/*
+	 * Creating EntityManagerFactoryBean object which provides all the operation of database.
+	 * 
+	 * @param EntityManagerFactoryBuilder
+	 * @return LocalContainerEntityManagerFactoryBean object
+	 * 
+	 * */
 	@Primary
 	@Bean
 	public LocalContainerEntityManagerFactoryBean db2EntityManagerFactory(
@@ -60,7 +74,13 @@ public class DataBase2Config {
 	}
 	
 	
-	//TransactionManager
+	/*
+	 * Creating Transaction Manager bean for making transactions.
+	 * 
+	 * @param EntityManagerFactory object
+	 * @return JpaTransactionManager object
+	 * 
+	 * */
 	@Primary
 	@Bean
 	public PlatformTransactionManager db2TransactionManager(
