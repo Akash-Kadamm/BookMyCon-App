@@ -1,5 +1,6 @@
 package com.ioffice.controller;
 
+import com.ioffice.dto.StockDTO;
 import com.ioffice.model.Product;
 import com.ioffice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,13 @@ public class ProductController {
     @Autowired
    private ProductService productService;
 
+    /*
+    * Retrieve All products.
+    *
+    * @param
+    * @return ResponseEntity object
+    *
+    * */
     @GetMapping("/getAllProduct")
    public ResponseEntity<List<Product>> getAllProducts(){
         return  new ResponseEntity<>(
@@ -25,6 +33,13 @@ public class ProductController {
    }
 
 
+    /*
+     * Add new product.
+     *
+     * @param Product object
+     * @return ResponseEntity object
+     *
+     * */
    @PostMapping("/addNewProduct")
    public ResponseEntity<Product> addNewProduct(@RequestBody Product product){
         return new ResponseEntity<>(
@@ -34,6 +49,13 @@ public class ProductController {
    }
 
 
+    /*
+     * Update product.
+     *
+     * @param Product object
+     * @return ResponseEntity object
+     *
+     * */
    @PutMapping("/updateProduct")
    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
         return new ResponseEntity<>(
@@ -42,7 +64,13 @@ public class ProductController {
         );
    }
 
-
+    /*
+     * Delete product.
+     *
+     * @param  int ProductID
+     * @return ResponseEntity object
+     *
+     * */
    @DeleteMapping("/deleteProduct/{id}")
    public ResponseEntity<String> deleteProduct(@PathVariable int id){
         return  new ResponseEntity<>(
@@ -52,7 +80,13 @@ public class ProductController {
    }
 
 
-
+   @PostMapping("/updateStock")
+   public ResponseEntity<String> updateStockOfProduct(@RequestBody StockDTO stock){
+     return new ResponseEntity<>(
+       productService.addStock(stock),
+       HttpStatus.CREATED
+     );
+   }
 
 
 }
