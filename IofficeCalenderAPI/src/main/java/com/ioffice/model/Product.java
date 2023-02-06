@@ -3,6 +3,7 @@ package com.ioffice.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -22,7 +23,10 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "product_qty")
-    private int productQTY;
+    @Column(name = "product_available_qty")
+    private int productAvailableQTY;
+
+    @Column(name = "product_price")
+    private float productPrice;
 
 }

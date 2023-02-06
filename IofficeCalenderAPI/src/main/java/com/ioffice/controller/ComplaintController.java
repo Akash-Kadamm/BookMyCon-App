@@ -22,6 +22,13 @@ public class ComplaintController {
     private ComplaintService complaintService;
 
 
+    /*
+     * Retrieve All Complaints.
+     *
+     * @param
+     * @return ResponseEntity object
+     *
+     * */
     @GetMapping("/getAllComplaints")
     public ResponseEntity<List<Complaint>> allComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -30,6 +37,13 @@ public class ComplaintController {
          );
     }
 
+    /*
+     * Retrieve All Drinks and Snacks Complaints.
+     *
+     * @param
+     * @return ResponseEntity object
+     *
+     * */
     @GetMapping("/getAllDrinksAndSnacksComplaints")
     public ResponseEntity<List<Complaint>> drinksAndSnacksComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -38,6 +52,14 @@ public class ComplaintController {
         );
     }
 
+
+    /*
+     * Retrieve All HouseKeeping Complaints .
+     *
+     * @param
+     * @return ResponseEntity object
+     *
+     * */
     @GetMapping("/getAllHouseKeepingComplaints")
     public ResponseEntity<List<Complaint>> houseKeepingComplaints(){
         return  new ResponseEntity<List<Complaint>>(
