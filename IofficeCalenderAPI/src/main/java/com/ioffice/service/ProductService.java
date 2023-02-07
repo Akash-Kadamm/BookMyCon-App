@@ -66,6 +66,12 @@ public class ProductService {
     }
 
 
+    /*
+    * Update Stock of product
+    *
+    * @param StockDTO object
+    * @return String message
+    * */
     public String addStock(StockDTO stockDTO){
         Product savedProduct=productRepository.findById(stockDTO.getProductId()).get();
         savedProduct.setProductAvailableQTY(stockDTO.getStockValue());
