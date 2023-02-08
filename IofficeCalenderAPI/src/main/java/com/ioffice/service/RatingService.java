@@ -16,4 +16,8 @@ public class RatingService {
     public List<Rating> getAll() {
         return  ratingRepository.findAll();
     }
+
+    public void addRating(Rating rating) {
+        ratingRepository.save(rating);
+    }
 }
