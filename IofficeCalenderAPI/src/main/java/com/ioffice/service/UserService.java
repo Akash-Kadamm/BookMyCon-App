@@ -107,5 +107,18 @@ public class UserService {
 	public User findByUserEmail(String email){
 		return loginRepo.findByUserEmail(email);
 	}
+
+	public List<User> findAllUsers() {
+		List<User>users=new ArrayList<>();
+		try {
+			logger.debug("Retrieve all users ");
+			users=userRepository.findAll();
+			return users;
+		}catch(Exception e) {
+			logger.error("Failed to retrieve all users");
+			e.printStackTrace();
+		}
+		return users;
+	}
 	
 }
