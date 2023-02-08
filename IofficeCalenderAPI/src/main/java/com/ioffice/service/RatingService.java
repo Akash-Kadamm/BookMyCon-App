@@ -16,4 +16,16 @@ public class RatingService {
     public List<Rating> getAll() {
         return  ratingRepository.findAll();
     }
+
+    public void addRating(Rating rating) {
+        ratingRepository.save(rating);
+    }
+
+    public void editRating(int id, Rating rating) {
+        ratingRepository.save(rating);
+    }
+
+    public void deleteRating(int id) {
+        ratingRepository.deleteById(id);
+    }
 }
