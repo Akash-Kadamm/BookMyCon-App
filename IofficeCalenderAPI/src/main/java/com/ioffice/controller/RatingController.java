@@ -37,7 +37,7 @@ public class RatingController {
     public ResponseEntity<String> deleteRating(@PathVariable("id") int id) {
         ratingService.deleteRating(id);
 
-        return  new ResponseEntity<String>("rating delted",HttpStatus.OK);
+        return  new ResponseEntity<String>("rating deleted",HttpStatus.OK);
 
     }
 
