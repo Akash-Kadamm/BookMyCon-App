@@ -34,8 +34,6 @@ export default function AddAudi() {
 
   const aminityList = ["AC", "Network", "Housekeeping","screen"];
 
-   const navigate = useNavigate();
-
   const onSubmitAll = (e) => {
   
 

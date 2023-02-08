@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './Component/Login';
 import UpdateUser from './Component/UpdateUser';
@@ -17,6 +16,9 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
+import ConfirmDialog from './Component/ConfirmDialog';
+import HomePage from './Component/HomePage';
+
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<HomePage />} />
            <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
@@ -42,7 +44,7 @@ function App() {
       </BrowserRouter>
       <ToastContainer theme='colored' />
      
-     
+
 
     </div>
   );
