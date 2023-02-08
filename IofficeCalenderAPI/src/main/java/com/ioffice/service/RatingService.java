@@ -20,4 +20,12 @@ public class RatingService {
     public void addRating(Rating rating) {
         ratingRepository.save(rating);
     }
+
+    public void editRating(int id, Rating rating) {
+        ratingRepository.save(rating);
+    }
+
+    public void deleteRating(int id) {
+        ratingRepository.deleteById(id);
+    }
 }

@@ -27,4 +27,18 @@ public class RatingController {
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> editRating(@PathVariable("id") int id, @RequestBody Rating rating) {
+        ratingService.editRating(id,rating);
+        return  new ResponseEntity<String>("rating updated",HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteRating(@PathVariable("id") int id) {
+        ratingService.deleteRating(id);
+
+        return  new ResponseEntity<String>("rating delted",HttpStatus.OK);
+
+    }
+
 }
