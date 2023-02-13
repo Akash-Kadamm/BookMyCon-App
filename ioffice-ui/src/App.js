@@ -1,3 +1,4 @@
+import logo from './logo.svg';
 import './App.css';
 import Login from './Component/Login';
 import UpdateUser from './Component/UpdateUser';
@@ -16,10 +17,9 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
-import ConfirmDialog from './Component/ConfirmDialog';
+import { AdminFloorMap } from './Component/AdminFloorMap';
 import HomePage from './Component/HomePage';
 import ProductList from './Component/ProductList';
-
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/" element={<Home />} />
            <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
@@ -41,12 +41,11 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
-          <Route path="/product-List" element={<ProductList/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
      
-
+     
 
     </div>
   );
