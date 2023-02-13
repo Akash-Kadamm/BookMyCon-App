@@ -18,6 +18,7 @@ import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
 import ConfirmDialog from './Component/ConfirmDialog';
 import HomePage from './Component/HomePage';
+import ProductList from './Component/ProductList';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
+          <Route path="/product-List" element={<ProductList/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
