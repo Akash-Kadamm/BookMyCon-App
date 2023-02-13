@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.ioffice.service.AreasService;
+import com.ioffice.service.UserLayoutService;
+import com.ioffice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,12 +44,14 @@ import com.ioffice.repository.UserLayoutRepository;
 public class UserLayoutController {
 
 	@Autowired 
-	UserLayoutRepository userLayoutRepository;
+	UserLayoutService userLayoutService;
 	
 	@Autowired
-	AreasRepository areasRepository;
+	AreasService areasService;
 	
-	
+
+
+
 	
 	
 //	@Autowired
@@ -63,7 +68,7 @@ public class UserLayoutController {
 		
 		List<AreasDto> areasList=new ArrayList<>();
 		
-		for (Areas areas : areasRepository.findByUserLayout(userLayoutRepository.findById("UserLayout").get())) {
+		for (Areas areas : areasService.findByUserLayout(userLayoutService.findAll().get(0))) {
 			
 			AreasDto areasDto=new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(),areas.getPreFillColor(), areas.getFillColor());
 			if(areasDto.getCoords()!=null) {
@@ -86,7 +91,7 @@ public class UserLayoutController {
 
 	{
 		
-		return  new ResponseEntity<List<UserLayout>>(userLayoutRepository.findAll(),HttpStatus.OK);			
+		return  new ResponseEntity<List<UserLayout>>(userLayoutService.findAll(),HttpStatus.OK);
 		
 	}
 	
@@ -96,7 +101,7 @@ public class UserLayoutController {
 
 	{
 		
-		return  new ResponseEntity<List<Areas>>(areasRepository.findAll(),HttpStatus.OK);			
+		return  new ResponseEntity<List<Areas>>(areasService.findAll(),HttpStatus.OK);
 		
 	}
 	
@@ -106,11 +111,11 @@ public class UserLayoutController {
 	{
         // preFillColor: "transperant",
 
-		Areas areas=new Areas(0, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutRepository.findById(dataDto.getNameId()).get());
+		Areas areas=new Areas(0, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutService.findById(dataDto.getNameId()).get());
 		
 
 //		System.out.println(areas);
-	    areasRepository.save(areas);
+		areasService.addAreas(areas);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
 	}
 	
@@ -121,14 +126,14 @@ public class UserLayoutController {
 		
 
 		System.out.println(userLayout);
-		userLayoutRepository.save(userLayout);
+		userLayoutService.addUserLayout(userLayout);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{name}")
 	public ResponseEntity<Optional<UserLayout>> getUserLayoutById(@PathVariable(value = "name") String name)
 	{
-		Optional<UserLayout> user=userLayoutRepository.findById(name);
+		Optional<UserLayout> user=userLayoutService.findById(name);
 		
 	return new ResponseEntity<Optional<UserLayout>>(user,HttpStatus.OK);
 	}
@@ -136,7 +141,7 @@ public class UserLayoutController {
 	@PutMapping("/{name}")
 	public ResponseEntity<String> editUserLayout(@PathVariable(value = "name") String name, @RequestBody UserLayout userLayout)
 	{
-		userLayoutRepository.save( userLayout);
+		userLayoutService.addUserLayout( userLayout);
 	return new ResponseEntity<String>("record updated",HttpStatus.OK);
 	}
 	
@@ -148,7 +153,7 @@ public class UserLayoutController {
 //	
 //	aerAreasRepository.delete(areas);
 //	
-	userLayoutRepository.deleteById(name);
+		userLayoutService.deleteUserLayout(name);
 	
 	
 		return new ResponseEntity<String>("record deleted",HttpStatus.OK);

@@ -17,6 +17,9 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
+import { AdminFloorMap } from './Component/AdminFloorMap';
+import HomePage from './Component/HomePage';
+import ProductList from './Component/ProductList';
 
 function App() {
   return (
