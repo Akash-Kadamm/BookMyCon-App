@@ -71,84 +71,408 @@ function Row(props) {
   const [openFlag1, setOpenFlag1] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
-  const[book,setBook]=useState();
+  const [book, setBook] = useState();
 
-  const[flag1,setFlag1]=React.useState(false);
-  const[flag2,setFlag2]=React.useState(false);
-  const[flag3,setFlag3]=React.useState(false);
-  const[flag4,setFlag4]=React.useState(true);
-  const[flag5,setFlag5]=React.useState(true);
-  const[flag6,setFlag6]=React.useState(false);
-  const[flag7,setFlag7]=React.useState(false);
-  const[flag8,setFlag8]=React.useState(false);
-  const[flag9,setFlag9]=React.useState(false);
+  const [flag1, setFlag1] = React.useState(false);
+  const [flag2, setFlag2] = React.useState(false);
+  const [flag3, setFlag3] = React.useState(false);
+  const [flag4, setFlag4] = React.useState(false);
+  const [flag5, setFlag5] = React.useState(false);
+  const [flag6, setFlag6] = React.useState(false);
+  const [flag7, setFlag7] = React.useState(false);
+  const [flag8, setFlag8] = React.useState(false);
+  const [flag9, setFlag9] = React.useState(false);
 
-
-  const hangleSplit=(t)=>{
-    const time = t.split(':');
+  const handleSplit = (t) => {
+    const time = t.split(":");
     return time;
-  }
+  };
 
-  const handleCompare=(t1,t2)=>
-  {
-    console.log("t1[0]:"+ parseInt(t1[0]))
-    console.log("t2[0]:"+ parseInt(t2[0]))
-    if(parseInt(t1[0])>parseInt(t2[0]))
-    {
-      return 1
-    }
-    else if(parseInt(t1[0])<parseInt(t2[0]))
-    {
-      return -1
-    }
-    else
-    {
-      if(parseInt(t1[1])>parseInt(t2[1]))
-      {
-        return 1
-      }
-      else if(parseInt(t1[1])<parseInt(t2[1]))
-      {
-        return -1
-      }
-      else
-      {
-        if(parseInt(t1[2])>parseInt(t2[2]))
-      {
-        return 1
-      }
-      else if(parseInt(t1[2])<parseInt(t2[2]))
-      {
-        return -1
-      }
-      else
-      {
-        return 0
-      }
-
+  const handleCompare = (t1, t2) => {
+    console.log("t1[0]:" + parseInt(t1[0]));
+    console.log("t2[0]:" + parseInt(t2[0]));
+    if (parseInt(t1[0]) > parseInt(t2[0])) {
+      return 1;
+    } else if (parseInt(t1[0]) < parseInt(t2[0])) {
+      return -1;
+    } else {
+      if (parseInt(t1[1]) > parseInt(t2[1])) {
+        return 1;
+      } else if (parseInt(t1[1]) < parseInt(t2[1])) {
+        return -1;
+      } else {
+        if (parseInt(t1[2]) > parseInt(t2[2])) {
+          return 1;
+        } else if (parseInt(t1[2]) < parseInt(t2[2])) {
+          return -1;
+        } else {
+          return 0;
+        }
       }
     }
-  }
+  };
 
+  const handleFlag1 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
 
-  const hangleFlag1=(t1,t2)=>{
- 
-t1="10:10:10";
-t2="10:10:10";
-const time1 = hangleSplit(t1)
-const time2 = hangleSplit(t2)
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
 
-handleCompare(time1,time2 )
-console.log("time1:"+ handleCompare(time1,time2 ));
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("09:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("09:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("10:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("10:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("09:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("09:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t1), handleSplit("10:00:00")) == -1
+          ? true
+          : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("10:00:00")) == 1
+          ? true
+          : false))
+    ) {
 
-
-
-  
-    if(("09:00:00">t1<="10:00:00")||(t1>="09:00:00"&&t2>"10:00:00"))
-    {
-        return true;
+      return true;
     }
-     return false;
+    return false;
+  };
+
+  const handleFlag2 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("10:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("10:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("11:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("11:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("10:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("11:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("10:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("11:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("10:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("11:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag3 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("11:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("11:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("12:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("12:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("11:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("12:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("11:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("12:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("11:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("12:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag4 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("12:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("12:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("13:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("13:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("12:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("13:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("12:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("13:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("12:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("13:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag5 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("13:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("13:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("14:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("14:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("13:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("14:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("13:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("14:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("13:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("14:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag6 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("14:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("14:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("15:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("15:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("14:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("15:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("14:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("15:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("14:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("15:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag7 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("15:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("15:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("16:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("16:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("15:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("16:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("15:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("16:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("15:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("16:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag8 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("16:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("16:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("17:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("17:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("16:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("17:00:00")) == 0
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("16:00:00")) == 0
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("17:00:00")) == 1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t1), handleSplit("16:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("17:00:00")) == 1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleFlag9 = (t1, t2) => {
+    // t1="10:10:10";
+    // t2="10:10:10";
+    // const time1 = handleSplit(t1)
+    // const time2 = handleSplit(t2)
+
+    // handleCompare(time1,time2 )
+    // console.log("time1:"+ handleCompare(time1,time2 ));
+
+    if (
+      ((handleCompare(handleSplit(t1), handleSplit("17:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("17:00:00")) == 1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("18:00:00")) == 0 ||
+        handleCompare(handleSplit(t2), handleSplit("18:00:00")) == -1
+          ? true
+          : false)) ||
+      ((handleCompare(handleSplit(t2), handleSplit("18:00:00")) == 0 ||
+      handleCompare(handleSplit(t1), handleSplit("18:00:00")) == -1
+        ? true
+        : false) &&
+        (handleCompare(handleSplit(t2), handleSplit("17:00:00")) == 1
+          ? true
+          : false) &&
+        (handleCompare(handleSplit(t1), handleSplit("17:00:00")) == -1
+          ? true
+          : false))
+    ) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -167,18 +491,86 @@ console.log("time1:"+ handleCompare(time1,time2 ));
         <TableCell component="th" scope="row">
           {row.bookingDateFrom}
         </TableCell>
-       
-        <StyledTableCell  style={{ background:hangleFlag1(row.bookingTimeFrom,row.bookingTimeTO) ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell  style={{ background:flag2 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell style={{ background:flag3 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell style={{ background:flag4 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell style={{ background:flag5 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell style={{ background:flag6 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
-        <StyledTableCell style={{ background:flag7 ? 'gray': 'white'}}></StyledTableCell>
-        <StyledTableCell style={{ background:flag8 ? 'gray': 'white'}}></StyledTableCell>
-        <StyledTableCell style={{ background:flag9 ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell>
+
+        <StyledTableCell 
+          style={{
+            background: handleFlag1(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+        {handleFlag1(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag2(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+          {handleFlag2(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag3(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+            {handleFlag3(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag4(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+           { handleFlag4(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag5(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+             { handleFlag5(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag6(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+            { handleFlag6(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag7(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >   { handleFlag7(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}</StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag8(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >   { handleFlag8(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}</StyledTableCell>
+        <StyledTableCell
+          style={{
+            background: handleFlag9(row.bookingTimeFrom, row.bookingTimeTO)
+              ? "gray"
+              : "white",
+          }}
+        >
+             {handleFlag9(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        </StyledTableCell>
         {/* <StyledTableCell style={{ background:flag ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell> */}
-      
+
         {/* 
         <TableCell component="th" scope="row">
           {row.bookingDateFrom}
@@ -195,9 +587,7 @@ console.log("time1:"+ handleCompare(time1,time2 ));
         <TableCell >{row.bookingDateFrom}</TableCell>
          */}
       </TableRow>
-     
-     
-     
+
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
           <Collapse in={open} timeout="auto" unmountOnExit>
@@ -213,10 +603,9 @@ console.log("time1:"+ handleCompare(time1,time2 ));
                     <TableCell>Time From</TableCell>
                     <TableCell>Time To</TableCell>
                     <TableCell>Agenda</TableCell>
-                    <TableCell>User Details</TableCell>
 
                     <TableCell>
-                      Coffee and Snacks
+                      User Details
                       <IconButton
                         aria-label="expand row"
                         size="small"
@@ -234,67 +623,66 @@ console.log("time1:"+ handleCompare(time1,time2 ));
                 </TableHead>
                 <TableBody>
                   {/* {row.map((historyRow) => ( */}
-                    <TableRow key={row.bookingId}>
-                      <TableCell component="th" scope="row">
-                        {row.bookingDateFrom}
-                      </TableCell>
-                      <TableCell>{row.bookingDateTo}</TableCell>
-                      <TableCell>{row.bookingTimeFrom}</TableCell>
-                      {/* <TableCell align="bookingId">
+                  <TableRow key={row.bookingId}>
+                    <TableCell component="th" scope="row">
+                      {row.bookingDateFrom}
+                    </TableCell>
+                    <TableCell>{row.bookingDateTo}</TableCell>
+                    <TableCell>{row.bookingTimeFrom}</TableCell>
+                    {/* <TableCell align="bookingId">
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell> */}
-                      <TableCell>{row.bookingTimeTO}</TableCell>
-                      <TableCell>{row.bookingAgenda}</TableCell>
-                      <TableCell>{row.userId.userName}</TableCell>
+                    <TableCell>{row.bookingTimeTO}</TableCell>
+                    <TableCell>{row.bookingAgenda}</TableCell>
 
-                      <TableCell>
-                        <TableRow>
-                          <TableCell
-                            style={{ paddingBottom: 0, paddingTop: 0 }}
-                            colSpan={12}
-                          >
-                            <Collapse
-                              in={openFlag1}
-                              timeout="auto"
-                              unmountOnExit
-                            >
-                              <Box sx={{ margin: 1 }}>
-                                <Table size="small" aria-label="purchases">
-                                  <TableHead>
-                                    <TableRow>
-                                      <TableCell>
-                                        <Button
-                                          color="warning"
-                                          size="small"
-                                          variant="contained"
-                                        >
-                                          Menu
-                                        </Button>
-                                      </TableCell>
-                                    </TableRow>
-                                  </TableHead>
-                                  <TableBody>
-                                    {/* {row.map((historyRow) => ( */}
-                                      <TableRow key={row.bookingId}>
-                                        <TableCell component="th" scope="row">
-                                          {row.bookingId}
-                                        </TableCell>
-                                      </TableRow>
-                                    {/* ))} */}
-                                  </TableBody>
-                                </Table>
-                              </Box>
-                            </Collapse>
-                          </TableCell>
-                        </TableRow>
-                      </TableCell>
-                    </TableRow>
+                    <TableCell>
+                      <TableRow>
+                        <TableCell
+                          style={{ paddingBottom: 0, paddingTop: 0 }}
+                          colSpan={12}
+                        >
+                          <Collapse in={openFlag1} timeout="auto" unmountOnExit>
+                            <Box sx={{ margin: 1 }}>
+                              <Table size="small" aria-label="purchases">
+                                <TableHead>
+                                  <TableRow>
+                                    <TableCell>
+                                      <Button
+                                        color="warning"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                        Details
+                                      </Button>
+                                    </TableCell>
+                                  </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                  {/* {row.map((historyRow) => ( */}
+                                  <TableRow key={row.bookingId}>
+                                    <TableCell>{row.userId.userName}</TableCell>
+                                  </TableRow>
+                                  <TableRow key={row.bookingId}>
+                                    <TableCell>
+                                      {row.userId.userEmail}
+                                    </TableCell>
+                                  </TableRow>
+                                  <TableRow key={row.bookingId}>
+                                    <TableCell>
+                                      {row.userId.userContact}
+                                    </TableCell>
+                                  </TableRow>
+
+                                  {/* ))} */}
+                                </TableBody>
+                              </Table>
+                            </Box>
+                          </Collapse>
+                        </TableCell>
+                      </TableRow>
+                    </TableCell>
+                  </TableRow>
                   {/* ))} */}
-
-
-
-
-                  
                 </TableBody>
               </Table>
             </Box>
@@ -347,7 +735,7 @@ export const ViewForUser = () => {
 
       .catch((error) => setErrorMsg("error "));
   };
-  rows=booking;
+  rows = booking;
   console.log("Booking Data:=- " + JSON.stringify(booking));
 
   return (
@@ -413,7 +801,6 @@ export const ViewForUser = () => {
                   5PM-6PM
                 </Button>
               </TableCell>
-           
             </TableRow>
           </TableHead>
           <TableBody>
