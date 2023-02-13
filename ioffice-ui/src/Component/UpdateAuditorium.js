@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -12,8 +11,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { json, useParams } from 'react-router';
-import "./UpdateAuditorium.css";
+import { useParams } from 'react-router';
+import "../css/UpdateAuditorium.css";
 const theme = createTheme();
 
 export default function UpdateAuditorium() {
@@ -47,15 +46,15 @@ export default function UpdateAuditorium() {
 
         axios.put(`http://localhost:8080/admin/${params.id}`, data, { headers: { "Content-Type": "application/json", }, })
             .then((response) => {
-                toast.success(response.data);
-               
+                toast.success("Auditorium Updated Sucessfully");
+               console.log(response.data)
                 navigate('/auditorium-list');
 
             })
             .catch((err) => {
+                toast.error("Failed to update Auditorium")
                 console.log(err.response);
-
-
+                navigate('/auditorium-list');
             });
 
 

@@ -1,5 +1,6 @@
 package com.ioffice.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,6 +138,12 @@ public class UserController {
 	@GetMapping("/get-user-by-email/{email}")
 	public ResponseEntity<?> getUserByEmailId(@PathVariable String email) {
 		return new ResponseEntity<>(userService.findByUserEmail(email), HttpStatus.OK);
+	}
+
+	@GetMapping("/allUsers")
+	public ResponseEntity<List<User>> getAllUsers() {
+		List<User> list =userService.findAllUsers();
+		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
 
 }

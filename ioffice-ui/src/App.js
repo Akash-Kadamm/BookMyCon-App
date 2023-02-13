@@ -17,14 +17,11 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
-import { ViewForUser } from './Component/ViewForUser';
-import { AdminFloorMap } from './Component/AdminFloorMap';
-import { UserFloorMap } from './Component/UserFloorMap';
 
 function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Navigation />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -43,13 +40,10 @@ function App() {
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer theme='colored' /> */}
-     <ViewForUser/>
-      {/* <View/> */}
-      {/* <AdminFloorMap/>
-       */}
-    {/* <UserFloorMap/> */}
-    <BookMeeting/>
+      <ToastContainer theme='colored' />
+     
+     
+
     </div>
   );
 }

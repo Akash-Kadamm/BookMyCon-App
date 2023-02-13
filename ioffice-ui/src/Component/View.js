@@ -3,7 +3,6 @@ import ReactTable from "react-table-6";
 import "react-table-6/react-table.css" 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { style } from '@mui/system';
 import { Button } from '@mui/material';
 // import { useNavigate } from "react-router-dom";
 import { ReactSession } from 'react-client-session';
@@ -931,8 +930,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's9',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-         if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+         if(row.value === 'Book'){return row.value.toUpperCase();}
             
         }
         
@@ -941,8 +940,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's10',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -951,8 +950,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's11',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -961,8 +960,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's12',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -972,8 +971,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's1',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -982,8 +981,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's2',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -992,8 +991,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's3',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         
@@ -1002,8 +1001,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's4',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' :'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' :'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
           
         }
         
@@ -1012,8 +1011,8 @@ else if(e.bookingTimeFrom>="09:00:00" && e.bookingTimeTO<="18:00:00"){
         accessor: 's5',
         Cell: row => {
           row.styles['color'] = '#fff';
-          row.styles['backgroundColor'] = row.value == 'Book' ? 'gray' : 'white';
-          if(row.value == 'Book'){return row.value.toUpperCase();}
+          row.styles['backgroundColor'] = row.value === 'Book' ? 'gray' : 'white';
+          if(row.value === 'Book'){return row.value.toUpperCase();}
 
         }
         

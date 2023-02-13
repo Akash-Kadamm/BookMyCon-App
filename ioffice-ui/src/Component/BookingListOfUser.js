@@ -16,6 +16,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import { toast } from 'react-toastify'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import ConfirmDialog from './ConfirmDialog';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -55,7 +56,7 @@ function BookingListOfUser() {
         getAllBookings()
     }, []);
 
-   const id=1;
+   const id=2;
 
  const getAllBookings=()=> {
     console.log(id);
@@ -80,7 +81,7 @@ function BookingListOfUser() {
               toast.success(response.data);
             getAllBookings()
            
-    
+
           })
           .catch((error) => console.log("error:"));
         
@@ -130,12 +131,12 @@ function BookingListOfUser() {
                     >
                       UPDATE
                     </Button>
+                    {/* <ConfirmDialog props={b.bookingId}/> */}
                     <Button
                           color='error'
                       variant="outlined"
                       startIcon={<CancelIcon/>}
-                      onClick={() =>{
-                        <Alert severity="warning">This is a warning alert — check it out!</Alert>
+                      onClick={() =>{ 
                        cancelBooking(b.bookingId);
                       }}
                       
