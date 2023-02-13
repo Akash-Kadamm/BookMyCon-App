@@ -19,6 +19,7 @@ import BookingListOfUser from './Component/BookingListOfUser';
 import ConfirmDialog from './Component/ConfirmDialog';
 import HomePage from './Component/HomePage';
 import ProductList from './Component/ProductList';
+import Cart from './Component/Cart';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
+          <Route path="/cart" element={<Cart/>} />
           <Route path="/user-list" element={<UserList />} />
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />

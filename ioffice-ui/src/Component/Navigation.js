@@ -16,6 +16,9 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // import Link  from '@mui/material/Link';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Badge } from "@mui/material";
+import  CartIcon  from '@mui/icons-material/ShoppingCart';
+import { useSelector } from "react-redux";
 
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
@@ -26,6 +29,7 @@ const login = 'Login'
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const cart = useSelector((state) => state);
 
   let userSignIn = JSON.parse(sessionStorage.getItem("userLogin"));
 
@@ -205,6 +209,12 @@ const Navigation = () => {
                     {userPage}
                   </Button>
                 ))}
+                  <Link className="nav-link " to={"/cart"}>
+          <Badge badgeContent={cart.length} color="secondary" sx={{ mr: 1 }}>
+            <CartIcon />
+          </Badge>
+          Cart
+          </Link>
               </Box>
             )}
 
