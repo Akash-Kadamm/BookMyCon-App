@@ -34,6 +34,7 @@ function App() {
           <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
+          <Route path="/cart" element={<Cart/>} />
           <Route path="/user-list" element={<UserList />} />
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
@@ -42,6 +43,9 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
+          <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
+          <Route path="/user_details" element={<User/>}/>
+          <Route path="/all_booking" element={<AllBooking/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
