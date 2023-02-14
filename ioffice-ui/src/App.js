@@ -18,6 +18,7 @@ import { View } from './Component/View';
 import BookingListOfUser from './Component/BookingListOfUser';
 import ConfirmDialog from './Component/ConfirmDialog';
 import HomePage from './Component/HomePage';
+import Feedback from './Component/Feedback';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-           <Route exact path="/auditorium-view" element={<View />} />
+          <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
@@ -39,11 +40,12 @@ function App() {
           <Route path="/auditorium-Booking" element={<BookMeeting />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/booking-List-user" element={<BookingListOfUser/>} />
+          <Route path="/booking-List-user" element={<BookingListOfUser />} />
+          <Route path='/feedback' element={<Feedback />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
-     
+
 
 
     </div>

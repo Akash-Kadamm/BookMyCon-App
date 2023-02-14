@@ -20,7 +20,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
 const commonPages = ['Profile', 'Logout'];
-const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us']
+const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us','Feedback']
 const nonLoginUser = ['Home', 'About Us', 'Contact Us']
 const login = 'Login'
 
@@ -56,6 +56,9 @@ const Navigation = () => {
       navigate("/auditorium-view")
     } else if (page === 'User Bookings') {
       navigate("/booking-List-user")
+    }
+    else if (page === 'Feedback') {
+      navigate("/feedback")
     }else {
       navigate("/user-list")
     }
