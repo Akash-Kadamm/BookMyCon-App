@@ -20,6 +20,7 @@ import BookingListOfUser from './Component/BookingListOfUser';
 import { AdminFloorMap } from './Component/AdminFloorMap';
 import HomePage from './Component/HomePage';
 import ProductList from './Component/ProductList';
+import { ViewForUser } from './Component/ViewForUser';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<Home />} />
-           <Route exact path="/auditorium-view" element={<View />} />
+           <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
           <Route path="/signup" element={<Registration />} />
