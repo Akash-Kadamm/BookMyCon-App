@@ -1,18 +1,18 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
+import axios from 'axios';
 
 function Copyright(props) {
     return (
@@ -35,13 +35,29 @@ export default function Feedback() {
     const [value1, setValue1] = React.useState(0);
     const [value2, setValue2] = React.useState(0);
     const [value3, setValue3] = React.useState(0);
+    const [remarks, setRemarks] = React.useState('')
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        // const data = new FormData(event.currentTarget);
+        let data = {
+            bookingRating: value1,
+            snacksRating: value2,
+            housekeepingRating: value3,
+            remarks: remarks,
+
+        };
+        console.log(data);
+        axios.post("http://localhost:8080/ratings/addRatings", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => console.log(err + "Incorrect Data"));
     };
 
     return (
@@ -87,12 +103,13 @@ export default function Feedback() {
 
                     <TextField
                         margin="normal"
-
+                        value={remarks}
                         fullWidth
                         name="remarks"
                         label="Remarks"
                         type="text"
                         id="remarks"
+                        onChange={e => { setRemarks(e.target.value) }}
 
                     />
 
