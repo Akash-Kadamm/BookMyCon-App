@@ -7,14 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UserList } from './Component/UserList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Component/Navigation';
-import AddAudi from './Component/AddAudi';
-import { AuditoriumList } from './Component/AuditoriumList';
+import AddAudi from './Component/Admin/AddAudi';
+import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
 import ContactUs from './Component/Utilities/ContactUs';
-// import { View } fro./Component/Delete/Viewiew';
 import BookingListOfUser from './Component/User/BookingListOfUser';
 import { AdminFloorMap } from './Component/Admin/AdminFloorMap';
 import HomePage from './Component/Utilities/HomePage';
@@ -31,7 +30,6 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-           <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
