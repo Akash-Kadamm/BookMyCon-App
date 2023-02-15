@@ -3,6 +3,7 @@ package com.ioffice.service;
 
 import com.ioffice.model.Complaint;
 import com.ioffice.repository.ComplaintRepository;
+import com.ioffice.utils.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +50,8 @@ public class ComplaintService {
     }
 
 
+    public String makeComplaint(Complaint complaint){
+        complaintRepository.save(complaint);
+        return "Complaint Send..";
+    }
 }
