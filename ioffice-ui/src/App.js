@@ -7,9 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UserList } from './Component/UserList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Component/Navigation';
-// import Home from './Component/Delete/Home';
-import AddAudi from './Component/Admin/AddAudi';
-import { AuditoriumList } from './Component/Admin/AuditoriumList';
+import AddAudi from './Component/AddAudi';
+import { AuditoriumList } from './Component/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
@@ -32,7 +31,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-           {/* <Route exact path="/auditorium-view" element={<View />} /> */}
+           <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
@@ -45,6 +44,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
+          <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
           <Route path="/user_details" element={<User/>}/>
           <Route path="/all_booking" element={<AllBooking/>}/>
