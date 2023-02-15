@@ -9,14 +9,10 @@ import Navigation from './Component/Navigation';
 import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
-import BookMeeting from './Component/BookMeeting';
-import Registration from './Component/Registration';
-import AboutUs from './Component/AboutUs';
-import ContactUs from './Component/ContactUs';
-import { View } from './Component/View';
-import BookingListOfUser from './Component/BookingListOfUser';
-import ConfirmDialog from './Component/ConfirmDialog';
-import HomePage from './Component/HomePage';
+
+
+
+
 import Feedback from './Component/Feedback';
 
 import BookMeeting from './Component/User/BookMeeting';
@@ -39,7 +35,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/auditorium-view" element={<View />} />
+          
           <Route exact path="/" element={<HomePage />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
