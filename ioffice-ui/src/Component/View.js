@@ -4,11 +4,11 @@ import "react-table-6/react-table.css"
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button } from '@mui/material';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { ReactSession } from 'react-client-session';
 export const View = () => {
     
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
     let [booking,setbooking]=useState([]);
     let [roomName,setroomName]=useState();
     let[errorMsg,setErrorMsg]=useState('');
@@ -21,7 +21,7 @@ export const View = () => {
         alert(`hello, ${roomName}`);
         ReactSession.setStoreType("localStorage");
         ReactSession.set("roomname",  {roomName});
-        navigate("/auditorium-Booking");
+        // navigate("/auditorium-Booking");
       }
       
 
