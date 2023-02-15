@@ -22,6 +22,7 @@ import Cart from './Component/User/Cart';
 import AdminDashboard from './Component/Admin/AdminDashboard';
 import User from './Component/User';
 import AllBooking from './Component/Admin/AllBooking';
+import Complaint from './Component/Complaint';
 
 function App() {
   return (
@@ -46,12 +47,10 @@ function App() {
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
           <Route path="/user_details" element={<User/>}/>
           <Route path="/all_booking" element={<AllBooking/>}/>
+          <Route path="/make-complaint" element={<Complaint/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
-     
-     
-
     </div>
   );
 }
