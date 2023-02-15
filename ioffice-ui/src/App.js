@@ -41,6 +41,9 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
+          <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
+          <Route path="/user_details" element={<User/>}/>
+          <Route path="/all_booking" element={<AllBooking/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
