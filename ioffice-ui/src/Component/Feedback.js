@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 
-import Link from '@mui/material/Link';
+
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
@@ -16,18 +16,6 @@ import axios from 'axios';
 
 
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const theme = createTheme();
 
@@ -36,6 +24,8 @@ export default function Feedback() {
     const navigate = useNavigate();
     const userSignIn = JSON.parse(sessionStorage.getItem("userLogin"))
 
+
+
     const [value1, setValue1] = React.useState(0);
     const [value2, setValue2] = React.useState(0);
     const [value3, setValue3] = React.useState(0);
@@ -43,17 +33,17 @@ export default function Feedback() {
 
 
     const handleSubmit = () => {
-        //event.preventDefault();
-        // const data = new FormData(event.currentTarget);
+
 
         const data = {
             bookingRating: value1,
             snacksRating: value2,
             housekeepingRating: value3,
             remarks: remarks,
+            userId: userSignIn.userId
 
         };
-        console.log('postData', data)
+
         axios.post("http://localhost:8080/ratings/addRating", data, {
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +59,7 @@ export default function Feedback() {
         setValue3(0)
         setRemarks("")
         navigate("/")
-       
+
 
     }
 
@@ -86,10 +76,10 @@ export default function Feedback() {
                     }}
                 >
 
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h3">
                         Feedback Form
                     </Typography>
-                    <h3>Please rate for Snacks</h3>
+                    <h4>Please rate for Snacks</h4>
                     <Rating
                         name="simple-controlled"
                         value={value1}
@@ -97,7 +87,7 @@ export default function Feedback() {
                             setValue1(newValue);
                         }}
                     />
-                    <h3>Please rate for booking</h3>
+                    <h4>Please rate for booking</h4>
                     <Rating
                         name="simple-controlled"
                         value={value2}
@@ -105,7 +95,7 @@ export default function Feedback() {
                             setValue2(newValue);
                         }}
                     />
-                    <h3>Please rate for housekeeping</h3>
+                    <h4>Please rate for housekeeping</h4>
                     <Rating
                         name="simple-controlled"
                         value={value3}
