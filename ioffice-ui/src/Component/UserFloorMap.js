@@ -35,9 +35,23 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import Modal from '@mui/material/Modal';
+import {useNavigate} from 'react-router-dom';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 
-
+ 
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -81,7 +95,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const UserFloorMap = () => {
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -279,12 +295,12 @@ export const UserFloorMap = () => {
 
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? 'simple-popover' : undefined;
 
 
   let adminLayout = {
@@ -502,6 +518,15 @@ export const UserFloorMap = () => {
 
   // console.log("areaList :"+ JSON.stringify(areaslist))
 
+
+
+  // const navigate = useNavigate();
+  
+  // const routeChange = () =>{ 
+  //   let path = `../Component/BookMeeting`; 
+  //   navigate(path);
+  // }
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -628,13 +653,33 @@ export const UserFloorMap = () => {
             onImageMouseMove={(evt) => moveOnImage(evt)}
             // onClick={(evt) => handleClick(evt)}
             onClick={(evt) => clicked(evt)}
-
+            
             // onClick={(area) => openModal(area)}
             // onClick={(area) => handleClick(area.name)}
             onMouseEnter={(area) => enterArea(area)}
             onMouseLeave={(area) => leaveArea(area)}
           />
-          {/* <button onClick={(evt) => addPolygon(evt)}>Add polygon</button> */}
+          <Button onClick={()=>
+            {handleOpen();
+            
+          }}
+            >Book</Button>
+<Modal
+  open={open}
+  onClose={handleClose}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <Box sx={style}>
+    <Typography id="modal-modal-title" variant="h6" component="h2">
+      Book Auditorium
+    </Typography>
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      
+    </Typography>
+  </Box>
+</Modal>
+         {/* <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>  */}
 
 
         </div>

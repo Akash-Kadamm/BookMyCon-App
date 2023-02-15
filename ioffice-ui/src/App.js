@@ -48,7 +48,14 @@ function App() {
      {/* <ViewForUser/> */}
       {/* <View/> */}
        {/* <AdminFloorMap/> */}
-       
+{/* <BookMeeting/>   */}
+{/* <BrowserRouter>
+<Navigation/>
+<Routes>
+<Route path="/UserFloorMap" element={<BookMeeting />} />
+</Routes>
+
+</BrowserRouter>      */}
     <UserFloorMap/>
     </div>
   );

@@ -118,6 +118,7 @@ export const AdminFloorMap = () => {
     };
   
     const clicked = (area) => {
+      console.log("you clicked me")
       setMsg(
         `You clicked on ${area.shape} ${area.name} at coords ${JSON.stringify(
           area.coords
@@ -219,7 +220,7 @@ export const AdminFloorMap = () => {
   
     const addPolygon=(evt)=>{
     const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
-
+   
     console.log(userLayout)
     const areasCopy={...userLayout.areas}
    
