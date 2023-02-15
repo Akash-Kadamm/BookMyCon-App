@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './Component/Utilities/Login';
 import UpdateUser from './Component/User/UpdateUser';
@@ -10,6 +9,12 @@ import Navigation from './Component/Navigation';
 import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
+
+
+
+
+import Feedback from './Component/Feedback';
+
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
@@ -30,6 +35,8 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
+          
+          <Route exact path="/" element={<HomePage />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
@@ -41,6 +48,8 @@ function App() {
           <Route path="/auditorium-Booking" element={<BookMeeting />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/booking-List-user" element={<BookingListOfUser />} />
+          <Route path='/feedback' element={<Feedback />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
@@ -49,8 +58,8 @@ function App() {
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
-     
-     
+
+
 
     </div>
   );
