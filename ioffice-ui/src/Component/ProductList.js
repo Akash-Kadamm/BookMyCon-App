@@ -15,7 +15,6 @@ const ProductList = () => {
     const cart = useSelector((state) => state)
     useEffect(() => {
         fetchRProducts();
-        console.log(allProducts)
     }, []);
 
     const fetchRProducts = () => {
