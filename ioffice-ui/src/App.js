@@ -1,24 +1,27 @@
+import logo from './logo.svg';
 import './App.css';
-import Login from './Component/Login';
-import UpdateUser from './Component/UpdateUser';
+import Login from './Component/Utilities/Login';
+import UpdateUser from './Component/User/UpdateUser';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserList } from './Component/UserList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Component/Navigation';
-import AddAudi from './Component/AddAudi';
-import { AuditoriumList } from './Component/AuditoriumList';
+import AddAudi from './Component/Admin/AddAudi';
+import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/UpdateAuditorium';
-import BookMeeting from './Component/BookMeeting';
-import Registration from './Component/Registration';
-import AboutUs from './Component/AboutUs';
-import ContactUs from './Component/ContactUs';
-import { View } from './Component/View';
-import BookingListOfUser from './Component/BookingListOfUser';
-import { AdminFloorMap } from './Component/AdminFloorMap';
-import HomePage from './Component/HomePage';
+import BookMeeting from './Component/User/BookMeeting';
+import Registration from './Component/Utilities/Registration';
+import AboutUs from './Component/Utilities/AboutUs';
+import ContactUs from './Component/Utilities/ContactUs';
+import BookingListOfUser from './Component/User/BookingListOfUser';
+import { AdminFloorMap } from './Component/Admin/AdminFloorMap';
+import HomePage from './Component/Utilities/HomePage';
 import ProductList from './Component/ProductList';
-import Cart from './Component/Cart';
+import Cart from './Component/User/Cart';
+import AdminDashboard from './Component/Admin/AdminDashboard';
+import User from './Component/User';
+import AllBooking from './Component/Admin/AllBooking';
 
 function App() {
   return (
@@ -27,7 +30,6 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-           <Route exact path="/auditorium-view" element={<View />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
