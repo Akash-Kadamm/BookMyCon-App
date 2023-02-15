@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { useNavigate } from 'react-router';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,6 +13,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
 import axios from 'axios';
+
+
 
 function Copyright(props) {
     return (
@@ -30,6 +32,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Feedback() {
+
+    const navigate = useNavigate();
     const userSignIn = JSON.parse(sessionStorage.getItem("userLogin"))
 
     const [value1, setValue1] = React.useState(0);
@@ -38,18 +42,19 @@ export default function Feedback() {
     const [remarks, setRemarks] = React.useState('')
 
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = () => {
+        //event.preventDefault();
         // const data = new FormData(event.currentTarget);
-        let data = {
+
+        const data = {
             bookingRating: value1,
             snacksRating: value2,
             housekeepingRating: value3,
             remarks: remarks,
 
         };
-        console.log(data);
-        axios.post("http://localhost:8080/ratings/addRatings", data, {
+        console.log('postData', data)
+        axios.post("http://localhost:8080/ratings/addRating", data, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -58,7 +63,15 @@ export default function Feedback() {
                 console.log(response.data);
             })
             .catch((err) => console.log(err + "Incorrect Data"));
-    };
+
+        setValue1(0)
+        setValue2(0)
+        setValue3(0)
+        setRemarks("")
+        navigate("/")
+       
+
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -74,7 +87,7 @@ export default function Feedback() {
                 >
 
                     <Typography component="h1" variant="h5">
-                        <h1> Feedback Form</h1>
+                        Feedback Form
                     </Typography>
                     <h3>Please rate for Snacks</h3>
                     <Rating
@@ -114,6 +127,7 @@ export default function Feedback() {
                     />
 
                     <Button
+                        onClick={handleSubmit}
                         type="submit"
                         fullWidth
                         variant="contained"
