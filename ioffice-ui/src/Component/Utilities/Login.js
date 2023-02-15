@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Login.css";
+import "../../css/Login.css";
 import MailIcon from "@mui/icons-material/Mail";
 import PasswordTwoToneIcon from "@mui/icons-material/PasswordTwoTone";
 import { useForm } from "react-hook-form";
@@ -55,7 +55,7 @@ function Login() {
           window.location.reload();
         } else {
           toast.success(res.data.user.userName + " Login successfully");
-          navigate("/admin-home");
+          navigate("/admin_dashboard");
           window.location.reload();
         }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../../src/App.css";
+import "../../App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "./officemap.jpg"
+import a1 from "../../Image/officemap.jpg"
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';

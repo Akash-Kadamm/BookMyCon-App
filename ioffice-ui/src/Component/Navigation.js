@@ -74,7 +74,7 @@ const Navigation = () => {
       navigate("/user-update")
     } else if (page === 'Logout') {
       onLogOut()
-    } else {
+    } else if (page === 'Login'){
       navigate("/signin")
     }
 
