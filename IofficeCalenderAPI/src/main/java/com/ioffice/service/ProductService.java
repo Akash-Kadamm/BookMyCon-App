@@ -45,12 +45,12 @@ public class ProductService {
      * @return Product object
      *
      * */
-    public Product updateProduct(Product product ){
+    public void updateProduct(Product product ){
          int productId=product.getProductId();
         Product savedProduct=productRepository.findById(productId).get();
         savedProduct.setProductName(product.getProductName());
         productRepository.save(savedProduct);
-        return savedProduct;
+        
     }
 
     /*

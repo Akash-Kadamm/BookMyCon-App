@@ -57,7 +57,7 @@ public class AuditoriumServiceTest {
 
 	
 	@Test
-	public void testupdateAuditorium() {
+	public void testUpdateAuditorium() {
 		auditoriumService.updateAuditorium(1, auditoriums);
 		verify(auditoriumRepo, times(1)).findById(1);
 	}
