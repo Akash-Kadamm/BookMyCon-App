@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class RatingService {
     @Autowired
-   private RatingRepository ratingRepository;
+    private RatingRepository ratingRepository;
     public List<Rating> getAll() {
-        return  ratingRepository.findAll();
+        return ratingRepository.findAll();
     }
 
     public void addRating(Rating rating) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../src/App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "../Image/OfficePlan.jpg";
+import a1 from "./officemap.jpg"
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -129,8 +129,8 @@ export const AdminFloorMap = () => {
       );
  
  // alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
-  //   
-  // handleClickOnMapAreas(${area}.Popover)  
+  //
+  // handleClickOnMapAreas(${area}.Popover)
   console.log(`Click on Area:`+` ${area.name}`)
     };
   
@@ -152,7 +152,7 @@ export const AdminFloorMap = () => {
         )} !`
       );
       console.log("nter in area")
-      
+
     };
   
     const leaveArea = (area) => {
@@ -313,7 +313,7 @@ export const AdminFloorMap = () => {
      
       <div >
        
-{/*      
+{/*
 
 
 
@@ -321,39 +321,39 @@ export const AdminFloorMap = () => {
 
 
 
-     
+
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Paper>
               <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
               <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
-              
+
             </Paper>
           </Fade>
         )}
       </Popper>
-      
 
 
 
 
 
 
-      
-         
+
+
+
           <Grid item xs={8}>
 
-         
+
             </Grid>
   <Grid item xs={4}>
   <div>1 dsgsdgadg</div>
   </Grid>
 
             <h2>userLayout</h2>
-         
+
             <ImageMapper
-  
+
               src={a1}
               map={userLayout}
               width={500}
@@ -368,16 +368,16 @@ export const AdminFloorMap = () => {
               onMouseEnter={(area) => enterArea(area)}
               onMouseLeave={(area) => leaveArea(area)}
             />
-   
+
    <Button onClick={handleClickOnMapAreas("right")}>top</Button>
-  
+
       */}
 
 <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={8}>
         <h2>AdminLayout</h2>
-      
+
             <ImageMapper
               src={a1}
               map={adminLayout}
@@ -387,15 +387,15 @@ export const AdminFloorMap = () => {
             />
             <button onClick={() => resetHandler()}>Reset</button>
             <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>
-       
+
             <h2>userLayout</h2>
-         
+
             <ImageMapper
   
               src={a1}
               map={userLayout}
               width={700}
-             
+
               onImageClick={(evt) => clickedOutside(evt)}
               onImageMouseMove={(evt) => moveOnImage(evt)}
               // onClick={(evt) => handleClick(evt)}
@@ -412,14 +412,14 @@ export const AdminFloorMap = () => {
         </Grid>
         <Grid item xs={4}>
         <div style={{marginTop:"75px"}}>
-      
+
         </div>
         </Grid>
-      
+
       </Grid>
-   
-   
-      
+
+
+
     </Box>
 
 

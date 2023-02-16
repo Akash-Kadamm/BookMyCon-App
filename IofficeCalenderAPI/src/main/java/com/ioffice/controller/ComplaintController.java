@@ -5,11 +5,9 @@ import com.ioffice.service.ComplaintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -65,6 +63,15 @@ public class ComplaintController {
         return  new ResponseEntity<List<Complaint>>(
                 complaintService.getAllHouseKeepingComplaints(),
                 HttpStatus.OK
+        );
+    }
+
+
+    @PostMapping("/makeComplaint")
+    public ResponseEntity<String> makeComplaints(@RequestBody Complaint complaint){
+        return  new ResponseEntity<>(
+                complaintService.makeComplaint(complaint),
+                HttpStatus.CREATED
         );
     }
 

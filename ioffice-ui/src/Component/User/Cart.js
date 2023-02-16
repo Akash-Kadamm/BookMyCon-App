@@ -7,21 +7,15 @@ const Cart = () => {
     const cart = useSelector((state) => state)
     const navigate = useNavigate()
     const dispatch = useDispatch();
-
-    const cartTotal = 0;
-
-    const emptyCart = <img className="w-75" src="https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg" alt="" />
-
+    const cartTotal=0;
+    const emptyCart=<img className="w-75" src="https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg" alt="" />
+    
     const placeOrder = () => {
 
     }
 
     const removeFoodItem = (product) => {
-        if (product.productAvailableQTY > 1) {
-            dispatch({ type: "DECREASE", payload: product })
-        } else {
-            dispatch({ type: "REMOVE" ,payload:product})
-        }
+
     }
 
 
