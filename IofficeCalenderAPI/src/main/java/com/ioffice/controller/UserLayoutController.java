@@ -72,8 +72,8 @@ public class UserLayoutController {
 			
 			AreasDto areasDto=new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(),areas.getPreFillColor(), areas.getFillColor());
 			if(areasDto.getCoords()!=null) {
-				areasDto.setPreFillColor("transperant");
-				areasDto.setFillColor("black");
+				areasDto.setPreFillColor("#00000000");
+				areasDto.setFillColor("transperant");
 				areasList.add(areasDto);
 			}
 		}

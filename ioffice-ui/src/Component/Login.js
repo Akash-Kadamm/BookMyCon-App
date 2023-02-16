@@ -18,10 +18,11 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Grid  from '@mui/material/Grid';
 import  Link  from '@mui/material/Link';
-
+import { ReactSession } from 'react-client-session';
 const theme = createTheme();
-
+ReactSession.setStoreType("localStorage");
 function Login() {
+  
   const {
     register,
     handleSubmit,
@@ -47,7 +48,7 @@ function Login() {
 
         toast.error(res.data.message);
         sessionStorage.setItem("userLogin", JSON.stringify(res.data.user));
-
+        ReactSession.set("userForBooking",JSON.stringify(res.data.user))
         if (res.data.user.userRole === "user") {
           console.log(res.data.user.userName);
           toast.success(res.data.user.userName + " Login successfully");

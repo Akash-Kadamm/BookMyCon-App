@@ -21,7 +21,11 @@ import { AdminFloorMap } from './Component/AdminFloorMap';
 import HomePage from './Component/HomePage';
 import ProductList from './Component/ProductList';
 import { ViewForUser } from './Component/ViewForUser';
-
+import Cart  from "./Component/Cart";
+import  AdminDashboard  from './Component/AdminDashboard';
+import  User  from './Component/User';
+import  AllBooking  from './Component/AllBooking';
+import { UserFloorMap } from './Component/UserFloorMap';
 function App() {
   return (
     <div className="App">
@@ -29,6 +33,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/floormap" element={<UserFloorMap />} />
            <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/admin-home" element={<Home />} />
@@ -44,12 +49,13 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
+          <Route path="/admin-FloorMap" element={<AdminFloorMap/>}/>
           <Route path="/user_details" element={<User/>}/>
           <Route path="/all_booking" element={<AllBooking/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
-     
+    
      
 
     </div>

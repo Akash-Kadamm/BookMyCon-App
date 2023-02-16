@@ -24,13 +24,14 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import axios from "axios";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { style } from "@mui/system";
-import { Navigate} from 'react-router';
-import { useEffect} from 'react'
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { ReactSession } from 'react-client-session';
+import { Navigate } from "react-router";
+import { useEffect } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { ReactSession } from "react-client-session";
+
 function Copyright(props) {
   return (
     <Typography
@@ -54,64 +55,60 @@ const theme = createTheme();
 export default function BookMeeting() {
   // const RoomName = ReactSession.get("roomname");
   // console.log(RoomName)
-  const [auditoriumList,setAuditoriumList]=useState([]);
-  const [auditorium,setAuditorium]=useState();
-  const [auditoriumObj,setAuditoriumObj]=useState();
-  const [auditoriumName,setAuditoriumName]=useState("audi");
-  let[errorMsg,setErrorMsg]=useState('');
-  const [message, setMessage]=useState('')
+  const navigate = useNavigate();
+  const [auditoriumList, setAuditoriumList] = useState([]);
+  const [auditorium, setAuditorium] = useState();
+  const [auditoriumObj, setAuditoriumObj] = useState();
+  const [auditoriumName, setAuditoriumName] = useState("");
+  let [errorMsg, setErrorMsg] = useState("");
+  const [message, setMessage] = useState("");
 
-  useEffect(()=>
-  {    handleObj();
-      // getAllAuditorium()
+  useEffect(() => {
+    // handleObj();
+    // getAllAuditorium()
   }, []);
 
-// const getAllAuditorium=()=> {
-//       axios
-//       .get("http://localhost:8080/admin/getAll")
-//       .then(response => setAuditoriumList(response.data)).catch((error=>setErrorMsg("error occered ")));
-//   }
+  // const getAllAuditorium=()=> {
+  //       axios
+  //       .get("http://localhost:8080/admin/getAll")
+  //       .then(response => setAuditoriumList(response.data)).catch((error=>setErrorMsg("error occered ")));
+  //   }
   // const audiId=0;
   // let data = []
- 
+
   // data=auditoriumList;
- 
 
   // const handleChange = (event) => {
   //   setAuditorium(event.target.value);
   // };
 
-
   const styles = {
     test: {
-      backgroundColor: "#f1f1f1",
       width: "100%",
     },
   };
 
- 
   const [checkUserName, setUserName] = useState("");
   const [checkBookingAgenda, setBookingAgenda] = useState("");
   const [checkTimeFrom, setTimeFrom] = useState();
   const [checkTimeTo, setTimeTo] = useState();
 
-  const handleAuditorium = (e) => {
-    setAuditoriumName(e.target.value);
-   
+  const handleAuditorium = () => {
+    setAuditoriumName(ReactSession.get("auditoriumName"));
   };
 
-//  let roomName=  ReactSession.get("roomname"); 
-//  let name=JSON.stringify(roomName)
-//   console.log(name )
-  
-  const handleObj = (e) => {
-    axios
-    .get(`http://localhost:8080/admin/getAuditoriunByName/audi 10`)
-    .then(response => setAuditoriumObj(response.data)).catch((error=>setErrorMsg("error occered ")));
-  //  audiId=auditorium.auditoriumId;
-  
-  console.log(auditoriumObj)
-  };
+  //  let roomName=  ReactSession.get("roomname");
+  //  let name=JSON.stringify(roomName)
+  //   console.log(name )
+
+  // const handleObj = (e) => {
+  //   axios
+  //   .get(`http://localhost:8080/admin/getAuditoriunByName/+${auditorium}`)
+  //   .then(response => setAuditoriumObj(response.data)).catch((error=>setErrorMsg("error occered ")));
+  // //  audiId=auditorium.auditoriumId;
+
+  // console.log(auditoriumObj)
+  // };
 
   const handleUserName = (e) => {
     setUserName(e.target.value);
@@ -138,17 +135,30 @@ export default function BookMeeting() {
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
+    axios
+    .get(`http://localhost:8080/admin/getAuditoriunByName/${ReactSession.get("auditoriumName")}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      setAuditorium(response.data);
+    })
+    .catch((err) => console.log(err + "Incorrect Data"));
+
     let data = {
-      aduitoriamId     :auditoriumObj,
+      aduitoriamId: auditorium,
       bookingDateFrom: dateFrom,
       bookingDateTo: dateTo,
-        bookingTimeFrom: checkTimeFrom,
-        bookingTimeTO: checkTimeTo,
+      bookingTimeFrom: checkTimeFrom,
+      bookingTimeTO: checkTimeTo,
       bookingAgenda: checkBookingAgenda,
+      userId: JSON.parse(sessionStorage.getItem("userLogin")),
     };
-    console.log(data);
+    console.log(data.userId, "userId");
+    console.log(data, "data");
 
     axios
       .post("http://localhost:8080/admins/addBooking", data, {
@@ -158,6 +168,7 @@ export default function BookMeeting() {
       })
       .then((response) => {
         console.log(response.data);
+        navigate("/auditorium-view")
       })
       .catch((err) => console.log(err + "Incorrect Data"));
   };
@@ -190,17 +201,22 @@ export default function BookMeeting() {
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                   <TextField
-                  
                     onChange={handleAuditorium}
                     autoComplete="given-name"
                     name="Auditorium"
+                    defaultValue={
+                      "Auditorium Name:" + ReactSession.get("auditoriumName")
+                    }
                     required
                     fullWidth
                     id="Auditorium"
-                    label="Auditorium Name"
+                    // label={ReactSession.get("auditoriumName")}
                     autoFocus
+                    InputProps={{
+                      readOnly: true,
+                    }}
                   />
-                   {/* <Box sx={{ minWidth: 120 }}>
+                  {/* <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Auditorium Name</InputLabel>
         <Select
@@ -215,10 +231,9 @@ export default function BookMeeting() {
       </FormControl>
     </Box> */}
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                {/* <Grid item xs={12} sm={12}>
                   <TextField
                     onChange={handleUserName}
-                    
                     autoComplete="given-name"
                     name="UserName"
                     required
@@ -227,7 +242,7 @@ export default function BookMeeting() {
                     label="User Name"
                     autoFocus
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} sm={6}>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
@@ -253,7 +268,6 @@ export default function BookMeeting() {
 
                 <Grid item xs={6}>
                   <TextField
-                 
                     onChange={handleTimeFrom}
                     id="timefrom"
                     label="Time From"
@@ -264,7 +278,7 @@ export default function BookMeeting() {
                     }}
                     inputProps={{
                       step: 300, // 5 min
-                      // min: '9:00', 
+                      // min: '9:00',
                       // max: '16:00',
                     }}
                     sx={{ width: 150 }}
@@ -272,7 +286,7 @@ export default function BookMeeting() {
                 </Grid>
                 <Grid item xs={6}>
                   <TextField
-                  onChange={handleTimeTo}
+                    onChange={handleTimeTo}
                     id="timeto"
                     label="Time to"
                     type="time"
@@ -286,7 +300,7 @@ export default function BookMeeting() {
                     }}
                     sx={{ width: 150 }}
                   >
-                  {/* <input
+                    {/* <input
                     onChange={handleTimeTo}
                     id="timeto"
                     label="Time to"
@@ -325,16 +339,12 @@ export default function BookMeeting() {
               <Grid container justifyContent="flex-end"></Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 5 }} />
-          
+          {/* <Copyright sx={{ mt: 5 }} /> */}
         </Container>
       </ThemeProvider>
     </div>
   );
 }
-
-
-
 
 // import * as React from "react";
 // import Avatar from "@mui/material/Avatar";
@@ -384,9 +394,9 @@ export default function BookMeeting() {
 // const theme = createTheme();
 
 // export default function BookMeeting() {
-//  let roomName=  ReactSession.get("roomname"); 
+//  let roomName=  ReactSession.get("roomname");
 //   console.log(roomName )
-  
+
 //   const styles = {
 //     test: {
 //       backgroundColor: "#f1f1f1",
@@ -401,7 +411,7 @@ export default function BookMeeting() {
 //   const [checkBookingAgenda, setBookingAgenda] = useState("");
 //   const [checkTimeFrom, setTimeFrom] = useState();
 //   const [checkTimeTo, setTimeTo] = useState();
-  
+
 //   const handleAuditorium = (e) => {
 //     setAuditorium(e.target.value);
 //   };
@@ -435,7 +445,7 @@ export default function BookMeeting() {
 //   const handleSubmit = (event) => {
 //     event.preventDefault();
 //     let data = {
-      
+
 //       bookingDateFrom: dateFrom,
 //       bookingDateTo: dateTo,
 //        bookingTimeFrom: checkTimeFrom,
@@ -601,7 +611,7 @@ export default function BookMeeting() {
 //             </Box>
 //           </Box>
 //           <Copyright sx={{ mt: 5 }} />
-          
+
 //         </Container>
 //       </ThemeProvider>
 //     </div>
