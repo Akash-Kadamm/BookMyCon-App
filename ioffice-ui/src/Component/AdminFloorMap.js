@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../src/App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "./officemap.jpg"
+import a1 from "../Image/OfficePlan.jpg";
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -15,6 +15,7 @@ import TextField from '@mui/material/TextField';
 import Popover from '@mui/material/Popover';
 
 import axios from 'axios'
+import BookMeeting from "./BookMeeting";
 export const AdminFloorMap = () => {
     const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
@@ -36,7 +37,8 @@ export const AdminFloorMap = () => {
     const [checkNameId, setNameId] = useState('');
    
    
-   
+    const [open, setOpen] = React.useState(false);
+    const [placement, setPlacement] = React.useState();
    
      const [areaslist, setAreaslist] = useState([]);
   
@@ -69,7 +71,11 @@ export const AdminFloorMap = () => {
   
     }
   
-  
+    const handleClickOnMapAreas = (newPlacement) => (event) => {
+      setAnchorEl(event.currentTarget);
+      setOpen((prev) => placement !== newPlacement || !prev);
+      setPlacement(newPlacement);
+    };
   
   
   
@@ -84,9 +90,7 @@ export const AdminFloorMap = () => {
       setAnchorEl(null);
     };
   
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-  
+
 
     let adminLayout = {
       name: "dots",
@@ -124,8 +128,9 @@ export const AdminFloorMap = () => {
         )} !`
       );
  
-  alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
-  //     
+ // alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
+  //   
+  // handleClickOnMapAreas(${area}.Popover)  
   console.log(`Click on Area:`+` ${area.name}`)
     };
   
@@ -147,6 +152,7 @@ export const AdminFloorMap = () => {
         )} !`
       );
       console.log("nter in area")
+      
     };
   
     const leaveArea = (area) => {
@@ -305,45 +311,47 @@ export const AdminFloorMap = () => {
   
     return (
      
-      <div className="grid">
+      <div >
        
-  
+{/*      
+
+
+
+
+
+
+
+     
+      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper>
+              <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
+              <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
+              
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
       
-          <div className="presenter"  style={{width:1000}} >
-          <div style={{ position: "relative" }}>
+
+
+
+
+
+
       
-            <h2>AdminLayout</h2>
-            <ImageMapper
-              src={a1}
-              map={adminLayout}
-              width={500}
-              onImageClick={(evt) => makeDot(evt)}
-              onImageMouseMove={(evt) => moveOnImage(evt)}
-            />
-            <button onClick={() => resetHandler()}>Reset</button>
-            <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>
-       
-  
+         
+          <Grid item xs={8}>
+
+         
+            </Grid>
+  <Grid item xs={4}>
+  <div>1 dsgsdgadg</div>
+  </Grid>
+
             <h2>userLayout</h2>
-            <Popover
-          
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-        >
-          <Typography sx={{ p: 2 }}>The content of the Popover.
-          Hi this is from popover<br></br>
-          <TextField id="outlined-basic" label="Room Name" variant="outlined" />
-          <br></br>
-          <br></br>
-          <Button variant="contained">Contained</Button>
-          </Typography>
-        </Popover>
-  
+         
             <ImageMapper
   
               src={a1}
@@ -352,8 +360,48 @@ export const AdminFloorMap = () => {
               onImageClick={(evt) => clickedOutside(evt)}
               onImageMouseMove={(evt) => moveOnImage(evt)}
               // onClick={(evt) => handleClick(evt)}
-              onClick={(evt) => clicked(evt)}
+              // onClick={(evt) => clicked(evt)}
+              onClick={(area) => clicked(area)}
+
+              // onClick={(area) => openModal(area)}
+              // onClick={(area) => handleClick(area.name)}
+              onMouseEnter={(area) => enterArea(area)}
+              onMouseLeave={(area) => leaveArea(area)}
+            />
+   
+   <Button onClick={handleClickOnMapAreas("right")}>top</Button>
   
+      */}
+
+<Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+        <h2>AdminLayout</h2>
+      
+            <ImageMapper
+              src={a1}
+              map={adminLayout}
+              width={700}
+              onImageClick={(evt) => makeDot(evt)}
+              onImageMouseMove={(evt) => moveOnImage(evt)}
+            />
+            <button onClick={() => resetHandler()}>Reset</button>
+            <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>
+       
+            <h2>userLayout</h2>
+         
+            <ImageMapper
+  
+              src={a1}
+              map={userLayout}
+              width={700}
+             
+              onImageClick={(evt) => clickedOutside(evt)}
+              onImageMouseMove={(evt) => moveOnImage(evt)}
+              // onClick={(evt) => handleClick(evt)}
+              // onClick={(evt) => clicked(evt)}
+              onClick={(area) => clicked(area)}
+
               // onClick={(area) => openModal(area)}
               // onClick={(area) => handleClick(area.name)}
               onMouseEnter={(area) => enterArea(area)}
@@ -361,9 +409,20 @@ export const AdminFloorMap = () => {
             />
    
   
-        </div>
+        </Grid>
+        <Grid item xs={4}>
+        <div style={{marginTop:"75px"}}>
       
-      </div>
+        </div>
+        </Grid>
+      
+      </Grid>
+   
+   
+      
+    </Box>
+
+
       </div>
   
   

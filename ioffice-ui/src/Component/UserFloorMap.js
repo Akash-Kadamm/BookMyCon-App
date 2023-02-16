@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../src/App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "./plan.png"
+import a1 from "../Image/OfficePlan.jpg";
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -13,9 +13,13 @@ import { getOverlayAlpha } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Popover from '@mui/material/Popover';
-
+import { ReactSession } from 'react-client-session';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import BookMeeting from "./BookMeeting";
+ReactSession.setStoreType("localStorage");
 export const UserFloorMap = () => {
+  const navigate = useNavigate();
   const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
     const [moveMsg, setMoveMsg] = useState(null);
@@ -23,7 +27,7 @@ export const UserFloorMap = () => {
    
     const [reset, setReset] = useState(false);
   
-
+    const [textData, setTextData] = useState("none");
     const [dots, setDots] = useState([]);
   
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -124,9 +128,14 @@ export const UserFloorMap = () => {
         )} !`
       );
  
-  alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
+  alert(`I am alert, nice to meet you+${area.name}`+  <button onClick={() => resetHandler()}>Reset</button>);
   //     
+  setTextData(area.name)
   console.log(`Click on Area:`+` ${area.name}`)
+
+  ReactSession.set("auditoriumName",area.name);
+  navigate('/auditorium-Booking');
+
     };
   
     const clickedOutside = (evt) => {
@@ -146,7 +155,8 @@ export const UserFloorMap = () => {
           area.coords
         )} !`
       );
-      console.log("nter in area")
+      console.log("nter in area"+area.name)
+      setTextData(area.name)
     };
   
     const leaveArea = (area) => {
@@ -157,6 +167,7 @@ export const UserFloorMap = () => {
         )} !`
       );
       console.log("Leave area")
+      setTextData("none")
     };
   
     const moveOnArea = (area, evt) => {
@@ -305,47 +316,75 @@ export const UserFloorMap = () => {
   
   return (
   
-    <div className="presenter"  >
-    <div style={{ position: "relative" }}>
+//     <div className="presenter"  >
+//     <div style={{ position: "relative" }}>
 
-      <h2>userLayout</h2>
-      <Popover
-    
-    open={open}
-    anchorEl={anchorEl}
-    onClose={handleClose}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'left',
-    }}
-  >
-    <Typography sx={{ p: 2 }}>The content of the Popover.
-    Hi this is from popover<br></br>
-    <TextField id="outlined-basic" label="Room Name" variant="outlined" />
-    <br></br>
-    <br></br>
-    <Button variant="contained">Contained</Button>
-    </Typography>
-  </Popover>
+//       <h2>userLayout</h2>
+     
 
-      <ImageMapper
+      
+//       <ImageMapper
+  
+//   src={a1}
+//   map={userLayout}
+  
+//   onImageClick={(evt) => clickedOutside(evt)}
+//   onImageMouseMove={(evt) => moveOnImage(evt)}
+//   // onClick={(evt) => handleClick(evt)}
+//   // onClick={(evt) => clicked(evt)}
+//   onClick={(area) => clicked(area)}
 
-        src={a1}
-        map={userLayout}
-        width={500}
-        onImageClick={(evt) => clickedOutside(evt)}
-        onImageMouseMove={(evt) => moveOnImage(evt)}
-        // onClick={(evt) => handleClick(evt)}
-        onClick={(evt) => clicked(evt)}
+//   // onClick={(area) => openModal(area)}
+//   // onClick={(area) => handleClick(area.name)}
+//   onMouseEnter={(area) => enterArea(area)}
+//   onMouseLeave={(area) => leaveArea(area)}
+// />
 
-        // onClick={(area) => openModal(area)}
-        // onClick={(area) => handleClick(area.name)}
+//   </div>
+//   </div>
+<div>
+  
+<Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={5}>
+        <Grid item xs={8}>
+        <h2>userLayout</h2>
+     
+
+      
+       <ImageMapper
+       
+       src={a1}
+       map={userLayout}
+       width={700}
+      onImageClick={(evt) => clickedOutside(evt)}
+      onImageMouseMove={(evt) => moveOnImage(evt)}
+   // onClick={(evt) => handleClick(evt)}
+  //  onClick={(evt) => clicked(evt)}
+      onClick={(area) => clicked(area)}
+     
+  //    onClick={(area) => openModal(area)}
+   //  onClick={(area) => handleClick(area.name)}
         onMouseEnter={(area) => enterArea(area)}
         onMouseLeave={(area) => leaveArea(area)}
-      />
+        />
+        </Grid>
+        <Grid item xs={4}>
+       {/* <BookMeeting/> */}
+       <div style={{marginTop:"75px"}}>
+       <TextField
+          id="outlined-read-only-input"
+         
+          defaultValue={textData}
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+       </div>
 
-
-  </div>
-  </div>
+        </Grid>
+      
+      </Grid>
+    </Box>
+</div>
   )
 }

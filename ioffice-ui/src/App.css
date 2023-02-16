@@ -70,13 +70,13 @@ a:hover {
 	margin-right: auto;
 	padding: 1em;
 }
-
+/* 
 .grid {
 	margin-top: 50p;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-}
+} */
 
 .presenter {
 	display: flex;
