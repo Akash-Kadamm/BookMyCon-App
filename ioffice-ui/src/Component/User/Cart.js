@@ -1,25 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import  axios  from 'axios';
+import AlertModal from './../Utilities/AlertModal';
+import ProductList from './ProductList';
 
 
 const Cart = () => {
-    const cart = useSelector((state) => state)
+    const cart = useSelector((state) => state);
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const add = (previousValue, currentValue) => {
-        return previousValue + currentValue.productPrice * currentValue.productAvailableQTY
+        return previousValue + currentValue.productPrice * currentValue.quantity
     }
     const cartTotal = cart.reduce(add, 0);
-
+    const [orderContent, setOrderContent] = useState({
+        productList: cart,
+        user: {},
+        total: cartTotal
+    })
+    const [modalOpen, setModalOpen] = useState(false);
+    const [show, setShow] = useState(false)
+    const hideModal=()=>{
+      setShow(false)
+    }
     const emptyCart = <img className="w-75" src="https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg" alt="" />
+    useEffect(()=>{
+        fetchUser();
+    },[])
+    useEffect(() => {
+        setOrderContent((prevState)=>{return  {...prevState, ProductList: cart, total:cartTotal }});
+      }, [cart]);
 
+    const fetchUser = () => {
+        axios
+            .get(
+                "http://localhost:8080/user/get-user-by-email/" +
+                JSON.parse(sessionStorage.getItem("userLogin")).userEmail
+            )
+            .then((response) => {
+                setOrderContent({ ...orderContent, user: response.data });
+            });
+    };
     const placeOrder = () => {
-        
+        dispatch({type:"EMPTY",payload:[]})
+        axios.post("http://localhost:8080/order/place-order/"+15, orderContent).
+        then((response)=>{
+            setShow(true)
+            setModalOpen(true);
+        })
     }
 
     const removeFoodItem = (product) => {
-        if (product.productAvailableQTY > 1) {
+        if (product.quantity > 1) {
             dispatch({ type: "DECREASE", payload: product })
         } else {
             dispatch({ type: "REMOVE", payload: product })
@@ -47,7 +80,7 @@ const Cart = () => {
                             </button>
                             <div className="m-2">
                                 <img
-                                    src={"http://localhost:8080/restaurant/" + product.thumbnail}
+                                    src={"http://localhost:8080/product/" + product.thumbnail}
                                     className="card-img-top rounded border border-primary"
                                     alt={product.productName}
                                     style={{ height: "15rem" }}
@@ -63,7 +96,7 @@ const Cart = () => {
                                 >
                                     +
                                 </button>
-                                <span className="mx-4">{product.productAvailableQTY}</span>
+                                <span className="mx-4">{product.quantity}</span>
                                 <button
                                     onClick={() => {
                                         removeFoodItem(product);
@@ -74,7 +107,7 @@ const Cart = () => {
                                 </button>
                             </div>
                             <div className="h3 my-2">
-                                Total Price: ₹ {product.productPrice * product.productAvailableQTY}
+                                Total Price: ₹ {product.productPrice * product.quantity}
                             </div>
                         </div>
                     );
@@ -90,6 +123,7 @@ const Cart = () => {
                     </button>
                 </div>
             </div>
+            {modalOpen && (<AlertModal show={show} handleClose={hideModal}>Order Placed</AlertModal>)}
         </div>
     );
 }

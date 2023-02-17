@@ -22,7 +22,8 @@ public class Product {
 
     @Column(name = "product_name")
     private String productName;
-
+    @Transient
+    private int quantity;
     @Column(name = "product_available_qty")
     private int productAvailableQTY;
 

@@ -1,6 +1,8 @@
 package com.ioffice.service;
 
+import com.ioffice.model.Order;
 import com.ioffice.model.OrderItem;
+import com.ioffice.model.Product;
 import com.ioffice.repository.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,4 +25,11 @@ public class OrderItemService {
         return orderItemRepository.getAllItems(id);
     }
 
+    public void saveProducts(Product product, Order order, int quantity) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(product);
+        orderItem.setOrder(order);
+        orderItem.setQuantity(quantity);
+        orderItemRepository.save(orderItem);
+    }
 }

@@ -22,7 +22,7 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
-
+    private int quantity;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     @JsonIgnore
