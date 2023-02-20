@@ -13,19 +13,19 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
 import "../css/UpdateAuditorium.css";
+import InputAdornment from "@mui/material/InputAdornment";
+import BadgeIcon from '@mui/icons-material/Badge';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 const theme = createTheme();
 
 export default function UpdateAuditorium() {
-
-   
     const params = useParams();
     const { register, handleSubmit, errors } = useForm()
-   
-     const navigate = useNavigate();
-
+    const navigate = useNavigate();
     const[auditorium,setAuditorium]=useState();
     const [message, setMessage] = useState("");
-    
     useEffect(()=>{
         getAuditoriumDetails();
     },[]);
@@ -35,31 +35,23 @@ export default function UpdateAuditorium() {
         .get(`http://localhost:8080/admin/getAudi/${params.id}`)
         .then(response =>{ 
             setAuditorium(response.data.Auditorium);
-        console.log(response.data.Auditorium);
-   
-       //  console.log(auditorium);
-        
-    }).catch((error=>setMessage("error occered ")));
+    }).catch((error=>{setMessage("error occered ");
+            toast.error(message);
+    }));
     }
     const onSubmit = data => {
-        console.log(data);
-
         axios.put(`http://localhost:8080/admin/${params.id}`, data, { headers: { "Content-Type": "application/json", }, })
             .then((response) => {
-                toast.success("Auditorium Updated Sucessfully");
-               console.log(response.data)
+                toast.success("Auditorium Updated Sucessfully");               
                 navigate('/auditorium-list');
-
             })
             .catch((err) => {
                 toast.error("Failed to update Auditorium")
-                console.log(err.response);
                 navigate('/auditorium-list');
             });
 
 
     };
-
 
     return (<>
 {auditorium!=null ?
@@ -67,37 +59,37 @@ export default function UpdateAuditorium() {
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
-
                     <Box id="update-card"
-                        sx={{
-                            
+                        sx={{   
                             marginTop: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
-                       
                         <Typography component="h1" variant="h5" sx={{ color: 'secondary.main' }}>
                             Update  Auditorium Details
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, width: '80%' }}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    
                                     autoComplete="given-name"
                                     name="Auditorium ID"
                                     readOnly
                                     fullWidth
                                     value={auditorium.auditoriumId}
                                     id="auditoriumId"
-                                    label="Auditorium ID"
                                     autoFocus
-                                    
+                                    placeholder='Auditorium Id'
                                     {...register("auditoriumId",{required:true})}
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                            <BadgeIcon/>
+                                          </InputAdornment>
+                                        ),
+                                      }}
                                 />
-
                             </Grid><br />
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -107,13 +99,17 @@ export default function UpdateAuditorium() {
                                     fullWidth
                                     defaultValue={auditorium.auditoriumName}
                                     id="auditoriumName"
-                                    label="Auditorium Name"
+                                    placeholder='Auditorium name'
                                     autoFocus
-                                    
                                     {...register("auditoriumName",{required:true})}
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                            <DriveFileRenameOutlineIcon/>
+                                          </InputAdornment>
+                                        ),
+                                      }}
                                 />
-
                             </Grid>
                             <br />
                             <Grid item xm={12} sm={6}>
@@ -121,15 +117,19 @@ export default function UpdateAuditorium() {
                                     required
                                     fullWidth
                                     id="auditoriumLocation"
-                                    label="Auditorium Location"
+                                    placeholder='Location'
                                     name="auditoriumLocation"
-                                defaultValue={auditorium.auditoriumLocation}
+                                    defaultValue={auditorium.auditoriumLocation}
                                     autoComplete="family-name"
-                                    
                                     {...register("auditoriumLocation",{required:true})}
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                            <AddLocationAltIcon/>
+                                          </InputAdornment>
+                                        ),
+                                      }}
                                 />
-
                             </Grid>
                             <br />
                             <Grid item xs={12} sm={6}>
@@ -138,32 +138,32 @@ export default function UpdateAuditorium() {
                                     fullWidth
                                     type="number"
                                     id="auditoriumCapacity"
-                                    label="Auditorium Capacity"
+                                    placeholder='Capacity'
                                     defaultValue={auditorium.auditoriumCapacity}
                                     name="auditoriumCapacity"
-                                    autoComplete="family-name"
-                                    
+                                    autoComplete="family-name"  
                                     {...register("auditoriumCapacity",{required:true})}
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                            <GroupAddIcon/>
+                                          </InputAdornment>
+                                        ),
+                                      }}
                                 /> </Grid>
                             <br />
-                            
-
                             <Button
-                            id='btn-update'
+                                id="update-button"
                                 type="submit"
                                 fullWidth
                                 variant="contained"
                                 color='success'
                                 sx={{ mt: 3, mb: 2, color: 'black' }}
-                               
                             >
                                 Update Auditorium
                             </Button>
-                           
                         </Box>
                     </Box>
-
                 </Container>
             </ThemeProvider></div>:null}</>
     );
