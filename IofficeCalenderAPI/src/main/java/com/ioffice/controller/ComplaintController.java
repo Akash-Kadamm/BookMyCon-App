@@ -75,5 +75,14 @@ public class ComplaintController {
         );
     }
 
+    @DeleteMapping("/resolveComplaint/{complaintId}")
+    public ResponseEntity<String> deleteComplaint(@PathVariable int complaintId){
+         return new ResponseEntity<>(
+            complaintService.resolveComplaint(complaintId),
+            HttpStatus.OK
+         );
+    }
+
+
 
 }

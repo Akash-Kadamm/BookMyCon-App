@@ -18,6 +18,7 @@ import Select from '@mui/material/Select';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import ListIcon from '@mui/icons-material/List';
 import "../css/Complaint.css";
+import { toast } from "react-toastify";
 
 const theme = createTheme();
 function Complaint() {
@@ -36,17 +37,16 @@ function Complaint() {
     };
 
     const handleSubmit=(event)=>{
-        console.log(complaint);
-        alert(`${complaint.description}`);
-        event.preventDefault();
-
-     
         axios.post("http://localhost:8080/complaint/makeComplaint",complaint,{               
             headers: {
            "Content-Type": "application/json",
        },
        })
-       .then(res=>{console.log(res.data)})
+       .then((response)=>{
+             toast.success(response.data)
+       }).catch((error)=>{
+            toast.error(error.response.data)
+       })
     }
 
   return (
