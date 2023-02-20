@@ -55,13 +55,14 @@ public class AuditoriumController {
 	
 	@GetMapping("/getAuditoriunByName/{name}")
 	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
-	List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
-	Auditoriums adui=audiList.get(0);
-		
+		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
+		Auditoriums adui=audiList.get(0);
+
 		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
 	}
-	
-	
+
+
+
 	/*
 	 * Update Auditorium
 	 * 

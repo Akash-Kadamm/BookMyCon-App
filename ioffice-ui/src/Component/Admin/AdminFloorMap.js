@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../../src/App.css";
+import "../../../src/App.css";
+import Avatar from '@mui/material/Avatar';
 import ImageMapper from "react-image-mapper";
-import a1 from "./officemap.jpg"
+import a1 from "../../Image/OfficePlan.jpg"
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -9,14 +10,18 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
-import { getOverlayAlpha } from "@mui/material";
+import { getOverlayAlpha, InputAdornment } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Popover from '@mui/material/Popover';
-
+import Link from '@mui/material/Link';
 import axios from 'axios'
-import BookMeeting from "./BookMeeting";
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { AccountCircle } from "@material-ui/icons";
 export const AdminFloorMap = () => {
+  
     const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
     const [moveMsg, setMoveMsg] = useState(null);
@@ -41,13 +46,118 @@ export const AdminFloorMap = () => {
     const [placement, setPlacement] = React.useState();
    
      const [areaslist, setAreaslist] = useState([]);
-  
+     const [areadata, setAreadata] = useState({});
+     const [areaName, setAreaName] = useState("");
+     const [areaId, setAreaId] = useState();
+     const [auditoriumName, setAuditoriumName] = useState("Audi");
+     const [auditorium, setAuditorium] = useState({});
+     const handleAuditoriumName = (e) => {
+      setAuditoriumName(e);
+    };
 
+
+    const handleAuditoriumNameOnChange = (e) => {
+      setAuditoriumName(e.target.value);
+    };
+
+    const [location, setLocation] = useState("location");
+  
+     const handleLocation = (e) => {
+      setLocation(e);
+    };
+
+    const handleLocationOnChage = (e) => {
+      setLocation(e.target.value);
+    };
+
+    const [type, setType] = useState("");  
+     const handleType = (e) => {
+      setType(e);
+    };
+    const handleTypeOnChage = (e) => {
+      setType(e.target.value);
+    };
+    const [amenities, setAmenities] = useState("");  
+    const handleAmenities = (e) => {
+     setAmenities(e);
+   };
+   const handleAmenitiesOnChage = (e) => {
+    setAmenities(e.target.value);
+  };
+   const [coordsSubmit, setCoordsSubmit] = useState([]);  
+  
+  
+  
+   const [capacity, setCapacity] = useState(0);
+  
+   const handleCapacity = (e) => {
+    setCapacity(e);
+  };
+
+  const handleCapacityOnChage = (e) => {
+    setCapacity(e.target.value);
+  };
+
+
+
+
+  
+//    const handleCoordsSubmit = () => {
+  
+   
+
+
+
+      
+
+// const data3={
+//   "areaId": areadata.areaId,
+//   "name": auditoriumName,
+//   "shape":areadata.shape,
+//   "coords": coordsSubmit,
+//   "preFillColor": areadata.preFillColor,
+//   "fillColor": areadata.fillColor,
+//   "userLayout": {
+//       "nameId": "UserLayout"
+//   }
+  
+// }
+
+
+    
+//       axios.put("http://localhost:8080/userLayout/addareas", data3,
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//       }
+//       })
+//       .then((response) => {
+//           console.log(response.data);
+       
+    
+//       }).catch((err) => console.log(err + "Incorrect Data"));
+    
+
+
+
+
+  // };
+
+
+
+  const [addAreasName, setaddAreasName] = useState("default");  
+  const handleAddAreasName = (e) => {
+    setaddAreasName(e.target.value);
+ };
+
+  const handleCoordsSubmiteOnChage = (e) => {
+    setCoordsSubmit(e.target.value);
+  };
     const addAreas=()=>{
    
      let data={
    
-      name: "11",
+      name: addAreasName,
       shape: "poly",
       coords: checkCoords,
       preFillColor: "green",
@@ -70,6 +180,8 @@ export const AdminFloorMap = () => {
       }).catch((err) => console.log(err + "Incorrect Data"));
   
     }
+
+   
   
     const handleClickOnMapAreas = (newPlacement) => (event) => {
       setAnchorEl(event.currentTarget);
@@ -78,7 +190,79 @@ export const AdminFloorMap = () => {
     };
   
   
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+
+
+
+      axios
+
+      .get(`http://localhost:8080/admin/getAuditoriunByName/${areaName}`)
+      .then((response )=>
+      {
+        console.log(response.data);
+        setAuditorium(response.data);
+      
+      })
+
+
+      const data2={
+  "auditoriumId": auditorium.auditoriumId,
+  "auditoriumName": auditoriumName,
+  "auditoriumLocation": location,
+ "auditoriumCapacity": capacity,
+  "auditoriumType":type,
+  "auditoriumAminity": amenities
+}
+
+
+
+
+      axios.post("http://localhost:8080/admin/addAudi", data2,
+      {
+        headers: {
+          "Content-Type": "application/json",
+      }
+      })
+      .then((response) => {
+          console.log(response.data);
+       
+    
+      }).catch((err) => console.log(err + "Incorrect Data"));
+    
+
+
+
+const data3={
+  "areaId": areadata.areaId,
+  "name": auditoriumName,
+  "shape":areadata.shape,
+  "coords": areadata.coords,
+  "preFillColor": areadata.preFillColor,
+  "fillColor": areadata.fillColor,
+  "userLayout": {
+      "nameId": "UserLayout"
+  }
   
+}
+
+
+    
+      axios.put("http://localhost:8080/userLayout/addareas", data3,
+      {
+        headers: {
+          "Content-Type": "application/json",
+      }
+      })
+      .then((response) => {
+          console.log(response.data);
+       
+    
+      }).catch((err) => console.log(err + "Incorrect Data"));
+    
+     
+    };
     const handleClick = (event) => {
   
       
@@ -128,10 +312,57 @@ export const AdminFloorMap = () => {
         )} !`
       );
  
+      console.log(`Click on Area:`+` ${area.name}`)
+      axios
+
+      .get(`http://localhost:8080/userLayout/areasByCoords/${area.coords}`)
+      .then((response )=>
+      {
+        console.log(response.data.areaId+"----areaName");
+        setAreadata(response.data);
+        setAreaName(response.data.name);
+       
+        // setAreaId(response.data.);
+      })
+
+      .catch((error=>setErrorMsg("error ")));
+
+
+
+      
+      axios
+
+      .get(`http://localhost:8080/admin/getAuditoriunByName/${area.name}`)
+      .then((response )=>
+      {
+        console.log(response.data);
+        setAuditorium(response.data);
+       handleAuditoriumName(auditorium.auditoriumName);
+        handleLocation(auditorium.auditoriumLocation);
+      handleType(auditorium.auditoriumType);
+      handleAmenities(auditorium.auditoriumAminity);
+      handleCapacity(auditorium.auditoriumCapacity);
+      })
+
+      
+
+      .catch((error=>setErrorMsg("error ")));
+      console.log(JSON.stringify(auditorium)+"---:Auditorum ");
+      console.log(auditorium.auditoriumName+" ---: Name");
+
+      setAuditoriumName(area.name);
+      // setLocation(auditorium.auditoriumLocation);
+      // setType(auditorium.auditoriumType);
+      // setAmenities(auditorium.auditoriumAminity);
+      // handleAuditoriumName(auditorium.auditoriumName);
+      // handleLocation(auditorium.auditoriumLocation);
+      // handleType(auditorium.auditoriumType);
+      // handleAmenities(auditorium.auditoriumAminity);
+      setCoordsSubmit(area.coords);
  // alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
   //
   // handleClickOnMapAreas(${area}.Popover)
-  console.log(`Click on Area:`+` ${area.name}`)
+
     };
   
     const clickedOutside = (evt) => {
@@ -256,6 +487,27 @@ export const AdminFloorMap = () => {
       console.log("UserLayout :"+userLayout)
   
     resetHandlerForAddPolygon();
+
+    let data1={
+      
+      "auditoriumName":addAreasName,
+  
+  }
+  
+  axios.post("http://localhost:8080/admin/addAudi", data1,
+  {
+    headers: {
+      "Content-Type": "application/json",
+  }
+  })
+  .then((response) => {
+      console.log(response.data);
+   
+
+  }).catch((err) => console.log(err + "Incorrect Data"));
+
+
+
   
     }
     const resetHandlerForAddPolygon = () => {
@@ -304,7 +556,7 @@ export const AdminFloorMap = () => {
         
       }
       // console.log(areaslist);
-      console.log("UserLayout :"+ JSON.stringify(userLayout))
+      // console.log("UserLayout :"+ JSON.stringify(userLayout))
       
       
     // console.log("areaList :"+ JSON.stringify(areaslist))
@@ -376,7 +628,7 @@ export const AdminFloorMap = () => {
 <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={8}>
-        <h2>AdminLayout</h2>
+        <h2>Admin Layout</h2>
 
             <ImageMapper
               src={a1}
@@ -385,10 +637,21 @@ export const AdminFloorMap = () => {
               onImageClick={(evt) => makeDot(evt)}
               onImageMouseMove={(evt) => moveOnImage(evt)}
             />
-            <button onClick={() => resetHandler()}>Reset</button>
+              
+              <TextField
+              margin="normal"
+              onChange={handleAddAreasName}
+             
+              fullWidth
+              name="Location"
+            
+              type="Location"
+              id="Location"
+              defaultValue={"Enter Auditorium Name"}
+            />
             <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>
 
-            <h2>userLayout</h2>
+            <h2>User Layout</h2>
 
             <ImageMapper
   
@@ -412,7 +675,108 @@ export const AdminFloorMap = () => {
         </Grid>
         <Grid item xs={4}>
         <div style={{marginTop:"75px"}}>
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+         
+          <Typography component="h1" variant="h5">
+           Update Auditorium Details
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+             
+              <Grid item xs={12}>
+              Auditorium Name
+              <TextField
+              margin="normal"
+         onChange={handleAuditoriumNameOnChange}
+              fullWidth
+              name="Name"
+        
+              type="Name"
+              id="Name"
+              value={auditoriumName}
+            
+            />
+              </Grid>
+              <Grid item xs={12}>
+              Location
+              <TextField
+              margin="normal"
+           onChange={handleLocationOnChage}
+             
+              fullWidth
+              name="Location"
+            
+              type="Location"
+              id="Location"
+              value={location}
+            />
+              </Grid>
+              <Grid item xs={12}>
+              <TextField
+              onChange={handleCapacityOnChage}
+          id="capacity"
+          label="Capacity"
+          type="number"
+         value={capacity}
+          
+        />
+              </Grid>
+              <Grid item xs={12}>
+              Type
+              <TextField
+  onChange={handleTypeOnChage}
+                margin="normal"
+      
+              fullWidth
+              name="Type"
+            
+              type="Type"
+              id="Type"
+              value={type}
+            />
+              </Grid>
+              <Grid item xs={12}>
+              Amenities
+              <TextField
+        onChange={handleAmenitiesOnChage}
+              margin="normal"
+              
+              fullWidth
+              name="Amenities"
+              
+              type="Amenities"
+              id="Amenities"
+              value={amenities}
+            />
 
+              </Grid>
+              <Grid item xs={12}>
+              <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Update
+            </Button>
+            </Grid>
+           
+             
+              
+            </Grid>
+          
+            <Grid container justifyContent="flex-end">
+             
+            </Grid>
+          </Box>
+        </Box>
         </div>
         </Grid>
 

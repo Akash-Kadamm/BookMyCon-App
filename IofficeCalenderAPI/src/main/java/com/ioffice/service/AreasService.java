@@ -22,6 +22,10 @@ public class AreasService {
         return areasRepository.findAll();
     }
 
+    public Optional<Areas> findById(int id) {
+        return areasRepository.findById(id);
+    }
+
     public List<Areas> findByUserLayout(UserLayout userLayout){
         return  areasRepository.findByUserLayout(userLayout);
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../../src/App.css";
+import "../../../src/App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "../Image/OfficePlan.jpg";
+import a1 from "../../Image/OfficePlan.jpg"
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -17,6 +17,7 @@ import { ReactSession } from 'react-client-session';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import BookMeeting from "./BookMeeting";
+import { borderRadius } from "@mui/system";
 ReactSession.setStoreType("localStorage");
 export const UserFloorMap = () => {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export const UserFloorMap = () => {
     const [reset, setReset] = useState(false);
   
     const [textData, setTextData] = useState("none");
+    const [userLocation, setUserLocation] = useState("none");
+    const [userType, setUserType] = useState("none");
+    const [userCapacity, setUserCapacity] = useState(0);
+    const [userAmenities, setUserAmenities] = useState("none");
     const [dots, setDots] = useState([]);
   
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -130,7 +135,7 @@ export const UserFloorMap = () => {
  
   alert(`I am alert, nice to meet you+${area.name}`+  <button onClick={() => resetHandler()}>Reset</button>);
   //     
-  setTextData(area.name)
+
   console.log(`Click on Area:`+` ${area.name}`)
 
   ReactSession.set("auditoriumName",area.name);
@@ -155,8 +160,31 @@ export const UserFloorMap = () => {
           area.coords
         )} !`
       );
+
+
+
+      
+      axios
+
+      .get(`http://localhost:8080/admin/getAuditoriunByName/${area.name}`)
+      .then((response )=>
+      {
+        console.log(response.data.auditoriumName+"---Audi name");
+      
+        setUserLocation(response.data.auditoriumLocation);
+        setUserType(response.data.auditoriumType);
+        setUserCapacity(response.data.auditoriumCapacity);
+        setUserAmenities(response.data.auditoriumAminity);
+      })
+
+
       console.log("nter in area"+area.name)
       setTextData(area.name)
+   
+      console.log("text Data: ---"+area.name)
+   
+   
+   
     };
   
     const leaveArea = (area) => {
@@ -167,7 +195,7 @@ export const UserFloorMap = () => {
         )} !`
       );
       console.log("Leave area")
-      setTextData("none")
+   
     };
   
     const moveOnArea = (area, evt) => {
@@ -309,11 +337,16 @@ export const UserFloorMap = () => {
         
       }
       // console.log(areaslist);
-      console.log("UserLayout :"+ JSON.stringify(userLayout))
+      // console.log("UserLayout :"+ JSON.stringify(userLayout))
       
       
     // console.log("areaList :"+ JSON.stringify(areaslist))
-  
+    const text="Name: "+textData+"\n"+
+    "Location: "+userLocation+"\n"+
+    "Type: "+userType+"\n"+
+    "Amenities: "+userAmenities+"\n"+
+    "Capacity: "+userCapacity;
+    console.log(text)
   return (
   
 //     <div className="presenter"  >
@@ -347,9 +380,10 @@ export const UserFloorMap = () => {
 <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={5}>
         <Grid item xs={8}>
-        <h2>userLayout</h2>
+        <h2>Floor Map</h2>
      
 
+        
       
        <ImageMapper
        
@@ -370,15 +404,36 @@ export const UserFloorMap = () => {
         </Grid>
         <Grid item xs={4}>
        {/* <BookMeeting/> */}
-       <div style={{marginTop:"75px"}}>
-       <TextField
+       <div style={{marginTop:"75px",
+       backgroundColor:"#85d1f4",
+      textDecorationColor:"red",
+      marginLeft:"70px",
+      borderRadius: "25px",
+    
+      borderWidth:"2px", 
+      border:"solid",
+      padding: "20px",
+      width: "220px",
+      height: "150px"}} >
+       {/* <TextField
           id="outlined-read-only-input"
          
-          defaultValue={textData}
+          value={text}
           InputProps={{
             readOnly: true,
+            style: {
+              height: "300px",
+            },
           }}
-        />
+        /> */}
+        
+         Name: {textData}
+         <br></br>
+
+         Location: {userLocation}<br></br>
+         Type: {userType}<br></br>
+         Amenities: {userAmenities}<br></br>
+         Capacity: {userCapacity}
        </div>
 
         </Grid>

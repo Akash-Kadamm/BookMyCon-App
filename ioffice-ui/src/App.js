@@ -29,13 +29,8 @@ import AdminDashboard from './Component/Admin/AdminDashboard';
 import User from './Component/User';
 import AllBooking from './Component/Admin/AllBooking';
 import Complaint from './Component/Complaint';
-
-import { ViewForUser } from './Component/ViewForUser';
-import Cart  from "./Component/Cart";
-import  AdminDashboard  from './Component/AdminDashboard';
-import  User  from './Component/User';
-import  AllBooking  from './Component/AllBooking';
-import { UserFloorMap } from './Component/UserFloorMap';
+import {UserFloorMap} from './Component/User/UserFloorMap';
+import {ViewForUser} from './Component/User/ViewForUser';
 function App() {
   return (
     <div className="App">
@@ -45,7 +40,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
 
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/" element={<Home />} />
+         
           <Route exact path="/floormap" element={<UserFloorMap />} />
            <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />

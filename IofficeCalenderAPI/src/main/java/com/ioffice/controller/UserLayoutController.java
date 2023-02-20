@@ -2,9 +2,7 @@ package com.ioffice.controller;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import com.ioffice.service.AreasService;
 import com.ioffice.service.UserLayoutService;
@@ -48,9 +46,10 @@ public class UserLayoutController {
 	
 	@Autowired
 	AreasService areasService;
-	
 
 
+	@Autowired
+	AreasRepository areasRepository;
 
 	
 	
@@ -80,11 +79,11 @@ public class UserLayoutController {
 		
           return  new ResponseEntity<List<AreasDto>>(areasList,HttpStatus.OK);
 }
-	
-	
-	
-	
-	
+
+
+
+
+
 	
 	@GetMapping("/")
 	public ResponseEntity<List<UserLayout>>  getAllUserLayout()
@@ -104,8 +103,25 @@ public class UserLayoutController {
 		return  new ResponseEntity<List<Areas>>(areasService.findAll(),HttpStatus.OK);
 		
 	}
-	
-	
+
+	@GetMapping("/areasByCoords/{id}")
+	public Areas  getAreaById(@PathVariable(value = "id") int[] id)
+
+	{
+//		System.out.println(id.split(",").length);
+//	int[] intarray=new int[9];
+//		for (int i=0;i<id.split(",").length;i++)
+//		{
+//			int a=Integer.parseInt(id.split(",")[i]);
+//			intarray[i]=a;
+//		}
+
+
+		return areasRepository.findByCoords(id).get(0);
+
+	}
+
+
 	@PostMapping("/addareas")
 	public ResponseEntity<String> addareas(@RequestBody DataDto dataDto)
 	{
@@ -115,6 +131,15 @@ public class UserLayoutController {
 		
 
 //		System.out.println(areas);
+		areasService.addAreas(areas);
+		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
+	}
+
+
+	@PutMapping("/addareas")
+	public ResponseEntity<String> addareas(@RequestBody Areas areas)
+	{
+
 		areasService.addAreas(areas);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
 	}
@@ -158,4 +183,7 @@ public class UserLayoutController {
 	
 		return new ResponseEntity<String>("record deleted",HttpStatus.OK);
 	}
+
+
+
 }
