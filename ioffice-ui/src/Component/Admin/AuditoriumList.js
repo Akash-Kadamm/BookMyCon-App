@@ -43,6 +43,10 @@ export const AuditoriumList = () => {
     getAllAuditorium();
   }, []);
 
+  const addAuditorium = () =>{
+    navigate('/add-auditorium')
+  }
+
   const getAllAuditorium = () => {
     axios
       .get("http://localhost:8080/admin/getAll")
@@ -73,6 +77,18 @@ export const AuditoriumList = () => {
   return (
     <>
       <div>
+      <h1> Auditorium Details </h1>
+      <Button
+        className="m-2"
+          onClick={() => {
+            addAuditorium();
+            }}
+        variant="outlined"
+       color="success"
+        >
+        Add
+        </Button>
+        <hr />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
@@ -133,6 +149,7 @@ export const AuditoriumList = () => {
                         deleteAudi(auditorium.auditoriumId);
                       }}
                       variant="outlined"
+                      color="error"
                       startIcon={<DeleteIcon />}
                     >
                       Delete
