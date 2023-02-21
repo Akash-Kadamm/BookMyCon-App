@@ -54,6 +54,10 @@ public class ComplaintService {
         complaintRepository.save(complaint);
         return "Complaint Send..";
     }
+//    public String makeComplaint(Complaint complaint){
+//        complaintRepository.save(complaint);
+//        return "Complaint Send..";
+//    }
 
     public String resolveComplaint(int complaintId){
         complaintRepository.deleteById(complaintId);

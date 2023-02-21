@@ -6,7 +6,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -25,12 +24,15 @@ public class Order {
     @Column(name = "order_id")
     private int orderId;
 
-    @Column(name = "user_name")
-    private String userName;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "booking_id")
-    private int bookingId;
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
 
+    private double total;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "order")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<OrderItem> orderItems;

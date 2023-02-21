@@ -1,7 +1,7 @@
 const Reducer = (cart = [], action) => {
     switch (action.type) {
         case 'ADD':
-            let addToCart = cart.filter((element) => (element.productId === action.payload.productId || element.product.productId !== action.payload.product.productId))
+            let addToCart = cart.filter((element) => (element.productId === action.payload.productId))
             if (addToCart < 1) {
                 return [...cart, action.payload]
             } else {
@@ -17,7 +17,7 @@ const Reducer = (cart = [], action) => {
         case 'INCREASE':
             let increaseCart = cart.map(element => {
                 if (element.productId === action.payload.productId) {
-                    return { ...element, productAvailableQTY: element.productAvailableQTY + 1 }
+                    return { ...element, quantity: element.quantity + 1 }
                 }
                 return element
             })
@@ -26,7 +26,7 @@ const Reducer = (cart = [], action) => {
         case 'DECREASE':
             let decreaseCart = cart.map(element => {
                 if (element.productId === action.payload.productId) {
-                    return { ...element, productAvailableQTY: element.productAvailableQTY - 1 }
+                    return { ...element, quantity: element.quantity - 1 }
                 }
                 return element
             })

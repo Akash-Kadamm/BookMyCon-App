@@ -20,48 +20,47 @@ import ConfirmDialog from './ConfirmDialog';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-      
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-  
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
-  
-  
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
+
 
 function BookingListOfUser() {
 
-    let [booking,setBooking]=useState([]);
-    const [user,setUser]=useState();
-    let[errorMsg,setErrorMsg]=useState('');
-    
+  let [booking, setBooking] = useState([]);
+  const [user, setUser] = useState();
+  let [errorMsg, setErrorMsg] = useState('');
 
-    // setUser(sessionStorage.getItem("userLogin"));
 
-    useEffect(()=>
-    {
-        getAllBookings()
-    }, []);
+  // setUser(sessionStorage.getItem("userLogin"));
 
-   const id=2;
+  useEffect(() => {
+    getAllBookings()
+  }, []);
 
- const getAllBookings=()=> {
+  const id = 2;
+
+  const getAllBookings = () => {
     console.log(id);
         axios
-        .get(`http://localhost:8080/admins/getAllBookings/${id}`)
+        .get(`http://localhost:8080/admins/get-all-bookings/${id}`)
         .then(response =>{ setBooking(response.data);
                   console.log(response.date);
                   console.log(booking);
@@ -82,75 +81,75 @@ function BookingListOfUser() {
             getAllBookings()
            
 
-          })
-          .catch((error) => console.log("error:"));
-        
-      };
+      })
+      .catch((error) => console.log("error:"));
+
+  };
 
   return (
     <>
-       <div>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            {/* <StyledTableCell>Offer Id</StyledTableCell> */}
-            <StyledTableCell align='center' >Booking ID</StyledTableCell>
-            <StyledTableCell align='center'> Auditorium Name</StyledTableCell>
-            <StyledTableCell align='center'>Auditorium Location</StyledTableCell>
-            <StyledTableCell align='center'>Booking From</StyledTableCell>
-            <StyledTableCell align='center'>Booking To</StyledTableCell>
-            <StyledTableCell align='center'>Booking From</StyledTableCell>
-            <StyledTableCell align='center'>Booking To</StyledTableCell>
-            <StyledTableCell align='center'>Booking Agenda</StyledTableCell>
-            <StyledTableCell align='center'>Action</StyledTableCell>
-      
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {booking.map((b) => (
-            <StyledTableRow >
-            <StyledTableCell align='center'>{b.bookingId}</StyledTableCell>
-              <StyledTableCell align='center'>{b.aduitoriamId.auditoriumName}</StyledTableCell>
-              <StyledTableCell align='center'>{b.aduitoriamId.auditoriumLocation}</StyledTableCell>
-              <StyledTableCell align='center'>{b.bookingDateFrom}</StyledTableCell>
-              <StyledTableCell align='center'>{b.bookingDateTo}</StyledTableCell>
-              <StyledTableCell align='center'>{b.bookingTimeFrom}</StyledTableCell>
-              <StyledTableCell align='center'>{b.bookingTimeTO}</StyledTableCell>
-              <StyledTableCell align='center'>{b.bookingAgenda}</StyledTableCell>
-              <StyledTableCell align="center">
+      <div>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                {/* <StyledTableCell>Offer Id</StyledTableCell> */}
+                <StyledTableCell align='center' >Booking ID</StyledTableCell>
+                <StyledTableCell align='center'> Auditorium Name</StyledTableCell>
+                <StyledTableCell align='center'>Auditorium Location</StyledTableCell>
+                <StyledTableCell align='center'>Booking From</StyledTableCell>
+                <StyledTableCell align='center'>Booking To</StyledTableCell>
+                <StyledTableCell align='center'>Booking From</StyledTableCell>
+                <StyledTableCell align='center'>Booking To</StyledTableCell>
+                <StyledTableCell align='center'>Booking Agenda</StyledTableCell>
+                <StyledTableCell align='center'>Action</StyledTableCell>
+
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {booking.map((b) => (
+                <StyledTableRow >
+                  <StyledTableCell align='center'>{b.bookingId}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.aduitoriamId.auditoriumName}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.aduitoriamId.auditoriumLocation}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.bookingDateFrom}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.bookingDateTo}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.bookingTimeFrom}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.bookingTimeTO}</StyledTableCell>
+                  <StyledTableCell align='center'>{b.bookingAgenda}</StyledTableCell>
+                  <StyledTableCell align="center">
                     <Button
                       className="m-2"
-                    color='secondary'
+                      color='secondary'
                       variant="outlined"
-                      startIcon={<UpdateIcon/>}
-                      onClick={() =>{
-                          
-                    }}
-                    
+                      startIcon={<UpdateIcon />}
+                      onClick={() => {
+
+                      }}
+
                     >
                       UPDATE
                     </Button>
                     {/* <ConfirmDialog props={b.bookingId}/> */}
                     <Button
-                          color='error'
+                      color='error'
                       variant="outlined"
-                      startIcon={<CancelIcon/>}
-                      onClick={() =>{ 
-                       cancelBooking(b.bookingId);
+                      startIcon={<CancelIcon />}
+                      onClick={() => {
+                        cancelBooking(b.bookingId);
                       }}
-                      
+
                     >
-                  CANCEL
+                      CANCEL
                     </Button>
                   </StyledTableCell>
 
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </div> 
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </>
   )
 }

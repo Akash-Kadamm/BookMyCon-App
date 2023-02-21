@@ -75,6 +75,15 @@ public class ComplaintController {
         );
     }
 
+//
+//    @PostMapping("/makeComplaint")
+//    public ResponseEntity<String> makeComplaints(@RequestBody Complaint complaint){
+//        return  new ResponseEntity<>(
+//                complaintService.makeComplaint(complaint),
+//                HttpStatus.CREATED
+//        );
+//    }
+
     @DeleteMapping("/resolveComplaint/{complaintId}")
     public ResponseEntity<String> deleteComplaint(@PathVariable int complaintId){
          return new ResponseEntity<>(
