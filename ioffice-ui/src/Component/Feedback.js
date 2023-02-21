@@ -5,8 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -58,12 +56,12 @@ export default function Feedback() {
             .catch((err) => console.log(err + "Incorrect Data"));
                 toast.success('Feedback Sent Successfully')
 
-            })
+            
 //            .catch((err) => {
 //                toast.error('Feedback Not Sent ')
 //
 //            });
-
+        
         setValue1(0)
         setValue2(0)
         setValue3(0)

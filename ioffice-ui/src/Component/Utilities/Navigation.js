@@ -16,16 +16,20 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // import Link  from '@mui/material/Link';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Badge } from "@mui/material";
+import CartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from "react-redux";
 
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
 const commonPages = ['Profile', 'Logout'];
-const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us','Feedback']
+const userPages = ['Home', 'Auditorium', 'Booking', 'User Bookings', 'Food', 'Feedback', 'About Us', 'Contact Us']
 const nonLoginUser = ['Home', 'About Us', 'Contact Us']
 const login = 'Login'
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const cart = useSelector((state) => state);
 
   let userSignIn = JSON.parse(sessionStorage.getItem("userLogin"));
 
@@ -35,7 +39,7 @@ const Navigation = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  
+
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     if (page === 'Home') {
@@ -56,10 +60,13 @@ const Navigation = () => {
       navigate("/auditorium-view")
     } else if (page === 'User Bookings') {
       navigate("/booking-List-user")
-    }
-    else if (page === 'Feedback') {
+    } else if (page === 'Feedback') {
       navigate("/feedback")
-    }else {
+    } else if (page === 'Food') {
+      navigate("/product-list")
+    } else if (page === 'Cart') {
+      navigate("/cart")
+    } else {
       navigate("/user-list")
     }
   };
@@ -74,7 +81,7 @@ const Navigation = () => {
       navigate("/user-update")
     } else if (page === 'Logout') {
       onLogOut()
-    } else if (page === 'Login'){
+    } else if (page === 'Login') {
       navigate("/signin")
     }
 
@@ -147,14 +154,14 @@ const Navigation = () => {
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                {userSignIn && userSignIn.userRole === "admin" &&( pages.map((page) => (
-                  <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}>
-                    <Typography  sx={{color:"white"}} textAlign="center">{page}</Typography>
+                {userSignIn && userSignIn.userRole === "admin" && (pages.map((page) => (
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                    <Typography sx={{ color: "white" }} textAlign="center">{page}</Typography>
                   </MenuItem>
                 )))}
-                {userSignIn && userSignIn.userRole === "user" &&(userPages.map((page) => (
-                  <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}>
-                    <Typography  sx={{color:"white"}} textAlign="center">{page}</Typography>
+                {userSignIn && userSignIn.userRole === "user" && (userPages.map((page) => (
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                    <Typography sx={{ color: "white" }} textAlign="center">{page}</Typography>
                   </MenuItem>
                 )))}
               </Menu>
@@ -204,8 +211,15 @@ const Navigation = () => {
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
                     {userPage}
+
                   </Button>
                 ))}
+                <Link className="nav-link mt-2" to={"/cart"}>
+                  <Badge badgeContent={cart.length} color="secondary" sx={{ mr: 1 }}>
+                    <CartIcon />
+                  </Badge>
+                  Cart
+                </Link>
               </Box>
             )}
 
@@ -214,7 +228,7 @@ const Navigation = () => {
             {userSignIn && userSignIn.userRole === 'admin' &&
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar sx={{ backgroundColor: "white" }} variant="soft" />
                   </IconButton>
                 </Tooltip>
@@ -236,7 +250,7 @@ const Navigation = () => {
                 >
                   {commonPages.map((commonPage) => (
                     <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                      <Typography  sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
+                      <Typography sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -247,7 +261,7 @@ const Navigation = () => {
             {userSignIn && userSignIn.userRole === 'user' &&
               (<Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar sx={{ backgroundColor: "white" }} variant="soft" />
                   </IconButton>
                 </Tooltip>
@@ -269,9 +283,8 @@ const Navigation = () => {
                 >
                   {commonPages.map((commonPage) => (
                     <MenuItem key={commonPage} onClick={() => handleCloseUserMenu(commonPage)}>
-                      <Typography  sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
-                    </MenuItem>
-                  ))}
+                      <Typography sx={{ color: "white" }} textAlign="center">{commonPage}</Typography>
+                    </MenuItem>))}
                 </Menu>
               </Box>
               )}

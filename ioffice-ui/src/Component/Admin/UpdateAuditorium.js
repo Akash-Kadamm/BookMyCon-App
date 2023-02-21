@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
 import "../../css/UpdateAuditorium.css";
-import "../css/UpdateAuditorium.css";
+
 import InputAdornment from "@mui/material/InputAdornment";
 import BadgeIcon from '@mui/icons-material/Badge';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';

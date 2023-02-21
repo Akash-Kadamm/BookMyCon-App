@@ -10,7 +10,6 @@ import Navigation from './Component/Utilities/Navigation';
 import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/Admin/UpdateAuditorium';
-import UpdateAuditorium from './Component/UpdateAuditorium';
 import Feedback from './Component/Feedback';
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
