@@ -37,8 +37,9 @@ const ProductList = () => {
         <div className="d-flex container">
             <div className="flex-wrap">
                 {allProducts.map(product => {
+                    product.quantity=1
                     return (
-                        <Card className="m-4 text-center" sx={{ display: "inline-flex", flexDirection: "column", height: "100%" }}>
+                        <Card className="m-4 text-center" sx={{ display: "inline-flex", flexDirection: "column", height: "500" }}>
                             <CardMedia component="img" alt="" height="200" sx={{ width: 275 }} image={"http://localhost:8080/Product/" + product.thumbnail} />
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Typography sx={{ fontSize: 30 }} variant="body1">{product.productName}</Typography>

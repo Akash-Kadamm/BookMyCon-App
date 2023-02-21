@@ -35,7 +35,5 @@ public class User {
 
     @Column(name = "user_contact")
     private String userContact;
-//    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL)
-//    private List<Booking> bookingList;
 
 }

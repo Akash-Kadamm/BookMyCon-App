@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import  axios  from 'axios';
+import axios from 'axios';
 import AlertModal from './../Utilities/AlertModal';
-import ProductList from './ProductList';
 
 
 const Cart = () => {
@@ -17,20 +16,21 @@ const Cart = () => {
     const [orderContent, setOrderContent] = useState({
         productList: cart,
         user: {},
-        total: cartTotal
+        total: cartTotal,
     })
     const [modalOpen, setModalOpen] = useState(false);
     const [show, setShow] = useState(false)
-    const hideModal=()=>{
-      setShow(false)
+    const hideModal = () => {
+        setShow(false)
     }
     const emptyCart = <img className="w-75" src="https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg" alt="" />
-    useEffect(()=>{
-        fetchUser();
-    },[])
     useEffect(() => {
-        setOrderContent((prevState)=>{return  {...prevState, ProductList: cart, total:cartTotal }});
-      }, [cart]);
+        fetchUser();
+    }, [])
+
+    useEffect(() => {
+        setOrderContent((prevState) => { return { ...prevState, productList: cart, total: cartTotal } });
+    }, [cart]);
 
     const fetchUser = () => {
         axios
@@ -43,12 +43,12 @@ const Cart = () => {
             });
     };
     const placeOrder = () => {
-        dispatch({type:"EMPTY",payload:[]})
-        axios.post("http://localhost:8080/order/place-order/"+15, orderContent).
-        then((response)=>{
-            setShow(true)
-            setModalOpen(true);
-        })
+        dispatch({ type: "EMPTY", payload: [] })
+        axios.post("http://localhost:8080/order/place-order/" + 15, orderContent).
+            then((response) => {
+                setShow(true)
+                setModalOpen(true);
+            })
     }
 
     const removeFoodItem = (product) => {

@@ -9,7 +9,7 @@
 .navbar{
     margin-top:10px ;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: #0d122e;
 }
 .navbar-b{
     float: right;
@@ -35,7 +35,7 @@
 }
 
 .header{
-    background-color: black;
+    background-color: #0d122e;
     padding-bottom: 5px;
 }
 
