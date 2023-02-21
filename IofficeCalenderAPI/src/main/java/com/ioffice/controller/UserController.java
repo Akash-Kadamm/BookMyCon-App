@@ -1,12 +1,13 @@
 package com.ioffice.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import com.ioffice.utils.PdfGenerator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,8 @@ import com.ioffice.model.User;
 import com.ioffice.service.LoginService;
 import com.ioffice.service.UserService;
 import com.ioffice.utils.ResponseMessage;
+
+import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
 @RestController
@@ -146,4 +149,18 @@ public class UserController {
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
 
+	@GetMapping("/export-to-pdf")
+	public void generatePdfFile(HttpServletResponse response) throws IOException
+	{
+		response.setContentType("application/pdf");
+		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+		String currentDateTime = dateFormat.format(new Date());
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=Report Generation " + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+		List < User > listOfUsers = userService.findAllUsers();
+		PdfGenerator generator = new PdfGenerator();
+//		System.out.println(response.getHeader("Content-Disposition"));
+		generator.generate(listOfUsers, response);
+	}
 }
