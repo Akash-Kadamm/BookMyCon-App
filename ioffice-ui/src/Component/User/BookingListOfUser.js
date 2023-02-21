@@ -61,7 +61,7 @@ function BookingListOfUser() {
  const getAllBookings=()=> {
     console.log(id);
         axios
-        .get(`http://localhost:8080/admins/getAllBookings/${id}`)
+        .get(`http://localhost:8080/admins/get-all-bookings/${id}`)
         .then(response =>{ setBooking(response.data);
                   console.log(response.date);
                   console.log(booking);
