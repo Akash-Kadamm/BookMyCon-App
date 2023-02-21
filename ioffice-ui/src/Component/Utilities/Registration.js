@@ -19,6 +19,7 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import  PasswordTwoToneIcon  from '@mui/icons-material/PasswordTwoTone';
 import { useNavigate } from 'react-router';
 import { toast } from "react-toastify";
+import "../../css/Registration.css";
 
 const Registration = () => {
 
@@ -61,13 +62,22 @@ const Registration = () => {
                 navigate("/signup")
             });
     };
-
     return (
-
+        <>
+        <div id="Registration-div" >
+        <div>
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xs"
+            sx={{
+                marginTop: -9,
+                height: "40rem",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
                 <CssBaseline />
                 <Box
+                    id="Registration-card"
                     onSubmit={handleSubmit(onSubmit)}
                     sx={{
                         marginTop: 8,
@@ -82,7 +92,7 @@ const Registration = () => {
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
-                    <Box component="form" noValidate sx={{ mt: 3 }}>
+                    <Box component="form" noValidate sx={{ mt: 1, width: "80%" }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
@@ -91,7 +101,7 @@ const Registration = () => {
                                     required
                                     fullWidth
                                     id="userName"
-                                    label="Name"
+                                    placeholder="Enter Full Name Here"
                                     autoFocus
                                     {...register("userName", {
                                         required: true
@@ -114,9 +124,9 @@ const Registration = () => {
                                     required
                                     fullWidth
                                     id="userEmail"
-                                    label="Email Address"
                                     name="userEmail"
                                     autoComplete="Email"
+                                    placeholder="Enter Email Here"
                                     {...register("userEmail", {
                                         required: true,
                                         pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
@@ -144,10 +154,10 @@ const Registration = () => {
                                     required
                                     fullWidth
                                     name="userPassword"
-                                    label="Password"
                                     type="password"
                                     id="userPassword"
                                     autoComplete="new-password"
+                                    placeholder="Enter Password Here"
                                     {...register("userPassword", { required: true, minLength: 6 })}
                                     InputProps={{
                                         startAdornment: (
@@ -177,9 +187,9 @@ const Registration = () => {
                                     required
                                     fullWidth
                                     id="userContact"
-                                    label="Contact Number"
                                     name="Contact"
                                     autoComplete="family-name"
+                                    placeholder="Contact Number"
                                     {...register("userContact", { required: true, maxLength: 10 })}
                                     InputProps={{
                                         startAdornment: (
@@ -214,7 +224,9 @@ const Registration = () => {
                 </Box>
             </Container>
         </ThemeProvider>
-
+        </div>
+        </div>
+        </>
     );
 }
 

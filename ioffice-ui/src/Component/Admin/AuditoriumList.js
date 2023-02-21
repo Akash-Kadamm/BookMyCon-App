@@ -83,7 +83,7 @@ export const AuditoriumList = () => {
           onClick={() => {
             addAuditorium();
             }}
-        variant="outlined"
+        variant="contained"
        color="success"
         >
         Add
