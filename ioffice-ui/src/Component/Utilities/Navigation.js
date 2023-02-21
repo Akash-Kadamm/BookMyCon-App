@@ -16,20 +16,16 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // import Link  from '@mui/material/Link';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Badge } from "@mui/material";
-import  CartIcon  from '@mui/icons-material/ShoppingCart';
-import { useSelector } from "react-redux";
 
 
 const pages = ['Home', 'Add Auditorium', 'List of Auditoriums', 'Users'];
 const commonPages = ['Profile', 'Logout'];
-const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us','Food']
+const userPages = ['Home', 'Auditorium', 'Booking','User Bookings', 'About Us', 'Contact Us','Feedback']
 const nonLoginUser = ['Home', 'About Us', 'Contact Us']
 const login = 'Login'
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const cart = useSelector((state) => state);
 
   let userSignIn = JSON.parse(sessionStorage.getItem("userLogin"));
 
@@ -60,8 +56,9 @@ const Navigation = () => {
       navigate("/auditorium-view")
     } else if (page === 'User Bookings') {
       navigate("/booking-List-user")
-    }else if(page === 'Food'){
-      navigate("/product-List")
+    }
+    else if (page === 'Feedback') {
+      navigate("/feedback")
     }else {
       navigate("/user-list")
     }
@@ -209,12 +206,6 @@ const Navigation = () => {
                     {userPage}
                   </Button>
                 ))}
-                  <Link className="nav-link " to={"/cart"}>
-          <Badge badgeContent={cart.length} color="secondary" sx={{ mr: 1 }}>
-            <CartIcon />
-          </Badge>
-          Cart
-          </Link>
               </Box>
             )}
 

@@ -10,6 +10,8 @@ import Navigation from './Component/Utilities/Navigation';
 import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/Admin/UpdateAuditorium';
+import UpdateAuditorium from './Component/UpdateAuditorium';
+import Feedback from './Component/Feedback';
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
@@ -22,6 +24,8 @@ import Cart from './Component/User/Cart';
 import AdminDashboard from './Component/Admin/AdminDashboard';
 import User from './Component/Admin/User';
 import AllBooking from './Component/Admin/AllBooking';
+import Complaint from './Component/Complaint';
+import Dashboard from './Component/Admin/Dashboard';
 
 function App() {
   return (
@@ -29,23 +33,29 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route exact path="/" element={< HomePage/>} />
+          <Route exact path="/" element={<HomePage />} />
+
+          <Route exact path="/" element={<HomePage />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/cart" element={<Cart/>} />
-          <Route path="/user-list" element={<UserList />} />
+          {/* <Route path="/user-list" element={<UserList />} /> */}
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
           <Route path="/auditorium-list" element={<AuditoriumList />} />
           <Route path="/auditorium-Booking" element={<BookMeeting />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/booking-List-user" element={<BookingListOfUser />} />
+          <Route path='/feedback' element={<Feedback />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
           <Route path="/user_details" element={<User/>}/>
           <Route path="/all_booking" element={<AllBooking/>}/>
+          <Route path="/make-complaint" element={<Complaint/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />

@@ -8,11 +8,14 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 
 
@@ -53,6 +56,13 @@ export default function Feedback() {
                 console.log(response.data);
             })
             .catch((err) => console.log(err + "Incorrect Data"));
+                toast.success('Feedback Sent Successfully')
+
+            })
+//            .catch((err) => {
+//                toast.error('Feedback Not Sent ')
+//
+//            });
 
         setValue1(0)
         setValue2(0)
@@ -129,7 +139,6 @@ export default function Feedback() {
                         <Grid item xs>
 
                         </Grid>
-
                     </Grid>
                 </Box>
 
