@@ -40,16 +40,10 @@ function Login() {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
-
-        toast.error(res.data.message);
-        sessionStorage.setItem("userLogin", JSON.stringify(res.data.user));
-        ReactSession.set("userForBooking",JSON.stringify(res.data.user))
-        if (res.data.user.userRole === "user") {
-          console.log(res.data.user.userName);
-          toast.success(res.data.user.userName + " Login successfully");
+      
       .then((response) => {
         toast.error(response.data.message);
+        ReactSession.set("userForBooking",JSON.stringify(response.data.user))
         sessionStorage.setItem("userLogin", JSON.stringify(response.data.user));
         if (response.data.user.userRole === "user") {
           toast.success(response.data.user.userName + " Login successfully");

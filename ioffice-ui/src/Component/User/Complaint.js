@@ -17,7 +17,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import ListIcon from '@mui/icons-material/List';
-import "../css/Complaint.css";
+import "../../css/Complaint.css";
 import { toast } from "react-toastify";
 
 const theme = createTheme();

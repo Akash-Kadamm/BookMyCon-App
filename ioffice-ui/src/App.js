@@ -19,11 +19,12 @@ import HomePage from './Component/Utilities/HomePage';
 import ProductList from './Component/ProductList';
 import Cart from './Component/User/Cart';
 import AdminDashboard from './Component/Admin/AdminDashboard';
-import User from './Component/Admin/User';
+import User from './Component/User';
 import AllBooking from './Component/Admin/AllBooking';
-import Complaint from './Component/Complaint';
+import Complaint from './Component/User/Complaint';
 import {UserFloorMap} from './Component/User/UserFloorMap';
 import {ViewForUser} from './Component/User/ViewForUser';
+import {AdminFloorMap} from './Component/Admin/AdminFloorMap';
 import Dashboard from './Component/Admin/Dashboard';
 
 function App() {
