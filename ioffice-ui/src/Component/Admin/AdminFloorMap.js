@@ -21,7 +21,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AccountCircle } from "@material-ui/icons";
 export const AdminFloorMap = () => {
-  
+
     const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
     const [moveMsg, setMoveMsg] = useState(null);
@@ -260,7 +260,7 @@ const data3={
        
     
       }).catch((err) => console.log(err + "Incorrect Data"));
-    
+
      
     };
     const handleClick = (event) => {
