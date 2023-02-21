@@ -59,28 +59,27 @@ function BookingListOfUser() {
 
   const getAllBookings = () => {
     console.log(id);
-    axios
-      .get(`http://localhost:8080/admins/getAllBookings/${id}`)
-      .then(response => {
-        setBooking(response.data);
-        console.log(response.date);
-        console.log(booking);
-      })
-      .catch((error => setErrorMsg("error occered ")));
-  }
-
-  const cancelBooking = (bookId) => {
-
-
-    console.log(bookId);
-
-    const url = `http://localhost:8080/admins/${bookId}`;
-    axios
-      .delete(url)
-      .then((response) => {
-        toast.success(response.data);
-        getAllBookings()
-
+        axios
+        .get(`http://localhost:8080/admins/get-all-bookings/${id}`)
+        .then(response =>{ setBooking(response.data);
+                  console.log(response.date);
+                  console.log(booking);
+        })
+        .catch((error=>setErrorMsg("error occered ")));
+    }
+   
+    const cancelBooking = (bookId) => {
+        
+     
+        console.log(bookId);
+    
+        const url = `http://localhost:8080/admins/${bookId}`;
+        axios
+          .delete(url)
+          .then((response) => {
+              toast.success(response.data);
+            getAllBookings()
+           
 
       })
       .catch((error) => console.log("error:"));

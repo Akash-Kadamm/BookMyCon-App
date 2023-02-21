@@ -12,7 +12,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
-import "../css/UpdateAuditorium.css";
+import "../../css/UpdateAuditorium.css";
+
 import InputAdornment from "@mui/material/InputAdornment";
 import BadgeIcon from '@mui/icons-material/Badge';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -42,7 +43,7 @@ export default function UpdateAuditorium() {
     const onSubmit = data => {
         axios.put(`http://localhost:8080/admin/${params.id}`, data, { headers: { "Content-Type": "application/json", }, })
             .then((response) => {
-                toast.success("Auditorium Updated Sucessfully");               
+                toast.success("Auditorium Updated Sucessfully");
                 navigate('/auditorium-list');
             })
             .catch((err) => {
@@ -60,7 +61,7 @@ export default function UpdateAuditorium() {
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <Box id="update-card"
-                        sx={{   
+                        sx={{
                             marginTop: 8,
                             display: 'flex',
                             flexDirection: 'column',
@@ -130,6 +131,7 @@ export default function UpdateAuditorium() {
                                         ),
                                       }}
                                 />
+
                             </Grid>
                             <br />
                             <Grid item xs={12} sm={6}>
@@ -141,7 +143,7 @@ export default function UpdateAuditorium() {
                                     placeholder='Capacity'
                                     defaultValue={auditorium.auditoriumCapacity}
                                     name="auditoriumCapacity"
-                                    autoComplete="family-name"  
+                                    autoComplete="family-name"
                                     {...register("auditoriumCapacity",{required:true})}
                                     InputProps={{
                                         startAdornment: (

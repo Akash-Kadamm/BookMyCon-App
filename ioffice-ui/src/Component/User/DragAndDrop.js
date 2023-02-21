@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import events from "./events";
 import HTML5Backend from "react-dnd-html5-backend";
 import { DragDropContext } from "react-dnd";
-import BigCalendar from "react-big-calendar";
+import {BigCalendar} from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import moment from "moment";
 
 BigCalendar.momentLocalizer(moment);
 const DragAndDropCalendar = withDragAndDrop(BigCalendar);
 
-class Dnd extends React.Component {
+class DragAndDrop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,5 +64,5 @@ class Dnd extends React.Component {
   }
 }
 
-const Calendar = DragDropContext(HTML5Backend)(Dnd);
+const Calendar = DragDropContext(HTML5Backend)(DragAndDrop);
 export default Calendar
