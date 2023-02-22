@@ -51,8 +51,6 @@ public class AuditoriumControllerTest {
 		audiController.updateAuditorium(1, auditoriums);
 		verify(audiService,times(1)).updateAuditorium(1, auditoriums);
 	}
-	
-	
 
 	@Test
     public 	void testGetAuditoriumByID() {
@@ -60,8 +58,6 @@ public class AuditoriumControllerTest {
 		when(audiService.getAuditoriumById(anyInt())).thenReturn(response);
 		ResponseEntity<Object> actual=audiController.getAuditoriumByID(1);
 		assertEquals(response, actual.getBody());
-		
-		
 	}
 
 }

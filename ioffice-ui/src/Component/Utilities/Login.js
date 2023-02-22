@@ -30,39 +30,36 @@ function Login() {
 
   const [message, setMessage] = useState("");
   const [user, setUser] = useState({});
-
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    // alert(`${data.email}, ${data.password}`);
-    // console.log(data)
-
     axios
       .post("http://localhost:8080/login/loginCheck", data, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
-
-        toast.error(res.data.message);
-        sessionStorage.setItem("userLogin", JSON.stringify(res.data.user));
-
-        if (res.data.user.userRole === "user") {
-          console.log(res.data.user.userName);
-          toast.success(res.data.user.userName + " Login successfully");
+      .then((response) => {
+        toast.error(response.data.message);
+        sessionStorage.setItem("userLogin", JSON.stringify(response.data.user));
+        if (response.data.user.userRole === "user") {
+          toast.success(response.data.user.userName + " Login successfully");
           navigate("/");
           window.location.reload();
-        } else {
-          toast.success(res.data.user.userName + " Login successfully");
+        } 
+        if (response.data.user.userRole === "admin") {
+          toast.success(response.data.user.userName + " Login successfully");
           navigate("/admin_dashboard");
           window.location.reload();
         }
-
+        if(response.data.user.userRole === "vendor") {
+          toast.success(response.data.user.userName + " Login successfully");
+          navigate("/vendor_dashboard");
+          window.location.reload();
+        }
       })
-      .catch((err) => {
-        console.log(err.response);
-        toast.error(err.response.data);
+      .catch((error) => {
+        toast.error(error.response.data);
       });
   };
 
@@ -109,7 +106,7 @@ function Login() {
                     required
                     fullWidth
                     id="Email"
-                    label="Email"
+                    placeholder="please enter your email"
                     name="Email"
                     autoComplete="Email"
                     variant="outlined"
@@ -140,7 +137,7 @@ function Login() {
                     required
                     fullWidth
                     name="Password"
-                    label="Password"
+                    placeholder="please enter your password"
                     type="password"
                     id="password"
                     autoComplete="Password"
@@ -171,16 +168,17 @@ function Login() {
                   </Box>
 
                   <Button
+                    id="submit-button"
                     type="submit"
                     variant="contained"
                     sx={{ mt: 3, mb: 2, ml: 11, color: "black" }}
-                    color="primary"
+                   // color="primary"
                   >
                     Login
                   </Button>
                   <Grid container justifyContent="flex-end">
                     <Grid item>
-                      <Link href="/signup" variant="body2">
+                      <Link id="link" href="/signup" variant="body2">
                         Don't have an account? Sign Up
                       </Link>
                     </Grid>

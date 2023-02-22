@@ -1,5 +1,7 @@
-package com.ioffice.demo.service;
+package com.ioffice.demo.migrationservice;
 import java.util.List;
+
+import com.ioffice.demo.service.AccountService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,19 +9,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import com.ioffice.demo.model.Account;
-import com.ioffice.demo.repo.mysql.MysqlAccountRepo;
-import com.ioffice.demo.repo.postgresql.PostgresqlAccountRepo;
 
 @Service
 @EnableScheduling
-public class DataBaseMIgrationService {
+public class DataBaseMigrationService {
 
 	@Autowired
-	private MysqlAccountRepo mysqlRepo;
-	@Autowired
-	private PostgresqlAccountRepo postgresqlRepo;
+	private AccountService accountService;
 	
-	private static Logger logger=Logger.getLogger(DataBaseMIgrationService.class);
+	private static Logger logger=Logger.getLogger(DataBaseMigrationService.class);
 	
 	@Value("${isMigration.complete}")
 	private Boolean canStop;
@@ -36,23 +34,15 @@ public class DataBaseMIgrationService {
 	public void migrationService() {
 		logger.info("Migration Service is executed.... after each 5 Sec.");
 		logger.info("value from application.properties file :-"+canStop);
-		
-	List<Account> accounts=	mysqlRepo.getAllAccountsForMigration();
-
+	List<Account> accounts=	accountService.getAllAccountsToBeMigrate();
 		accounts.stream()
 				.forEach(account -> {
 					System.out.println(account.getCustomerName()+" "
 					          +account.getIsMigrate()+" "
 								+account.getId());
-					
 					setFlag(account);
-					
-					postgresqlRepo.save(account);
-					
-					mysqlRepo.save(account);
-					
+					accountService.dupDataInBothDatabaseService(account);
 				});
-	
 	}
 	
 	

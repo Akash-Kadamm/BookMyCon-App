@@ -4,19 +4,12 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.ioffice.exception.SQLTimeDeserializer;
 
@@ -50,22 +43,19 @@ public class Booking {
     
     @Column(name="booking_date_to")
     private LocalDate bookingDateTo;
-    
-//    @JsonFormat(pattern = "HH:mm")
-//    @JsonDeserialize(using = SQLTimeDeserializer.class)
-//  
 
 	@Column(name="booking_time_from")
 	private LocalTime bookingTimeFrom;
-	
-//    @JsonFormat(pattern = "HH:mm")
-//    @JsonDeserialize(using = SQLTimeDeserializer.class)
-//  
+
 	@Column(name="booking_time_to")
 	private LocalTime bookingTimeTO;
     
     @Column(name="booking_agenda")
     private String bookingAgenda;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
+    List<Order> orders;
 
 }
 
