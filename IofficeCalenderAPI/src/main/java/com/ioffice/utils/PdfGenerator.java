@@ -16,6 +16,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
+
 public class PdfGenerator {
      
 	public void generate(List < User > userList, HttpServletResponse response) throws DocumentException, IOException {
@@ -74,4 +75,5 @@ public class PdfGenerator {
 
 	    document.close();
 	  }
+
 }
