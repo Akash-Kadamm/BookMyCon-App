@@ -1,9 +1,16 @@
 package com.ioffice.controller;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ioffice.model.User;
+import com.ioffice.utils.PdfGenerator;
+import com.ioffice.utils.PdfOfAuditorium;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +32,8 @@ import com.ioffice.repository.BookingRepository;
 import com.ioffice.service.AuditoriumService;
 import com.ioffice.service.BookingService;
 import com.ioffice.utils.ResponseMessage;
+
+import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
 @RestController
@@ -102,6 +111,19 @@ public class AuditoriumController {
 		response.put("message", ResponseMessage.GETTING_AUDITORIUM.getMessage());
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/export-to-pdf-audi")
+	public void generatePdfFile(HttpServletResponse response) throws IOException
+	{
+		response.setContentType("application/pdf");
+		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+		String currentDateTime = dateFormat.format(new Date());
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=Report Generation " + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+		List <Auditoriums> listOfAuditoriums = auditoriumService.showAll();
+		PdfOfAuditorium generator = new PdfOfAuditorium();
+		generator.generateAudi(listOfAuditoriums, response);
+	}
 
 }
