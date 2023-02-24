@@ -9,8 +9,10 @@ import Typography from "@mui/material/Typography";
 import CartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch, useSelector } from 'react-redux';
 
+
 const ProductList = () => {
     const [allProducts, setAllProducts] = useState([]);
+
     const dispatch = useDispatch()
     const cart = useSelector((state) => state)
     useEffect(() => {
@@ -40,7 +42,7 @@ const ProductList = () => {
                     product.quantity=1
                     return (
                         <Card className="m-4 text-center" sx={{ display: "inline-flex", flexDirection: "column", height: "500" }}>
-                            <CardMedia component="img" alt="" height="200" sx={{ width: 275 }} image={"http://localhost:8080/Product/" + product.thumbnail} />
+                           <CardMedia component="img" alt="" height="200" sx={{ width: 275 }} image={"https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"} />
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Typography sx={{ fontSize: 30 }} variant="body1">{product.productName}</Typography>
                                 <Typography color={"#F5A74A"} gutterBottom variant="h5" component="div">

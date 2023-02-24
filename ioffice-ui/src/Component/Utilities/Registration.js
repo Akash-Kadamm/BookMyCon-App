@@ -41,24 +41,15 @@ const Registration = () => {
         axios.post("http://localhost:8080/user/registration", data)
             .then((result) => {
                 console.log(result.data)
-                // toast.success("Register sucessfully. please Login in")
-                // console.log(result.data)
-                // navigate("/signin")
                 if(result.data.user.userRole === 'user'){
                     toast.success("Register sucessfully. please Login in")
                     console.log(result.data.message)
                     navigate("/signin")
-                }
+                }else{
                 toast.error(result.data.message)
                 navigate("/signup")
-                // }else{
-                //     toast.error(result.data.message)
-                //     console.log("failed to registration")
-                //     navigate("/signup")
-                // }
+                }
             }).catch((err) => {
-                // toast.error(err.data)
-                // console.log(err.data)
                 navigate("/signup")
             });
     };
@@ -213,8 +204,8 @@ const Registration = () => {
                         >
                             Sign Up
                         </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
+                        <Grid container justifyContent="center">
+                            <Grid item >
                                 <Link href="/signin" variant="body2">
                                     Already have an account? Sign in
                                 </Link>

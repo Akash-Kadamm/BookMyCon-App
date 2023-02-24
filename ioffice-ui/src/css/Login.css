@@ -31,11 +31,11 @@
      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    }
 #link{
-  color: black;
+  /* color: black; */
   
 }
    p{
-     color: red;
+     color: rgb(0, 0, 0);
     font-size: small;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 

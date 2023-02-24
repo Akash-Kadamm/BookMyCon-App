@@ -8,6 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Button } from '@mui/material';
+import fileDownload from 'js-file-download'
 
 const AllBooking = () => {
   const [booking,setBooking] = useState([])
@@ -44,11 +46,30 @@ const AllBooking = () => {
     },
   }));
 
+  // const getReportOfBooking = () => {
+  //   axios({url:"http://localhost:8080/admins/export-to-pdf-book",method:"GET",responseType:"blob"}).then((response) => {
+  //       fileDownload(response.data,'downlodedBooking.pdf')
+  //       console.log(response)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
+
 
   return (
   
     <div className="user">
     <h1> Booking Details </h1>
+    {/* <Button
+        className="m-2"
+          onClick={() => {
+            getReportOfBooking()
+            }}
+        variant="contained"
+       color="success"
+        >
+        Report 
+        </Button>  */}
     <hr />
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

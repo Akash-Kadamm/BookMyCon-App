@@ -49,13 +49,14 @@ const User = () => {
 
 
   const getReportOfUser = () => {
-    axios.get('http://localhost:8080/user/export-to-pdf').then((response) => {
-        fileDownload(response.data,'user.pdf')
-        // console.log(response.headers.Content-Disposition)
+    axios({url:"http://localhost:8080/user/export-to-pdf",method:"GET",responseType:"blob"}).then((response) => {
+        fileDownload(response.data,'downlodedUser.pdf')
+        console.log(response)
     }).catch((error) => {
       console.log(error)
     })
   }
+
 
 
   return (
@@ -70,8 +71,9 @@ const User = () => {
         variant="contained"
        color="success"
         >
-        Report
-        </Button>
+        Report 
+        </Button>  
+
     <hr />
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

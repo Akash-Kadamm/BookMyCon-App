@@ -133,7 +133,7 @@ export const UserFloorMap = () => {
         )} !`
       );
  
-  alert(`I am alert, nice to meet you+${area.name}`+  <button onClick={() => resetHandler()}>Reset</button>);
+ // alert(`I am alert, nice to meet you+${area.name}`+  <button onClick={() => resetHandler()}>Reset</button>);
   //     
 
   console.log(`Click on Area:`+` ${area.name}`)
@@ -348,33 +348,7 @@ export const UserFloorMap = () => {
     "Capacity: "+userCapacity;
     console.log(text)
   return (
-  
-//     <div className="presenter"  >
-//     <div style={{ position: "relative" }}>
-
-//       <h2>userLayout</h2>
-     
-
-      
-//       <ImageMapper
-  
-//   src={a1}
-//   map={userLayout}
-  
-//   onImageClick={(evt) => clickedOutside(evt)}
-//   onImageMouseMove={(evt) => moveOnImage(evt)}
-//   // onClick={(evt) => handleClick(evt)}
-//   // onClick={(evt) => clicked(evt)}
-//   onClick={(area) => clicked(area)}
-
-//   // onClick={(area) => openModal(area)}
-//   // onClick={(area) => handleClick(area.name)}
-//   onMouseEnter={(area) => enterArea(area)}
-//   onMouseLeave={(area) => leaveArea(area)}
-// />
-
-//   </div>
-//   </div>
+ 
 <div>
   
 <Box sx={{ flexGrow: 1 }}>
@@ -384,11 +358,12 @@ export const UserFloorMap = () => {
      
 
         
-      
+      <div  style={{marginTop:"20px",marginLeft:"60px"}}>
        <ImageMapper
        
        src={a1}
        map={userLayout}
+       
        width={700}
       onImageClick={(evt) => clickedOutside(evt)}
       onImageMouseMove={(evt) => moveOnImage(evt)}
@@ -401,32 +376,22 @@ export const UserFloorMap = () => {
         onMouseEnter={(area) => enterArea(area)}
         onMouseLeave={(area) => leaveArea(area)}
         />
+        </div>
         </Grid>
         <Grid item xs={4}>
        {/* <BookMeeting/> */}
        <div style={{marginTop:"75px",
        backgroundColor:"#85d1f4",
       textDecorationColor:"red",
-      marginLeft:"70px",
+      marginLeft:"40px",
       borderRadius: "25px",
-    
+      fontSize:"20px",
       borderWidth:"2px", 
       border:"solid",
       padding: "20px",
-      width: "220px",
-      height: "150px"}} >
-       {/* <TextField
-          id="outlined-read-only-input"
-         
-          value={text}
-          InputProps={{
-            readOnly: true,
-            style: {
-              height: "300px",
-            },
-          }}
-        /> */}
-        
+      width: "300px",
+      height: "250px"}} >
+       
          Name: {textData}
          <br></br>
 

@@ -12,6 +12,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {  useNavigate } from "react-router";
+import fileDownload from 'js-file-download'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -74,6 +75,15 @@ export const AuditoriumList = () => {
     // alert("deleted successfully");
   };
 
+  const getReportOfAudi = () => {
+    axios({url:"http://localhost:8080/admin/export-to-pdf-audi",method:"GET",responseType:"blob"}).then((response) => {
+        fileDownload(response.data,'downlodedAudi.pdf')
+        console.log(response)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
   return (
     <>
       <div>
@@ -87,6 +97,17 @@ export const AuditoriumList = () => {
        color="success"
         >
         Add
+        </Button>
+
+        <Button
+        className="m-2"
+          onClick={() => {
+            getReportOfAudi();
+            }}
+        variant="contained"
+       color="success"
+        >
+        Report
         </Button>
         <hr />
         <TableContainer component={Paper}>

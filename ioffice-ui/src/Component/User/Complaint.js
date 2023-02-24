@@ -18,17 +18,19 @@ import Select from '@mui/material/Select';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import ListIcon from '@mui/icons-material/List';
 import "../../css/Complaint.css";
+import { ReactSession } from "react-client-session";
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const theme = createTheme();
 function Complaint() {
-   
+    const navigate = useNavigate();
     
     let [complaint, setComplaint] = useState({
-        userId:1,
+        userId:JSON.parse(sessionStorage.getItem("userLogin")).userId,
         complaintType:"",
-        orderId:2,
-        bookingId:1,
+        orderId:3,
+        bookingId: ReactSession.get("BookingIdForFood"),
         description:""
     });
 
@@ -37,16 +39,20 @@ function Complaint() {
     };
 
     const handleSubmit=(event)=>{
+    
+        event.preventDefault();
+
+     
         axios.post("http://localhost:8080/complaint/makeComplaint",complaint,{               
             headers: {
            "Content-Type": "application/json",
        },
        })
-       .then((response)=>{
-             toast.success(response.data)
-       }).catch((error)=>{
-            toast.error(error.response.data)
-       })
+       .then(res=>{console.log(res.data)
+        toast.success(res.data);
+        navigate("/auditorium-view");
+    })
+       
     }
 
   return (

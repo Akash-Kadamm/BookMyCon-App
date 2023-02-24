@@ -20,8 +20,9 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AccountCircle } from "@material-ui/icons";
+import { useNavigate } from 'react-router-dom';
 export const AdminFloorMap = () => {
-
+  const navigate = useNavigate();
     const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
     const [moveMsg, setMoveMsg] = useState(null);
@@ -49,7 +50,7 @@ export const AdminFloorMap = () => {
      const [areadata, setAreadata] = useState({});
      const [areaName, setAreaName] = useState("");
      const [areaId, setAreaId] = useState();
-     const [auditoriumName, setAuditoriumName] = useState("Audi");
+     const [auditoriumName, setAuditoriumName] = useState("");
      const [auditorium, setAuditorium] = useState({});
      const handleAuditoriumName = (e) => {
       setAuditoriumName(e);
@@ -60,7 +61,7 @@ export const AdminFloorMap = () => {
       setAuditoriumName(e.target.value);
     };
 
-    const [location, setLocation] = useState("location");
+    const [location, setLocation] = useState("");
   
      const handleLocation = (e) => {
       setLocation(e);
@@ -98,53 +99,6 @@ export const AdminFloorMap = () => {
     setCapacity(e.target.value);
   };
 
-
-
-
-  
-//    const handleCoordsSubmit = () => {
-  
-   
-
-
-
-      
-
-// const data3={
-//   "areaId": areadata.areaId,
-//   "name": auditoriumName,
-//   "shape":areadata.shape,
-//   "coords": coordsSubmit,
-//   "preFillColor": areadata.preFillColor,
-//   "fillColor": areadata.fillColor,
-//   "userLayout": {
-//       "nameId": "UserLayout"
-//   }
-  
-// }
-
-
-    
-//       axios.put("http://localhost:8080/userLayout/addareas", data3,
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//       }
-//       })
-//       .then((response) => {
-//           console.log(response.data);
-       
-    
-//       }).catch((err) => console.log(err + "Incorrect Data"));
-    
-
-
-
-
-  // };
-
-
-
   const [addAreasName, setaddAreasName] = useState("default");  
   const handleAddAreasName = (e) => {
     setaddAreasName(e.target.value);
@@ -178,7 +132,7 @@ export const AdminFloorMap = () => {
           // Navigate("/adminDashboard/viewallflight")
   
       }).catch((err) => console.log(err + "Incorrect Data"));
-  
+      navigate('/admin-Floormap')
     }
 
    
@@ -261,7 +215,7 @@ const data3={
     
       }).catch((err) => console.log(err + "Incorrect Data"));
 
-     
+     navigate("/admin-FloorMap")
     };
     const handleClick = (event) => {
   
@@ -351,13 +305,7 @@ const data3={
       console.log(auditorium.auditoriumName+" ---: Name");
 
       setAuditoriumName(area.name);
-      // setLocation(auditorium.auditoriumLocation);
-      // setType(auditorium.auditoriumType);
-      // setAmenities(auditorium.auditoriumAminity);
-      // handleAuditoriumName(auditorium.auditoriumName);
-      // handleLocation(auditorium.auditoriumLocation);
-      // handleType(auditorium.auditoriumType);
-      // handleAmenities(auditorium.auditoriumAminity);
+      
       setCoordsSubmit(area.coords);
  // alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
   //
@@ -627,7 +575,13 @@ const data3={
 
 <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
+    
         <Grid item xs={8}>
+        <div style={{marginTop:"50px",
+        marginTop:"70px",
+      width:"700px",
+      marginLeft:"60px"}} >
+       
         <h2>Admin Layout</h2>
 
             <ImageMapper
@@ -649,7 +603,7 @@ const data3={
               id="Location"
               defaultValue={"Enter Auditorium Name"}
             />
-            <button onClick={(evt) => addPolygon(evt)}>Add polygon</button>
+            <Button onClick={(evt) => addPolygon(evt)}>Add Auditorium</Button>
 
             <h2>User Layout</h2>
 
@@ -672,9 +626,12 @@ const data3={
             />
    
   
+         </div>
         </Grid>
+     
+       
         <Grid item xs={4}>
-        <div style={{marginTop:"75px"}}>
+        <div style={{marginTop:"70px",marginRight:"25px"}}>
         <Box
           sx={{
             marginTop: 8,
@@ -779,7 +736,7 @@ const data3={
         </Box>
         </div>
         </Grid>
-
+        
       </Grid>
 
 
