@@ -32,7 +32,7 @@ public class ProductControllerTest {
     }
 
     public void setData() {
-        product = new Product(1, "tea", 5, 12);
+        product = new Product(1, "tea",5, 5, 12);
     }
 
     @Test
