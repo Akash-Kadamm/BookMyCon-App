@@ -41,8 +41,8 @@ public class ProductServiceTest {
     }
 
     private void setData() {
-        product = Optional.of(new Product(1,"tea",5,12));
-        products= new Product(1, "tea", 5, 12);
+        product = Optional.of(new Product());
+        products= new Product();
     }
 
 
