@@ -1,20 +1,84 @@
-.myAboutUs{
-    border-radius:40px ;
-    background-image: url('https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 5%;
-    height: 100%;
-    margin-top: 20px;
+.topBody{
+    height: 375px;
+    width: 100%;
+    display: flex;
+    background-color: #0d122e;
+
 }
 
-.heading-center{
+.topBody > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.topLeft{
+    margin-left: 7vw;
+    margin-top: 20vh;
+    margin-right: 9vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.topLeft > span{
     font-size: 50px;
+    color: white;
 }
 
-.myAboutUs>p{
-   font-family: Arial, Helvetica, sans-serif;
-   justify-content: space-around;
-   font-size: 26px;
-   color: cornsilk;
+.topLeft > p{
+    color: white ;
+    font-size: large;
+    padding: 20px;
+}
+
+.topLeft > div{
+    font-size: 50px;
+    color: white ;
+    margin-left: 4vw;
+}
+
+.topLeft > span > button{
+    background-color: #7aa0ff;
+    padding: 11px 25px;
+    border-radius: 5px;
+    color: #0d122e;
+    font-size: 0.4em;
+}
+
+.topBody > img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin: 150px;
+}
+
+.middleBody{
+    display: flex;
+}
+
+.middleBody > h3{
+    margin: 50px 25vw 20px 25vw;
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 300;
+}
+
+.bottomPage > h2{
+    font-size: 56px;
+    line-height: 68px;
+    font-weight: 300;
+    margin: 10vh 0 5vh 7vw;
+}
+
+.bottomPage > p{
+    margin: 0 40vw 5vh 17vw;
+}
+.belowTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.belowTitle > div > div{
+    margin: 20%;
+    margin-top: 5vh;
 }

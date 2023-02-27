@@ -4,13 +4,12 @@ import Login from './Component/Utilities/Login';
 import UpdateUser from './Component/User/UpdateUser';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UserList } from './Component/Admin/UserList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Component/Utilities/Navigation';
 import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/Admin/UpdateAuditorium';
-import Feedback from './Component/Feedback';
+import Feedback from './Component/User/Feedback';
 import BookMeeting from './Component/User/BookMeeting';
 import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
@@ -23,44 +22,46 @@ import Cart from './Component/User/Cart';
 import AdminDashboard from './Component/Admin/AdminDashboard';
 import User from './Component/Admin/User';
 import AllBooking from './Component/Admin/AllBooking';
-import Complaint from './Component/Complaint';
+import Complaint from './Component/User/Complaint';
+import {UserFloorMap} from './Component/User/UserFloorMap';
+import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
-
+import NonUserHomePage from './Component/User/NonUserHomePage';
+import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-
-          <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/" element={<NonUserHomePage />} />
+          <Route exact path="/calender-view" element={<HomePage />} />
+          <Route exact path="/floormap" element={<UserFloorMap />} />
+           <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/cart" element={<Cart/>} />
-          {/* <Route path="/user-list" element={<UserList />} /> */}
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
           <Route path="/auditorium-list" element={<AuditoriumList />} />
           <Route path="/auditorium-Booking" element={<BookMeeting />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser />} />
           <Route path='/feedback' element={<Feedback />} />
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
+          <Route path="/admin-FloorMap" element={<AdminFloorMap/>}/>
           <Route path="/user_details" element={<User/>}/>
           <Route path="/all_booking" element={<AllBooking/>}/>
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
-     
-     
-
     </div>
   );
 }

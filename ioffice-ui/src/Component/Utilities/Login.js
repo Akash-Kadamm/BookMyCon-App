@@ -18,10 +18,11 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Grid  from '@mui/material/Grid';
 import  Link  from '@mui/material/Link';
-
+import { ReactSession } from 'react-client-session';
 const theme = createTheme();
-
+ReactSession.setStoreType("localStorage");
 function Login() {
+
   const {
     register,
     handleSubmit,
@@ -39,22 +40,24 @@ function Login() {
           "Content-Type": "application/json",
         },
       })
+      
       .then((response) => {
         toast.error(response.data.message);
+        ReactSession.set("userForBooking",JSON.stringify(response.data.user))
         sessionStorage.setItem("userLogin", JSON.stringify(response.data.user));
         if (response.data.user.userRole === "user") {
           toast.success(response.data.user.userName + " Login successfully");
-          navigate("/");
+          navigate("/auditorium-view");
           window.location.reload();
-        } 
+        }
         if (response.data.user.userRole === "admin") {
           toast.success(response.data.user.userName + " Login successfully");
-          navigate("/admin_dashboard");
+          navigate("/dashboard");
           window.location.reload();
         }
         if(response.data.user.userRole === "vendor") {
           toast.success(response.data.user.userName + " Login successfully");
-          navigate("/vendor_dashboard");
+          navigate("/vendor");
           window.location.reload();
         }
       })
@@ -168,15 +171,16 @@ function Login() {
                   </Box>
 
                   <Button
+                    fullWidth
                     id="submit-button"
                     type="submit"
                     variant="contained"
-                    sx={{ mt: 3, mb: 2, ml: 11, color: "black" }}
-                   // color="primary"
+                    sx={{ mt: 3, mb: 2,color:"black" }}
+                  //  color="primary"
                   >
                     Login
                   </Button>
-                  <Grid container justifyContent="flex-end">
+                  <Grid container justifyContent="center">
                     <Grid item>
                       <Link id="link" href="/signup" variant="body2">
                         Don't have an account? Sign Up

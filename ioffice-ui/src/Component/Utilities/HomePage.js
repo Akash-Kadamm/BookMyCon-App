@@ -34,7 +34,6 @@ const HomePage = () => {
     }
   };
 
-  console.log(selectedDateData)
   return (
       <div>
         <Calendar

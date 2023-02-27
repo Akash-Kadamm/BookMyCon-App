@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../../src/App.css";
+import "../../../src/App.css";
 import ImageMapper from "react-image-mapper";
-import a1 from "./plan.png"
+import a1 from "../../Image/OfficePlan.jpg"
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
@@ -13,9 +13,14 @@ import { getOverlayAlpha } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Popover from '@mui/material/Popover';
-
+import { ReactSession } from 'react-client-session';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import BookMeeting from "./BookMeeting";
+import { borderRadius } from "@mui/system";
+ReactSession.setStoreType("localStorage");
 export const UserFloorMap = () => {
+  const navigate = useNavigate();
   const [msg, setMsg] = useState(null);
     const [hoveredArea, setHoveredArea] = useState(null);
     const [moveMsg, setMoveMsg] = useState(null);
@@ -23,7 +28,11 @@ export const UserFloorMap = () => {
    
     const [reset, setReset] = useState(false);
   
-
+    const [textData, setTextData] = useState("none");
+    const [userLocation, setUserLocation] = useState("none");
+    const [userType, setUserType] = useState("none");
+    const [userCapacity, setUserCapacity] = useState(0);
+    const [userAmenities, setUserAmenities] = useState("none");
     const [dots, setDots] = useState([]);
   
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -124,9 +133,14 @@ export const UserFloorMap = () => {
         )} !`
       );
  
-  alert('I am alert, nice to meet you'+  <button onClick={() => resetHandler()}>Reset</button>);
+ // alert(`I am alert, nice to meet you+${area.name}`+  <button onClick={() => resetHandler()}>Reset</button>);
   //     
+
   console.log(`Click on Area:`+` ${area.name}`)
+
+  ReactSession.set("auditoriumName",area.name);
+  navigate('/auditorium-Booking');
+
     };
   
     const clickedOutside = (evt) => {
@@ -146,7 +160,31 @@ export const UserFloorMap = () => {
           area.coords
         )} !`
       );
-      console.log("nter in area")
+
+
+
+      
+      axios
+
+      .get(`http://localhost:8080/admin/getAuditoriunByName/${area.name}`)
+      .then((response )=>
+      {
+        console.log(response.data.auditoriumName+"---Audi name");
+      
+        setUserLocation(response.data.auditoriumLocation);
+        setUserType(response.data.auditoriumType);
+        setUserCapacity(response.data.auditoriumCapacity);
+        setUserAmenities(response.data.auditoriumAminity);
+      })
+
+
+      console.log("nter in area"+area.name)
+      setTextData(area.name)
+   
+      console.log("text Data: ---"+area.name)
+   
+   
+   
     };
   
     const leaveArea = (area) => {
@@ -157,6 +195,7 @@ export const UserFloorMap = () => {
         )} !`
       );
       console.log("Leave area")
+   
     };
   
     const moveOnArea = (area, evt) => {
@@ -298,54 +337,74 @@ export const UserFloorMap = () => {
         
       }
       // console.log(areaslist);
-      console.log("UserLayout :"+ JSON.stringify(userLayout))
+      // console.log("UserLayout :"+ JSON.stringify(userLayout))
       
       
     // console.log("areaList :"+ JSON.stringify(areaslist))
-  
+    const text="Name: "+textData+"\n"+
+    "Location: "+userLocation+"\n"+
+    "Type: "+userType+"\n"+
+    "Amenities: "+userAmenities+"\n"+
+    "Capacity: "+userCapacity;
+    console.log(text)
   return (
+ 
+<div>
   
-    <div className="presenter"  >
-    <div style={{ position: "relative" }}>
+<Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={5}>
+        <Grid item xs={8}>
+        <h2>Floor Map</h2>
+     
 
-      <h2>userLayout</h2>
-      <Popover
-    
-    open={open}
-    anchorEl={anchorEl}
-    onClose={handleClose}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'left',
-    }}
-  >
-    <Typography sx={{ p: 2 }}>The content of the Popover.
-    Hi this is from popover<br></br>
-    <TextField id="outlined-basic" label="Room Name" variant="outlined" />
-    <br></br>
-    <br></br>
-    <Button variant="contained">Contained</Button>
-    </Typography>
-  </Popover>
-
-      <ImageMapper
-
-        src={a1}
-        map={userLayout}
-        width={500}
-        onImageClick={(evt) => clickedOutside(evt)}
-        onImageMouseMove={(evt) => moveOnImage(evt)}
-        // onClick={(evt) => handleClick(evt)}
-        onClick={(evt) => clicked(evt)}
-
-        // onClick={(area) => openModal(area)}
-        // onClick={(area) => handleClick(area.name)}
+        
+      <div  style={{marginTop:"20px",marginLeft:"60px"}}>
+       <ImageMapper
+       
+       src={a1}
+       map={userLayout}
+       
+       width={700}
+      onImageClick={(evt) => clickedOutside(evt)}
+      onImageMouseMove={(evt) => moveOnImage(evt)}
+   // onClick={(evt) => handleClick(evt)}
+  //  onClick={(evt) => clicked(evt)}
+      onClick={(area) => clicked(area)}
+     
+  //    onClick={(area) => openModal(area)}
+   //  onClick={(area) => handleClick(area.name)}
         onMouseEnter={(area) => enterArea(area)}
         onMouseLeave={(area) => leaveArea(area)}
-      />
+        />
+        </div>
+        </Grid>
+        <Grid item xs={4}>
+       {/* <BookMeeting/> */}
+       <div style={{marginTop:"75px",
+       backgroundColor:"#85d1f4",
+      textDecorationColor:"red",
+      marginLeft:"40px",
+      borderRadius: "25px",
+      fontSize:"20px",
+      borderWidth:"2px", 
+      border:"solid",
+      padding: "20px",
+      width: "300px",
+      height: "250px"}} >
+       
+         Name: {textData}
+         <br></br>
 
+         Location: {userLocation}<br></br>
+         Type: {userType}<br></br>
+         Amenities: {userAmenities}<br></br>
+         Capacity: {userCapacity}
+       </div>
 
-  </div>
-  </div>
+        </Grid>
+      
+      </Grid>
+    </Box>
+</div>
   )
 }

@@ -18,6 +18,10 @@ import { tableCellClasses } from "@mui/material/TableCell";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ReactSession } from "react-client-session";
+import { useNavigate } from "react-router";
+import fileDownload from 'js-file-download'
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses}`]: {
@@ -89,8 +93,6 @@ function Row(props) {
   };
 
   const handleCompare = (t1, t2) => {
-    console.log("t1[0]:" + parseInt(t1[0]));
-    console.log("t2[0]:" + parseInt(t2[0]));
     if (parseInt(t1[0]) > parseInt(t2[0])) {
       return 1;
     } else if (parseInt(t1[0]) < parseInt(t2[0])) {
@@ -441,6 +443,27 @@ function Row(props) {
     return false;
   };
 
+const navigate=useNavigate();
+
+  const handleFood=(e)=>{
+    ReactSession.set("BookingIdForFood",e)
+    navigate('/product-List')
+  }
+
+  const handleComplaint=()=>{
+      navigate('/make-complaint')
+  }
+
+  const handleGuestPass=()=>{
+    axios({url:"http://localhost:8080/user/export-to-pass/"+JSON.parse(sessionStorage.getItem("userLogin")).userEmail,method:"GET",responseType:"blob"}).then((response) => {
+      fileDownload(response.data,'GuestPass.pdf')
+      console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+  }
+
+
   const handleFlag9 = (t1, t2) => {
     // t1="10:10:10";
     // t2="10:10:10";
@@ -491,7 +514,9 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.bookingDateFrom}
         </TableCell>
-
+        <TableCell component="th" scope="row">
+          {row.aduitoriamId.auditoriumName}
+        </TableCell>
         <StyledTableCell 
           style={{
             background: handleFlag1(row.bookingTimeFrom, row.bookingTimeTO)
@@ -499,7 +524,7 @@ function Row(props) {
               : "white",
           }}
         >
-        {handleFlag1(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+        {handleFlag1(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -508,7 +533,7 @@ function Row(props) {
               : "white",
           }}
         >
-          {handleFlag2(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+          {handleFlag2(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -517,7 +542,7 @@ function Row(props) {
               : "white",
           }}
         >
-            {handleFlag3(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+            {handleFlag3(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -526,7 +551,7 @@ function Row(props) {
               : "white",
           }}
         >
-           { handleFlag4(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+           { handleFlag4(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -535,7 +560,7 @@ function Row(props) {
               : "white",
           }}
         >
-             { handleFlag5(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+             { handleFlag5(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -544,7 +569,7 @@ function Row(props) {
               : "white",
           }}
         >
-            { handleFlag6(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+            { handleFlag6(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
         <StyledTableCell
           style={{
@@ -552,14 +577,14 @@ function Row(props) {
               ? "gray"
               : "white",
           }}
-        >   { handleFlag7(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}</StyledTableCell>
+        >   { handleFlag7(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}</StyledTableCell>
         <StyledTableCell
           style={{
             background: handleFlag8(row.bookingTimeFrom, row.bookingTimeTO)
               ? "gray"
               : "white",
           }}
-        >   { handleFlag8(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}</StyledTableCell>
+        >   { handleFlag8(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}</StyledTableCell>
         <StyledTableCell
           style={{
             background: handleFlag9(row.bookingTimeFrom, row.bookingTimeTO)
@@ -567,25 +592,9 @@ function Row(props) {
               : "white",
           }}
         >
-             {handleFlag9(row.bookingTimeFrom, row.bookingTimeTO)?"Book":""}
+             {handleFlag9(row.bookingTimeFrom, row.bookingTimeTO)?"Booked":""}
         </StyledTableCell>
-        {/* <StyledTableCell style={{ background:flag ? 'gray': 'white'}}>{row.bookingId}</StyledTableCell> */}
-
-        {/* 
-        <TableCell component="th" scope="row">
-          {row.bookingDateFrom}
-        </TableCell>
-        <TableCell  >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-        <TableCell >{row.bookingDateFrom}</TableCell>
-         */}
+        
       </TableRow>
 
       <TableRow>
@@ -598,6 +607,7 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
+                
                     <TableCell>Date From</TableCell>
                     <TableCell>Date To</TableCell>
                     <TableCell>Time From</TableCell>
@@ -618,23 +628,25 @@ function Row(props) {
                         )}
                       </IconButton>
                     </TableCell>
+                    <TableCell>Action</TableCell>
+                
                     {/* <TableCell align="right">Total price ($)</TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {/* {row.map((historyRow) => ( */}
                   <TableRow key={row.bookingId}>
+                 
                     <TableCell component="th" scope="row">
                       {row.bookingDateFrom}
                     </TableCell>
                     <TableCell>{row.bookingDateTo}</TableCell>
                     <TableCell>{row.bookingTimeFrom}</TableCell>
-                    {/* <TableCell align="bookingId">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell> */}
+              
                     <TableCell>{row.bookingTimeTO}</TableCell>
                     <TableCell>{row.bookingAgenda}</TableCell>
-
+                  
+                                    
                     <TableCell>
                       <TableRow>
                         <TableCell
@@ -655,12 +667,13 @@ function Row(props) {
                                         Details
                                       </Button>
                                     </TableCell>
+                                   
                                   </TableRow>
                                 </TableHead>
                                 <TableBody>
                                  
                                   <TableRow key={row.bookingId}>
-                                    <TableCell>{row.userId.userName}</TableCell>
+                               <TableCell>{row.userId.userName}</TableCell>
                                   </TableRow>
                                   <TableRow key={row.bookingId}>
                                     <TableCell>
@@ -681,6 +694,35 @@ function Row(props) {
                         </TableCell>
                       </TableRow>
                     </TableCell>
+                    <TableCell>
+                  
+                       <Button
+                    onClick={()=>handleFood(row.bookingId)}
+                                        color="warning"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                       Food
+                                      </Button>
+                    <br></br>
+                    <br></br>
+                    <Button
+                    onClick={()=>handleComplaint()}
+                                        color="error"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                         Complaint
+                                      </Button> <br></br>
+                                      <br></br>
+                                         <Button
+                                         onClick={()=>handleGuestPass()}
+                                        color="success"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                         Guest Pass
+                                      </Button></TableCell>
                   </TableRow>
                   {/* ))} */}
                 </TableBody>
@@ -693,23 +735,6 @@ function Row(props) {
   );
 }
 
-// Row.propTypes = {
-//   row: PropTypes.shape({
-//     calories: PropTypes.number.isRequired,
-//     carbs: PropTypes.number.isRequired,
-//     fat: PropTypes.number.isRequired,
-//     history: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         amount: PropTypes.number.isRequired,
-//         customerId: PropTypes.string.isRequired,
-//         date: PropTypes.string.isRequired,
-//       })
-//     ).isRequired,
-//     name: PropTypes.string.isRequired,
-//     price: PropTypes.number.isRequired,
-//     protein: PropTypes.number.isRequired,
-//   }).isRequired,
-// };
 
 let rows = [
   createData("10/02/2022", "Book", 6.0, 24, 4.0, 3.99),
@@ -730,7 +755,7 @@ export const ViewForUser = () => {
   const getAllBooking = () => {
     axios
 
-      .get("http://localhost:8080/admins/getAllBookings")
+      .get("http://localhost:8080/admins/getAllBookings/"+JSON.parse(sessionStorage.getItem("userLogin")).userId)
       .then((response) => setBooking(response.data))
 
       .catch((error) => setErrorMsg("error "));
@@ -754,6 +779,11 @@ export const ViewForUser = () => {
               <TableCell>
                 <Button color="secondary" size="small" variant="contained">
                   Date
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button color="secondary" size="small" variant="contained">
+                  Meeting Hall
                 </Button>
               </TableCell>
               <TableCell>

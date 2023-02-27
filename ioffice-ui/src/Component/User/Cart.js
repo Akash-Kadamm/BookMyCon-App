@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AlertModal from './../Utilities/AlertModal';
 
+import { ReactSession } from "react-client-session";
 
 const Cart = () => {
     const cart = useSelector((state) => state);
@@ -44,7 +45,7 @@ const Cart = () => {
     };
     const placeOrder = () => {
         dispatch({ type: "EMPTY", payload: [] })
-        axios.post("http://localhost:8080/order/place-order/" + 15, orderContent).
+        axios.post("http://localhost:8080/order/place-order/" + ReactSession.get("BookingIdForFood"), orderContent).
             then((response) => {
                 setShow(true)
                 setModalOpen(true);
@@ -80,7 +81,7 @@ const Cart = () => {
                             </button>
                             <div className="m-2">
                                 <img
-                                    src={"http://localhost:8080/product/" + product.thumbnail}
+                                    src={"https://images.unsplash.com/photo-1577968897966-3d4325b36b61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"}
                                     className="card-img-top rounded border border-primary"
                                     alt={product.productName}
                                     style={{ height: "15rem" }}

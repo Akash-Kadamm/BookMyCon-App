@@ -14,7 +14,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {  useNavigate } from "react-router";
 import fileDownload from 'js-file-download'
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -103,14 +102,13 @@ export const AuditoriumList = () => {
         <Button
         className="m-2"
           onClick={() => {
-            getReportOfAudi()
+            getReportOfAudi();
             }}
         variant="contained"
        color="success"
         >
-        Report 
-        </Button> 
-
+        Report
+        </Button>
         <hr />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
