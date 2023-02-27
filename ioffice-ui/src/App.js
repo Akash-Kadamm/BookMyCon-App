@@ -18,10 +18,11 @@ import HomePage from './Component/Utilities/HomePage';
 import ProductList from './Component/ProductList';
 import Cart from './Component/User/Cart';
 import AdminDashboard from './Component/Admin/AdminDashboard';
-import User from './Component/Admin/User';
+//import User from './Component/Admin/User';
 import AllBooking from './Component/Admin/AllBooking';
-import Complaint from './Component/Complaint';
+//import Complaint from './Component/Complaint';
 import Dashboard from './Component/Admin/Dashboard';
+import Calendar from './Component/User/Calendar';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           
           <Route exact path="/" element={<HomePage />} />
+            
+          <Route exact path="/calendar" element={<Calendar />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/user-update" element={<UpdateUser />} />
@@ -48,9 +51,9 @@ function App() {
           <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
-          <Route path="/user_details" element={<User/>}/>
+          {/* <Route path="/user_details" element={<User/>}/> */}
           <Route path="/all_booking" element={<AllBooking/>}/>
-          <Route path="/make-complaint" element={<Complaint/>}/>
+          {/* <Route path="/make-complaint" element={<Complaint/>}/> */}
           <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
