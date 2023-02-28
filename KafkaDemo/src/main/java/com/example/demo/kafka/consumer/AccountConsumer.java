@@ -1,5 +1,6 @@
 package com.example.demo.kafka.consumer;
 
+import com.example.demo.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class AccountConsumer {
 
 	private static final Logger logger =LoggerFactory.getLogger(AccountConsumer.class);
 	
-	
+
 	@Autowired
-	private PostgresqlAccountRepo pRepo;
+	private AccountService accountService;
 	
 	
 	/*
@@ -32,8 +33,7 @@ public class AccountConsumer {
 			       groupId = "${spring.kafka.consumer.group-id}")
 	public void accountConsumer(Account account) {
 		logger.info("Message consume : "+account);
-		pRepo.save(account);
-		
+		accountService.saveAccountInPostgresqlDataBase(account);
 	}
 	
 }
