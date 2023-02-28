@@ -22,8 +22,7 @@ public class AccountService {
     private static Logger logger= Logger.getLogger(AccountService.class);
 
 
-    @Value("${isMigration.complete}")
-    private Boolean canStop;
+
 
     public List<Account>getAllAccountsFromMysqlDataBase(){
         return mysqlAccountRepo.findAll();
@@ -42,7 +41,7 @@ public class AccountService {
         postgresqlAccountRepo.save(account);
     }
 
-    public String createAccount(Account account){
+    public String createAccount(Account account,boolean canStop){
         logger.info(" Create new account..."+account);
         logger.info("setting IsMigrated true");
         DataBaseMigrationService.setFlag(account);

@@ -73,8 +73,8 @@ public class AccountServiceTest {
     @Test
     @DisplayName("test for dump data in both database")
     public void givenAccountObject_whenDumpDataInBothDataBaseService_thanReturnNoting() throws Exception{
-        BDDMockito.willDoNothing().given(mysqlAccountRepo).save(account1);
-        BDDMockito.willDoNothing().given(postgresqlAccountRepo).save(account1);
+        BDDMockito.given(mysqlAccountRepo.save(account1)).willReturn(account1);
+        BDDMockito.given(postgresqlAccountRepo.save(account1)).willReturn(account1);
         accountService.dupDataInBothDatabaseService(account1);
         BDDMockito.verify(mysqlAccountRepo, Mockito.times(1)).save(account1);
         BDDMockito.verify(postgresqlAccountRepo,Mockito.times(1)).save(account1);
@@ -82,11 +82,13 @@ public class AccountServiceTest {
     @Test
     @DisplayName("test for create account")
     public void givenAccountObject_whenCreateAccount_thanReturnMessage(){
+        boolean flag=false;
         String message="Account Created..";
         DataBaseMigrationService.setFlag(account1);
-        BDDMockito.willDoNothing().given(mysqlAccountRepo).save(account1);
-        BDDMockito.willDoNothing().given(postgresqlAccountRepo).save(account1);
-        String actualMessage= accountService.createAccount(account1);
+        BDDMockito.given(mysqlAccountRepo.save(account1)).willReturn(account1);
+        BDDMockito.given(postgresqlAccountRepo.save(account1)).willReturn(account1);
+
+        String actualMessage= accountService.createAccount(account1,flag);
         Assertions.assertThat(actualMessage).isEqualTo(message);
     }
 

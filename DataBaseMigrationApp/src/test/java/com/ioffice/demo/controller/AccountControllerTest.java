@@ -83,12 +83,13 @@ class AccountControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.size()",
 						CoreMatchers.is(accounts.size())));
-
 	}
+
     @Test
 	@DisplayName("test for create Account ")
 	public void givenAccountObject_whenCreateAccount_thanReturnResponseEntity() throws Exception{
-		BDDMockito.given(accountService.createAccount(ArgumentMatchers.any(Account.class)))
+		boolean flag= false;
+		BDDMockito.given(accountService.createAccount(ArgumentMatchers.any(Account.class),BDDMockito.anyBoolean()))
 				.willAnswer((invocation)->{
 					return invocation.getArgument(0);
 				});
@@ -103,6 +104,4 @@ class AccountControllerTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.customerName",
 						CoreMatchers.is(account1.getCustomerName())));
 	}
-
-
 }
