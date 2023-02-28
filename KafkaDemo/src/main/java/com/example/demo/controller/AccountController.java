@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class AccountController {
     
     @Autowired
     private AccountProducer accountProducer;
-    
-    @Autowired
-    private MysqlAccountRepo mRepo;
+
+	@Autowired
+	private AccountService accountService;
 
  
 	/*
@@ -43,7 +44,7 @@ public class AccountController {
 	public ResponseEntity<String> addAccount(@RequestBody Account account){
 		
     	account.setIsMigrate(true);
-    	mRepo.save(account);
+		accountService.saveAccountInMysqlDataBase(account);
     	accountProducer.sendRecord(account);
 		
 		return ResponseEntity.ok("Account record is send to kafka :"+account);
