@@ -56,4 +56,6 @@ public class DataMigrationServiceTest {
         BDDMockito.verify(accountService, Mockito.times(1)).getAllAccountsToBeMigrate();
         BDDMockito.verify(accountService,Mockito.times(1)).dupDataInBothDatabaseService(account1);
     }
+
+
 }

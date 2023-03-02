@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ioffice.demo.service.AccountService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,8 +23,11 @@ import com.ioffice.demo.model.Account;
 @RequestMapping("/Account")
 public class AccountController {
 
+	@Autowired
 	private AccountService accountService;
-	
+
+	@Value("${isMigration.complete}")
+	private boolean canStop;
 	private static Logger logger=Logger.getLogger(AccountController.class);
 
 	/*
@@ -63,9 +68,9 @@ public class AccountController {
 	 * 
 	 * */
 	@PostMapping("/createAccount")
-	public ResponseEntity<String> createAccount(@RequestBody Account account) {
+	public ResponseEntity<String> createAccount(@RequestBody Account account,boolean canStop) {
       return new ResponseEntity<>(
-		accountService.createAccount(account),
+		accountService.createAccount(account,canStop),
 		HttpStatus.CREATED
 	  );
 	}

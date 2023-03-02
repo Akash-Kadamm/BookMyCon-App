@@ -21,7 +21,7 @@ public class MigrationService {
 	
 
 	@Autowired
-	private MysqlAccountRepo mRepo;
+	private AccountService accountService;
 
 	@Autowired
 	private AccountProducer accountProducer;
@@ -38,21 +38,15 @@ public class MigrationService {
 	 * */
 	@Scheduled(cron = "5 * * ? * *")
     public void migrationService() {
-	
 		logger.info("Migration Service is Executed.....");
-		
-		List<Account> accounts= mRepo.getAllAccountsForMigration();
-		
+		List<Account> accounts= accountService.getAllAccountsToBeMigrate();
         accounts.stream()
         .forEach((account) ->{
         	logger.info("Migrating Account Record :"+account);
         	account.setIsMigrate(true);
-        	mRepo.save(account);
+			accountService.saveAccountInMysqlDataBase(account);
         	accountProducer.sendRecord(account);
         	logger.info("Kafka Message is send.....");
-      
-        } ); 		
-		
-		
+        } );
 	}
 }
