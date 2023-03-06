@@ -47,6 +47,7 @@ const Cart = () => {
         dispatch({ type: "EMPTY", payload: [] })
         axios.post("http://localhost:8080/order/place-order/" + ReactSession.get("BookingIdForFood"), orderContent).
             then((response) => {
+                sessionStorage.setItem('total',orderContent.total)
                 setShow(true)
                 setModalOpen(true);
             })
