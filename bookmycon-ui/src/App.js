@@ -28,6 +28,7 @@ import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
 import NonUserHomePage from './Component/User/NonUserHomePage';
 import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
+import PaymentGateway from './Component/User/PaymentGateway';
 function App() {
   return (
     <div className="App">
@@ -59,6 +60,7 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
+          <Route path='/payment' element={<PaymentGateway />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
