@@ -25,8 +25,7 @@ public class CompanyService {
     *
     * */
     public List<Company> getAllUsersToBeMigrate(String companyName){
-        List<Company> company=mysqlCompanyRepo.fetchUsers(companyName);
-        return company;
+         return mysqlCompanyRepo.fetchUsers(companyName);
     }
 
     /*
@@ -44,13 +43,10 @@ public class CompanyService {
     }
 
     /*
-    * delete Company by its Id from mysql Database.
+    * delete Company by its Id from mysql Database.♠
     * */
     public String deleteCompany(int companyId){
         mysqlCompanyRepo.deleteById(companyId);
         return "Company is deleted from record....";
     }
-
-
-
 }

@@ -14,8 +14,6 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/company")
 public class CompanyController {
-
-
     @Autowired
     private CompanyService companyService;
 
