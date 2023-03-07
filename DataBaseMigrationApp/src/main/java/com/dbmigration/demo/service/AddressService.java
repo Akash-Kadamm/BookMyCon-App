@@ -22,6 +22,9 @@ public class AddressService {
 
     /*
     * Fetch Address by Id.
+    *
+    * @param address Id.
+    * @return Address
     * */
     public Address getAddressById(int id){
         return mysqlAddressRepo.findById(id).get();
@@ -29,10 +32,12 @@ public class AddressService {
 
     /*
     * Save Address in Postgresql database.
+    *
+    * @param Address
+    * @return String message
     * */
     public String saveAddress(Address address){
        postgresqlAddressRepo.save(address);
        return "Address is saved....";
     }
-
 }

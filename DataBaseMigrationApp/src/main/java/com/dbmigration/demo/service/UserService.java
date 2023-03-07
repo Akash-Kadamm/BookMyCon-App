@@ -23,6 +23,8 @@ public class UserService {
     /*
     * Fetch All users from mysql Database.
     *
+    * @param
+    * @return List of Users
     * */
     public List<User> getAllUsers() {
      return  mysqlUserRepo.findAll();
@@ -31,6 +33,8 @@ public class UserService {
     /*
     * Save User in Mysql Database.
     *
+    * @param User
+    * @return User
     * */
     public User saveUserInMysql(User user){
         return mysqlUserRepo.save(user);
@@ -39,6 +43,8 @@ public class UserService {
     /*
     * Save new User in postgresql Database.
     *
+    * @param User
+    * @return User
     * */
     public User saveUserInPostgresql(User user){
         return postgresqlUserRepo.save(user);
@@ -47,7 +53,8 @@ public class UserService {
    /*
    * Delete User by its userId from Mysql Database.
    *
-   *
+   * @param user Id.
+   * @return String message
    * */
     public String deleteUser(int userId){
         mysqlUserRepo.deleteById(userId);
@@ -57,6 +64,8 @@ public class UserService {
    /*
    * User update from Mysql Database.
    *
+   * @param User
+   * @return String message
    * */
     public String updateUser(User user){
         User savedUser=mysqlUserRepo.findById(user.getUserId()).get();
@@ -69,6 +78,9 @@ public class UserService {
 
     /*
     * Fetch User by its user ID.
+    *
+    * @param user Id.
+    * @return User
     * */
     public User getUserByUserId(int userId){
         return mysqlUserRepo.findById(userId).get();
@@ -76,8 +88,29 @@ public class UserService {
 
     /*
     * Set migrated flag to true.
+    *
+    * @parma User
+    * @return void
     * */
     public static void setFlag(User user){
         user.setMigrate(true);
+    }
+
+    /*
+    * Fetch all users to be migrating by its company id.
+    *
+    * @param company Id.
+    * @return  List of Users
+    * */
+    public List<User> getAllUsersByCompanyId(int companyId){
+        List<User> users=mysqlUserRepo.fetchUsersByCompanyId(companyId);
+        if(users== null){
+            logger.info("getting null users.....");
+        }
+        logger.info("Fetching Users....");
+        users.forEach(user->{
+            logger.info("user details : "+user.toString());
+        });
+        return users;
     }
 }

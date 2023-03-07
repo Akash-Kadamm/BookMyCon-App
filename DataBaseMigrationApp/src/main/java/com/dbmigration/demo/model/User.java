@@ -1,6 +1,6 @@
 package com.dbmigration.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,10 +30,8 @@ public class User {
     @Column(name = "user_contact_number")
     private String userContactNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    @JsonIgnore
-    private Company company;
+    @Column(name = "company_Id")
+    private int companyId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "department_id")
     private Department department;

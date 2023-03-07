@@ -27,31 +27,43 @@ public class UserMigrationService {
     @Autowired
     private AddressService addressService;
 
-
+    /*
+    * Migrate service for migrate User by its UserId.
+    *
+    * @param userId.
+    * @return String message
+    * */
     public String userMigrationServiceByUserId(int userId){
-       User savedUser= userService.getUserByUserId(userId);
-       User user=User.builder()
-               .userId(savedUser.getUserId())
-               .userPassword(savedUser.getUserPassword())
-               .userName(savedUser.getUserName())
-               .userEmail(savedUser.getUserEmail())
-               .userContactNumber(savedUser.getUserContactNumber())
-               .address(savedUser.getAddress())
-               .department(savedUser.getDepartment())
-               .company(savedUser.getCompany())
-               .build();
-       userService.saveUserInPostgresql(user);
-       addressService.saveAddress(savedUser.getAddress());
-       departmentService.saveDepartment(savedUser.getDepartment());
-       companyService.saveCompany(savedUser.getCompany());
-
-       return "Migrated User having userId : "+userId;
+        User user=userService.getUserByUserId(userId);
+        if(user.isMigrate() == false ) {
+            int companyId = user.getCompanyId();
+            Company company = companyService.getByCompanyId(companyId);
+            UserService.setFlag(user);
+            companyService.saveCompany(company);
+            userService.saveUserInMysql(user);
+            userService.saveUserInPostgresql(user);
+            return "Migrated user : " + user.getUserName();
+        }else {
+            return "User is already migrated..";
+        }
     }
 
+    /*
+    * Migrate service for migrate Users According to company name.
+    *
+    * @param String companyName
+    * @return String message
+    * */
     public String migrationServiceByCompanyName(String companyName){
-        List<Company> listOfUsers=companyService.getAllUsersToBeMigrate(companyName);
-
-        return "";
+        Company company=companyService.getCompanyByCompanyName(companyName);
+        List<User> userList=userService.getAllUsersByCompanyId(company.getCompanyId());
+        companyService.saveCompany(company);
+        userList.forEach((user)->{
+            UserService.setFlag(user);
+            userService.saveUserInMysql(user);
+            userService.saveUserInPostgresql(user);
+        });
+        return "All users migrated....";
     }
 
 

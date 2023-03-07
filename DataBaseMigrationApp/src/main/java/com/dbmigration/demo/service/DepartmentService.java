@@ -21,6 +21,9 @@ public class DepartmentService {
 
     /*
     * Fetch department by its id.
+    *
+    * @param department Id.
+    * @return Department
     * */
     public Department getDepartmentById(int departmentId){
         return mysqlDepartmentRepo.findById(departmentId).get();
@@ -28,6 +31,9 @@ public class DepartmentService {
 
     /*
     * Save Department in postgresql database.
+    *
+    * @param Department
+    * @return String message
     *  */
     public String saveDepartment(Department department){
         postgresqlDepartmentRepo.save(department);

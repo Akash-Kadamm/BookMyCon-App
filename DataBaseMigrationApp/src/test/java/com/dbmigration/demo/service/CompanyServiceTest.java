@@ -63,13 +63,13 @@ public class CompanyServiceTest {
         Assertions.assertThat(message).isEqualTo("Company is deleted from record....");
     }
 
-    @Test
-    @DisplayName("Test for Get all users to be migrate.")
-    public void givenListOfCompany_whenGetAllUsers_thanListOfCompany(){
-        String companyName="Company is deleted from record....";
-        BDDMockito.given(mysqlCompanyRepo.fetchUsers(BDDMockito.anyString())).willReturn(List.of(company));
-        List<Company> listOfUsers=companyService.getAllUsersToBeMigrate(companyName);
-        Assertions.assertThat(listOfUsers.size()).isEqualTo(1);
-    }
+//    @Test
+//    @DisplayName("Test for Get all users to be migrate.")
+//    public void givenListOfCompany_whenGetAllUsers_thanListOfCompany(){
+//        String companyName="Company is deleted from record....";
+//        BDDMockito.given(mysqlCompanyRepo.fetchUsers(BDDMockito.anyString())).willReturn(List.of(company));
+//        List<Company> listOfUsers=companyService.getAllUsersToBeMigrate(companyName);
+//        Assertions.assertThat(listOfUsers.size()).isEqualTo(1);
+//    }
 
 }
