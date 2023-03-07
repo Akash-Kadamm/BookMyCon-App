@@ -28,8 +28,4 @@ public class Company {
     @Column(name = "company_address")
     private String companyAddress;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "company")
-    @Fetch(value = FetchMode.SUBSELECT)
-    private Set<User> users=new HashSet<>();
-
 }

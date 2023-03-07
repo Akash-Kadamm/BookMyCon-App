@@ -42,19 +42,19 @@ public class CompanyControllerTest {
                 .build();
     }
 
-    @Test
-    @DisplayName("Test for get all users to be migrated by there company name.")
-    public void givenListOfCompany_whenGetAllUsers_thanResponseEntity() throws Exception{
-        String companyName="Cybage Software Pvt. Ltd. Pune";
-        BDDMockito.given(companyService.getAllUsersToBeMigrate(BDDMockito.anyString())).willReturn(List.of(company));
-
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/company/getAllUsers/{companyName}")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(companyName))
-        );
-
-        response.andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk());
-
-    }
+//    @Test
+//    @DisplayName("Test for get all users to be migrated by there company name.")
+//    public void givenListOfCompany_whenGetAllUsers_thanResponseEntity() throws Exception{
+//        String companyName="Cybage Software Pvt. Ltd. Pune";
+//        BDDMockito.given(companyService.getAllUsersToBeMigrate(BDDMockito.anyString())).willReturn(List.of(company));
+//
+//        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/company/getAllUsers/{companyName}")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(objectMapper.writeValueAsString(companyName))
+//        );
+//
+//        response.andDo(MockMvcResultHandlers.print())
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//
+//    }
 }

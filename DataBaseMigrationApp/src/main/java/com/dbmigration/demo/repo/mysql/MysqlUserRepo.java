@@ -11,11 +11,7 @@ import java.util.List;
 public interface MysqlUserRepo
         extends JpaRepository<User,Integer> {
 
-    @Query(value = "select * from users " +
-            "inner join company on" +
-            " users.company = company.company_id " +
-            "where  company_name=?1",
+    @Query(value = "select * from users where company_id=?1 and is_migrate=0",
             nativeQuery = true)
-    List<User> getAllUsersByCompanyName(String companyName);
-
+     List<User> fetchUsersByCompanyId(int companyId);
 }

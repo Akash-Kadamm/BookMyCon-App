@@ -23,13 +23,18 @@ public class CompanyService {
     /*
     * fetch All Users which belongs to same company.
     *
+    * @param company name
+    * @return Company
     * */
-    public List<Company> getAllUsersToBeMigrate(String companyName){
-         return mysqlCompanyRepo.fetchUsers(companyName);
+    public Company getCompanyByCompanyName(String companyName){
+         return mysqlCompanyRepo.fetchCompanyDetails(companyName);
     }
 
     /*
     * Save Company in Postgresql Database.
+    *
+    * @param Company
+    * @return Company
     * */
     public Company saveCompany(Company company){
         return postgresqlCompanyRepo.save(company);
@@ -37,16 +42,32 @@ public class CompanyService {
 
     /*
     * Fetch All Companies.
+    *
+    * @param
+    * @return List of Company
     * */
     public List<Company> getAllCompany(){
         return mysqlCompanyRepo.findAll();
     }
 
     /*
-    * delete Company by its Id from mysql Database.♠
+    * delete Company by its Id from mysql Database.
+    *
+    * @param company Id.
+    * @return String message
     * */
     public String deleteCompany(int companyId){
         mysqlCompanyRepo.deleteById(companyId);
         return "Company is deleted from record....";
+    }
+
+    /*
+    * Fetch company details by id.
+    *
+    * @param company Id.
+    * @return Company
+    * */
+    public Company getByCompanyId(int companyId){
+        return mysqlCompanyRepo.findById(companyId).get();
     }
 }

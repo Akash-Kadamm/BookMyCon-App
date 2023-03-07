@@ -18,12 +18,28 @@ public class CompanyController {
     private CompanyService companyService;
 
     private static Logger logger= Logger.getLogger(CompanyController.class);
-    @GetMapping("/getAllUsers/{companyName}")
-    public ResponseEntity<List<Company>> getAllUsers(@PathVariable String companyName){
+
+    @GetMapping("/fetchCompany/{companyId}")
+    public ResponseEntity<Company> getCompanyByCompanyID(@PathVariable int companyId) {
         return new ResponseEntity<>(
-                companyService.getAllUsersToBeMigrate(companyName),
-                HttpStatus.OK
+          companyService.getByCompanyId(companyId),
+          HttpStatus.OK
         );
     }
 
+    @PostMapping("/saveCompany")
+    public ResponseEntity<Company> saveCompany(@RequestBody Company company) {
+        return new ResponseEntity<>(
+          companyService.saveCompany(company),
+          HttpStatus.CREATED
+        );
+    }
+
+    @DeleteMapping("/deleteCompany/{companyId}")
+    public ResponseEntity<String> deleteCompany(@PathVariable int companyId) {
+        return new ResponseEntity<>(
+          companyService.deleteCompany(companyId),
+          HttpStatus.OK
+        );
+    }
 }
