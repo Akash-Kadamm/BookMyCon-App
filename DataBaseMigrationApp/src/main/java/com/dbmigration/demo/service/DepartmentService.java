@@ -39,4 +39,8 @@ public class DepartmentService {
         postgresqlDepartmentRepo.save(department);
         return  "department is saved...";
     }
+
+    public Department getDepartmentFromPostgresql(int departmentId) {
+        return postgresqlDepartmentRepo.findById(departmentId).get();
+    }
 }

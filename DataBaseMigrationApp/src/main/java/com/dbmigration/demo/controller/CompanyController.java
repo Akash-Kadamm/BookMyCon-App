@@ -42,4 +42,12 @@ public class CompanyController {
           HttpStatus.OK
         );
     }
+
+    @GetMapping("/getCompany/{companyName}")
+    public ResponseEntity<Company> getCompanyByCompanyName(@PathVariable String companyName){
+        return new ResponseEntity<>(
+          companyService.getCompanyByCompanyName(companyName),
+          HttpStatus.OK
+        );
+    }
 }
