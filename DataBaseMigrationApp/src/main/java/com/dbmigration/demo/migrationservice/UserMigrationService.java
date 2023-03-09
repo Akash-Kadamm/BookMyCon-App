@@ -35,11 +35,34 @@ public class UserMigrationService {
     * */
     public String userMigrationServiceByUserId(int userId){
         User user=userService.getUserByUserId(userId);
+
         if(user.isMigrate() == false ) {
-            int companyId = user.getCompanyId();
-            Company company = companyService.getByCompanyId(companyId);
+            Company company = companyService.getByCompanyId(user.getCompanyId());
+            Address address=addressService.getAddressById(user.getAddressId());
+            Department department=departmentService.getDepartmentById(user.getDepartmentId());
+
+            Company migratedCompany=companyService.getCompanyFromPostgresql(user.getCompanyId());
+            if(migratedCompany == null){
+                companyService.saveCompany(company);
+                logger.info("Company saving....:"+company.toString());
+            }
+            logger.info("Company is already present..."+company.toString());
+
+            Address migratedAddress=addressService.getAddressFromPostgresql(user.getAddressId());
+            if(migratedAddress == null){
+                addressService.saveAddress(address);
+                logger.info("Address is saving...."+address.toString());
+            }
+            logger.info("Address is already present..."+address.toString());
+
+            Department migratedDepartment=departmentService.getDepartmentFromPostgresql(user.getDepartmentId());
+            if(migratedDepartment == null){
+                departmentService.saveDepartment(department);
+                logger.info("Department is saving...."+department.toString());
+            }
+            logger.info("Department is already present..."+department.toString());
+
             UserService.setFlag(user);
-            companyService.saveCompany(company);
             userService.saveUserInMysql(user);
             userService.saveUserInPostgresql(user);
             return "Migrated user : " + user.getUserName();
@@ -55,15 +78,47 @@ public class UserMigrationService {
     * @return String message
     * */
     public String migrationServiceByCompanyName(String companyName){
+        logger.info(" migration start of company :"+companyName);
         Company company=companyService.getCompanyByCompanyName(companyName);
         List<User> userList=userService.getAllUsersByCompanyId(company.getCompanyId());
-        companyService.saveCompany(company);
-        userList.forEach((user)->{
-            UserService.setFlag(user);
-            userService.saveUserInMysql(user);
-            userService.saveUserInPostgresql(user);
-        });
-        return "All users migrated....";
+
+        if(userList.size() != 0) {
+            Company migratedCompany = companyService.getCompanyFromPostgresql(company.getCompanyId());
+            if (migratedCompany == null) {
+                companyService.saveCompany(company);
+                logger.info("Company is saving...:" + company.toString());
+            }
+            logger.info("Company is already present...." + company.toString());
+            // filter record according to same department id.--- lets see after basic solution.
+
+            userList.forEach((user) -> {
+
+                Address address = addressService.getAddressById(user.getAddressId());
+                Address migratedAddress = addressService.getAddressFromPostgresql(user.getAddressId());
+                if (migratedAddress == null) {
+                    addressService.saveAddress(address);
+                    logger.info("Address is saving....:" + address.toString());
+                }
+                logger.info("Address is already present...: " + address.toString());
+
+                Department department = departmentService.getDepartmentById(user.getDepartmentId());
+                Department migratedDepartment = departmentService.getDepartmentFromPostgresql(user.getDepartmentId());
+                if (migratedDepartment == null) {
+                    departmentService.saveDepartment(department);
+                    logger.info("Department is saving...." + department.toString());
+                }
+                logger.info("Department is already present..."+department.toString());
+
+                UserService.setFlag(user);
+                userService.saveUserInMysql(user);
+                userService.saveUserInPostgresql(user);
+
+            });
+            return "All users migrated of this company ....:"+company.getCompanyName();
+        }else {
+            return "Already All users migrated of this company....:"+company.getCompanyName();
+        }
+
     }
 
 

@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @GetMapping("/migrateUsers/{companyName}")
-    public ResponseEntity<String> migrateUserByCompanyName(String companyName){
+    public ResponseEntity<String> migrateUserByCompanyName(@PathVariable String companyName){
         return  new ResponseEntity<>(
          userMigrationService.migrationServiceByCompanyName(companyName),
                 HttpStatus.OK

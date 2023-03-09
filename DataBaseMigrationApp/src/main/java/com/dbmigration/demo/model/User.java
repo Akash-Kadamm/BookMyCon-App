@@ -32,12 +32,11 @@ public class User {
 
     @Column(name = "company_Id")
     private int companyId;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "department_id")
-    private Department department;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn( referencedColumnName = "address_id")
-    private Address address;
+    @Column(name = "department_id")
+    private int departmentId;
+
+    @Column(name = "address_id")
+    private int addressId;
 
     @Column(columnDefinition = "boolean default false",name = "is_migrate")
     private boolean isMigrate;

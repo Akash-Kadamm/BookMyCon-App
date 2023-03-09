@@ -40,4 +40,9 @@ public class AddressService {
        postgresqlAddressRepo.save(address);
        return "Address is saved....";
     }
+
+    /**/
+    public Address getAddressFromPostgresql(int addressId) {
+        return postgresqlAddressRepo.findById(addressId).get();
+    }
 }

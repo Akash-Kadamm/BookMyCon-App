@@ -70,4 +70,10 @@ public class CompanyService {
     public Company getByCompanyId(int companyId){
         return mysqlCompanyRepo.findById(companyId).get();
     }
+
+    /**/
+    public Company getCompanyFromPostgresql(int companyId) {
+        return postgresqlCompanyRepo.findById(companyId).get();
+    }
+
 }
