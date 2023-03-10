@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Address;
 import com.dbmigration.demo.repo.mysql.MysqlAddressRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlAddressRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -53,8 +54,18 @@ public class AddressServiceTest {
     @DisplayName("Test for Save Address in postgresql database")
     public void givenAddressObject_whenSaveAddress_thanMessage(){
         BDDMockito.given(postgresqlAddressRepo.save(BDDMockito.any(Address.class))).willReturn(address);
-        String message=addressService.saveAddress(address);
-        Assertions.assertThat(message).isEqualTo("Address is saved....");
+        ResponseMessage message=addressService.saveAddress(address);
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.ADDRESS_RECORD_SAVED);
+    }
+    @Test
+    @DisplayName("Test for get Address from postgresql Database.")
+    public void givenAddressId_whenGetAddressFromPostgresql_thanReturnAddress(){
+        BDDMockito.given(postgresqlAddressRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(address));
+        Address savedAddress =addressService.getAddressFromPostgresql(address.getAddressId());
+        Assertions.assertThat(savedAddress.getAddressId()).isEqualTo(1);
+        Assertions.assertThat(savedAddress.getCityName()).isEqualTo("Pune");
+        Assertions.assertThat(savedAddress.getHomeNumber()).isEqualTo("678");
+        Assertions.assertThat(savedAddress.getPinCode()).isEqualTo("431601");
     }
 
 }

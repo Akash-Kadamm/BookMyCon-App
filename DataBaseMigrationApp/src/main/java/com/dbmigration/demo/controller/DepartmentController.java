@@ -2,6 +2,7 @@ package com.dbmigration.demo.controller;
 
 import com.dbmigration.demo.model.Department;
 import com.dbmigration.demo.service.DepartmentService;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/saveDepartment")
-    public ResponseEntity<String> saveDepartment(@RequestBody Department department) {
+    public ResponseEntity<ResponseMessage> saveDepartment(@RequestBody Department department) {
         return new ResponseEntity<>(
           departmentService.saveDepartment(department),
           HttpStatus.CREATED

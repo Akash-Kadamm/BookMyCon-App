@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Department;
 import com.dbmigration.demo.repo.mysql.MysqlDepartmentRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlDepartmentRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -49,7 +50,16 @@ public class DepartmentServiceTest {
     @DisplayName("Test for save department")
     public void givenDepartmentObject_whenSaveDepartment_thanDepartmentObject(){
         BDDMockito.given(postgresqlDepartmentRepo.save(BDDMockito.any(Department.class))).willReturn(department);
-        String message=departmentService.saveDepartment(department);
-        Assertions.assertThat(message).isEqualTo("department is saved...");
+        ResponseMessage message=departmentService.saveDepartment(department);
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.DEPARTMENT_RECORD_SAVED);
     }
+    @Test
+    @DisplayName("Test for Department from postgresql Database.")
+    public void givenDepartmentId_whenGetDepartmentFromPostgresql_thanReturnDepartment(){
+        BDDMockito.given(postgresqlDepartmentRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(department));
+        Department savedDepartment=departmentService.getDepartmentFromPostgresql(department.getDepartmentId());
+        Assertions.assertThat(savedDepartment.getDepartmentId()).isEqualTo(1);
+        Assertions.assertThat(savedDepartment.getDepartmentName()).isEqualTo("QA");
+    }
+
 }

@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Address;
 import com.dbmigration.demo.repo.mysql.MysqlAddressRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlAddressRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,9 +37,9 @@ public class AddressService {
     * @param Address
     * @return String message
     * */
-    public String saveAddress(Address address){
+    public ResponseMessage saveAddress(Address address){
        postgresqlAddressRepo.save(address);
-       return "Address is saved....";
+       return ResponseMessage.ADDRESS_RECORD_SAVED;
     }
 
     /**/
