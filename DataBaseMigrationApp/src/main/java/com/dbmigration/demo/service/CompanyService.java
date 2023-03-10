@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Company;
 import com.dbmigration.demo.repo.mysql.MysqlCompanyRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlCompanyRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,9 +57,9 @@ public class CompanyService {
     * @param company Id.
     * @return String message
     * */
-    public String deleteCompany(int companyId){
+    public ResponseMessage deleteCompany(int companyId){
         mysqlCompanyRepo.deleteById(companyId);
-        return "Company is deleted from record....";
+        return ResponseMessage.COMPANY_RECORD_DELETED;
     }
 
     /*

@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Company;
 import com.dbmigration.demo.repo.mysql.MysqlCompanyRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlCompanyRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class CompanyServiceTest {
@@ -59,17 +61,37 @@ public class CompanyServiceTest {
     @DisplayName("Test for Delete Company.")
     public void givenCompanyId_whenDeleteCompany_thanMessage(){
         BDDMockito.willDoNothing().given(mysqlCompanyRepo).deleteById(BDDMockito.anyInt());
-        String message= companyService.deleteCompany(1);
-        Assertions.assertThat(message).isEqualTo("Company is deleted from record....");
+        ResponseMessage message= companyService.deleteCompany(1);
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.COMPANY_RECORD_DELETED);
     }
 
-//    @Test
-//    @DisplayName("Test for Get all users to be migrate.")
-//    public void givenListOfCompany_whenGetAllUsers_thanListOfCompany(){
-//        String companyName="Company is deleted from record....";
-//        BDDMockito.given(mysqlCompanyRepo.fetchUsers(BDDMockito.anyString())).willReturn(List.of(company));
-//        List<Company> listOfUsers=companyService.getAllUsersToBeMigrate(companyName);
-//        Assertions.assertThat(listOfUsers.size()).isEqualTo(1);
-//    }
+    @Test
+    @DisplayName("Test for Get Company By Company Name.")
+    public void givenCompanyName_whenGetCompanyByCompanyName_thanReturnCompany(){
+        BDDMockito.given(mysqlCompanyRepo.fetchCompanyDetails(BDDMockito.anyString())).willReturn(company);
+        Company savedCompany=companyService.getCompanyByCompanyName(company.getCompanyName());
+        Assertions.assertThat(savedCompany.getCompanyId()).isEqualTo(1);
+        Assertions.assertThat(savedCompany.getCompanyName()).isEqualTo("Cybage Software Pvt. Ltd. Pune");
+        Assertions.assertThat(savedCompany.getCompanyAddress()).isEqualTo("kalyani nagar pune");
+    }
+    @Test
+    @DisplayName("Test for Get Company By CompanyId. ")
+    public void givenCompanyId_whenGetByCompanyId_thanReturnCompany(){
+        BDDMockito.given(mysqlCompanyRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(company));
+        Company savedCompany=companyService.getByCompanyId(company.getCompanyId());
+        Assertions.assertThat(savedCompany.getCompanyId()).isEqualTo(1);
+        Assertions.assertThat(savedCompany.getCompanyName()).isEqualTo("Cybage Software Pvt. Ltd. Pune");
+        Assertions.assertThat(savedCompany.getCompanyAddress()).isEqualTo("kalyani nagar pune");
+    }
+    @Test
+    @DisplayName("Test for Get Company from postgresql Database.")
+    public void givenCompanyId_whenGetCompanyFromPostgresql_thanReturnCompany(){
+
+        BDDMockito.given(postgresqlCompanyRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(company));
+        Company savedCompany=companyService.getCompanyFromPostgresql(company.getCompanyId());
+        Assertions.assertThat(savedCompany.getCompanyId()).isEqualTo(1);
+        Assertions.assertThat(savedCompany.getCompanyName()).isEqualTo("Cybage Software Pvt. Ltd. Pune");
+        Assertions.assertThat(savedCompany.getCompanyAddress()).isEqualTo("kalyani nagar pune");
+    }
 
 }

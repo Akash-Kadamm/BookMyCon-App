@@ -106,11 +106,12 @@ public class UserService {
         List<User> users=mysqlUserRepo.fetchUsersByCompanyId(companyId);
         if(users== null){
             logger.info("getting null users.....");
+        }else{
+            logger.info("Fetching Users....");
+            users.forEach(user->{
+                logger.info("user details : "+user.toString());
+            });
         }
-        logger.info("Fetching Users....");
-        users.forEach(user->{
-            logger.info("user details : "+user.toString());
-        });
         return users;
     }
 }

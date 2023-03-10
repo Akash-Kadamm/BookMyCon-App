@@ -2,7 +2,9 @@ package com.dbmigration.demo.controller;
 
 import com.dbmigration.demo.model.Company;
 import com.dbmigration.demo.service.CompanyService;
+import com.dbmigration.demo.utility.ResponseMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,19 +44,63 @@ public class CompanyControllerTest {
                 .build();
     }
 
-//    @Test
-//    @DisplayName("Test for get all users to be migrated by there company name.")
-//    public void givenListOfCompany_whenGetAllUsers_thanResponseEntity() throws Exception{
-//        String companyName="Cybage Software Pvt. Ltd. Pune";
-//        BDDMockito.given(companyService.getAllUsersToBeMigrate(BDDMockito.anyString())).willReturn(List.of(company));
-//
-//        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/company/getAllUsers/{companyName}")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(objectMapper.writeValueAsString(companyName))
-//        );
-//
-//        response.andDo(MockMvcResultHandlers.print())
-//                .andExpect(MockMvcResultMatchers.status().isOk());
-//
-//    }
+    @Test
+    @DisplayName("Test Get company by companyID.")
+    public void givenCompanyId_whenGetByCompanyId_thanReturnCompany() throws Exception{
+        int companyId=1;
+        BDDMockito.given(companyService.getByCompanyId(BDDMockito.anyInt())).willReturn(company);
+
+        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/company/fetchCompany/{companyId}",companyId));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyName",
+                        CoreMatchers.is(company.getCompanyName())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyId",
+                        CoreMatchers.is(company.getCompanyId())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyAddress",
+                        CoreMatchers.is(company.getCompanyAddress())));
+    }
+    @Test
+    @DisplayName("Test for save company in postgresql database.")
+    public void givenCompany_whenSaveCompany_thanReturnCompany() throws Exception{
+        BDDMockito.given(companyService.saveCompany(company)).willReturn(company);
+
+        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.post("/company/saveCompany")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(company)));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
+    @DisplayName("Test for delete company by companyId.")
+    public void givenCompanyId_whenDeleteCompany_thanReturnMessage() throws  Exception{
+        int companyId=1;
+        BDDMockito.given(companyService.deleteCompany(BDDMockito.anyInt())).willReturn(ResponseMessage.COMPANY_RECORD_DELETED);
+
+        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.delete("/company/deleteCompany/{companyId}",companyId));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    @Test
+    @DisplayName("Test for get company by company name.")
+    public void givenCompanyName_whenGetCompanyByCompanyName_thanReturnCompany() throws  Exception{
+        String companyName=company.getCompanyName();
+        BDDMockito.given(companyService.getCompanyByCompanyName(BDDMockito.anyString())).willReturn(company);
+
+        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/company/getCompany/{companyName}",companyName));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyName",
+                        CoreMatchers.is(company.getCompanyName())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyId",
+                        CoreMatchers.is(company.getCompanyId())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.companyAddress",
+                        CoreMatchers.is(company.getCompanyAddress())));
+
+    }
 }

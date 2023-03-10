@@ -107,5 +107,29 @@ public class UserServiceTest {
         Assertions.assertThat(savedUser.getUserId()).isEqualTo(1);
         Assertions.assertThat(savedUser.getUserName()).isEqualTo("Akash Kadam");
     }
+    @Test
+    @DisplayName("Test for Set flag.")
+    public void givenUser_whenSetFlag_thanReturnNothing(){
+        UserService.setFlag(user1);
+        Assertions.assertThat(user1.isMigrate()).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("Test for Get all users by company id (positive)")
+    public void givenCompanyId_whenGetAllUsersByCompanyId_thanListUsers(){
+        int companyId=1;
+        BDDMockito.given(mysqlUserRepo.fetchUsersByCompanyId(BDDMockito.anyInt())).willReturn(List.of(user1,user2));
+        List<User> savedUsers=userService.getAllUsersByCompanyId(companyId);
+        Assertions.assertThat(savedUsers.size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("Test for Get all users by company id (negative)")
+    public void givenCompanyId_whenGetAllUsersByCompanyId_thanNull(){
+        int companyId=1;
+        BDDMockito.given(mysqlUserRepo.fetchUsersByCompanyId(BDDMockito.anyInt())).willReturn(null);
+        List<User> savedUsers=userService.getAllUsersByCompanyId(companyId);
+        Assertions.assertThat(savedUsers).isEqualTo(null);
+    }
 
 }

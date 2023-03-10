@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.Department;
 import com.dbmigration.demo.repo.mysql.MysqlDepartmentRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlDepartmentRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +36,9 @@ public class DepartmentService {
     * @param Department
     * @return String message
     *  */
-    public String saveDepartment(Department department){
+    public ResponseMessage saveDepartment(Department department){
         postgresqlDepartmentRepo.save(department);
-        return  "department is saved...";
+        return  ResponseMessage.DEPARTMENT_RECORD_SAVED;
     }
 
     public Department getDepartmentFromPostgresql(int departmentId) {

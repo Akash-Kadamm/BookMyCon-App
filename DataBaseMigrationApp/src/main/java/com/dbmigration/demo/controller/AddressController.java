@@ -2,6 +2,7 @@ package com.dbmigration.demo.controller;
 
 import com.dbmigration.demo.model.Address;
 import com.dbmigration.demo.service.AddressService;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class AddressController {
     }
 
     @PostMapping("/saveAddress")
-    public ResponseEntity<String> saveAddress(@RequestBody Address address) {
+    public ResponseEntity<ResponseMessage> saveAddress(@RequestBody Address address) {
         return new ResponseEntity<>(
           addressService.saveAddress(address),
           HttpStatus.CREATED

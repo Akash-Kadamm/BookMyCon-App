@@ -2,6 +2,7 @@ package com.dbmigration.demo.controller;
 
 import com.dbmigration.demo.model.Company;
 import com.dbmigration.demo.service.CompanyService;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class CompanyController {
     }
 
     @DeleteMapping("/deleteCompany/{companyId}")
-    public ResponseEntity<String> deleteCompany(@PathVariable int companyId) {
+    public ResponseEntity<ResponseMessage> deleteCompany(@PathVariable int companyId) {
         return new ResponseEntity<>(
           companyService.deleteCompany(companyId),
           HttpStatus.OK
