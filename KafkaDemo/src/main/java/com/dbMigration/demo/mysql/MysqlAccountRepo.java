@@ -1,11 +1,10 @@
-package com.example.demo.dbMRepo;
+package com.dbMigration.demo.mysql;
 
 import java.util.List;
 
+import com.dbMigration.demo.payload.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.example.demo.payload.Account;
 
 
 public interface MysqlAccountRepo extends 

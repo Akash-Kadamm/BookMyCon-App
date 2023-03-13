@@ -1,4 +1,4 @@
-package com.example.demo.dabaseConfig;
+package com.dbMigration.demo.dabaseConfig;
 
 import java.util.HashMap;
 
@@ -30,7 +30,7 @@ import jakarta.persistence.EntityManagerFactory;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "db2EntityManagerFactory",
 		transactionManagerRef = "db2TransactionManager",
-		basePackages = "com.example.demo.dbMRepo"
+		basePackages = "com.dbMigration.demo.mysql"
 		
 		)
 public class DataBase2Config {
@@ -67,7 +67,7 @@ public class DataBase2Config {
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 		return  builder
 				.dataSource(db2DataSource())
-				.packages("com.example.demo.payload")
+				.packages("com.dbMigration.demo.payload")
 				.properties(properties)
 				.build();
 	}

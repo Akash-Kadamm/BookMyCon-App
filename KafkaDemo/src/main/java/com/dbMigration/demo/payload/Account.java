@@ -1,4 +1,4 @@
-package com.example.demo.payload;
+package com.dbMigration.demo.payload;
 
 
 import org.springframework.boot.context.properties.bind.DefaultValue;

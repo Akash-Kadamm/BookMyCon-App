@@ -1,9 +1,7 @@
-package com.example.demo.dbPRepo;
+package com.dbMigration.demo.postgresql;
 
+import com.dbMigration.demo.payload.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.example.demo.payload.Account;
-
 
 
 public interface PostgresqlAccountRepo extends

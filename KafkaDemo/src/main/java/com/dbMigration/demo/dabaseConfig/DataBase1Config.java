@@ -1,4 +1,4 @@
-package com.example.demo.dabaseConfig;
+package com.dbMigration.demo.dabaseConfig;
 
 import java.util.HashMap;
 
@@ -28,7 +28,7 @@ import jakarta.persistence.EntityManagerFactory;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "db1EntityManagerFactory",
 		transactionManagerRef = "db1TransactionManager",
-		basePackages = "com.example.demo.dbPRepo"
+		basePackages = "com.dbMigration.demo.postgresql"
 		
 		)
 public class DataBase1Config {
@@ -64,7 +64,7 @@ public class DataBase1Config {
 		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		return  builder
 				.dataSource(db1DataSource())
-				.packages("com.example.demo.payload")
+				.packages("com.dbMigration.demo.payload")
 				.properties(properties)
 				.build();
 	}
