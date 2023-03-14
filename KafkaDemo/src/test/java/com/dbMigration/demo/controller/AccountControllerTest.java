@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.dbMigration.demo.controller;
 
 
 import static org.mockito.Mockito.times;
@@ -11,9 +11,9 @@ import org.mockito.Mock;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.dbMRepo.MysqlAccountRepo;
-import com.example.demo.kafka.producer.AccountProducer;
-import com.example.demo.payload.Account;
+import com.dbMigration.demo.mysql.MysqlAccountRepo;
+import com.dbMigration.demo.kafka.producer.AccountProducer;
+import com.dbMigration.demo.payload.Account;
 
 
 public class AccountControllerTest {
