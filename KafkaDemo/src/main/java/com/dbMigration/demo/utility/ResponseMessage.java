@@ -11,11 +11,11 @@ public enum ResponseMessage {
 
     private String message;
 
-    private ResponseMessage(String message){
-        this.message=message;
+    private ResponseMessage(String message) {
+        this.message = message;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.message;
     }
 }

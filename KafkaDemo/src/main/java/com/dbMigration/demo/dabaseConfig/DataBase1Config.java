@@ -21,68 +21,66 @@ import jakarta.persistence.EntityManagerFactory;
 
 /*
  * ****  Postgresql configurations ********
- * 
+ *
  * */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-		entityManagerFactoryRef = "db1EntityManagerFactory",
-		transactionManagerRef = "db1TransactionManager",
-		basePackages = "com.dbMigration.demo.postgresql"
-		
-		)
+        entityManagerFactoryRef = "db1EntityManagerFactory",
+        transactionManagerRef = "db1TransactionManager",
+        basePackages = "com.dbMigration.demo.postgresql"
+
+)
 public class DataBase1Config {
 
-	
-	/*
-	 * Create DataSource object which make database connection.
-	 * 
-	 * @param 
-	 * @return DataSource object
-	 * */
-	@Bean
-	@ConfigurationProperties(prefix="db1.datasource")
-	public DataSource db1DataSource() {
-		return DataSourceBuilder.create().build();
-	}
-	
-	
-	/*
-	 * Creating EntityManagerFactoryBean object which provides all the operation of database.
-	 * 
-	 * @param EntityManagerFactoryBuilder
-	 * @return LocalContainerEntityManagerFactoryBean object
-	 * 
-	 * */
-	@Bean
-	public LocalContainerEntityManagerFactoryBean db1EntityManagerFactory(
-			EntityManagerFactoryBuilder builder
-			)
-	{
-		HashMap<String , Object> properties=new HashMap<>();
-		properties.put("hibernate.hbm2ddl.auto", "update");
-		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-		return  builder
-				.dataSource(db1DataSource())
-				.packages("com.dbMigration.demo.payload")
-				.properties(properties)
-				.build();
-	}
-	
 
-	/*
-	 * Creating Transaction Manager bean for making transactions.
-	 * 
-	 * @param EntityManagerFactory object
-	 * @return JpaTransactionManager object
-	 * 
-	 * */
-	@Bean
-	public PlatformTransactionManager db1TransactionManager(
-			@Qualifier("db1EntityManagerFactory")
-			EntityManagerFactory entityManagerFactory
-			)
-	{
-		return new JpaTransactionManager(entityManagerFactory);
-	}
+    /*
+     * Create DataSource object which make database connection.
+     *
+     * @param
+     * @return DataSource object
+     * */
+    @Bean
+    @ConfigurationProperties(prefix = "db1.datasource")
+    public DataSource db1DataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+
+    /*
+     * Creating EntityManagerFactoryBean object which provides all the operation of database.
+     *
+     * @param EntityManagerFactoryBuilder
+     * @return LocalContainerEntityManagerFactoryBean object
+     *
+     * */
+    @Bean
+    public LocalContainerEntityManagerFactoryBean db1EntityManagerFactory(
+            EntityManagerFactoryBuilder builder
+    ) {
+        HashMap<String, Object> properties = new HashMap<>();
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        return builder
+                .dataSource(db1DataSource())
+                .packages("com.dbMigration.demo.payload")
+                .properties(properties)
+                .build();
+    }
+
+
+    /*
+     * Creating Transaction Manager bean for making transactions.
+     *
+     * @param EntityManagerFactory object
+     * @return JpaTransactionManager object
+     *
+     * */
+    @Bean
+    public PlatformTransactionManager db1TransactionManager(
+            @Qualifier("db1EntityManagerFactory")
+            EntityManagerFactory entityManagerFactory
+    ) {
+        return new JpaTransactionManager(entityManagerFactory);
+    }
 }
