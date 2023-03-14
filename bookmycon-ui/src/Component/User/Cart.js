@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import AlertModal from './../Utilities/AlertModal';
 
 import { ReactSession } from "react-client-session";
 
 const Cart = () => {
+
     const cart = useSelector((state) => state);
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -49,7 +50,9 @@ const Cart = () => {
             then((response) => {
                 sessionStorage.setItem('total',orderContent.total)
                 setShow(true)
-                setModalOpen(true);
+                navigate('/payment')
+                // setModalOpen(true);
+
             })
     }
 
