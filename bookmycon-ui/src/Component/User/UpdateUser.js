@@ -93,15 +93,18 @@ export default function UpdateUser() {
                                     name="userName"
                                     fullWidth
                                     value={user.userName}
-                                    id="userName"
+                                    id="outlined-basic"
+                                    variant="outlined"
                                     label="Name"
                                     autoFocus
                                     onChange={(e) => {
                                         setUser({ ...user, userName: e.target.value })
                                     }}
+                                    size="large"
+                    sx={{ mt: 1 }}
                                     InputProps={{
                                         startAdornment: (
-                                            <InputAdornment position="start">
+                                            <InputAdornment  position="start">
                                                 <AccountCircle />
                                             </InputAdornment>
                                         ),
