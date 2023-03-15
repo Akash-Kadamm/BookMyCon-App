@@ -6,7 +6,9 @@ import com.dbMigration.demo.postgresql.PostgresqlDepartmentRepo;
 import com.dbMigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DepartmentService {
     @Autowired
     private MysqlDepartmentRepo mysqlDepartmentRepo;

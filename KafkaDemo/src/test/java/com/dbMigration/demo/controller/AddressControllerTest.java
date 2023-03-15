@@ -1,5 +1,6 @@
 package com.dbMigration.demo.controller;
 
+import com.dbMigration.demo.kafka.producer.AddressProducer;
 import com.dbMigration.demo.payload.Address;
 import com.dbMigration.demo.service.AddressService;
 import com.dbMigration.demo.utility.ResponseMessage;
@@ -29,6 +30,9 @@ public class AddressControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @MockBean
+    private AddressProducer addressProducer;
 
     Address address;
 
