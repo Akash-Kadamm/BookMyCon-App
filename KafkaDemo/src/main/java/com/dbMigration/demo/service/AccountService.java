@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.dbMigration.demo.service;
 
-import com.example.demo.dbMRepo.MysqlAccountRepo;
-import com.example.demo.dbPRepo.PostgresqlAccountRepo;
-import com.example.demo.payload.Account;
+import com.dbMigration.demo.mysql.MysqlAccountRepo;
+import com.dbMigration.demo.postgresql.PostgresqlAccountRepo;
+import com.dbMigration.demo.payload.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

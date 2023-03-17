@@ -64,17 +64,16 @@ public class UserLayoutController {
     public ResponseEntity<List<AreasDto>>  GetAreas() {
 		
 		List<AreasDto> areasList=new ArrayList<>();
-		
-		for (Areas areas : areasService.findByUserLayout(userLayoutService.findAll().get(0))) {
-			
-			AreasDto areasDto=new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(),areas.getPreFillColor(), areas.getFillColor());
-			if(areasDto.getCoords()!=null) {
-				areasDto.setPreFillColor("#00000000");
-				areasDto.setFillColor("transperant");
-				areasList.add(areasDto);
+			for (Areas areas : areasService.findByUserLayout(userLayoutService.findAll().get(0))) {
+
+				AreasDto areasDto = new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(), areas.getPreFillColor(), areas.getFillColor());
+				if (areasDto.getCoords() != null) {
+					areasDto.setPreFillColor("#00000000");
+					areasDto.setFillColor("transperant");
+					areasList.add(areasDto);
+				}
 			}
-		}
-		
+
           return  new ResponseEntity<List<AreasDto>>(areasList,HttpStatus.OK);
 }
 
@@ -129,7 +128,7 @@ public class UserLayoutController {
 	{
         // preFillColor: "transperant",
 
-		Areas areas=new Areas(0, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutService.findById(dataDto.getNameId()).get());
+		Areas areas=new Areas(1, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutService.findById(dataDto.getNameId()).get());
 		
 
 //		System.out.println(areas);

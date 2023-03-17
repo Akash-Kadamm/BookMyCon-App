@@ -26,9 +26,13 @@ import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
 import NonUserHomePage from './Component/User/NonUserHomePage';
 import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
+
 import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
 import Register from './Component/Utilities/Register';
+
+import PaymentGateway from './Component/User/PaymentGateway';
+import PaypalPayment from './Component/User/RazorpayPayment'
 
 function App() {
   return (
@@ -61,9 +65,13 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
+
           <Route path="/add-guest" element={ <AddGuest/>} />
           <Route path="/guest" element={ <Guest/>} />
           <Route path="/signup" element={<Register/>} />
+
+          <Route path='/payment' element={<PaypalPayment />} />
+
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />

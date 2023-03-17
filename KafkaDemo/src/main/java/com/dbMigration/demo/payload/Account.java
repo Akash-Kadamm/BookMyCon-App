@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name="accounts")
+@Table(name = "accounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,14 +24,14 @@ import lombok.ToString;
 @ToString
 public class Account {
 
-	@Id
-	@Column(name="customer_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	@Column(name="customer_name")
-	private String customerName;
-	
-    @Column(columnDefinition = "boolean default false",name = "is_migrate")
-	private Boolean isMigrate; 
+    @Id
+    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "customer_name")
+    private String customerName;
+
+    @Column(columnDefinition = "boolean default false", name = "is_migrate")
+    private Boolean isMigrate;
 }

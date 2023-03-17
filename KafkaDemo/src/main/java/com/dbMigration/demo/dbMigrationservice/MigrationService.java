@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.dbMigration.demo.dbMigrationservice;
 
 import java.util.List;
 
+import com.dbMigration.demo.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dbMRepo.MysqlAccountRepo;
-import com.example.demo.kafka.producer.AccountProducer;
-import com.example.demo.payload.Account;
+import com.dbMigration.demo.kafka.producer.AccountProducer;
+import com.dbMigration.demo.payload.Account;
 
 @Service
 @EnableScheduling

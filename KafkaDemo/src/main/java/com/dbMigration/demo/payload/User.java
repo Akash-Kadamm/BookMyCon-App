@@ -37,6 +37,6 @@ public class User {
     @Column(name = "address_id")
     private int addressId;
 
-    @Column(columnDefinition = "boolean default false",name = "is_migrate")
+    @Column(columnDefinition = "boolean default false", name = "is_migrate")
     private boolean isMigrate;
 }
