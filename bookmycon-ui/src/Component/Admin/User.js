@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import fileDownload from 'js-file-download'
+import { Avatar } from '@mui/material';
 
 const User = () => {
   const [users, setUsers] = useState([])
@@ -84,7 +85,8 @@ const User = () => {
             <StyledTableCell align="right">User Email Id</StyledTableCell>
             <StyledTableCell align="right">User Password</StyledTableCell>
             <StyledTableCell align="right">User Mobile No.</StyledTableCell>
-            <StyledTableCell align="center">Action</StyledTableCell>
+            <StyledTableCell align="Left">User Images</StyledTableCell>
+            <StyledTableCell align="left">Action</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -97,7 +99,8 @@ const User = () => {
               <StyledTableCell align="right">{user.userEmail}</StyledTableCell>
               <StyledTableCell align="right">{user.userPassword}</StyledTableCell>
               <StyledTableCell align="right">{user.userContact}</StyledTableCell>
-              <StyledTableCell align="center">
+              <StyledTableCell align="right"><Avatar alt="User" variant='square' sx={{ borderRadius: 3, width: 150, height: 90 }} src={"http://localhost:8080/" + user.thumbnail} /></StyledTableCell>
+              <StyledTableCell align="left">
                     <Button
                       variant="outlined"
                       color="error"

@@ -455,8 +455,8 @@ const navigate=useNavigate();
   }
 
   const handleGuestPass=()=>{
-    axios({url:"http://localhost:8080/user/export-to-pass/"+JSON.parse(sessionStorage.getItem("userLogin")).userEmail,method:"GET",responseType:"blob"}).then((response) => {
-      fileDownload(response.data,'GuestPass.pdf')
+    axios({url:"http://localhost:8080/user/export-to-user-pass/"+JSON.parse(sessionStorage.getItem("userLogin")).userEmail,method:"GET",responseType:"blob"}).then((response) => {
+      fileDownload(response.data,'UserID.pdf')
       console.log(response)
   }).catch((error) => {
     console.log(error)
@@ -721,7 +721,7 @@ const navigate=useNavigate();
                                         size="small"
                                         variant="contained"
                                       >
-                                         Guest Pass
+                                         User Pass
                                       </Button></TableCell>
                   </TableRow>
                   {/* ))} */}

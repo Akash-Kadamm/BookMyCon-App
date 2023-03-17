@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 
 const pages = ["Home  ", "Floor Map Updation"];
 const commonPages = ["Profile", "Logout"];
-const userPages = ["Home ", "Floor Map", "Calender", "Feedback"];
+const userPages = ["Home ", "Floor Map", "Calender", "Feedback", "Guest"];
 const nonLoginUser = ["Home"];
 const login = "Login";
 
@@ -67,7 +67,9 @@ const Navigation = () => {
       navigate("/product-list");
     } else if (page === "Cart") {
       navigate("/cart");
-    } else if (page === "Floor Map") {
+    } else if (page === "Guest") {
+      navigate("/guest");
+    }else if (page === "Floor Map") {
       navigate("/floormap");
     } else if (page === "Home ") {
       navigate("/auditorium-view");

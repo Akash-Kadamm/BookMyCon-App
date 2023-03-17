@@ -73,7 +73,7 @@ public class UserServiceTest {
 	@Test
 	public void testShowAllUser_ConditionReturnUserList() {
 		List<User> userList=new ArrayList<>();
-		User user2=new User(2, "Admin", "admin@cybage.com", "admin@123", "admin", "7038967694");
+//		User user2=new User(2, "Admin", "admin@cybage.com", "admin@123", "admin", "7038967694");
 		userList.add(user);
 		userList.add(user2);
 		when(userRepo.findAll()).thenReturn(userList);
