@@ -1,18 +1,23 @@
 package com.bookmycon.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Data
-@Builder
+//@Data
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Entity(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "users")
+@Builder
+@ToString
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -35,4 +40,6 @@ public class User {
     @Column(name = "user_contact")
     private String userContact;
 
+//    @Column(name = "image")
+    private String thumbnail;
 }

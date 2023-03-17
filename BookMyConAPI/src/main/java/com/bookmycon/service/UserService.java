@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.bookmycon.dto.UserRequestDTO;
+import com.bookmycon.model.Guest;
+import com.bookmycon.utils.StorageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +15,7 @@ import com.bookmycon.model.User;
 import com.bookmycon.repository.LoginRepository;
 import com.bookmycon.repository.UserRepository;
 import com.bookmycon.utils.ResponseMessage;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserService {
@@ -22,6 +27,14 @@ public class UserService {
 	private LoginRepository loginRepo;
 	
 	static Logger logger=Logger.getLogger(UserService.class);
+
+	@Autowired
+	private StorageService storageService;
+//	public User save(User user, MultipartFile thumbnail) {
+//		String fileName = storageService.store(thumbnail);
+//		user.setThumbnail(fileName);
+//		return userRepository.save(user);
+//	}
 	
 	/*
 	 * Register new user
@@ -31,11 +44,13 @@ public class UserService {
 	 * @throws generalize Exception
 	 *  
 	 * */
-	public Map<String, Object> userRegistration(User user){
+	public Map<String, Object> userRegistration(User user,MultipartFile thumbnail){
 		Map<String, Object> response = new HashMap<>();	
 			try {
 				logger.debug("User register");
 				logger.info("user object:"+user);
+				String fileName = storageService.store(thumbnail);
+				user.setThumbnail(fileName);
 				User result=userRepository.save(user);
 				response.put("user",result);
 			}catch(Exception e){

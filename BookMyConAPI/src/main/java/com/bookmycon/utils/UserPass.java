@@ -1,19 +1,19 @@
 package com.bookmycon.utils;
 
-import com.bookmycon.model.Guest;
+import com.bookmycon.model.User;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.core.io.Resource;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GuestPass {
+public class UserPass {
 
-    public void generatePass(Guest guest, HttpServletResponse response) throws DocumentException, IOException {
+    public void generatePassOfUser(User user, HttpServletResponse response) throws DocumentException, IOException {
 
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
@@ -22,7 +22,7 @@ public class GuestPass {
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle.setSize(30);
 
-        Paragraph paragraph1 = new Paragraph("Guest Pass", fontTiltle);
+        Paragraph paragraph1 = new Paragraph("User Pass", fontTiltle);
 
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
 
@@ -35,15 +35,15 @@ public class GuestPass {
         String currentDateTime = dateFormat.format(new Date());
 
         table.addCell("\r" +
-                "Guest ID "+ " : " + String.valueOf(guest.getGuestId()) + "\r\r" +
-                "Name " + " : " + String.valueOf(guest.getGuestName()) + "\r\r" +
-                "Company Name " + " : " + String.valueOf(guest.getGuestCompany()) + "\r\r" +
-                "Mobile No. " + " : " + String.valueOf(guest.getGuestMobileNo()) + "\r\r" +
+                "User ID "+ " : " + String.valueOf(user.getUserId()) + "\r\r" +
+                "Name " + " : " + String.valueOf(user.getUserName()) + "\r\r" +
+                "Contact " + " : " + String.valueOf(user.getUserContact()) + "\r\r" +
                 "Date" + " : " + currentDateTime
         );
-        
-        Image myImage = Image.getInstance("E://uploads//"+guest.getThumbnail());
+
+        Image myImage = Image.getInstance("E://uploads//"+user.getThumbnail());
         table.addCell(myImage);
+
         document.add(table);
 
         Font fontTiltle1 = FontFactory.getFont(FontFactory.TIMES_ROMAN);
@@ -53,7 +53,7 @@ public class GuestPass {
         document.add(paragraph2);
 
         document.close();
-        System.out.println("Pass created successfully..");
+        System.out.println("Table created successfully..");
 
     }
 }

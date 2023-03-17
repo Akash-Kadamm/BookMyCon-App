@@ -7,7 +7,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import com.bookmycon.utils.GuestPass;
+import com.bookmycon.dto.UserRequestDTO;
+import com.bookmycon.utils.UserPass;
 import com.bookmycon.utils.PdfGenerator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +53,16 @@ public class UserController {
 	 * 
 	 */
 	@PostMapping("/registration")
-	public ResponseEntity<Object> registerUser(@RequestBody User user) {
+//	@RequestBody User user, @RequestBody
+	public ResponseEntity<Object> registerUser(UserRequestDTO user) {
 
+//		User user1 = null;
 		Map<String, Object> response = new HashMap<>();
 		String emailPattern = "^[^@ ]+@[^@ ]+\\.[^@ .]{2,}$";
 		String passwordPattern = ".{6}.*";
+
+//		UserRequestDTO userRequestDTO = new UserRequestDTO();
+//		user = userService.save(UserRequestDTO.toEntity(userRequestDTO),userRequestDTO.getThumbnail());
 
 		if (user != null) {
 			logger.debug("User  object is not null ");
@@ -67,7 +73,7 @@ public class UserController {
 				if (loginService.isUserExists(user.getUserEmail())) {
 					logger.debug("Check email is already exists.");
 					user.setUserRole("user");
-					response = userService.userRegistration(user);
+					response = userService.userRegistration(UserRequestDTO.toEntity(user),user.getThumbnail());
 
 					if (response != null) {
 						logger.info("user object: " + response);
@@ -161,11 +167,10 @@ public class UserController {
 		response.setHeader(headerKey, headerValue);
 		List < User > listOfUsers = userService.findAllUsers();
 		PdfGenerator generator = new PdfGenerator();
-//		System.out.println(response.getHeader("Content-Disposition"));
 		generator.generate(listOfUsers, response);
 	}
 
-	@GetMapping("/export-to-pass/{email}")
+	@GetMapping("/export-to-user-pass/{email}")
 	public void generatePassFile(HttpServletResponse response , @PathVariable String email) throws IOException
 	{
 		response.setContentType("application/pdf");
@@ -175,7 +180,8 @@ public class UserController {
 
 		User userDetails=userService.findByUserEmail(email);
 		System.out.println(userDetails);
-		GuestPass guestPass = new GuestPass();
-		guestPass.generatePass(userDetails, response);
+		UserPass userPass = new UserPass();
+		userPass.generatePassOfUser(userDetails, response);
 	}
+
 }

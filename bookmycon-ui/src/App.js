@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './Component/Utilities/Login';
 import UpdateUser from './Component/User/UpdateUser';
@@ -11,7 +10,6 @@ import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/Admin/UpdateAuditorium';
 import Feedback from './Component/User/Feedback';
 import BookMeeting from './Component/User/BookMeeting';
-import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
 import ContactUs from './Component/Utilities/ContactUs';
 import BookingListOfUser from './Component/User/BookingListOfUser';
@@ -28,8 +26,14 @@ import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
 import NonUserHomePage from './Component/User/NonUserHomePage';
 import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
+
+import AddGuest from './Component/User/AddGuest';
+import Guest from './Component/User/Guest';
+import Register from './Component/Utilities/Register';
+
 import PaymentGateway from './Component/User/PaymentGateway';
 import PaypalPayment from './Component/User/RazorpayPayment'
+
 function App() {
   return (
     <div className="App">
@@ -39,9 +43,9 @@ function App() {
         <Route exact path="/" element={<NonUserHomePage />} />
           <Route exact path="/calender-view" element={<HomePage />} />
           <Route exact path="/floormap" element={<UserFloorMap />} />
-           <Route exact path="/auditorium-view" element={<ViewForUser />} />
+          <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Registration />} />
+          {/* <Route path="/signup" element={<Registration />} /> */}
           <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
@@ -61,7 +65,13 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
+
+          <Route path="/add-guest" element={ <AddGuest/>} />
+          <Route path="/guest" element={ <Guest/>} />
+          <Route path="/signup" element={<Register/>} />
+
           <Route path='/payment' element={<PaypalPayment />} />
+
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
