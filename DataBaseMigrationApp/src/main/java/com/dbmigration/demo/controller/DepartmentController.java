@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/department")
@@ -32,6 +34,14 @@ public class DepartmentController {
         return new ResponseEntity<>(
           departmentService.saveDepartment(department),
           HttpStatus.CREATED
+        );
+    }
+
+    @GetMapping("/fetchDepartmentFromNewDb/{departmentId}")
+    public ResponseEntity<Department> getDepartmentFromPostgresql(@PathVariable int departmentId){
+        return new ResponseEntity<>(
+                departmentService.getDepartmentFromPostgresql(departmentId),
+                HttpStatus.OK
         );
     }
 }

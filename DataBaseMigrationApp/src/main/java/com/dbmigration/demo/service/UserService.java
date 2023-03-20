@@ -4,11 +4,13 @@ import com.dbmigration.demo.model.Department;
 import com.dbmigration.demo.repo.mysql.MysqlUserRepo;
 import com.dbmigration.demo.model.User;
 import com.dbmigration.demo.repo.postgresql.PostgresqlUserRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -58,7 +60,7 @@ public class UserService {
    * */
     public String deleteUser(int userId){
         mysqlUserRepo.deleteById(userId);
-        return "User is deleted....";
+        return ResponseMessage.USER_DELETED.getMessage();
     }
 
    /*
@@ -113,5 +115,14 @@ public class UserService {
             });
         }
         return users;
+    }
+
+    /**/
+    public User getUserFromPostgresql(int userId){
+       Optional <User> savedUser=postgresqlUserRepo.findById(userId);
+        if(savedUser.isEmpty()){
+            return null;
+        }
+        return savedUser.get();
     }
 }

@@ -3,6 +3,7 @@ package com.dbmigration.demo.service;
 import com.dbmigration.demo.model.User;
 import com.dbmigration.demo.repo.mysql.MysqlUserRepo;
 import com.dbmigration.demo.repo.postgresql.PostgresqlUserRepo;
+import com.dbmigration.demo.utility.ResponseMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,8 +35,8 @@ public class UserServiceTest {
     User user2;
 
     @BeforeEach
-    public void setUp(){
-        user1=User.builder()
+    public void setUp() {
+        user1 = User.builder()
                 .userId(1)
                 .userEmail("akashkad@cybage.com")
                 .userName("Akash Kadam")
@@ -43,7 +44,7 @@ public class UserServiceTest {
                 .userPassword("ak@123")
                 .userContactNumber("7038967693")
                 .build();
-        user2=User.builder()
+        user2 = User.builder()
                 .userId(2)
                 .userEmail("akshayshe@cybage.com")
                 .userName("Akshay Shende")
@@ -55,81 +56,99 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("Test for get all users")
-    public void givenListOfUsers_whenGetAllUsers_thanListOfUsers(){
-            BDDMockito.given(mysqlUserRepo.findAll()).willReturn(List.of(user1,user2));
-            List<User> savedUsers=userService.getAllUsers();
-            Assertions.assertThat(savedUsers.size()).isEqualTo(2);
+    public void givenListOfUsers_whenGetAllUsers_thanListOfUsers() {
+        BDDMockito.given(mysqlUserRepo.findAll()).willReturn(List.of(user1, user2));
+        List<User> savedUsers = userService.getAllUsers();
+        Assertions.assertThat(savedUsers.size()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("Test for save user in Mysql database")
-    public void givenUserObject_whenSaveInMysql_thanUserObject(){
+    public void givenUserObject_whenSaveInMysql_thanUserObject() {
         BDDMockito.given(mysqlUserRepo.save(user1)).willReturn(user1);
-        User savedUsers=userService.saveUserInMysql(user1);
+        User savedUsers = userService.saveUserInMysql(user1);
         Assertions.assertThat(savedUsers.getUserId()).isEqualTo(1);
         Assertions.assertThat(savedUsers.getUserName()).isEqualTo("Akash Kadam");
     }
 
     @Test
     @DisplayName("Test for save user in Postgresql database")
-    public void givenUserObject_whenSaveInPostgresql_thanUserObject(){
+    public void givenUserObject_whenSaveInPostgresql_thanUserObject() {
         BDDMockito.given(postgresqlUserRepo.save(user1)).willReturn(user1);
-        User savedUsers=userService.saveUserInPostgresql(user1);
+        User savedUsers = userService.saveUserInPostgresql(user1);
         Assertions.assertThat(savedUsers.getUserId()).isEqualTo(1);
         Assertions.assertThat(savedUsers.getUserName()).isEqualTo("Akash Kadam");
     }
 
     @Test
     @DisplayName("Test for Delete User from Mysql DataBase.")
-    public void givenUserId_whenDeleteUser_thanMessage(){
-        int userId=1;
+    public void givenUserId_whenDeleteUser_thanMessage() {
+        int userId = 1;
         BDDMockito.willDoNothing().given(mysqlUserRepo).deleteById(userId);
-        String message=userService.deleteUser(userId);
+        String message = userService.deleteUser(userId);
         BDDMockito.verify(mysqlUserRepo, Mockito.times(1)).deleteById(BDDMockito.anyInt());
-        Assertions.assertThat(message).isEqualTo("User is deleted....");
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.USER_DELETED.getMessage());
     }
 
     @Test
     @DisplayName("Test for Update User")
-    public void givenUserObject_whenUpdateUser_thanMessage(){
+    public void givenUserObject_whenUpdateUser_thanMessage() {
         BDDMockito.given(mysqlUserRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(user1));
         BDDMockito.given(mysqlUserRepo.save(user1)).willReturn(user1);
-        String message=userService.updateUser(user1);
+        String message = userService.updateUser(user1);
         Assertions.assertThat(message).isEqualTo("User is Updated....");
     }
 
     @Test
     @DisplayName("Test for Fetch User By userId")
-    public void givenUserObject_whenGetUserByUserId_thanUserObject(){
-        int userId=1;
+    public void givenUserObject_whenGetUserByUserId_thanUserObject() {
+        int userId = 1;
         BDDMockito.given(mysqlUserRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(user1));
-        User savedUser=userService.getUserByUserId(userId);
+        User savedUser = userService.getUserByUserId(userId);
         Assertions.assertThat(savedUser.getUserId()).isEqualTo(1);
         Assertions.assertThat(savedUser.getUserName()).isEqualTo("Akash Kadam");
     }
+
     @Test
     @DisplayName("Test for Set flag.")
-    public void givenUser_whenSetFlag_thanReturnNothing(){
+    public void givenUser_whenSetFlag_thanReturnNothing() {
         UserService.setFlag(user1);
         Assertions.assertThat(user1.isMigrate()).isEqualTo(true);
     }
 
     @Test
     @DisplayName("Test for Get all users by company id (positive)")
-    public void givenCompanyId_whenGetAllUsersByCompanyId_thanListUsers(){
-        int companyId=1;
-        BDDMockito.given(mysqlUserRepo.fetchUsersByCompanyId(BDDMockito.anyInt())).willReturn(List.of(user1,user2));
-        List<User> savedUsers=userService.getAllUsersByCompanyId(companyId);
+    public void givenCompanyId_whenGetAllUsersByCompanyId_thanListUsers() {
+        int companyId = 1;
+        BDDMockito.given(mysqlUserRepo.fetchUsersByCompanyId(BDDMockito.anyInt())).willReturn(List.of(user1, user2));
+        List<User> savedUsers = userService.getAllUsersByCompanyId(companyId);
         Assertions.assertThat(savedUsers.size()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("Test for Get all users by company id (negative)")
-    public void givenCompanyId_whenGetAllUsersByCompanyId_thanNull(){
-        int companyId=1;
+    public void givenCompanyId_whenGetAllUsersByCompanyId_thanNull() {
+        int companyId = 1;
         BDDMockito.given(mysqlUserRepo.fetchUsersByCompanyId(BDDMockito.anyInt())).willReturn(null);
-        List<User> savedUsers=userService.getAllUsersByCompanyId(companyId);
+        List<User> savedUsers = userService.getAllUsersByCompanyId(companyId);
         Assertions.assertThat(savedUsers).isEqualTo(null);
+    }
+
+    @Test
+    @DisplayName("Test for get User from postgresql database positive scenario.")
+    public void givenUserId_whenGetUserFromPostgresql_thanUser() {
+        BDDMockito.given(postgresqlUserRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(user1));
+        User savedUser = userService.getUserFromPostgresql(user1.getUserId());
+        Assertions.assertThat(savedUser.getUserId()).isEqualTo(1);
+        Assertions.assertThat(savedUser.getUserName()).isEqualTo("Akash Kadam");
+    }
+
+    @Test
+    @DisplayName("Test for get User from postgresql database negative scenario.")
+    public void givenUserId_whenGetUserFromPostgresql_thanNull() {
+        BDDMockito.given(postgresqlUserRepo.findById(BDDMockito.anyInt())).willReturn(Optional.empty());
+        User savedUser = userService.getUserFromPostgresql(user1.getUserId());
+        Assertions.assertThat(savedUser).isEqualTo(null);
     }
 
 }
