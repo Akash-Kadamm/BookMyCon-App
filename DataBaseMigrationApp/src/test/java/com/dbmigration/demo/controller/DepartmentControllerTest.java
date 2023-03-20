@@ -32,19 +32,21 @@ public class DepartmentControllerTest {
     private ObjectMapper objectMapper;
 
     Department department;
+
     @BeforeEach
     public void setUp() {
-        department=Department.builder()
+        department = Department.builder()
                 .departmentId(1)
                 .departmentName("QA")
                 .build();
     }
+
     @Test
     @DisplayName("Test for get Department By departmentId.")
     public void givenDepartmentId_whenGetDepartmentByDepartmentId_thanReturnDepartment() throws Exception {
         BDDMockito.given(departmentService.getDepartmentById(BDDMockito.anyInt())).willReturn(department);
 
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/department/fetchDepartment/{departmentId}",department.getDepartmentId()));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/department/fetchDepartment/{departmentId}", department.getDepartmentId()));
 
         response.andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -53,12 +55,13 @@ public class DepartmentControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.departmentName",
                         CoreMatchers.is(department.getDepartmentName())));
     }
+
     @Test
     @DisplayName("Test for Save Department in postgresql database.")
-    public void givenDepartment_whenSaveDepartment_thanReturnMessage() throws Exception{
+    public void givenDepartment_whenSaveDepartment_thanReturnMessage() throws Exception {
         BDDMockito.given(departmentService.saveDepartment(BDDMockito.any(Department.class))).willReturn(ResponseMessage.DEPARTMENT_RECORD_SAVED);
 
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.post("/department/saveDepartment")
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.post("/department/saveDepartment")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(department))
         );
@@ -67,4 +70,21 @@ public class DepartmentControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
+
+    @Test
+    @DisplayName("Test for fetch Department from postgresql database")
+    public void givenDepartmentId_whenGetDepartmentFromPostgresql_thanReturnDepartment() throws Exception {
+        BDDMockito.given(departmentService.getDepartmentFromPostgresql(BDDMockito.anyInt())).willReturn(department);
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/department/fetchDepartmentFromNewDb/{departmentId}", department.getDepartmentId()));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.departmentId",
+                        CoreMatchers.is(department.getDepartmentId())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.departmentName",
+                        CoreMatchers.is(department.getDepartmentName())));
+
+    }
+
 }

@@ -30,8 +30,8 @@ public class DepartmentServiceTest {
     Department department;
 
     @BeforeEach
-    public void setUp(){
-        department=Department.builder()
+    public void setUp() {
+        department = Department.builder()
                 .departmentId(1)
                 .departmentName("QA")
                 .build();
@@ -39,27 +39,44 @@ public class DepartmentServiceTest {
 
     @Test
     @DisplayName("Test for fetch department by departmentId")
-    public void givenDepartmentId_whenGetDepartmentById_thanDepartmentObject(){
+    public void givenDepartmentId_whenGetDepartmentById_thanDepartmentObject() {
         BDDMockito.given(mysqlDepartmentRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(department));
-        Department savedDepartment=departmentService.getDepartmentById(1);
+        Department savedDepartment = departmentService.getDepartmentById(1);
         Assertions.assertThat(savedDepartment.getDepartmentId()).isEqualTo(1);
         Assertions.assertThat(savedDepartment.getDepartmentName()).isEqualTo("QA");
     }
 
     @Test
     @DisplayName("Test for save department")
-    public void givenDepartmentObject_whenSaveDepartment_thanDepartmentObject(){
+    public void givenDepartmentObject_whenSaveDepartment_thanDepartmentObject() {
         BDDMockito.given(postgresqlDepartmentRepo.save(BDDMockito.any(Department.class))).willReturn(department);
-        ResponseMessage message=departmentService.saveDepartment(department);
+        ResponseMessage message = departmentService.saveDepartment(department);
         Assertions.assertThat(message).isEqualTo(ResponseMessage.DEPARTMENT_RECORD_SAVED);
     }
+
     @Test
-    @DisplayName("Test for Department from postgresql Database.")
-    public void givenDepartmentId_whenGetDepartmentFromPostgresql_thanReturnDepartment(){
+    @DisplayName("Test for Department from postgresql Database positive scenario.")
+    public void givenDepartmentId_whenGetDepartmentFromPostgresql_thanReturnDepartment() {
         BDDMockito.given(postgresqlDepartmentRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(department));
-        Department savedDepartment=departmentService.getDepartmentFromPostgresql(department.getDepartmentId());
+        Department savedDepartment = departmentService.getDepartmentFromPostgresql(department.getDepartmentId());
         Assertions.assertThat(savedDepartment.getDepartmentId()).isEqualTo(1);
         Assertions.assertThat(savedDepartment.getDepartmentName()).isEqualTo("QA");
     }
 
+    @Test
+    @DisplayName("Test for Department from postgresql Database negative scenario.")
+    public void givenDepartmentId_whenGetDepartmentFromPostgresql_thanReturnNull() {
+        BDDMockito.given(postgresqlDepartmentRepo.findById(BDDMockito.anyInt())).willReturn(Optional.empty());
+        Department savedDepartment = departmentService.getDepartmentFromPostgresql(department.getDepartmentId());
+        Assertions.assertThat(savedDepartment).isEqualTo(null);
+    }
+
+    @Test
+    @DisplayName("Test for Delete Department from postgresql database.")
+    public void givenDepartmentId_whenDeleteDepartment_thanReturnMessage() {
+        BDDMockito.willDoNothing().given(postgresqlDepartmentRepo).deleteById(BDDMockito.anyInt());
+        String message = departmentService.deleteDepartment(department.getDepartmentId());
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.DEPARTMENT_RECORD_DELETED.getMessage());
+
+    }
 }

@@ -84,9 +84,8 @@ public class CompanyServiceTest {
         Assertions.assertThat(savedCompany.getCompanyAddress()).isEqualTo("kalyani nagar pune");
     }
     @Test
-    @DisplayName("Test for Get Company from postgresql Database.")
+    @DisplayName("Test for Get Company from postgresql Database Positive scenario.")
     public void givenCompanyId_whenGetCompanyFromPostgresql_thanReturnCompany(){
-
         BDDMockito.given(postgresqlCompanyRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(company));
         Company savedCompany=companyService.getCompanyFromPostgresql(company.getCompanyId());
         Assertions.assertThat(savedCompany.getCompanyId()).isEqualTo(1);
@@ -94,4 +93,11 @@ public class CompanyServiceTest {
         Assertions.assertThat(savedCompany.getCompanyAddress()).isEqualTo("kalyani nagar pune");
     }
 
+    @Test
+    @DisplayName("Test for Get Company from postgresql Database negative scenario.")
+    public void givenCompanyId_whenGetCompanyFromPostgresql_thanReturnNull(){
+        BDDMockito.given(postgresqlCompanyRepo.findById(BDDMockito.anyInt())).willReturn(Optional.empty());
+        Company savedCompany=companyService.getCompanyFromPostgresql(company.getCompanyId());
+        Assertions.assertThat(savedCompany).isEqualTo(null);
+    }
 }
