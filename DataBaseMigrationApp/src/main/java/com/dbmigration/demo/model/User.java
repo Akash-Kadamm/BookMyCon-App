@@ -1,6 +1,8 @@
 package com.dbmigration.demo.model;
 
 
+import com.dbmigration.demo.encryptanddecrypt.Decryption;
+import com.dbmigration.demo.encryptanddecrypt.Encryption;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -38,6 +40,9 @@ public class User {
     @Column(name = "address_id")
     private int addressId;
 
-    @Column(columnDefinition = "boolean default false",name = "is_migrate")
+    @Column(name = "card_detail_id")
+    private int cardDetailId;
+
+    @Column(columnDefinition = "boolean default false", name = "is_migrate")
     private boolean isMigrate;
 }

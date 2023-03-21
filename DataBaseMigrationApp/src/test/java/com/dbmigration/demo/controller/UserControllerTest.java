@@ -1,8 +1,10 @@
 package com.dbmigration.demo.controller;
 
+import com.dbmigration.demo.dto.UserDetailsDTO;
 import com.dbmigration.demo.migrationservice.UserMigrationService;
-import com.dbmigration.demo.model.User;
+import com.dbmigration.demo.model.*;
 import com.dbmigration.demo.service.UserService;
+import com.dbmigration.demo.utility.ResponseMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,11 +35,16 @@ public class UserControllerTest {
     @MockBean
     private UserMigrationService userMigrationService;
 
+    UserDetailsDTO userDetailsDTO;
     User user;
+    Department department;
+    Company company;
+    Address address;
+    CardDetail cardDetail;
 
     @BeforeEach
     public void setUp() {
-        user=User.builder()
+        user = User.builder()
                 .userId(1)
                 .userEmail("akashkad@cybage.com")
                 .userName("Akash Kadam")
@@ -47,24 +54,53 @@ public class UserControllerTest {
                 .companyId(1)
                 .isMigrate(false)
                 .build();
+        department = Department.builder()
+                .departmentId(1)
+                .departmentName("QA")
+                .build();
+        company = Company.builder()
+                .companyId(1)
+                .companyName("Cybage")
+                .companyAddress("Pune")
+                .build();
+        address = Address.builder()
+                .addressId(1)
+                .localLandmark("Akurdi")
+                .homeNumber("302")
+                .cityName("pune")
+                .pinCode("431601")
+                .build();
+        cardDetail = CardDetail.builder()
+                .cardDetailId(1)
+                .cardHolderName("Akash Kadam")
+                .cardNumber("1234123412341234")
+                .build();
+        userDetailsDTO = UserDetailsDTO.builder()
+                .user(user)
+                .department(department)
+                .company(company)
+                .cardDetail(cardDetail)
+                .address(address)
+                .build();
     }
 
     @Test
     @DisplayName("Test for Get All Users.")
-    public void given_whenGetAllUsers_thanReturnListOfUsers() throws  Exception{
+    public void given_whenGetAllUsers_thanReturnListOfUsers() throws Exception {
         BDDMockito.given(userService.getAllUsers()).willReturn(List.of(user));
 
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/users/getAllUsers"));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/getAllUsers"));
 
         response.andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
     @Test
     @DisplayName("Test for Get User By userId")
-    public void givenUserId_whenGetUserByUserId_thanReturnUser() throws Exception{
+    public void givenUserId_whenGetUserByUserId_thanReturnUser() throws Exception {
         BDDMockito.given(userService.getUserByUserId(BDDMockito.anyInt())).willReturn(user);
 
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/users/getUser/{userId}",user.getUserId()));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/getUser/{userId}", user.getUserId()));
 
         response.andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -84,41 +120,62 @@ public class UserControllerTest {
     @Test
     @DisplayName("Test for migrate user by user Id.")
     public void givenUserId_whenMigrateUserByUserId_thanReturnMessage() throws Exception {
-           BDDMockito.given(userMigrationService.userMigrationServiceByUserId(BDDMockito.anyInt())).willReturn("User is MIgrated..");
+        BDDMockito.given(userMigrationService.userMigrationServiceByUserId(BDDMockito.anyInt())).willReturn("User is MIgrated..");
 
-           ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/users/migrateUser/{userId}",user.getUserId()));
-
-           response.andDo(MockMvcResultHandlers.print())
-                   .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-    @Test
-    @DisplayName("Test for Get users to be migrated by company name.")
-    public void givenCompanyName_whenGetUsersToBeMigratedByCompanyName_thanReturnListOfUsers() throws Exception{
-
-        int companyId=1;
-        BDDMockito.given(userService.getAllUsersByCompanyId(BDDMockito.anyInt())).willReturn(List.of(user));
-
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/users/getUserToBeMigrateByCompanyName/{companyId}",companyId));
-
-        response.andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.size()",CoreMatchers.is(1)));
-    }
-
-    @Test
-    @DisplayName("Test for migrate user data by company name.")
-    public void givenCompanyName_whenMigrateByCompanyName_thanReturnMessage() throws Exception{
-
-        String companyName="cybage";
-        BDDMockito.given(userMigrationService.migrationServiceByCompanyName(BDDMockito.anyString())).willReturn("All Users Migrated");
-
-        ResultActions response=mockMvc.perform(MockMvcRequestBuilders.get("/users/migrateUsers/{companyName}",companyName));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/migrateUser/{userId}", user.getUserId()));
 
         response.andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    @DisplayName("Test for Get users to be migrated by company name.")
+    public void givenCompanyName_whenGetUsersToBeMigratedByCompanyName_thanReturnListOfUsers() throws Exception {
 
+        int companyId = 1;
+        BDDMockito.given(userService.getAllUsersByCompanyId(BDDMockito.anyInt())).willReturn(List.of(user));
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/getUserToBeMigrateByCompanyName/{companyId}", companyId));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
+    }
+
+    @Test
+    @DisplayName("Test for migrate user data by company name.")
+    public void givenCompanyName_whenMigrateByCompanyName_thanReturnMessage() throws Exception {
+
+        String companyName = "cybage";
+        BDDMockito.given(userMigrationService.migrationServiceByCompanyName(BDDMockito.anyString())).willReturn("All Users Migrated");
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/migrateUsers/{companyName}", companyName));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @DisplayName("Test for get User Details from postgresql database.")
+    public void givenUserId_whenFetchAllDetailsOfUser_thanReturnUserDetailsDTO() throws Exception {
+        BDDMockito.given(userMigrationService.fetchAllUserDetails(BDDMockito.anyInt())).willReturn(userDetailsDTO);
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/users/fetchAllDetailsOfUser/{userId}", user.getUserId()));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @DisplayName("Test for Delete All Details of User.")
+    public void givenUserId_whenDeleteUserDetails_thanReturnMessage() throws Exception {
+        BDDMockito.given(userMigrationService.deleteAllDetailsOfUser(BDDMockito.anyInt())).willReturn(ResponseMessage.USER_DELETED.getMessage());
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.delete("/users/deleteAllDetailsOfUser/{userId}", user.getUserId()));
+
+        response.andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 
 
 }

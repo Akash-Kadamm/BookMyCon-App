@@ -28,22 +28,22 @@ public class AddressServiceTest {
     Address address;
 
     @BeforeEach
-    public void setUp(){
-       address=Address.builder()
-               .addressId(1)
-               .cityName("Pune")
-               .pinCode("431601")
-               .homeNumber("678")
-               .localLandmark("kalyani nager")
-               .build();
+    public void setUp() {
+        address = Address.builder()
+                .addressId(1)
+                .cityName("Pune")
+                .pinCode("431601")
+                .homeNumber("678")
+                .localLandmark("kalyani nager")
+                .build();
     }
 
     @Test
     @DisplayName("Test for fetch address by addressId.")
-    public void givenAddressId_whenGetAddressById_thanAddressObject(){
-        int addressId=1;
+    public void givenAddressId_whenGetAddressById_thanAddressObject() {
+        int addressId = 1;
         BDDMockito.given(mysqlAddressRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(address));
-        Address savedAddress=addressService.getAddressById(addressId);
+        Address savedAddress = addressService.getAddressById(addressId);
         Assertions.assertThat(savedAddress.getAddressId()).isEqualTo(1);
         Assertions.assertThat(savedAddress.getCityName()).isEqualTo("Pune");
         Assertions.assertThat(savedAddress.getHomeNumber()).isEqualTo("678");
@@ -52,20 +52,36 @@ public class AddressServiceTest {
 
     @Test
     @DisplayName("Test for Save Address in postgresql database")
-    public void givenAddressObject_whenSaveAddress_thanMessage(){
+    public void givenAddressObject_whenSaveAddress_thanMessage() {
         BDDMockito.given(postgresqlAddressRepo.save(BDDMockito.any(Address.class))).willReturn(address);
-        ResponseMessage message=addressService.saveAddress(address);
+        ResponseMessage message = addressService.saveAddress(address);
         Assertions.assertThat(message).isEqualTo(ResponseMessage.ADDRESS_RECORD_SAVED);
     }
+
     @Test
     @DisplayName("Test for get Address from postgresql Database.")
-    public void givenAddressId_whenGetAddressFromPostgresql_thanReturnAddress(){
+    public void givenAddressId_whenGetAddressFromPostgresql_thanReturnAddress() {
         BDDMockito.given(postgresqlAddressRepo.findById(BDDMockito.anyInt())).willReturn(Optional.of(address));
-        Address savedAddress =addressService.getAddressFromPostgresql(address.getAddressId());
+        Address savedAddress = addressService.getAddressFromPostgresql(address.getAddressId());
         Assertions.assertThat(savedAddress.getAddressId()).isEqualTo(1);
         Assertions.assertThat(savedAddress.getCityName()).isEqualTo("Pune");
         Assertions.assertThat(savedAddress.getHomeNumber()).isEqualTo("678");
         Assertions.assertThat(savedAddress.getPinCode()).isEqualTo("431601");
     }
 
+    @Test
+    @DisplayName("Test for get Address from postgresql database negative scenario")
+    public void givenAddressId_whenGetAddressFromPostgresql_thanReturnNull() {
+        BDDMockito.given(postgresqlAddressRepo.findById(BDDMockito.anyInt())).willReturn(Optional.empty());
+        Address savedAddress = addressService.getAddressFromPostgresql(address.getAddressId());
+        Assertions.assertThat(savedAddress).isEqualTo(null);
+    }
+
+    @Test
+    @DisplayName("Test for Delete address from postgresql database.")
+    public void givenAddressId_whenDeleteAddress_thanReturnMessage() {
+        BDDMockito.willDoNothing().given(postgresqlAddressRepo).deleteById(BDDMockito.anyInt());
+        String message = addressService.deleteAddress(address.getAddressId());
+        Assertions.assertThat(message).isEqualTo(ResponseMessage.ADDRESS_RECORD_DELETED.getMessage());
+    }
 }

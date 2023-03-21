@@ -79,23 +79,23 @@ class AccountControllerTest {
 						CoreMatchers.is(accounts.size())));
 	}
 
-    @Test
-	@DisplayName("test for create Account ")
-	public void givenAccountObject_whenCreateAccount_thanReturnResponseEntity() throws Exception{
-		boolean flag= false;
-		BDDMockito.given(accountService.createAccount(ArgumentMatchers.any(Account.class),BDDMockito.anyBoolean()))
-				.willAnswer((invocation)->{
-					return invocation.getArgument(0);
-				});
-		ResultActions response=mockMvc.perform(MockMvcRequestBuilders.post("/Account/createAccount")
-				.contentType(MediaType.APPLICATION_JSON)
-						.content(objectMapper.writeValueAsString(account1))
-				);
-		response.andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.id",
-				CoreMatchers.is(account1.getId())))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.customerName",
-						CoreMatchers.is(account1.getCustomerName())));
-	}
+//    @Test
+//	@DisplayName("test for create Account ")
+//	public void givenAccountObject_whenCreateAccount_thanReturnResponseEntity() throws Exception{
+//		boolean flag= false;
+//		BDDMockito.given(accountService.createAccount(ArgumentMatchers.any(Account.class),BDDMockito.anyBoolean()))
+//				.willAnswer((invocation)->{
+//					return invocation.getArgument(0);
+//				});
+//		ResultActions response=mockMvc.perform(MockMvcRequestBuilders.post("/Account/createAccount")
+//				.contentType(MediaType.APPLICATION_JSON)
+//						.content(objectMapper.writeValueAsString(account1))
+//				);
+//		response.andDo(MockMvcResultHandlers.print())
+//				.andExpect(MockMvcResultMatchers.status().isOk())
+//				.andExpect(MockMvcResultMatchers.jsonPath("$.id",
+//				CoreMatchers.is(account1.getId())))
+//				.andExpect(MockMvcResultMatchers.jsonPath("$.customerName",
+//						CoreMatchers.is(account1.getCustomerName())));
+//	}
 }

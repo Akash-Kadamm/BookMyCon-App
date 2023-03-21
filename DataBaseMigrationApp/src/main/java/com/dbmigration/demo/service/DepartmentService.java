@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class DepartmentService {
 
@@ -42,6 +44,15 @@ public class DepartmentService {
     }
 
     public Department getDepartmentFromPostgresql(int departmentId) {
-        return postgresqlDepartmentRepo.findById(departmentId).get();
+       Optional<Department> savedDepartment=postgresqlDepartmentRepo.findById(departmentId);
+       if(savedDepartment.isEmpty()){
+           return null;
+       }
+       return savedDepartment.get() ;
+    }
+
+    public String deleteDepartment(int departmentId){
+         postgresqlDepartmentRepo.deleteById(departmentId);
+         return ResponseMessage.DEPARTMENT_RECORD_DELETED.getMessage();
     }
 }
