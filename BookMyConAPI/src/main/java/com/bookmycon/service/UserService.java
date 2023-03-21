@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.bookmycon.dto.UserRequestDTO;
-import com.bookmycon.model.Guest;
 import com.bookmycon.utils.StorageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +27,7 @@ public class UserService {
 
 	@Autowired
 	private StorageService storageService;
-//	public User save(User user, MultipartFile thumbnail) {
-//		String fileName = storageService.store(thumbnail);
-//		user.setThumbnail(fileName);
-//		return userRepository.save(user);
-//	}
+
 	
 	/*
 	 * Register new user

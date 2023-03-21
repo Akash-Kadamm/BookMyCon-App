@@ -5,7 +5,6 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.core.io.Resource;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

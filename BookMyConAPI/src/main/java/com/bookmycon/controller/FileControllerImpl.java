@@ -12,8 +12,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-//@CrossOrigin("http://localhost:3000")
 @CrossOrigin
 @Controller
 public class FileControllerImpl {

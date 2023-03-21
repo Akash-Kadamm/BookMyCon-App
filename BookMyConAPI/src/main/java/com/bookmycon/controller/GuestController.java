@@ -28,13 +28,9 @@ public class GuestController {
 	@PostMapping("/addGuest")
 	public ResponseEntity<Guest> addGuest(GuestRequestDTO guestRequestDTO)  {
 		Guest newGuest = null;
-//		try {
 			System.out.println(guestRequestDTO);
 			newGuest = guestService.save(GuestRequestDTO.toEntity(guestRequestDTO),
 					guestRequestDTO.getThumbnail());
-//		} catch (Exception e) {
-//			throw new CustomException("Guest Not Added");
-//		}
 		return new ResponseEntity<Guest>(newGuest, HttpStatus.OK);
 	}
 	

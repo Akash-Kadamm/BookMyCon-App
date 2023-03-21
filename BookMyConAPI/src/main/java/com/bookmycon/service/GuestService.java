@@ -22,8 +22,6 @@ public class GuestService {
     }
 
     public List<Guest> findAllGuests() {
-//    	Guest guest = new Guest();
-//    	List<Guest> test = guestRepository.findAll();
         return guestRepository.findAll();
     }
 
