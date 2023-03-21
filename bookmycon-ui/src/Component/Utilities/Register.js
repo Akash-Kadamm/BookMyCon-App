@@ -94,9 +94,6 @@ const Register = () => {
                                           </InputAdornment>),
                                       }}
                                 />
-                                {/* {
-                                    errors.userName?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please Enter Name</Box>
-                                } */}
                             </Grid>
 
                             <Grid item xs={12}>
@@ -116,14 +113,6 @@ const Register = () => {
                                         ),
                                       }}
                                 />
-                                {/* {errors.userEmail?.type === "required" && (
-                                    <Box id="error" sx={{ color: "error.main" }}>
-                                        Please Enter Your Email
-                                    </Box>
-                                )}
-                                {errors.userEmail && errors.userEmail.type === "pattern" && (
-                                    <p className="text-danger errorMsg">Email is Not Valid.</p>
-                                )} */}
                             </Grid>
 
                             <Grid item xs={12}>
@@ -144,16 +133,6 @@ const Register = () => {
                                         ),
                                       }}
                                 />
-                                {/* {errors.userPassword?.type === "required" && (
-                                    <Box id="error" sx={{ color: "error.main" }}>
-                                        Please Enter Your Password{" "}
-                                    </Box>
-                                )}
-                                {errors.userPassword && errors.userPassword.type === "minLength" && (
-                                    <p className="text-danger errorMsg">
-                                        Password Should Be at-least 6 Characters.
-                                    </p>
-                                )} */}
                                 <Box sx={{ color: "error.main" }}>
                                     {message != null && <span>{message}</span>}{" "}
                                 </Box>
@@ -176,9 +155,6 @@ const Register = () => {
                                         ),
                                       }}
                                 />
-                                {/* {
-                                    errors.userContact?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please Enter Valid Contact Number </Box>
-                                } */}
                             </Grid>
                             <Grid item xs={12}>
                             <TextField  

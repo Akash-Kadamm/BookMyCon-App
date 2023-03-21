@@ -12,6 +12,7 @@ public interface GuestRepository extends JpaRepository<Guest,Integer> {
     Guest findByGuestName(String name);
 
     Guest deleteByGuestId(int guestId);
+
     @Query(nativeQuery = true, value="select * from guest where user_id=?1")
     List<Guest> getGuestByUserId(int userId);
 }

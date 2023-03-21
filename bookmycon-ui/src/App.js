@@ -45,7 +45,6 @@ function App() {
           <Route exact path="/floormap" element={<UserFloorMap />} />
           <Route exact path="/auditorium-view" element={<ViewForUser />} />
           <Route path="/signin" element={<Login />} />
-          {/* <Route path="/signup" element={<Registration />} /> */}
           <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
@@ -65,13 +64,10 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
-
           <Route path="/add-guest" element={ <AddGuest/>} />
           <Route path="/guest" element={ <Guest/>} />
           <Route path="/signup" element={<Register/>} />
-
           <Route path='/payment' element={<PaypalPayment />} />
-
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
