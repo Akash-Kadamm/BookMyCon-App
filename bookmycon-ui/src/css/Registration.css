@@ -1,0 +1,31 @@
+ #Registration-div {
+  margin-top: 4%;
+  background-image: url(../Image/img.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     width: 100%;
+     height: 100vh;
+   }
+   
+   #Registration-card {
+  background-repeat: no-repeat;
+     background-size: cover;
+     background-color: #f1f1f1;
+    border-radius: 1rem; 
+     height: 37rem;
+     width: 90%;
+     margin-top: 0%;
+     margin-left: 2%;
+   }
+  
+  #Sign-Link {
+    line-height: 1.6rem;
+  }
+  
+  #radio-label {
+    float: left;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  
