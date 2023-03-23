@@ -4,6 +4,7 @@ pipeline{
       stage("build"){
         steps{
           echo 'building aplication'
+            echo'building automatically test'
         }
       }
       stage("test"){
