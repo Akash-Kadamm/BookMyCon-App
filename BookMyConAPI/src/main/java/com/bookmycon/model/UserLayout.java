@@ -1,7 +1,6 @@
 package com.bookmycon.model;
 
 
-
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -27,11 +26,11 @@ import lombok.ToString;
 @ToString
 public class UserLayout {
 
-	@Id
-	private String nameId ;
-	
-	@JsonIgnore
-	  @OneToMany(mappedBy="userLayout")
-	    private Set<Areas> areas;
-	
+    @Id
+    private String nameId;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "userLayout")
+    private Set<Areas> areas;
+
 }

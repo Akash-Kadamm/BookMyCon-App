@@ -31,7 +31,7 @@ public class PdfOfAuditorium {
         PdfPTable table = new PdfPTable(6);
 
         table.setWidthPercentage(100f);
-        table.setWidths(new int[] {3,3,3,3,3,3});
+        table.setWidths(new int[]{3, 3, 3, 3, 3, 3});
         table.setSpacingBefore(5);
 
         PdfPCell cell = new PdfPCell();
@@ -55,7 +55,7 @@ public class PdfOfAuditorium {
         cell.setPhrase(new Phrase("Capacity", font));
         table.addCell(cell);
 
-        for (Auditoriums auditoriums: auditoriumsList) {
+        for (Auditoriums auditoriums : auditoriumsList) {
 
             table.addCell(String.valueOf(auditoriums.getAuditoriumId()));
 

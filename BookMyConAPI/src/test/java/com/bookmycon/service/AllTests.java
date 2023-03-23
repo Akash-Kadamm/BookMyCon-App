@@ -9,9 +9,9 @@ import com.bookmycon.controller.LoginControllerTest;
 import com.bookmycon.controller.UserControllerTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AuditoriumServiceTest.class, LoginServiceTest.class, UserServiceTest.class,
-	UserControllerTest.class,AuditoriumControllerTest.class,
-	LoginControllerTest.class})
+@SuiteClasses({AuditoriumServiceTest.class, LoginServiceTest.class, UserServiceTest.class,
+        UserControllerTest.class, AuditoriumControllerTest.class,
+        LoginControllerTest.class})
 public class AllTests {
 
 }

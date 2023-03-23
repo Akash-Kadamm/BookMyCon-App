@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface OrderItemRepository
-        extends JpaRepository<OrderItem,Integer> {
+        extends JpaRepository<OrderItem, Integer> {
 
 
-    @Query(value = "select * from order_items where order_id=?1",nativeQuery = true)
-    public List<OrderItem> getAllItems(int id);
+    @Query(value = "select * from order_items where order_id=?1", nativeQuery = true)
+    List<OrderItem> getAllItems(int id);
 }

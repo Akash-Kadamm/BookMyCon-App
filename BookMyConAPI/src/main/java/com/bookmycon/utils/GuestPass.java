@@ -4,6 +4,7 @@ import com.bookmycon.model.Guest;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -34,20 +35,20 @@ public class GuestPass {
         String currentDateTime = dateFormat.format(new Date());
 
         table.addCell("\r" +
-                "Guest ID "+ " : " + String.valueOf(guest.getGuestId()) + "\r\r" +
-                "Name " + " : " + String.valueOf(guest.getGuestName()) + "\r\r" +
-                "Company Name " + " : " + String.valueOf(guest.getGuestCompany()) + "\r\r" +
-                "Mobile No. " + " : " + String.valueOf(guest.getGuestMobileNo()) + "\r\r" +
+                "Guest ID " + " : " + guest.getGuestId() + "\r\r" +
+                "Name " + " : " + guest.getGuestName() + "\r\r" +
+                "Company Name " + " : " + guest.getGuestCompany() + "\r\r" +
+                "Mobile No. " + " : " + guest.getGuestMobileNo() + "\r\r" +
                 "Date" + " : " + currentDateTime
         );
-        
-        Image myImage = Image.getInstance("E://uploads//"+guest.getThumbnail());
+
+        Image myImage = Image.getInstance("E://uploads//" + guest.getThumbnail());
         table.addCell(myImage);
         document.add(table);
 
         Font fontTiltle1 = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle1.setSize(15);
-        Paragraph paragraph2 = new Paragraph( " The only purpose of this pass is for guest visit and it is valid for one day.", fontTiltle1 );
+        Paragraph paragraph2 = new Paragraph(" The only purpose of this pass is for guest visit and it is valid for one day.", fontTiltle1);
         paragraph2.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(paragraph2);
 

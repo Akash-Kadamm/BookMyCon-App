@@ -24,7 +24,7 @@ public class AdminController {
     public BookingService bookingService;
 
     @GetMapping("/userCount")
-    public ResponseEntity<?> findUserCount(){
+    public ResponseEntity<?> findUserCount() {
         return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
     }
 

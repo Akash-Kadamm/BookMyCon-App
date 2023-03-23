@@ -95,10 +95,10 @@ public class UserRequestDTO {
                 ", thumbnail=" + thumbnail +
                 '}';
     }
-    public static User toEntity(UserRequestDTO dto)
-    {
+
+    public static User toEntity(UserRequestDTO dto) {
         User entity = new User();
-        BeanUtils.copyProperties(dto,entity,"thumbnail");
+        BeanUtils.copyProperties(dto, entity, "thumbnail");
         return entity;
     }
 }

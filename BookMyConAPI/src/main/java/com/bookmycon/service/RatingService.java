@@ -12,6 +12,7 @@ import java.util.List;
 public class RatingService {
     @Autowired
     private RatingRepository ratingRepository;
+
     public List<Rating> getAll() {
         return ratingRepository.findAll();
     }

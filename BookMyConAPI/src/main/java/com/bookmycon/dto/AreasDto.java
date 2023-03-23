@@ -13,18 +13,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class AreasDto {
-    
 
-	
-	private String name ;
-	
-	private String shape ;
-	
-	private int[] coords ;
-	
-	private String preFillColor ;
-	
-	private String fillColor ;
-	
-	
+
+    private String name;
+
+    private String shape;
+
+    private int[] coords;
+
+    private String preFillColor;
+
+    private String fillColor;
+
+
 }

@@ -1,4 +1,5 @@
 package com.bookmycon.dto;
+
 import java.time.LocalDateTime;
 
 import org.springframework.beans.BeanUtils;
@@ -18,19 +19,19 @@ import lombok.ToString;
 @ToString
 public class BookingDTO {
 
-	private int bookingId;
-	private Auditoriums aduitoriamId;
-	@JsonIgnore
-	private User userId;
-	private LocalDateTime bookingDateTimeFrom;
-	private LocalDateTime bookingDateTimeTo;
-	private String bookingAgenda;
-	
-	public static BookingDTO entityToDto (Booking entity) {
-		BookingDTO bookinDto = new BookingDTO();
-		BeanUtils.copyProperties(entity, bookinDto);
-		bookinDto.setBookingDateTimeTo(LocalDateTime.of(entity.getBookingDateTo(), entity.getBookingTimeTO()));
-		bookinDto.setBookingDateTimeFrom(LocalDateTime.of(entity.getBookingDateFrom(), entity.getBookingTimeFrom()));
-		return bookinDto;
-	}
+    private int bookingId;
+    private Auditoriums aduitoriamId;
+    @JsonIgnore
+    private User userId;
+    private LocalDateTime bookingDateTimeFrom;
+    private LocalDateTime bookingDateTimeTo;
+    private String bookingAgenda;
+
+    public static BookingDTO entityToDto(Booking entity) {
+        BookingDTO bookinDto = new BookingDTO();
+        BeanUtils.copyProperties(entity, bookinDto);
+        bookinDto.setBookingDateTimeTo(LocalDateTime.of(entity.getBookingDateTo(), entity.getBookingTimeTO()));
+        bookinDto.setBookingDateTimeFrom(LocalDateTime.of(entity.getBookingDateFrom(), entity.getBookingTimeFrom()));
+        return bookinDto;
+    }
 }

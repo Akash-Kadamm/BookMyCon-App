@@ -26,8 +26,8 @@ public class AreasService {
         return areasRepository.findById(id);
     }
 
-    public List<Areas> findByUserLayout(UserLayout userLayout){
-        return  areasRepository.findByUserLayout(userLayout);
+    public List<Areas> findByUserLayout(UserLayout userLayout) {
+        return areasRepository.findByUserLayout(userLayout);
     }
 
     public void addAreas(Areas areas) {
@@ -44,7 +44,7 @@ public class AreasService {
         areasRepository.deleteById(id);
     }
 
-    public void editAreas(int id, Areas areas ) {
+    public void editAreas(int id, Areas areas) {
         areasRepository.save(areas);
     }
 

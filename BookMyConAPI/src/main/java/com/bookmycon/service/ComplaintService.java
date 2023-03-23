@@ -15,51 +15,28 @@ public class ComplaintService {
     private ComplaintRepository complaintRepository;
 
 
-    /*
-     * Retrieve All complaints.
-     *
-     * @param
-     * @return List of complaints
-     *
-     * */
-    public List<Complaint> getAllComplaints(){
-        return  complaintRepository.findAll();
-    }
-
-    /*
-     * Retrieve All Drink and Snacks complaints.
-     *
-     * @param
-     * @return List of complaints
-     *
-     * */
-    public List<Complaint> getAllDrinksAndSnacksComplaints(){
-        return  complaintRepository.drinksAndSnacksComplaints();
-    }
-
-    /*
-     * Retrieve All HouseKeeping complaints.
-     *
-     * @param
-     * @return List of complaints
-     *
-     * */
-    public List<Complaint> getAllHouseKeepingComplaints(){
-        return  complaintRepository.houseKeepingComplaints();
+    public List<Complaint> getAllComplaints() {
+        return complaintRepository.findAll();
     }
 
 
-    public String makeComplaint(Complaint complaint){
+    public List<Complaint> getAllDrinksAndSnacksComplaints() {
+        return complaintRepository.drinksAndSnacksComplaints();
+    }
+
+
+    public List<Complaint> getAllHouseKeepingComplaints() {
+        return complaintRepository.houseKeepingComplaints();
+    }
+
+
+    public String makeComplaint(Complaint complaint) {
         complaintRepository.save(complaint);
         return "Complaint Send..";
     }
-//    public String makeComplaint(Complaint complaint){
-//        complaintRepository.save(complaint);
-//        return "Complaint Send..";
-//    }
 
-    public String resolveComplaint(int complaintId){
+    public String resolveComplaint(int complaintId) {
         complaintRepository.deleteById(complaintId);
-        return "Complaint is resolved.. "+complaintId;
+        return "Complaint is resolved.. " + complaintId;
     }
 }

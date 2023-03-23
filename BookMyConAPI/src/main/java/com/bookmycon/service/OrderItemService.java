@@ -15,13 +15,8 @@ public class OrderItemService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    /*
-     * Fetch OrderItems by its orderId
-     *
-     * @param Integer OrderId
-     * @return List of OrderItems
-     * */
-    public List<OrderItem> getAllProducts(int id){
+
+    public List<OrderItem> getAllProducts(int id) {
         return orderItemRepository.getAllItems(id);
     }
 

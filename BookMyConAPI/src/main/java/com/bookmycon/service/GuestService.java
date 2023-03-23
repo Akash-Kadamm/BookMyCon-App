@@ -6,6 +6,7 @@ import com.bookmycon.utils.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class GuestService {
     private GuestRepository guestRepository;
     @Autowired
     private StorageService storageService;
+
     public Guest save(Guest guest, MultipartFile thumbnail) {
         String fileName = storageService.store(thumbnail);
         guest.setThumbnail(fileName);
@@ -32,6 +34,7 @@ public class GuestService {
     public List<Guest> getAllGuestByUserId(int userId) {
         return guestRepository.getGuestByUserId(userId);
     }
+
     public String deleteByGuestId(int guestId) {
         guestRepository.deleteById(guestId);
         return "Guest deleted successfully";

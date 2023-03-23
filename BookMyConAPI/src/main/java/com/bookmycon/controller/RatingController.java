@@ -31,7 +31,6 @@ public class RatingController {
     public ResponseEntity<String> addRating(@RequestBody RatingDTO ratingdto) {
         Rating rating = new Rating(0, ratingdto.getBookingRating(), ratingdto.getSnacksRating(), ratingdto.getHousekeepingRating(), userRepository.findByUserId(ratingdto.getUserId()), ratingdto.getRemarks());
         ratingService.addRating(rating);
-
         return new ResponseEntity<String>("Rating added successfully", HttpStatus.CREATED);
     }
 
@@ -45,7 +44,6 @@ public class RatingController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteRating(@PathVariable("id") int id) {
         ratingService.deleteRating(id);
-
         return new ResponseEntity<String>("rating deleted", HttpStatus.OK);
 
     }

@@ -1,6 +1,7 @@
 package com.bookmycon.model;
 
 import lombok.*;
+
 import javax.persistence.*;
 
 @Entity(name = "users")
@@ -33,4 +34,6 @@ public class User {
     private String userContact;
 
     private String thumbnail;
+
+   
 }

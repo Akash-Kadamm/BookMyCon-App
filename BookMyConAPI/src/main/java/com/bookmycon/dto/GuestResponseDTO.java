@@ -6,86 +6,85 @@ import org.springframework.beans.BeanUtils;
 
 public class GuestResponseDTO {
 
-	private int guestId;
-	private String guestName;
-	private String guestCompany;
-	private String guestEmail;
-	private String guestMobileNo;
-	private String thumbnail;
-	
-	public GuestResponseDTO() {
-		
-	}
+    private int guestId;
+    private String guestName;
+    private String guestCompany;
+    private String guestEmail;
+    private String guestMobileNo;
+    private String thumbnail;
 
-	public GuestResponseDTO(int guestId, String guestName, String guestCompany, String guestEmail,
-			String guestMobileNo, String thumbnail) {
-		super();
-		this.guestId = guestId;
-		this.guestName = guestName;
-		this.guestCompany = guestCompany;
-		this.guestEmail = guestEmail;
-		this.guestMobileNo = guestMobileNo;
-		this.thumbnail = thumbnail;
-	}
+    public GuestResponseDTO() {
 
-	public int getGuestId() {
-		return guestId;
-	}
+    }
 
-	public void setGuestId(int guestId) {
-		this.guestId = guestId;
-	}
+    public GuestResponseDTO(int guestId, String guestName, String guestCompany, String guestEmail,
+                            String guestMobileNo, String thumbnail) {
+        super();
+        this.guestId = guestId;
+        this.guestName = guestName;
+        this.guestCompany = guestCompany;
+        this.guestEmail = guestEmail;
+        this.guestMobileNo = guestMobileNo;
+        this.thumbnail = thumbnail;
+    }
 
-	public String getGuestName() {
-		return guestName;
-	}
+    public int getGuestId() {
+        return guestId;
+    }
 
-	public void setGuestName(String guestName) {
-		this.guestName = guestName;
-	}
+    public void setGuestId(int guestId) {
+        this.guestId = guestId;
+    }
 
-	public String getGuestCompany() {
-		return guestCompany;
-	}
+    public String getGuestName() {
+        return guestName;
+    }
 
-	public void setGuestCompany(String guestCompany) {
-		this.guestCompany = guestCompany;
-	}
+    public void setGuestName(String guestName) {
+        this.guestName = guestName;
+    }
 
-	public String getGuestEmail() {
-		return guestEmail;
-	}
+    public String getGuestCompany() {
+        return guestCompany;
+    }
 
-	public void setGuestEmail(String guestEmail) {
-		this.guestEmail = guestEmail;
-	}
+    public void setGuestCompany(String guestCompany) {
+        this.guestCompany = guestCompany;
+    }
 
-	public String getGuestMobileNo() {
-		return guestMobileNo;
-	}
+    public String getGuestEmail() {
+        return guestEmail;
+    }
 
-	public void setGuestMobileNo(String guestMobileNo) {
-		this.guestMobileNo = guestMobileNo;
-	}
+    public void setGuestEmail(String guestEmail) {
+        this.guestEmail = guestEmail;
+    }
 
-	public String getThumbnail() {
-		return thumbnail;
-	}
+    public String getGuestMobileNo() {
+        return guestMobileNo;
+    }
 
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
+    public void setGuestMobileNo(String guestMobileNo) {
+        this.guestMobileNo = guestMobileNo;
+    }
 
-	@Override
-	public String toString() {
-		return "GuestResponseDTO [guestId=" + guestId + ", guestName=" + guestName + ", guestCompany=" + guestCompany
-				+ ", guestEmail=" + guestEmail + ", guestMobileNo=" + guestMobileNo + ", thumbnail=" + thumbnail + "]";
-	}
-	
-	public static GuestResponseDTO fromEntity(Guest entity)
-	{
-		GuestResponseDTO guestResponseDTO = new GuestResponseDTO();
-		BeanUtils.copyProperties(entity, guestResponseDTO);
-		return guestResponseDTO;
-	}
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    @Override
+    public String toString() {
+        return "GuestResponseDTO [guestId=" + guestId + ", guestName=" + guestName + ", guestCompany=" + guestCompany
+                + ", guestEmail=" + guestEmail + ", guestMobileNo=" + guestMobileNo + ", thumbnail=" + thumbnail + "]";
+    }
+
+    public static GuestResponseDTO fromEntity(Guest entity) {
+        GuestResponseDTO guestResponseDTO = new GuestResponseDTO();
+        BeanUtils.copyProperties(entity, guestResponseDTO);
+        return guestResponseDTO;
+    }
 }

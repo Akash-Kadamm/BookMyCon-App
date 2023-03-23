@@ -12,26 +12,16 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/orderItems")
-public class  OrderItemController {
+public class OrderItemController {
 
     @Autowired
     private OrderItemService orderItemService;
 
-    /*
-    * Fetch Order by its orderId
-    *
-    * @param Integer OrderId
-    * @return List of OrderItems
-    * */
+
     @GetMapping("/order/{id}")
-    public ResponseEntity<List<OrderItem>> getAllOrderItems(@PathVariable int id){
-        return new ResponseEntity<>(
-                orderItemService.getAllProducts(id),
-                HttpStatus.OK
-        );
+    public ResponseEntity<List<OrderItem>> getAllOrderItems(@PathVariable int id) {
+        return new ResponseEntity<>(orderItemService.getAllProducts(id), HttpStatus.OK);
     }
-
-
 
 
 }

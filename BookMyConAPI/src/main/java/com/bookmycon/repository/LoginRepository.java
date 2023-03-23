@@ -9,8 +9,9 @@ import com.bookmycon.model.User;
 @Repository
 public interface LoginRepository extends JpaRepository<User, Integer> {
 
-	public User findByUserEmail(String email);
-	public User findByUserEmailAndUserPassword(String email, String password)  ;
-	
-	
+    User findByUserEmail(String email);
+
+    User findByUserEmailAndUserPassword(String email, String password);
+
+
 }

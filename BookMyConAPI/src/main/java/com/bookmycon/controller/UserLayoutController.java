@@ -1,7 +1,6 @@
 package com.bookmycon.controller;
 
 
-
 import java.util.*;
 
 import com.bookmycon.service.AreasService;
@@ -39,152 +38,95 @@ import com.bookmycon.repository.AreasRepository;
 @RestController
 public class UserLayoutController {
 
-	@Autowired 
-	UserLayoutService userLayoutService;
-	
-	@Autowired
-	AreasService areasService;
+    @Autowired
+    UserLayoutService userLayoutService;
+
+    @Autowired
+    AreasService areasService;
 
 
-	@Autowired
-	AreasRepository areasRepository;
-
-	
-	
-//	@Autowired
-//	ResponseHandler responseHandler;
-//
-//	
-//	@GetMapping(value = "/userLayoutObj")
-//    public ResponseEntity<Object> Get() {
-//          return responseHandler.generateResponse("ak", responseHandler);
-// }
-//
-	@GetMapping(value = "/areasList")
-    public ResponseEntity<List<AreasDto>>  GetAreas() {
-		
-		List<AreasDto> areasList=new ArrayList<>();
-			for (Areas areas : areasService.findByUserLayout(userLayoutService.findAll().get(0))) {
-
-				AreasDto areasDto = new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(), areas.getPreFillColor(), areas.getFillColor());
-				if (areasDto.getCoords() != null) {
-					areasDto.setPreFillColor("#00000000");
-					areasDto.setFillColor("transperant");
-					areasList.add(areasDto);
-				}
-			}
-
-          return  new ResponseEntity<List<AreasDto>>(areasList,HttpStatus.OK);
-}
+    @Autowired
+    AreasRepository areasRepository;
 
 
 
+    @GetMapping(value = "/areasList")
+    public ResponseEntity<List<AreasDto>> GetAreas() {
+
+        List<AreasDto> areasList = new ArrayList<>();
+        for (Areas areas : areasService.findByUserLayout(userLayoutService.findAll().get(0))) {
+
+            AreasDto areasDto = new AreasDto(areas.getName(), areas.getShape(), areas.getCoords(), areas.getPreFillColor(), areas.getFillColor());
+            if (areasDto.getCoords() != null) {
+                areasDto.setPreFillColor("#00000000");
+                areasDto.setFillColor("transperant");
+                areasList.add(areasDto);
+            }
+        }
+
+        return new ResponseEntity<List<AreasDto>>(areasList, HttpStatus.OK);
+    }
 
 
-	
-	@GetMapping("/")
-	public ResponseEntity<List<UserLayout>>  getAllUserLayout()
-
-	{
-		
-		return  new ResponseEntity<List<UserLayout>>(userLayoutService.findAll(),HttpStatus.OK);
-		
-	}
-	
-	
-	@GetMapping("/areas")
-	public ResponseEntity<List<Areas>>  getAllAreas()
-
-	{
-		
-		return  new ResponseEntity<List<Areas>>(areasService.findAll(),HttpStatus.OK);
-		
-	}
-
-	@GetMapping("/areasByCoords/{id}")
-	public Areas  getAreaById(@PathVariable(value = "id") int[] id)
-
-	{
-//		System.out.println(id.split(",").length);
-//	int[] intarray=new int[9];
-//		for (int i=0;i<id.split(",").length;i++)
-//		{
-//			int a=Integer.parseInt(id.split(",")[i]);
-//			intarray[i]=a;
-//		}
+    @GetMapping("/")
+    public ResponseEntity<List<UserLayout>> getAllUserLayout() {
+        return new ResponseEntity<List<UserLayout>>(userLayoutService.findAll(), HttpStatus.OK);
+    }
 
 
-		if(areasRepository.findByCoords(id).get(0)==null)
-		{
-			return areasRepository.findByCoords(id).get(1);
-		}else {
-			return areasRepository.findByCoords(id).get(0);
-		}
-	}
+    @GetMapping("/areas")
+    public ResponseEntity<List<Areas>> getAllAreas() {
+        return new ResponseEntity<List<Areas>>(areasService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/areasByCoords/{id}")
+    public Areas getAreaById(@PathVariable(value = "id") int[] id) {
+        if (areasRepository.findByCoords(id).get(0) == null) {
+            return areasRepository.findByCoords(id).get(1);
+        } else {
+            return areasRepository.findByCoords(id).get(0);
+        }
+    }
 
 
-	@PostMapping("/addareas")
-	public ResponseEntity<String> addareas(@RequestBody DataDto dataDto)
-	{
-        // preFillColor: "transperant",
-
-		Areas areas=new Areas(1, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutService.findById(dataDto.getNameId()).get());
-		
-
-//		System.out.println(areas);
-		areasService.addAreas(areas);
-		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
-	}
+    @PostMapping("/addareas")
+    public ResponseEntity<String> addareas(@RequestBody DataDto dataDto) {
+        Areas areas = new Areas(1, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(), "transperant", dataDto.getFillColor(), userLayoutService.findById(dataDto.getNameId()).get());
+        areasService.addAreas(areas);
+        return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
+    }
 
 
-	@PutMapping("/addareas")
-	public ResponseEntity<String> addareas(@RequestBody Areas areas)
-	{
+    @PutMapping("/addareas")
+    public ResponseEntity<String> addareas(@RequestBody Areas areas) {
+        areasService.addAreas(areas);
+        return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
+    }
 
-		areasService.addAreas(areas);
-		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
-	}
-	
-	@PostMapping("/addUserLayout")
-	public ResponseEntity<String> addUserLayout(@RequestBody UserLayout userLayout)
-	{
-		
-		
+    @PostMapping("/addUserLayout")
+    public ResponseEntity<String> addUserLayout(@RequestBody UserLayout userLayout) {
+        System.out.println(userLayout);
+        userLayoutService.addUserLayout(userLayout);
+        return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
+    }
 
-		System.out.println(userLayout);
-		userLayoutService.addUserLayout(userLayout);
-		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
-	}
-	
-	@GetMapping("/{name}")
-	public ResponseEntity<Optional<UserLayout>> getUserLayoutById(@PathVariable(value = "name") String name)
-	{
-		Optional<UserLayout> user=userLayoutService.findById(name);
-		
-	return new ResponseEntity<Optional<UserLayout>>(user,HttpStatus.OK);
-	}
+    @GetMapping("/{name}")
+    public ResponseEntity<Optional<UserLayout>> getUserLayoutById(@PathVariable(value = "name") String name) {
+        Optional<UserLayout> user = userLayoutService.findById(name);
+        return new ResponseEntity<Optional<UserLayout>>(user, HttpStatus.OK);
+    }
 
-	@PutMapping("/{name}")
-	public ResponseEntity<String> editUserLayout(@PathVariable(value = "name") String name, @RequestBody UserLayout userLayout)
-	{
-		userLayoutService.addUserLayout( userLayout);
-	return new ResponseEntity<String>("record updated",HttpStatus.OK);
-	}
-	
-	@DeleteMapping("/{name}")
-	public ResponseEntity<String> deleteUserById(@PathVariable String name)
-	{
-//		
-//	Areas areas=	userLayoutRepository.getById(name).getAreas();
-//	
-//	aerAreasRepository.delete(areas);
-//	
-		userLayoutService.deleteUserLayout(name);
-	
-	
-		return new ResponseEntity<String>("record deleted",HttpStatus.OK);
-	}
+    @PutMapping("/{name}")
+    public ResponseEntity<String> editUserLayout(@PathVariable(value = "name") String name, @RequestBody UserLayout userLayout) {
+        userLayoutService.addUserLayout(userLayout);
+        return new ResponseEntity<String>("record updated", HttpStatus.OK);
+    }
 
+    @DeleteMapping("/{name}")
+    public ResponseEntity<String> deleteUserById(@PathVariable String name) {
+        userLayoutService.deleteUserLayout(name);
+        return new ResponseEntity<String>("record deleted", HttpStatus.OK);
+    }
 
 
 }

@@ -21,47 +21,45 @@ import com.bookmycon.repository.AuditoriumRepository;
 @RunWith(MockitoJUnitRunner.class)
 public class AuditoriumServiceTest {
 
-	@Mock
-	AuditoriumRepository auditoriumRepo;
-	
-	@InjectMocks
-	AuditoriumService auditoriumService;
-	
-	Optional<Auditoriums> auditorium;
-	
-	Auditoriums auditoriums;
-	
-	@Before
-	public void setUp() {
-		setData();
-		setMocks();
-	}
-	
-	private void setMocks() {
-		when(auditoriumRepo.findById(anyInt())).thenReturn(auditorium);
-	}
-	
-	private void setData() {
-		auditorium=Optional.of(new Auditoriums("Audi1", "CT1", 120, "small", "AC,Network"));
-		auditoriums=new Auditoriums("Audi1", "CT1", 120, "small", "AC,Network");
-	}
+    @Mock
+    AuditoriumRepository auditoriumRepo;
 
-	
-	
-	@Test
-	public void testGetAuditoriumById_ConditionReturnAuditorium() {
-		Map<String, Object> actual=auditoriumService.getAuditoriumById(1);
-		assertEquals(auditoriums, actual.get("Auditorium"));
-		
-	}
+    @InjectMocks
+    AuditoriumService auditoriumService;
 
-	
-	@Test
-	public void testUpdateAuditorium() {
-		auditoriumService.updateAuditorium(1, auditoriums);
-		verify(auditoriumRepo, times(1)).findById(1);
-	}
-	
-	
+    Optional<Auditoriums> auditorium;
+
+    Auditoriums auditoriums;
+
+    @Before
+    public void setUp() {
+        setData();
+        setMocks();
+    }
+
+    private void setMocks() {
+        when(auditoriumRepo.findById(anyInt())).thenReturn(auditorium);
+    }
+
+    private void setData() {
+        auditorium = Optional.of(new Auditoriums("Audi1", "CT1", 120, "small", "AC,Network"));
+        auditoriums = new Auditoriums("Audi1", "CT1", 120, "small", "AC,Network");
+    }
+
+
+    @Test
+    public void testGetAuditoriumById_ConditionReturnAuditorium() {
+        Map<String, Object> actual = auditoriumService.getAuditoriumById(1);
+        assertEquals(auditoriums, actual.get("Auditorium"));
+
+    }
+
+
+    @Test
+    public void testUpdateAuditorium() {
+        auditoriumService.updateAuditorium(1, auditoriums);
+        verify(auditoriumRepo, times(1)).findById(1);
+    }
+
 
 }

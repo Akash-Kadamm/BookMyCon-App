@@ -95,8 +95,8 @@ public class UserResponseDTO {
                 ", thumbnail=" + thumbnail +
                 '}';
     }
-    public static UserResponseDTO fromEntity(User entity)
-    {
+
+    public static UserResponseDTO fromEntity(User entity) {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
         BeanUtils.copyProperties(entity, userResponseDTO);
         return userResponseDTO;

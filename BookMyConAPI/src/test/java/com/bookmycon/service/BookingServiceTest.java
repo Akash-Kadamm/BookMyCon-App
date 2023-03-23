@@ -19,35 +19,34 @@ import com.bookmycon.repository.BookingRepository;
 @RunWith(MockitoJUnitRunner.class)
 public class BookingServiceTest {
 
-	@Mock
-	BookingRepository bookingRepo;
-	
-	@InjectMocks
-	BookingService bookingService;
-	
-	List<Booking> bookings;
-	
-	@Before
-	public void setUp() {
-		setData();
-		setMock();
-		
-	}
-	
-	private void setData() {
-		bookings=Arrays.asList(new Booking(),new Booking());
-	}
-	
-	private void setMock() {
-		when(bookingRepo.findByUserId(anyInt())).thenReturn(bookings);
-	}
-	
-	
-	
-//	@org.junit.Test
-	public void testGetAllBookingOfUser() {
-		List<Booking> actual=bookingService.getAllBookingOfUser(1);
-		assertEquals(bookings,actual);
-	}
-	
+    @Mock
+    BookingRepository bookingRepo;
+
+    @InjectMocks
+    BookingService bookingService;
+
+    List<Booking> bookings;
+
+    @Before
+    public void setUp() {
+        setData();
+        setMock();
+
+    }
+
+    private void setData() {
+        bookings = Arrays.asList(new Booking(), new Booking());
+    }
+
+    private void setMock() {
+        when(bookingRepo.findByUserId(anyInt())).thenReturn(bookings);
+    }
+
+
+    //	@org.junit.Test
+    public void testGetAllBookingOfUser() {
+        List<Booking> actual = bookingService.getAllBookingOfUser(1);
+        assertEquals(bookings, actual);
+    }
+
 }

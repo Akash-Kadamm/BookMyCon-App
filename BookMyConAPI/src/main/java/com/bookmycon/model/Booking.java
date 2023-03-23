@@ -22,34 +22,34 @@ import lombok.NoArgsConstructor;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="booking_id")
+    @Column(name = "booking_id")
     private int bookingId;
-    
-    @OneToOne 
+
+    @OneToOne
     @JoinColumn(name = "aduitoriam_id")
     private Auditoriums aduitoriamId;
-    
-    @ManyToOne 
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
-    
-    @Column(name="booking_date_from")
+
+    @Column(name = "booking_date_from")
     private LocalDate bookingDateFrom;
-    
-    @Column(name="booking_date_to")
+
+    @Column(name = "booking_date_to")
     private LocalDate bookingDateTo;
 
-	@Column(name="booking_time_from")
-	private LocalTime bookingTimeFrom;
+    @Column(name = "booking_time_from")
+    private LocalTime bookingTimeFrom;
 
-	@Column(name="booking_time_to")
-	private LocalTime bookingTimeTO;
-    
-    @Column(name="booking_agenda")
+    @Column(name = "booking_time_to")
+    private LocalTime bookingTimeTO;
+
+    @Column(name = "booking_agenda")
     private String bookingAgenda;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
     List<Order> orders;
 
 }

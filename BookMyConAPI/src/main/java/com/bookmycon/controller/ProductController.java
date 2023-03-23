@@ -16,79 +16,54 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-   private ProductService productService;
+    private ProductService productService;
 
-    /*
-    * Retrieve All products.
-    *
-    * @param
-    * @return ResponseEntity object
-    *
-    * */
+
     @GetMapping("/getAllProduct")
-   public ResponseEntity<List<Product>> getAllProducts(){
-        return  new ResponseEntity<>(
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return new ResponseEntity<>(
                 productService.getAllProducts(),
                 HttpStatus.OK
         );
-   }
+    }
 
 
-    /*
-     * Add new product.
-     *
-     * @param Product object
-     * @return ResponseEntity object
-     *
-     * */
-   @PostMapping("/addNewProduct")
-   public ResponseEntity<Product> addNewProduct(@RequestBody Product product){
+    @PostMapping("/addNewProduct")
+    public ResponseEntity<Product> addNewProduct(@RequestBody Product product) {
         return new ResponseEntity<>(
                 productService.addProduct(product),
                 HttpStatus.CREATED
         );
-   }
+    }
 
 
-    /*
-     * Update product.
-     *
-     * @param Product object
-     * @return ResponseEntity object
-     *
-     * */
-   @PutMapping("/updateProduct")
-   public ResponseEntity<String> updateProduct(@RequestBody Product product){
-       productService.updateProduct(product);
+
+    @PutMapping("/updateProduct")
+    public ResponseEntity<String> updateProduct(@RequestBody Product product) {
+        productService.updateProduct(product);
         return new ResponseEntity<>(
-         "product Updated",
-         HttpStatus.ACCEPTED
+                "product Updated",
+                HttpStatus.ACCEPTED
         );
-   }
+    }
 
-    /*
-     * Delete product.
-     *
-     * @param  int ProductID
-     * @return ResponseEntity object
-     *
-     * */
-   @DeleteMapping("/deleteProduct/{id}")
-   public ResponseEntity<String> deleteProduct(@PathVariable int id){
-        return  new ResponseEntity<>(
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
+        return new ResponseEntity<>(
                 productService.deleteProduct(id),
                 HttpStatus.OK
         );
-   }
+    }
 
 
-   @PostMapping("/updateStock")
-   public ResponseEntity<String> updateStockOfProduct(@RequestBody StockDTO stock){
-     return new ResponseEntity<>(
-       productService.addStock(stock),
-       HttpStatus.CREATED
-     );
-   }
+    @PostMapping("/updateStock")
+    public ResponseEntity<String> updateStockOfProduct(@RequestBody StockDTO stock) {
+        return new ResponseEntity<>(
+                productService.addStock(stock),
+                HttpStatus.CREATED
+        );
+    }
 
 
 }

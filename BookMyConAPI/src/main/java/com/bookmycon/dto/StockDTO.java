@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 public class StockDTO {
 
-    private  int productId;
+    private int productId;
 
     private int stockValue;
 }

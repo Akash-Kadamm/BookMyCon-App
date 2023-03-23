@@ -13,8 +13,6 @@ import java.util.Optional;
 public class UserLayoutService {
 
 
-
-
     @Autowired
     UserLayoutRepository userLayoutRepository;
 
@@ -44,11 +42,6 @@ public class UserLayoutService {
     public void editUserLayout(String id, UserLayout userLayout) {
         userLayoutRepository.save(userLayout);
     }
-
-
-
-
-
 
 
 }

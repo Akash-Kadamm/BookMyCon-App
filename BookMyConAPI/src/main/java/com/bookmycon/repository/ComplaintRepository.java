@@ -9,21 +9,21 @@ import java.util.List;
 
 @Repository
 public interface ComplaintRepository
-        extends JpaRepository<Complaint,Integer> {
+        extends JpaRepository<Complaint, Integer> {
 
 
     @Query(
             value = "select * from complaints where complaint_type ='drinksAndSnacks' "
-            ,nativeQuery = true
-           )
-    public List<Complaint> drinksAndSnacksComplaints();
+            , nativeQuery = true
+    )
+    List<Complaint> drinksAndSnacksComplaints();
 
 
     @Query(
             value = "select * from complaints where complaint_type ='houseKeeping' "
-            ,nativeQuery = true
-          )
-    public List<Complaint> houseKeepingComplaints();
+            , nativeQuery = true
+    )
+    List<Complaint> houseKeepingComplaints();
 
 
 }

@@ -13,14 +13,14 @@ import com.bookmycon.model.User;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
-	List<Booking> findByAduitoriamId(Auditoriums adudiAuditoriums);
+    List<Booking> findByAduitoriamId(Auditoriums adudiAuditoriums);
 
-	List<Booking> findByBookingDateFromAndBookingDateTo(LocalDate dateFrom, LocalDate dateTo);
+    List<Booking> findByBookingDateFromAndBookingDateTo(LocalDate dateFrom, LocalDate dateTo);
 
-	@Query(value = "select * from booking where user_id=?1 and booking_date_from >= CURDATE()",nativeQuery = true)
-	List<Booking> findByUserId(int userId);
-	
-	List<Booking> findByUserId(User userId);
+    @Query(value = "select * from booking where user_id=?1 and booking_date_from >= CURDATE()", nativeQuery = true)
+    List<Booking> findByUserId(int userId);
+
+    List<Booking> findByUserId(User userId);
 
 
 }

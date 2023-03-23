@@ -34,20 +34,12 @@ public class Rating {
 
     private String remarks;
 
-//    public int getRating() {
-//        return rating;
-//    }
-
     public String getRemarks() {
         return remarks;
     }
 
-//    public void setRating(int rating) {
-//        this.rating = rating;
-//    }
-
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-// private int userId;
+
 }
