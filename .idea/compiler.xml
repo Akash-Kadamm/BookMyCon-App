@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="housekeeping-service" />
+        <module name="api1-gateway" />
+        <module name="BookMyCon" />
+        <module name="service-registry" />
+        <module name="DataBaseMigrationApp" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api1-gateway" target="11" />
+      <module name="BookMyCon" target="11" />
+      <module name="DataBaseMigrationApp" target="1.5" />
+      <module name="housekeeping-service" target="1.5" />
+      <module name="service-registry" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BookMyCon" options="-parameters" />
+      <module name="api1-gateway" options="-parameters" />
+    </option>
+  </component>
+</project>
