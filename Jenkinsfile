@@ -16,7 +16,7 @@ pipeline{
 //            sh"mvn --version"
 //             echo'building automatically test'
 //         }
-      }
+//       }
         stage("build-front-end")
         {
             agent
