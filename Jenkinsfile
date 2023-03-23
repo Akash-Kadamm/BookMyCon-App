@@ -3,7 +3,7 @@ pipeline{
     stages{
       stage("build"){
         steps{
-          echo 'building aplication'
+          sh"mvn -version"
             echo'building automatically test'
         }
       }
