@@ -11,12 +11,12 @@ pipeline{
           echo 'building aplication'
         }
         }
-      }
+    
       stage("deploy"){
         steps{
           echo 'building aplication'
         }
         }
-      }
+      
     }
 }
