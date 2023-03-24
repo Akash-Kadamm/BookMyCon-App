@@ -21,7 +21,7 @@ pipeline{
         {
             agent
             {
-                docker { image 'node:16-alpine' }
+                docker { image 'alpine:3.16' }
             }
             steps
             {
