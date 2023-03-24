@@ -1,7 +1,7 @@
 pipeline{
     
     agent none 
-    tool{
+    tools{
         'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'   
     }
 //     {
