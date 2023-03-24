@@ -8,15 +8,15 @@ pipeline{
 //     }
    
     stages{
-//       stage("build-back-end"){
-//           agent {
-//               docker { image 'maven:3.9.0-eclipse-temurin-11' }  
-//           }
-//           steps{
-//            sh"mvn --version"
-//             echo'building automatically test'
-//         }
-//       }
+      stage("build-back-end"){
+          agent {
+              docker{image 'maven:3.9.0-eclipse-temurin-11'}
+          }
+          steps{
+           sh"mvn --version"
+            echo'building automatically test'
+        }
+      }
         stage("build-front-end")
         {
             agent
