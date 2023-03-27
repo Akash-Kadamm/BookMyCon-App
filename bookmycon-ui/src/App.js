@@ -33,6 +33,7 @@ import Register from './Component/Utilities/Register';
 
 import PaymentGateway from './Component/User/PaymentGateway';
 import PaypalPayment from './Component/User/RazorpayPayment'
+import StripeContainer from './Component/User/Stripe/StripeContainer';
 
 function App() {
   return (
@@ -67,7 +68,7 @@ function App() {
           <Route path="/add-guest" element={ <AddGuest/>} />
           <Route path="/guest" element={ <Guest/>} />
           <Route path="/signup" element={<Register/>} />
-          <Route path='/payment' element={<PaypalPayment />} />
+          <Route path='/payment' element={<StripeContainer />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
