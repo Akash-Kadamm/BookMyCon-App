@@ -36,4 +36,12 @@ public class DepartmentController {
         );
     }
 
+    @GetMapping("/fetchDepartmentFromNewDb/{departmentId}")
+    public ResponseEntity<Department> getDepartmentFromPostgresql(@PathVariable int departmentId){
+        return new ResponseEntity<>(
+                departmentService.getDepartmentFromPostgresql(departmentId),
+                HttpStatus.OK
+        );
+    }
+
 }

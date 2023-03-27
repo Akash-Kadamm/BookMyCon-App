@@ -37,6 +37,9 @@ public class User {
     @Column(name = "address_id")
     private int addressId;
 
+    @Column(name = "card_detail_id")
+    private int cardDetailId;
+
     @Column(columnDefinition = "boolean default false", name = "is_migrate")
     private boolean isMigrate;
 }

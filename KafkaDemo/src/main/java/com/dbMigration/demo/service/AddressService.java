@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AddressService {
 
@@ -26,7 +28,11 @@ public class AddressService {
      * @return Address
      * */
     public Address getAddressById(int id) {
-        return mysqlAddressRepo.findById(id).get();
+        Optional<Address> savedAddress = mysqlAddressRepo.findById(id);
+        if (savedAddress.isEmpty()) {
+            return null;
+        }
+        return savedAddress.get();
     }
 
     /*
@@ -42,6 +48,15 @@ public class AddressService {
 
     /**/
     public Address getAddressFromPostgresql(int addressId) {
-        return postgresqlAddressRepo.findById(addressId).get();
+        Optional<Address> savedAddress = postgresqlAddressRepo.findById(addressId);
+        if (savedAddress.isEmpty()) {
+            return null;
+        }
+        return savedAddress.get();
+    }
+
+    public String deleteAddress(int addressId) {
+        postgresqlAddressRepo.deleteById(addressId);
+        return ResponseMessage.ADDRESS_RECORD_DELETED.getMessage();
     }
 }
