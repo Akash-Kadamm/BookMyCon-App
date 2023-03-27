@@ -45,15 +45,16 @@ const Cart = () => {
             });
     };
     const placeOrder = () => {
-        dispatch({ type: "EMPTY", payload: [] })
-        axios.post("http://localhost:8080/order/place-order/" + ReactSession.get("BookingIdForFood"), orderContent).
-            then((response) => {
-                sessionStorage.setItem('total',orderContent.total)
-                setShow(true)
+        // dispatch({ type: "EMPTY", payload: [] })
+        // axios.post("http://localhost:8080/order/place-order/" + ReactSession.get("BookingIdForFood"), orderContent).
+        //     then((response) => {
+        //         sessionStorage.setItem('total',orderContent.total)
+        //         setShow(true)
                 navigate('/payment')
                 // setModalOpen(true);
 
-            })
+        //     })
+        // navigate('/payment')
     }
 
     const removeFoodItem = (product) => {
