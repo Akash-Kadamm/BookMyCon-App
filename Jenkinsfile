@@ -6,7 +6,7 @@ pipeline{
       stage("build-back-end"){
 
           steps{
-           sh"mvn --version"
+           
             echo'building automatically test'
         }
       }
