@@ -1,29 +1,42 @@
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { InputAdornment } from '@mui/material';
+import { useState,useEffect } from 'react';
+import axios from 'axios'
+import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { InputAdornment } from '@mui/material';
+import  MailIcon  from '@mui/icons-material/Mail';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import  PasswordTwoToneIcon  from '@mui/icons-material/PasswordTwoTone';
+import { useNavigate } from 'react-router';
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import "../../css/Login.css";
+import "../../css/Registration.css";
 
 
-const theme = createTheme();
+const UpdateUser = () => {
 
-export default function UpdateUser() {
+    // const [userName , setUserName] = useState('')
+    // const [userEmail , setUserEmail] = useState('')
+    // const [userPassword , setUserPassword] = useState('')
+    // const [userContact , setUserContact] = useState('')
+    // const [thumbnail, setThumbnail] = useState(undefined)
+    // const [error, setError] = useState('');
+    // const [errorResponse, setErrorResponse] = useState('');
+    // const navigate = useNavigate()
+    // const [message, setMessage] = useState("");
 
-   
+    const theme = createTheme();
+
+    
     const navigate = useNavigate();
     const [user, setUser] = useState({
         userName: "",
@@ -65,153 +78,141 @@ export default function UpdateUser() {
     };
 
 
-    return (<>
-
-        <div id='Login-div'>
-            <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs" >
-                    <CssBaseline />
-
-                    <Box id="Login-card"
-                        sx={{
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Avatar sx={{ m: 1, ml: 3, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5" sx={{ color: 'secondary.main' }}>
-                            Update  Account Details
-                        </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, width: '80%' }}>
-                            <Grid item xs={12} sm={6}>
+    return (
+        <>
+        <div id="Registration-div" >
+        <div>
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs" sx={{marginTop: -9,height: "40rem", display: "flex",alignItems: "center",}}>
+                <CssBaseline />
+                <Box id="Registration-card" 
+                    sx={{marginTop: 8,display: 'flex',flexDirection: 'column', alignItems: 'center', }}>
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">  Update  Account Details </Typography>
+                    <Box component="form" noValidate sx={{ mt: 1, width: "80%" }} onSubmit={handleSubmit(onSubmit)}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
                                 <TextField
                                     autoComplete="given-name"
                                     name="userName"
+                                    //required
                                     fullWidth
+                                    id="userName"
                                     value={user.userName}
-                                    id="outlined-basic"
-                                    variant="outlined"
-                                    label="Name"
-                                    autoFocus
                                     onChange={(e) => {
                                         setUser({ ...user, userName: e.target.value })
                                     }}
-                                    size="large"
-                    sx={{ mt: 1 }}
                                     InputProps={{
                                         startAdornment: (
-                                            <InputAdornment  position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                />{
-                                    errors.userName?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Name </Box>
-                                }
+                                          <InputAdornment position="start">
+                                             <Avatar variant="soft" />
+                                          </InputAdornment>),
+                                      }}
+                                />
+                            </Grid>
 
-                            </Grid><br />
-
-                            <Grid item xm={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
-                                    autoComplete="given-name"
-                                    name="userEmail"
+                                   // required
                                     fullWidth
-                                    value={user.userEmail}
                                     id="userEmail"
-                                    label="Email"
-                                    autoFocus
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
+                                    name="userEmail"
+                                    autoComplete="Email"
+                                    value={user.userEmail}
                                     onChange={(e) => {
                                         setUser({ ...user, userEmail: e.target.value })
                                     }}
-                                />
-                                {
-                                    errors.userEmail?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Email </Box>
-                                }
-                            </Grid>
-                            <br />
-
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    autoComplete="given-name"
-                                    name="userPassword"
-                                    fullWidth
-                                    value={user.userPassword}
-                                    id="userName"
-                                    label="Password"
-                                    autoFocus
                                     InputProps={{
                                         startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
+                                          <InputAdornment position="start">
+                                            <MailIcon />
+                                          </InputAdornment>
                                         ),
-                                    }}
+                                      }}
+                                />
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="userPassword"
+                                    type="password"
+                                    id="userPassword"
+                                    autoComplete="new-password"
+                                    value={user.userPassword}
                                     onChange={(e) => {
                                         setUser({ ...user, userPassword: e.target.value })
                                     }}
-                                />{errors.userPassword && errors.userPassword.type === "minLength" && (
-                                    <p className="text-danger errorMsg">
-                                        Password should be at-least 6 characters.
-                                    </p>
-                                )}
-                                <Box sx={{ color: 'error.main' }}>{(message != null) && <span>{message}</span>} </Box>
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                            <PasswordTwoToneIcon />
+                                          </InputAdornment>
+                                        ),
+                                      }}
+                                />
+                                <Box sx={{ color: "error.main" }}>
+                                    {message != null && <span>{message}</span>}{" "}
+                                </Box>
 
                             </Grid>
-                            <br />
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
                                     required
                                     fullWidth
                                     id="userContact"
-                                    label="Contact Number"
-                                    value={user.userContact}
                                     name="userContact"
                                     autoComplete="family-name"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
+                                    value={user.userContact}
                                     onChange={(e) => {
                                         setUser({ ...user, userContact: e.target.value })
                                     }}
-
+                                    InputProps={{
+                                        startAdornment: (
+                                          <InputAdornment position="start">
+                                           <PhoneAndroidIcon />
+                                          </InputAdornment>
+                                        ),
+                                      }}
                                 />
-                                {
-                                    errors.userContact?.type === "required" && <Box id="error" sx={{ color: 'error.main' }}>Please enter Valid Contact Number </Box>
-                                }
-
                             </Grid>
+                            {/* <Grid item xs={12}>
+                            <TextField  
+                                name='Thumbnail' accept="image/*" 
+                                type={"file"} fullWidth required margin='normal' 
+                                onChange={onFileSelect}>
+                            </TextField>
+                            </Grid> */}
+                        </Grid>
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color='primary'
-                                sx={{ mt: 3, mb: 2, color: 'black' }}
-                                startIcon={< AssignmentIndIcon />}
-                            >
-                                Update Profile
-                            </Button>
-
-                        </Box>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                            // startIcon={< AssignmentIndIcon />}
+                            // onClick={() => addUser()}
+                        >
+                           Update Profile
+                        </Button>
+                        {/* <Grid container justifyContent="center">
+                            <Grid item >
+                                <Link href="/signin" variant="body2">
+                                    Already have an account? Sign in
+                                </Link>
+                            </Grid>
+                        </Grid> */}
                     </Box>
-
-                </Container>
-            </ThemeProvider></div></>
-    );
+                </Box>
+            </Container>
+        </ThemeProvider>
+        </div>
+        </div>
+        </>
+    )
 }
+
+export default UpdateUser
