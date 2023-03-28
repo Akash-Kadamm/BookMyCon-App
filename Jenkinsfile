@@ -17,7 +17,7 @@ pipeline{
 //               docker{image 'maven:3.9.0-eclipse-temurin-11'}
 //           }
           steps{
-           sh"mvn --version"
+           
             echo'building automatically test'
         }
       }
