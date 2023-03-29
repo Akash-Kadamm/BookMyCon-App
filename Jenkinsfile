@@ -7,6 +7,11 @@ pipeline {
         REACT_APP_BACKEND_URL = "http://localhost:8080"
     }
     stages {
+        stage('Install Maven') {
+  steps {
+    sh 'sudo apt-get install maven -y'
+  }
+}
         stage('Build Backend') {
             steps {
                 sh 'mvn clean install'
