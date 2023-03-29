@@ -1,49 +1,32 @@
-pipeline{
-    
+pipeline {
     agent any
-//     tools{
-//         'org.jenkinsci.plugins.docker.commons.tools.DockerTool'   
-//     }
-//     {
-//         docker
-//         {
-//             image 'node:16.13.1-alpine'
-//         }
-//     }
-   
-    stages{
-      stage("build-back-end"){
-//           agent {
-//               docker{image 'maven:3.9.0-eclipse-temurin-11'}
-//           }
-          steps{
-           
-            echo'building automatically test'
+    environment {
+        MAVEN_OPTS = "-Dmaven.repo.local=./.m2/repository"
+        NODE_HOME = tool 'NodeJS'
+        PATH = "${env.NODE_HOME}/bin:${env.PATH}"
+        REACT_APP_BACKEND_URL = "http://localhost:8080"
+    }
+    stages {
+        stage('Build Backend') {
+            steps {
+                sh 'mvn clean install'
+            }
         }
-      }
-//         stage("build-front-end")
-//         {
-//             agent
-//             {
-//                 docker { image 'alpine:3.16' }
-//             }
-//             steps
-//             {
-//                 sh'node --version'
-//             }
-//         }
-            
-      stage("test"){
-        steps{
-          echo 'building aplication'
+        stage('Build Frontend') {
+            steps {
+                dir('frontend') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
         }
+        stage('Package') {
+            steps {
+                sh 'cp backend/target/my-app.jar .'
+                sh 'cp -r frontend/build/* static/'
+                archiveArtifacts artifacts: '**/*', fingerprint: true
+            }
         }
-    
-      stage("deploy"){
-        steps{
-          echo 'building aplication'
-        }
-        }
-      
     }
 }
+
