@@ -8,11 +8,16 @@ pipeline {
     }
     stages {
    
-     stage('Build') {
+     stage('Install Maven') {
   steps {
-    sh 'docker run --rm -v "$(pwd)":/app -w /app maven:3-jdk-11 mvn clean install'
+    sh '''
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install maven
+    '''
   }
 }
+
 
 
 
