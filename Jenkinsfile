@@ -9,9 +9,14 @@ pipeline {
     stages {
         stage('Install Maven') {
   steps {
-    sh 'sudo apt-get install maven -y'
+    sh '''
+    curl -o apache-maven-3.8.1-bin.tar.gz https://apache.osuosl.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
+    tar -zxvf apache-maven-3.8.1-bin.tar.gz
+    export PATH=$PATH:$(pwd)/apache-maven-3.8.1/bin
+    '''
   }
 }
+
         stage('Build Backend') {
             steps {
                 sh 'mvn clean install'
