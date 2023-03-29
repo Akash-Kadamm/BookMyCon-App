@@ -8,17 +8,12 @@ pipeline {
     }
     stages {
    
-     stage('Install Maven') {
+     stage('Build') {
   steps {
-    sh '''
-    curl -o apache-maven-3.8.1-bin.tar.gz https://apache.osuosl.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
-    curl -o apache-maven-3.8.1-bin.tar.gz.sha256 https://apache.osuosl.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz.sha256
-    sha256sum -c apache-maven-3.8.1-bin.tar.gz.sha256
-    tar -xzf apache-maven-3.8.1-bin.tar.gz
-    export PATH=$PATH:$(pwd)/apache-maven-3.8.1/bin
-    '''
+    sh 'docker run --rm -v "$(pwd)":/app -w /app maven:3-jdk-11 mvn clean install'
   }
 }
+
 
 
 
