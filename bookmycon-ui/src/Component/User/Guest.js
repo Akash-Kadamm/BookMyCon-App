@@ -66,6 +66,9 @@ const Guest = () => {
     })
   }
 
+  const updateGuest = () =>{
+    navigate("/guest-update")
+  }
 
   const handleGuestPass = (guestName) => {
     axios({url:"http://localhost:8080/guest/export-to-pass/" + guestName,method:"GET",responseType:"blob"}).then((response) => {
@@ -118,12 +121,14 @@ const Guest = () => {
                 <StyledTableCell align="left">{guest.guestMobileNo}</StyledTableCell>
                 <StyledTableCell align="left"><Avatar alt="Guest" variant='square' sx={{ borderRadius: 3, width: 150, height: 90 }} src={"http://localhost:8080/" + guest.thumbnail} /></StyledTableCell>
                 <StyledTableCell align='left'>
-                  <Button color='info' size="small" variant="outlined" sx={{ margin: 5 }} onClick={()=>handleGuestPass(guest.guestName)}
+                  <Button color='info' size="small" variant="outlined" sx={{ margin: 3 }} onClick={()=>handleGuestPass(guest.guestName)}
                                         color="success"
                                         size="small"
                                         variant="contained"> Pass</Button>
 
-                  <Button color='error' size="small" variant="outlined" startIcon={<DeleteIcon/>} onClick={() => deleteGuest(guest.guestId)}>Delete</Button>
+                  <Button color='error' size="small" sx={{ margin: 3 }} variant="outlined" startIcon={<DeleteIcon/>} onClick={() => deleteGuest(guest.guestId)}>Delete</Button>
+                  <Button color='success' size="small" variant="contained" 
+                  onClick={() => updateGuest() }>Upadte</Button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

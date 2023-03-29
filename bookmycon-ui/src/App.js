@@ -30,7 +30,7 @@ import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
 import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
 import Register from './Component/Utilities/Register';
-
+import GuestUpdate from './Component/User/GuestUpdate';
 import PaymentGateway from './Component/User/PaymentGateway';
 import PaypalPayment from './Component/User/RazorpayPayment'
 
@@ -68,6 +68,7 @@ function App() {
           <Route path="/guest" element={ <Guest/>} />
           <Route path="/signup" element={<Register/>} />
           <Route path='/payment' element={<PaypalPayment />} />
+          <Route path="/guest-update" element={<GuestUpdate/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
