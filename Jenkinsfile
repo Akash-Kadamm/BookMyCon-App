@@ -7,13 +7,12 @@ pipeline {
         REACT_APP_BACKEND_URL = "http://localhost:8080"
     }
     stages {
-   
-     stage('Install Maven') {
+        
+        stage('Install Docker') {
   steps {
     sh '''
-    curl -s "https://get.sdkman.io" | bash
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-    sdk install maven
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
     '''
   }
 }
@@ -23,8 +22,11 @@ pipeline {
 
 
 
+
+
         stage('Build Backend') {
             steps {
+                sh 'docker run --rm -v "$(pwd)":/app -w /app maven:3-jdk-11 mvn clean install'
                 sh 'mvn clean install'
             }
         }
