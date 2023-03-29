@@ -57,6 +57,8 @@ public class AuditoriumController {
 	
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Auditoriums>> getAllAuditoriums(){
+
+		logger.info("All Auditoriums fetched successfully!!");
 		return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
 	}
 	
@@ -65,6 +67,7 @@ public class AuditoriumController {
 		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
 		Auditoriums adui=audiList.get(0);
 
+		logger.info("Auditorium fetched sucessfully by Name!!");
 		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
 	}
 
