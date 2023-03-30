@@ -10,13 +10,13 @@ RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files to the container
-COPY frontend/package*.json ./
+COPY bookmycon-ui/package*.json ./
 
 # Install dependencies
 RUN npm install --silent
 
 # Copy the rest of the frontend code to the container
-COPY frontend/ ./
+COPY bookmycon-ui/ ./
 
 # Build the React app
 RUN npm run build
