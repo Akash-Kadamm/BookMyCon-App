@@ -4,6 +4,8 @@ import com.bookmycon.model.User;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -13,24 +15,19 @@ import java.util.Date;
 
 public class UserPass {
 
+    Logger logger = Logger.getLogger(UserPass.class);
     public void generatePassOfUser(User user, HttpServletResponse response) throws DocumentException, IOException {
 
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-
         Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTitle.setSize(30);
-
         Paragraph paragraph1 = new Paragraph("User Pass", fontTitle);
-
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
-
         document.add(paragraph1);
-
         PdfPTable table = new PdfPTable(2);
         table.setSpacingBefore(10);
-
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String currentDateTime = dateFormat.format(new Date());
 
@@ -43,17 +40,14 @@ public class UserPass {
 
         Image myImage = Image.getInstance("E://uploads//" + user.getThumbnail());
         table.addCell(myImage);
-
         document.add(table);
-
         Font fontTitle1 = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTitle1.setSize(15);
         Paragraph paragraph2 = new Paragraph(" The only purpose of this pass is for guest visit and it is valid for one day.", fontTitle1);
         paragraph2.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(paragraph2);
-
         document.close();
-        System.out.println("Table created successfully..");
+        logger.log(Level.INFO, "Table created successfully..");
 
     }
 }

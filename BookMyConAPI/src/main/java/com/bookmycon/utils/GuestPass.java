@@ -4,6 +4,8 @@ import com.bookmycon.model.Guest;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,28 +14,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GuestPass {
-
+     Logger logger = Logger.getLogger(GuestPass.class);
     public void generatePass(Guest guest, HttpServletResponse response) throws DocumentException, IOException {
 
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle.setSize(30);
-
         Paragraph paragraph1 = new Paragraph("Guest Pass", fontTiltle);
-
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
-
         document.add(paragraph1);
-
         PdfPTable table = new PdfPTable(2);
         table.setSpacingBefore(10);
-
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String currentDateTime = dateFormat.format(new Date());
-
         table.addCell("\r" +
                 "Guest ID " + " : " + guest.getGuestId() + "\r\r" +
                 "Name " + " : " + guest.getGuestName() + "\r\r" +
@@ -45,7 +40,6 @@ public class GuestPass {
         Image myImage = Image.getInstance("E://uploads//" + guest.getThumbnail());
         table.addCell(myImage);
         document.add(table);
-
         Font fontTiltle1 = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle1.setSize(15);
         Paragraph paragraph2 = new Paragraph(" The only purpose of this pass is for guest visit and it is valid for one day.", fontTiltle1);
@@ -53,7 +47,7 @@ public class GuestPass {
         document.add(paragraph2);
 
         document.close();
-        System.out.println("Pass created successfully..");
+        logger.log(Level.INFO, "Pass created successfully..");
 
     }
 }

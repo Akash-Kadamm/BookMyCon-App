@@ -38,7 +38,6 @@ public class LoginService {
 
         String email = login.getEmail();
         String password = login.getPassword();
-
         User user = loginRepo.findByUserEmail(email);
         logger.info("User found: " + user);
 

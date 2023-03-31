@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bookmycon.utils.PdfOfAuditorium;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,7 +65,6 @@ public class AuditoriumController {
     public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name) {
         List<Auditoriums> audiList = auditoriumService.findByAuditoriumByName(name);
         Auditoriums adui = audiList.get(0);
-
         return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
     }
 
@@ -80,7 +80,7 @@ public class AuditoriumController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
-        System.out.println(id);
+        logger.log(Level.INFO, id);
         Auditoriums auditoriumObj = auditoriumRepository.getById(id);
         List<Booking> listBooking = bookingRepository.findByAduitoriamId(auditoriumObj);
         for (Booking booking : listBooking) {

@@ -3,6 +3,8 @@ package com.bookmycon.service;
 
 import com.bookmycon.model.UserLayout;
 import com.bookmycon.repository.UserLayoutRepository;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class UserLayoutService {
     @Autowired
     UserLayoutRepository userLayoutRepository;
 
-
+     Logger logger = Logger.getLogger(UserLayoutService.class);
     public List<UserLayout> findAll() {
         return userLayoutRepository.findAll();
     }
@@ -26,8 +28,7 @@ public class UserLayoutService {
     }
 
     public void addUserLayout(UserLayout userLayout) {
-
-        System.out.println(userLayout);
+        logger.log(Level.INFO, userLayout);
         userLayoutRepository.save(userLayout);
     }
 

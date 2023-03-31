@@ -31,8 +31,6 @@ public class AreasService {
     }
 
     public void addAreas(Areas areas) {
-
-        System.out.println(areas);
         areasRepository.save(areas);
     }
 

@@ -51,7 +51,6 @@ public class BookingController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Booking>> getBookingById(@PathVariable(value = "id") int id) {
         Optional<Booking> booking = bookingService.getBookingById(id);
-
         return new ResponseEntity<Optional<Booking>>(booking, HttpStatus.OK);
     }
 
@@ -69,15 +68,10 @@ public class BookingController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String str1 = dateFrom;
         String[] arrOfStr1 = str1.split("-", 5);
-
         String newdateFrom = arrOfStr1[2] + "/" + arrOfStr1[1] + "/" + arrOfStr1[0];
-
-
         String str2 = dateTo;
         String[] arrOfStr2 = str2.split("-", 5);
-
         String newdateTo = arrOfStr2[2] + "/" + arrOfStr2[1] + "/" + arrOfStr2[0];
-
         LocalDate from = LocalDate.parse(newdateFrom, formatter);
         LocalDate to = LocalDate.parse(newdateTo, formatter);
 

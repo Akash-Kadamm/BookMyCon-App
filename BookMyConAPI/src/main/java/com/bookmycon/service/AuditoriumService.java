@@ -50,13 +50,7 @@ public class AuditoriumService {
 
     }
 
-    /*
-     * Get the Auditorium By Its Id
-     *
-     * @param Auditorium Id
-     * @return Auditorium Object
-     *
-     * */
+
     public Map<String, Object> getAuditoriumById(int id) {
         Map<String, Object> response = new HashMap<>();
         logger.info("Auditorium id:" + id);
