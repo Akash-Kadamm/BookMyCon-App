@@ -6,6 +6,7 @@ import com.bookmycon.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,6 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private CacheManager cacheManager;
     /*
      * Retrieve All products.
      *
@@ -40,8 +39,8 @@ public class ProductService {
      * @return Product object
      *
      * */
+    @CacheEvict(value = "products",allEntries = true)
     public Product addProduct(Product product){
-        cacheManager.getCache("products").clear();;
         return productRepository.save(product);
     }
 
@@ -53,12 +52,11 @@ public class ProductService {
      * @return Product object
      *
      * */
-    @CachePut(cacheNames = "products" ,key="#product.productId")
+    @CacheEvict(value = "products",allEntries = true)
     public void updateProduct(Product product ){
          int productId=product.getProductId();
         Product savedProduct=productRepository.findById(productId).get();
         savedProduct.setProductName(product.getProductName());
-        cacheManager.getCache("products").clear();;
         productRepository.save(savedProduct);
         
     }
@@ -70,9 +68,8 @@ public class ProductService {
      * @return String
      *
      * */
-    @CachePut(cacheNames = "products",key="product.productId")
+    @CacheEvict(value = "products",allEntries = true)
     public String deleteProduct(int productId){
-        cacheManager.getCache("products").clear();
         productRepository.deleteById(productId);
         return  "Product is deleted..";
     }

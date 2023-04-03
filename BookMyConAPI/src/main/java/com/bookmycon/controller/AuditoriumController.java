@@ -37,92 +37,88 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/admin")
 public class AuditoriumController {
-	@Autowired
-	private AuditoriumService auditoriumService;
-	@Autowired
-	private BookingService bookingService;
-	@Autowired
-	private AuditoriumRepository auditoriumRepository;
-	@Autowired
-	private BookingRepository bookingRepository;
-	
-	Logger logger=Logger.getLogger(AuditoriumController.class);
+    @Autowired
+    private AuditoriumService auditoriumService;
+    @Autowired
+    private BookingService bookingService;
+    @Autowired
+    private AuditoriumRepository auditoriumRepository;
+    @Autowired
+    private BookingRepository bookingRepository;
 
-	@PostMapping("/addAudi")
-	public ResponseEntity<Object> addAuditorium(@RequestBody Auditoriums auditorium) {
-		auditoriumService.addAuditorium(auditorium);
-		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_ADDED.getMessage(),HttpStatus.CREATED);
+    Logger logger = Logger.getLogger(AuditoriumController.class);
 
-	}
-	
-	@GetMapping("/getAll")
-	public ResponseEntity<List<Auditoriums>> getAllAuditoriums(){
-		return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
-	}
-	
-	@GetMapping("/getAuditoriunByName/{name}")
-	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
-		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
-		Auditoriums adui=audiList.get(0);
+    @PostMapping("/addAudi")
+    public ResponseEntity<Object> addAuditorium(@RequestBody Auditoriums auditorium) {
+        auditoriumService.addAuditorium(auditorium);
+        return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_ADDED.getMessage(), HttpStatus.CREATED);
 
-		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
-	}
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Auditoriums>> getAllAuditoriums() {
+        return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getAuditoriunByName/{name}")
+    public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name) {
+        List<Auditoriums> audiList = auditoriumService.findByAuditoriumByName(name);
+        Auditoriums adui = audiList.get(0);
+
+        return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
+    }
 
 
+    /*
+     * Update Auditorium
+     *
+     * @param Auditorium Id- Path Variable and Auditorium object
+     * @return Updated Auditorium Object
+     *
+     * */
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
+        logger.info("Auditorium id: " + id + " Auditorium object: " + auditorium);
+        logger.debug("Calling the Update Auditorium service method");
+        auditoriumService.updateAuditorium(id, auditorium);
+        return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
+    }
 
-	/*
-	 * Update Auditorium
-	 * 
-	 * @param Auditorium Id- Path Variable and Auditorium object
-	 * @return Updated Auditorium Object
-	 * 
-	 * */
-	@PutMapping("/{id}")
-	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
-	    logger.info("Auditorium id: "+id+" Auditorium object: "+auditorium);
-		logger.debug("Calling the Update Auditorium service method");
-		auditoriumService.updateAuditorium(id, auditorium);
-		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
-	}
-	
-	
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
-		System.out.println(id);
-		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
-		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
-	//	Booking objBooking= listBooking.get(0);
-		for  (Booking booking : listBooking) {
-			booking.setAduitoriamId(null);
-			bookingService.addBooking(booking);
-		}
-		auditoriumService.deleteById(id);
-		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
-	}
-	
-	
-	
-	@GetMapping("/getAudi/{id}")
-	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
-		Map<String, Object> response=new HashMap<>();
-		response=auditoriumService.getAuditoriumById(id);
-		response.put("message", ResponseMessage.GETTING_AUDITORIUM.getMessage());
-		return new ResponseEntity<Object>(response,HttpStatus.OK);
-	}
 
-	@GetMapping("/export-to-pdf-audi")
-	public void generatePdfFile(HttpServletResponse response) throws IOException
-	{
-		response.setContentType("application/pdf");
-		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
-		String currentDateTime = dateFormat.format(new Date());
-		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=Report Generation " + currentDateTime + ".pdf";
-		response.setHeader(headerKey, headerValue);
-		List <Auditoriums> listOfAuditoriums = auditoriumService.showAll();
-		PdfOfAuditorium generator = new PdfOfAuditorium();
-		generator.generateAudi(listOfAuditoriums, response);
-	}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
+        System.out.println(id);
+        Auditoriums auditoriumObj = (Auditoriums) auditoriumRepository.getById(id);
+        List<Booking> listBooking = bookingRepository.findByAduitoriamId(auditoriumObj);
+        //	Booking objBooking= listBooking.get(0);
+        for (Booking booking : listBooking) {
+            booking.setAduitoriamId(null);
+            bookingService.addBooking(booking);
+        }
+        auditoriumService.deleteById(id);
+        return new ResponseEntity<String>("record deleted", HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getAudi/{id}")
+    public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
+        Map<String, Object> response = new HashMap<>();
+        response = auditoriumService.getAuditoriumById(id);
+        response.put("message", ResponseMessage.GETTING_AUDITORIUM.getMessage());
+        return new ResponseEntity<Object>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/export-to-pdf-audi")
+    public void generatePdfFile(HttpServletResponse response) throws IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+        String currentDateTime = dateFormat.format(new Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Report Generation " + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+        List<Auditoriums> listOfAuditoriums = auditoriumService.showAll();
+        PdfOfAuditorium generator = new PdfOfAuditorium();
+        generator.generateAudi(listOfAuditoriums, response);
+    }
 
 }

@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -14,18 +15,15 @@ import com.bookmycon.model.Auditoriums;
 import com.bookmycon.repository.AuditoriumRepository;
 
 @Service
-@CacheConfig(cacheNames = "auditoriums")
 public class AuditoriumService {
 
 	@Autowired
 	AuditoriumRepository auditoriumRepo;
 
-	@Autowired
-	private CacheManager cacheManager;
 	Logger logger=Logger.getLogger(AuditoriumService.class);
 
+	@CacheEvict(value = "auditoriums",allEntries = true)
 	public Auditoriums addAuditorium(Auditoriums auditoriums) {
-		cacheManager.getCache("auditoriums").clear();
 		auditoriumRepo.save(auditoriums);
 		return auditoriums;
 	}
@@ -39,7 +37,7 @@ public class AuditoriumService {
 	 * @return void
 	 * 
 	 * */
-	@CachePut(cacheNames = "auditoriums",key = "#auditorium.auditoriumId")
+	@CacheEvict(value = "auditoriums",allEntries = true)
 	public void updateAuditorium(int id, Auditoriums auditorium) {
 		 logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
 		 logger.debug("Finding the Auditorium object by its id");
@@ -48,8 +46,6 @@ public class AuditoriumService {
 		updateAuditorium.setAuditoriumName(auditorium.getAuditoriumName());
 		updateAuditorium.setAuditoriumLocation(auditorium.getAuditoriumLocation());
 		updateAuditorium.setAuditoriumCapacity(auditorium.getAuditoriumCapacity());
-		logger.info("clearing cache of auditoriums.");
-		cacheManager.getCache("auditoriums").clear();
 		auditoriumRepo.save(updateAuditorium);
 	}
 

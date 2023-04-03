@@ -9,10 +9,7 @@ import com.bookmycon.utils.StorageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 import com.bookmycon.model.User;
 import com.bookmycon.repository.LoginRepository;
@@ -20,7 +17,6 @@ import com.bookmycon.repository.UserRepository;
 import com.bookmycon.utils.ResponseMessage;
 import org.springframework.web.multipart.MultipartFile;
 
-@CacheConfig(cacheNames = "users")
 @Service
 public class UserService {
 
@@ -35,8 +31,6 @@ public class UserService {
     @Autowired
     private StorageService storageService;
 
-    @Autowired
-    private CacheManager cacheManager;
 
 
     /*
@@ -47,6 +41,7 @@ public class UserService {
      * @throws generalize Exception
      *
      * */
+    @CacheEvict(value = "users",allEntries = true)
     public Map<String, Object> userRegistration(User user, MultipartFile thumbnail) {
         Map<String, Object> response = new HashMap<>();
         try {
@@ -54,7 +49,6 @@ public class UserService {
             logger.info("user object:" + user);
             String fileName = storageService.store(thumbnail);
             user.setThumbnail(fileName);
-            cacheManager.getCache("users").clear();
             User result = userRepository.save(user);
             response.put("user", result);
         } catch (Exception e) {
@@ -97,15 +91,10 @@ public class UserService {
      * @return  Map<message,object>
      *
      * */
-    @CachePut(value = "users",key = "#user.userId")
+     @CacheEvict(value = "users",allEntries = true)
     public Map<String, Object> updateUserProfile(User user) {
         Map<String, Object> response = new HashMap<>();
         logger.info("Clearing old cache.");
-        cacheManager.getCache("users").clear();
-        /*cacheManager.getCacheNames()
-                .parallelStream()
-                .forEach(n -> cacheManager.getCache(n).clear());
-        */
         logger.debug("Geting old usre by its id ");
         User oldUser = userRepository.findByUserId(user.getUserId());
         logger.info("old user object: " + oldUser);
