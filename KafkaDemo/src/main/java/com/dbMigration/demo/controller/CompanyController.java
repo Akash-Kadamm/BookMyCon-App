@@ -50,4 +50,12 @@ public class CompanyController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping("/getCompanyFromPostgresql/{companyId}")
+    public ResponseEntity<Company> getCompanyFromPostgresql(@PathVariable int companyId) {
+        return new ResponseEntity<>(
+                companyService.getCompanyFromPostgresql(companyId),
+                HttpStatus.OK
+        );
+    }
 }

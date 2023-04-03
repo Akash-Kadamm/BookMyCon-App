@@ -18,12 +18,12 @@ public class BookMyConApplication {
 	static Logger logger=Logger.getLogger(BookMyConApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(BookMyConApplication.class, args);
-		logger.setLevel(Level.INFO);
-		logger.debug("Debug Message....");
-		logger.info("Info Message....");
-		logger.warn("Warn Message....");
-		logger.error("Error Message....");
-		logger.fatal("fatal Message....");
+//		logger.setLevel(Level.INFO);
+//		logger.debug("Debug Message....");
+//		logger.info("Info Message....");
+//		logger.warn("Warn Message....");
+//		logger.error("Error Message....");
+//		logger.fatal("fatal Message....");
 	}
 
 }

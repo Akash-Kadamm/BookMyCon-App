@@ -1,6 +1,7 @@
 package com.dbMigration.demo.controller;
 
 import com.dbMigration.demo.dbMigrationservice.UserMigrationService;
+import com.dbMigration.demo.dto.UserDetailsDTO;
 import com.dbMigration.demo.payload.User;
 import com.dbMigration.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,22 @@ public class UserController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping("fetchAllDetailsOfUser/{userId}")
+    public ResponseEntity<UserDetailsDTO> getAllDetailsOfUser(@PathVariable int userId) {
+        return new ResponseEntity<>(
+                userMigrationService.fetchAllUserDetails(userId),
+                HttpStatus.OK
+        );
+    }
+
+    @DeleteMapping("deleteAllDetailsOfUser/{userId}")
+    public ResponseEntity<String> deleteUserDetails(@PathVariable int userId){
+        return new ResponseEntity<>(
+                userMigrationService.deleteAllDetailsOfUser(userId),
+                HttpStatus.OK
+        );
+    }
+
 
 }

@@ -19,7 +19,6 @@ public class KafkaTopicConfig {
      *
      * @param
      * @return NewTopic object
-     *
      * */
     @Bean
     public NewTopic newTopic() {

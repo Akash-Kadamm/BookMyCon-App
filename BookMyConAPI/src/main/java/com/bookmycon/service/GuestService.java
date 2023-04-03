@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 @Service
 public class GuestService {
@@ -24,24 +25,33 @@ public class GuestService {
 
     static Logger logger=Logger.getLogger(GuestService.class);
 
+
+    Logger logger=Logger.getLogger(GuestService.class);
+
     public Guest save(Guest guest, MultipartFile thumbnail) {
         String fileName = storageService.store(thumbnail);
         guest.setThumbnail(fileName);
+
         return guestRepository.save(guest);
     }
 
     public List<Guest> findAllGuests() {
+        logger.info("Retrieving list of guests!!");
         return guestRepository.findAll();
     }
 
     public Guest findByGuestName(String name) {
+        logger.info("Finding guest by Name: ");
         return guestRepository.findByGuestName(name);
     }
 
     public List<Guest> getAllGuestByUserId(int userId) {
+        logger.info("Get all guest by userId: " + userId);
         return guestRepository.getGuestByUserId(userId);
     }
+
     public String deleteByGuestId(int guestId) {
+        logger.info("Delete guest by using guestId:" + guestId);
         guestRepository.deleteById(guestId);
         return "Guest deleted successfully";
     }
