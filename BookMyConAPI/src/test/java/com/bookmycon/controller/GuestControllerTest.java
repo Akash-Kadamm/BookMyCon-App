@@ -1,6 +1,5 @@
 package com.bookmycon.controller;
 
-import com.bookmycon.dto.GuestRequestDTO;
 import com.bookmycon.model.Guest;
 import com.bookmycon.model.User;
 import com.bookmycon.service.GuestService;
@@ -13,7 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
+//import com.bookmycon.dto.GuestRequestDTO;
+//import org.springframework.web.multipart.MultipartFile;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
@@ -34,9 +34,9 @@ public class GuestControllerTest {
 
     Guest guest;
 
-    GuestRequestDTO guestRequestDTO;
-
-    MultipartFile thumbnail = null;
+//    GuestRequestDTO guestRequestDTO;
+//
+//    MultipartFile thumbnail = null;
 
     @Before
     public void setUp()
@@ -63,14 +63,6 @@ public class GuestControllerTest {
         ResponseEntity<List<Guest>> actual = guestController.getAllGuest();
         assertEquals(list,actual.getBody());
     }
-
-//    @Test
-//    public void testUpdateProfile_ConditionGuestUpdateSuccessfully() {
-//        response.put("message", ResponseMessage.USER_UPDATED_SUCCESSFULLY.getMessage());
-//        ResponseEntity<Object> actual=guestController.updateGuestProfile(guest.getGuestName());
-//        assertEquals(response, actual.getBody());
-//        Assert.assertEquals(response, actual.getBody());
-//    }
 
     @Test
     public void testUpdateProfile_ConditionGettingGuestNull() {
