@@ -25,8 +25,7 @@ public class GuestService {
 
     static Logger logger=Logger.getLogger(GuestService.class);
 
-
-    Logger logger=Logger.getLogger(GuestService.class);
+//    Logger logger=Logger.getLogger(GuestService.class);
 
     public Guest save(Guest guest, MultipartFile thumbnail) {
         String fileName = storageService.store(thumbnail);
