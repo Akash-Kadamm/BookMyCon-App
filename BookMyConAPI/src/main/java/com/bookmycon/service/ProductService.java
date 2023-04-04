@@ -4,6 +4,11 @@ import com.bookmycon.dto.StockDTO;
 import com.bookmycon.model.Product;
 import com.bookmycon.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 
@@ -24,6 +29,7 @@ public class ProductService {
      * @return List of Products
      *
      * */
+    @Cacheable(value = "products")
     public List<Product> getAllProducts(){
         logger.info("Getting all products");
         return productRepository.findAll();
@@ -37,6 +43,7 @@ public class ProductService {
      * @return Product object
      *
      * */
+    @CacheEvict(value = "products",allEntries = true)
     public Product addProduct(Product product){
         logger.info("Adding product with details: name={}" + product.getProductName() + " price={}" + product.getProductPrice());
         return productRepository.save(product);
@@ -50,6 +57,7 @@ public class ProductService {
      * @return Product object
      *
      * */
+    @CacheEvict(value = "products",allEntries = true)
     public void updateProduct(Product product ){
         logger.info("Updating product with id: {}" + product.getProductId());
          int productId=product.getProductId();
@@ -67,6 +75,7 @@ public class ProductService {
      * @return String
      *
      * */
+    @CacheEvict(value = "products",allEntries = true)
     public String deleteProduct(int productId){
         productRepository.deleteById(productId);
         logger.info("Deleting product with id: {}" + productId);

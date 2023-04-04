@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.bookmycon.model.Auditoriums;
 import com.bookmycon.repository.AuditoriumRepository;
@@ -14,9 +19,10 @@ public class AuditoriumService {
 
 	@Autowired
 	AuditoriumRepository auditoriumRepo;
-	
+
 	Logger logger=Logger.getLogger(AuditoriumService.class);
 
+	@CacheEvict(value = "auditoriums",allEntries = true)
 	public Auditoriums addAuditorium(Auditoriums auditoriums) {
 		auditoriumRepo.save(auditoriums);
 
@@ -33,6 +39,7 @@ public class AuditoriumService {
 	 * @return void
 	 * 
 	 * */
+	@CacheEvict(value = "auditoriums",allEntries = true)
 	public void updateAuditorium(int id, Auditoriums auditorium) {
 		 logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
 		 logger.debug("Finding the Auditorium object by its id");
@@ -50,6 +57,7 @@ public class AuditoriumService {
 		auditoriumRepo.deleteById(id);
 	}
 
+	@Cacheable(cacheNames = "auditoriums")
 	public List<Auditoriums> showAll() {
 
 		logger.info("All Auditoriums fetched successfully from the service file.");
