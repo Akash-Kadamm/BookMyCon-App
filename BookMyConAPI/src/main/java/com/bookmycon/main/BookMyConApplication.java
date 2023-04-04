@@ -19,9 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableCaching
 public class BookMyConApplication  {
     static Logger logger = Logger.getLogger(BookMyConApplication.class);
-    @Autowired
-    private static CacheManager cacheManager;
-
+ 
     public static void main(String[] args) {
         SpringApplication.run(BookMyConApplication.class, args);
         logger.setLevel(Level.INFO);

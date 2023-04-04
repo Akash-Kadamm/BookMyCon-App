@@ -25,6 +25,8 @@ public class AuditoriumService {
 	@CacheEvict(value = "auditoriums",allEntries = true)
 	public Auditoriums addAuditorium(Auditoriums auditoriums) {
 		auditoriumRepo.save(auditoriums);
+
+		logger.debug("Adding auditorium: ");
 		return auditoriums;
 	}
 	
@@ -50,11 +52,15 @@ public class AuditoriumService {
 	}
 
 	public void deleteById(int id) {
+
+		logger.debug("delete auditorium by id: {}" + id);
 		auditoriumRepo.deleteById(id);
 	}
 
 	@Cacheable(cacheNames = "auditoriums")
 	public List<Auditoriums> showAll() {
+
+		logger.info("All Auditoriums fetched successfully from the service file.");
 		return auditoriumRepo.findAll();
 
 	}
@@ -62,6 +68,8 @@ public class AuditoriumService {
 	
 	
 	public List<Auditoriums> findByAuditoriumByName(String name ) {
+
+		logger.debug("Finding auditorium by its name: {} " + name);
 		return auditoriumRepo.findByAuditoriumName(name);
 
 	}

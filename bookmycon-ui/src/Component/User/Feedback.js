@@ -91,6 +91,15 @@ export default function Feedback() {
                     <Rating
                         name="simple-controlled"
                         value={value1}
+                        sx={{
+                            "& .MuiRating-iconFilled": {
+                              color: "yellow"
+                            },
+                            "& .MuiRating-iconHover": {
+                              color: "yellow"
+                            }
+                          }}
+                       
                         onChange={(event, newValue) => {
                             setValue1(newValue);
                         }}
@@ -99,6 +108,14 @@ export default function Feedback() {
                     <Rating
                         name="simple-controlled"
                         value={value2}
+                        sx={{
+                            "& .MuiRating-iconFilled": {
+                              color: "yellow"
+                            },
+                            "& .MuiRating-iconHover": {
+                              color: "yellow"
+                            }
+                          }}
                         onChange={(event, newValue) => {
                             setValue2(newValue);
                         }}
@@ -107,6 +124,14 @@ export default function Feedback() {
                     <Rating
                         name="simple-controlled"
                         value={value3}
+                        sx={{
+                            "& .MuiRating-iconFilled": {
+                              color: "yellow"
+                            },
+                            "& .MuiRating-iconHover": {
+                              color: "yellow"
+                            }
+                          }}
                         onChange={(event, newValue) => {
                             setValue3(newValue);
                         }}
