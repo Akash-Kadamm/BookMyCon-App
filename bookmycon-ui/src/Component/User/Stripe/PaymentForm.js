@@ -170,7 +170,7 @@ export default function PaymentForm() {
                 <div>
                     <h1>Thank You !!</h1>
                     <h2>Your Order Has Been Received .</h2>
-                    <h2>You just bought a sweet spatula congrats this is the best decision of you're life</h2>
+                    {/* <h2>You just bought a sweet spatula congrats this is the best decision of you're life</h2> */}
 
                     <button onClick={() => navigate("/")} className="btn btn-primary">Go Home</button>
                 </div>
