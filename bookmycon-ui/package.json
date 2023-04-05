@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.10.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@google-pay/button-react": "^3.0.6",
@@ -14,6 +15,8 @@
     "@mui/material": "^5.10.5",
     "@mui/x-data-grid": "^5.17.2",
     "@mui/x-date-pickers": "^5.0.3",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.51.0",
     "@syncfusion/ej2-react-schedule": "^20.4.50",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

@@ -33,7 +33,7 @@ public class LoginServiceTest {
 	
 	@Before
 	public void setUp() {
-		 user=new User(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693");
+		 user=new User(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693","e3da01b141884ca0a4d01568551bdf2f");
 	}
 
 	@Test

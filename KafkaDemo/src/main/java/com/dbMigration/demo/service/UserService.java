@@ -3,11 +3,13 @@ package com.dbMigration.demo.service;
 import com.dbMigration.demo.mysql.MysqlUserRepo;
 import com.dbMigration.demo.payload.User;
 import com.dbMigration.demo.postgresql.PostgresqlUserRepo;
+import com.dbMigration.demo.utility.ResponseMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -67,12 +69,15 @@ public class UserService {
      * @return String message
      * */
     public String updateUser(User user) {
-        User savedUser = mysqlUserRepo.findById(user.getUserId()).get();
-        savedUser.setUserName(user.getUserName());
-        savedUser.setUserPassword(user.getUserPassword());
-        savedUser.setUserContactNumber(user.getUserContactNumber());
-        mysqlUserRepo.save(savedUser);
-        return "User is Updated....";
+        Optional<User> savedUser = mysqlUserRepo.findById(user.getUserId());
+        if(savedUser.isEmpty()){
+            return ResponseMessage.USER_NOT_FOUND.getMessage();
+        }
+        savedUser.get().setUserName(user.getUserName());
+        savedUser.get().setUserPassword(user.getUserPassword());
+        savedUser.get().setUserContactNumber(user.getUserContactNumber());
+        mysqlUserRepo.save(savedUser.get());
+        return ResponseMessage.USER_UPDATED.getMessage();
     }
 
     /*
@@ -82,7 +87,11 @@ public class UserService {
      * @return User
      * */
     public User getUserByUserId(int userId) {
-        return mysqlUserRepo.findById(userId).get();
+        Optional<User> savedUser = mysqlUserRepo.findById(userId);
+        if (savedUser.isEmpty()) {
+            return null;
+        }
+        return savedUser.get();
     }
 
     /*
@@ -112,6 +121,14 @@ public class UserService {
             });
         }
         return users;
+    }
+
+    public User getUserFromPostgresql(int userId) {
+        Optional<User> savedUser=postgresqlUserRepo.findById(userId);
+        if(savedUser.isEmpty()){
+            return null;
+        }
+        return savedUser.get();
     }
 
 }

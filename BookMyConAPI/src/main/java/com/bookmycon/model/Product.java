@@ -3,6 +3,7 @@ package com.bookmycon.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "products")
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @ToString
 @Getter
 @Setter
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,16 +1,9 @@
 package com.bookmycon.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
-//@Data
-//@Builder
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Entity(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +11,7 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
-public class User {
+public class User  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +33,5 @@ public class User {
     @Column(name = "user_contact")
     private String userContact;
 
-//    @Column(name = "image")
     private String thumbnail;
 }

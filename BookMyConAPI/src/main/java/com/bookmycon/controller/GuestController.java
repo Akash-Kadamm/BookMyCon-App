@@ -1,7 +1,9 @@
 package com.bookmycon.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import com.bookmycon.dto.GuestRequestDTO;
 import com.bookmycon.model.Guest;
@@ -9,10 +11,12 @@ import com.bookmycon.model.User;
 import com.bookmycon.repository.UserRepository;
 import com.bookmycon.service.GuestService;
 import com.bookmycon.utils.GuestPass;
+import com.bookmycon.utils.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.apache.log4j.Logger;
 
 @RestController
 @CrossOrigin("*")
@@ -28,13 +32,9 @@ public class GuestController {
 	@PostMapping("/addGuest")
 	public ResponseEntity<Guest> addGuest(GuestRequestDTO guestRequestDTO)  {
 		Guest newGuest = null;
-//		try {
 			System.out.println(guestRequestDTO);
 			newGuest = guestService.save(GuestRequestDTO.toEntity(guestRequestDTO),
 					guestRequestDTO.getThumbnail());
-//		} catch (Exception e) {
-//			throw new CustomException("Guest Not Added");
-//		}
 		return new ResponseEntity<Guest>(newGuest, HttpStatus.OK);
 	}
 	
@@ -67,5 +67,35 @@ public class GuestController {
 	public ResponseEntity<String> deleteGuest(@PathVariable int id){
 		guestService.deleteByGuestId(id);
 		return new ResponseEntity<>("Guest deleted",HttpStatus.OK);
+	}
+
+	/*
+	 * Update Guest Profile
+	 *
+	 * @param Guest
+	 *
+	 * @return updated Guest object
+	 *
+	 */
+	@PostMapping("updateGuestProfile/{name}")
+	public ResponseEntity<Object> updateGuestProfile( @PathVariable String name) {
+		Map<String, Object> response = new HashMap<>();
+		Guest guest = guestService.findByGuestName(name);
+		if (guest != null) {
+//			logger.debug("Guest object is not nulll");
+//			logger.info("guest object: " + guest);
+
+			response = guestService.updateGuestProfile(guest);
+			response.put("message", ResponseMessage.USER_UPDATED_SUCCESSFULLY.getMessage());
+		} else {
+//			logger.error("Getting guest object null");
+			response.put("message", ResponseMessage.USER_FAILED_TO_UPDATE_PROFILE.getMessage());
+		}
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/get-guest-by-name/{name}")
+	public ResponseEntity<?> getGuestByName(@PathVariable String name) {
+		return new ResponseEntity<>(guestService.findByGuestName(name), HttpStatus.OK);
 	}
 }

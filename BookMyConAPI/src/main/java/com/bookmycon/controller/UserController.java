@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
 import com.bookmycon.dto.UserRequestDTO;
 import com.bookmycon.utils.UserPass;
 import com.bookmycon.utils.PdfGenerator;
@@ -14,6 +13,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import com.bookmycon.model.User;
@@ -50,16 +56,10 @@ public class UserController {
 	 * 
 	 */
 	@PostMapping("/registration")
-//	@RequestBody User user, @RequestBody
 	public ResponseEntity<Object> registerUser(UserRequestDTO user) {
-
-//		User user1 = null;
 		Map<String, Object> response = new HashMap<>();
 		String emailPattern = "^[^@ ]+@[^@ ]+\\.[^@ .]{2,}$";
 		String passwordPattern = ".{6}.*";
-
-//		UserRequestDTO userRequestDTO = new UserRequestDTO();
-//		user = userService.save(UserRequestDTO.toEntity(userRequestDTO),userRequestDTO.getThumbnail());
 
 		if (user != null) {
 			logger.debug("User  object is not null ");
@@ -174,7 +174,6 @@ public class UserController {
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment; filename=Pass Generation " + ".pdf";
 		response.setHeader(headerKey, headerValue);
-
 		User userDetails=userService.findByUserEmail(email);
 		System.out.println(userDetails);
 		UserPass userPass = new UserPass();
