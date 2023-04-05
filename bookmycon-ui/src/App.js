@@ -28,13 +28,40 @@ import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
 import NonUserHomePage from './Component/User/NonUserHomePage';
 import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
+import BookMeeting2 from './Component/User/BookMeeting2';
+import UserDashboard from './Component/DashBoard/UserDashboard';
+import { Grid } from '@mui/material';
+import { AdminHomePage } from './Component/Admin/AdminHomePage';
+import { UserHomePage } from './Component/User/UserHomePage';
+import { NonUserHome, NonuserHome } from './Component/Utilities/NonUserHome';
+import Box from '@mui/material/Box';
+import Flexbox from "react-flexbox";
+
+const Card = () => (
+  <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
+)
+
+// import  { UserDashboard } from './Component/DashBoard/UserDashboard';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      
+ <BrowserRouter>
         <Navigation />
-        <Routes>
+        
+       
+<Grid container>
+  
+  <Grid item xs={3}>
+  <UserDashboard/>
+  </Grid>
+  <Grid item xs={9}>
+  <Routes>
         <Route exact path="/" element={<NonUserHomePage />} />
+        <Route exact path="/adminHomePage" element={<AdminHomePage />} />
+        <Route exact path="/userHomePage" element={<UserHomePage />} />
+        <Route exact path="/nonUserHome" element={<NonUserHome />} />
+          {/* <Route exact path="/" element={<PersistentDrawerLeft />} /> */}
           <Route exact path="/calender-view" element={<HomePage />} />
           <Route exact path="/floormap" element={<UserFloorMap />} />
            <Route exact path="/auditorium-view" element={<ViewForUser />} />
@@ -45,7 +72,7 @@ function App() {
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
           <Route path="/auditorium-list" element={<AuditoriumList />} />
-          <Route path="/auditorium-Booking" element={<BookMeeting />} />
+          <Route path="/auditorium-Booking" element={<BookMeeting2 />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser />} />
@@ -59,8 +86,14 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
-        </Routes>
+          </Routes>
+  </Grid>
+</Grid>
+
       </BrowserRouter>
+
+
+
       <ToastContainer theme='colored' />
     </div>
   );

@@ -62,4 +62,11 @@ public class BookingService {
 	public List<Booking> getAllBookingOfUser(int userId){   
 		return bookingRepository.findByUserId(userId);
 	}
+
+
+
+
+	public List<Booking> getAllBookingByAuditoriumNameAndDate(Auditoriums auditoriums, LocalDate dateFrom){
+		return bookingRepository.findByAduitoriamIdAndBookingDateFrom(auditoriums,dateFrom);
+	}
 }

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import  Reducer  from './Component/Reducer/Reducer';
 import { createStore } from 'redux';
+import UserDashboard from './Component/DashBoard/UserDashboard';
 
 const store = createStore(Reducer)
 const root = ReactDOM.createRoot(document.getElementById('root'));

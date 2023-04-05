@@ -580,38 +580,40 @@ const data3={
         <div style={{marginTop:"50px",
         marginTop:"70px",
       width:"700px",
-      marginLeft:"60px"}} >
+     }} >
        
-        <h2>Admin Layout</h2>
+        <h4>Admin Layout</h4>
 
             <ImageMapper
               src={a1}
               map={adminLayout}
-              width={700}
+              width={500}
               onImageClick={(evt) => makeDot(evt)}
               onImageMouseMove={(evt) => moveOnImage(evt)}
             />
               
               <TextField
+              alignItems="left"
               margin="normal"
               onChange={handleAddAreasName}
              
-              fullWidth
+           
               name="Location"
             
               type="Location"
               id="Location"
               defaultValue={"Enter Auditorium Name"}
             />
+            <br></br>
             <Button onClick={(evt) => addPolygon(evt)}>Add Auditorium</Button>
 
-            <h2>User Layout</h2>
+            <h4>User Layout</h4>
 
             <ImageMapper
   
               src={a1}
               map={userLayout}
-              width={700}
+              width={500}
 
               onImageClick={(evt) => clickedOutside(evt)}
               onImageMouseMove={(evt) => moveOnImage(evt)}

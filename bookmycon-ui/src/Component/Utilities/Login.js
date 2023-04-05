@@ -45,14 +45,16 @@ function Login() {
         toast.error(response.data.message);
         ReactSession.set("userForBooking",JSON.stringify(response.data.user))
         sessionStorage.setItem("userLogin", JSON.stringify(response.data.user));
+        sessionStorage.setItem("userRole", JSON.stringify(response.data.user.userRole));
+        
         if (response.data.user.userRole === "user") {
           toast.success(response.data.user.userName + " Login successfully");
-          navigate("/auditorium-view");
+          navigate("/userHomePage");
           window.location.reload();
         }
         if (response.data.user.userRole === "admin") {
           toast.success(response.data.user.userName + " Login successfully");
-          navigate("/dashboard");
+          navigate("/adminHomePage");
           window.location.reload();
         }
         if(response.data.user.userRole === "vendor") {
@@ -76,6 +78,7 @@ function Login() {
               maxWidth="xs"
               sx={{
                 marginTop: -8,
+                marginLeft:"70px",
                 height: "40rem",
                 display: "flex",
                 alignItems: "center",

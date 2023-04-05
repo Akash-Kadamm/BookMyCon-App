@@ -20,10 +20,15 @@ import { Badge } from "@mui/material";
 import CartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
 
-const pages = ["Home  ", "Floor Map Updation"];
+// const pages = ["Home  ", "Floor Map Updation"];
+// const commonPages = ["Profile", "Logout"];
+// const userPages = ["Home ", "Floor Map", "Calender", "Feedback"];
+// const nonLoginUser = ["Home"];
+
+const pages = [];
 const commonPages = ["Profile", "Logout"];
-const userPages = ["Home ", "Floor Map", "Calender", "Feedback"];
-const nonLoginUser = ["Home"];
+const userPages = [];
+const nonLoginUser = [];
 const login = "Login";
 
 const Navigation = () => {

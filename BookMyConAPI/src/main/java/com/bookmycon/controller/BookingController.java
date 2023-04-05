@@ -2,12 +2,16 @@ package com.bookmycon.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.bookmycon.dto.BookingsDTO;
+import com.bookmycon.model.Auditoriums;
 import com.bookmycon.repository.UserRepository;
+import com.bookmycon.service.AuditoriumService;
 import com.bookmycon.utils.PdfOfBooking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +41,9 @@ public class BookingController {
 	BookingService bookingService;
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	AuditoriumService auditoriumService;
 	@GetMapping("/getAllBookings")
 	public ResponseEntity<List<Booking>> getAllBookings() {
 		return new ResponseEntity<List<Booking>>(bookingService.showAll(), HttpStatus.OK);
@@ -44,6 +51,145 @@ public class BookingController {
 
 	@PostMapping("/addBooking")
 	public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
+
+		return new ResponseEntity<Booking>(bookingService.addBooking(booking), HttpStatus.CREATED);
+	}
+
+	@PostMapping("/addBookings")
+	public ResponseEntity<Booking> addBookings(@RequestBody BookingsDTO bookingsDTO) {
+
+
+		System.out.println(bookingsDTO);
+		Booking booking=new Booking();
+		booking.setBookingId(bookingsDTO.getBookingId());
+		booking.setAduitoriamId(bookingsDTO.getAduitoriamId());
+		booking.setUserId(bookingsDTO.getUserId());
+		booking.setBookingAgenda(bookingsDTO.getBookingAgenda());
+		booking.setBookingDateFrom(bookingsDTO.getBookingDateFrom());
+		booking.setBookingDateTo(bookingsDTO.getBookingDateTo());
+
+
+
+		LocalTime time;
+
+		if(bookingsDTO.getBookingTimeFrom().equals("9"))
+		{
+			time= LocalTime.parse("09:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("10"))
+		{
+			time= LocalTime.parse("10:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("11"))
+		{
+			time= LocalTime.parse("11:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("12"))
+		{
+			time= LocalTime.parse("12:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("13"))
+		{
+			time= LocalTime.parse("13:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("14"))
+		{
+			time= LocalTime.parse("14:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("15"))
+		{
+			time= LocalTime.parse("15:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("16"))
+		{
+			time= LocalTime.parse("16:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("17"))
+		{
+			time= LocalTime.parse("17:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else if (bookingsDTO.getBookingTimeFrom().equals("18"))
+		{
+			time= LocalTime.parse("18:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+		else
+		{
+
+			time= LocalTime.parse("00:00:00");
+			booking.setBookingTimeFrom(time);
+		}
+
+
+
+		if(bookingsDTO.getBookingTimeTO().equals("9"))
+		{
+			time= LocalTime.parse("09:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("10"))
+		{
+			time= LocalTime.parse("10:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("11"))
+		{
+			time= LocalTime.parse("11:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("12"))
+		{
+			time= LocalTime.parse("12:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("13"))
+		{
+			time= LocalTime.parse("13:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("14"))
+		{
+			time= LocalTime.parse("14:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("15"))
+		{
+			time= LocalTime.parse("15:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("16"))
+		{
+			time= LocalTime.parse("16:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("17"))
+		{
+			time= LocalTime.parse("17:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else if (bookingsDTO.getBookingTimeTO().equals("18"))
+		{
+			time= LocalTime.parse("18:00:00");
+			booking.setBookingTimeTO(time);
+		}
+		else
+		{
+
+			time= LocalTime.parse("00:00:00");
+			booking.setBookingTimeTO(time);
+		}
+
+
+
 		return new ResponseEntity<Booking>(bookingService.addBooking(booking), HttpStatus.CREATED);
 	}
 
@@ -122,4 +268,16 @@ public class BookingController {
 		System.out.println(bookingList);
 		generator.generateBooking(bookingList, response);
 	}
+
+
+
+	@GetMapping("/AuditoriumBookingByAuditoriumNameAndDate/{auditoriumName}/{dateFrom}")
+	public  ResponseEntity<List<Booking>> getAllBookingByAuditoriamsNameAndDate(@PathVariable String auditoriumName, @PathVariable String dateFrom)
+	{
+		Auditoriums audi=auditoriumService.findByAuditoriumByName(auditoriumName).get(0);
+		return new ResponseEntity<List<Booking>>(bookingService.getAllBookingByAuditoriumNameAndDate(audi,  LocalDate.parse(dateFrom)), HttpStatus.OK);
+
+	}
+
+
 }
