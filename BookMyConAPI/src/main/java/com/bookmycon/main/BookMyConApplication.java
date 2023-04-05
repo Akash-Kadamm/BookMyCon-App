@@ -8,13 +8,21 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.client.RestTemplate;
 
 
 @EnableJpaRepositories("com.bookmycon.repository")
 @EntityScan("com.bookmycon.model")
 @SpringBootApplication(scanBasePackages = "com.bookmycon.*")
+@EnableEurekaClient
 public class BookMyConApplication {
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
 	static Logger logger=Logger.getLogger(BookMyConApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(BookMyConApplication.class, args);

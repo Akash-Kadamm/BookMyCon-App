@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BookMyConAPI/BookMyCon.iml" filepath="$PROJECT_DIR$/BookMyConAPI/BookMyCon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BookMyCon-App.iml" filepath="$PROJECT_DIR$/.idea/BookMyCon-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataBaseMigrationApp/DataBaseMigrationApp.iml" filepath="$PROJECT_DIR$/DataBaseMigrationApp/DataBaseMigrationApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KafkaDemo/KafkaDemo.iml" filepath="$PROJECT_DIR$/KafkaDemo/KafkaDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api1-gateway/api1-gateway.iml" filepath="$PROJECT_DIR$/api1-gateway/api1-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/housekeeping-service/housekeeping-service.iml" filepath="$PROJECT_DIR$/housekeeping-service/housekeeping-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry.iml" />
+    </modules>
+  </component>
+</project>
