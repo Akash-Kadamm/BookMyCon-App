@@ -449,6 +449,11 @@ const navigate=useNavigate();
     ReactSession.set("BookingIdForFood",e)
     navigate('/product-List')
   }
+  const handleHousekeeping=(e)=>{
+    ReactSession.set("Housekeeping",e)
+    navigate('/addHousekeeping')
+  }
+
 
   const handleComplaint=()=>{
       navigate('/make-complaint')
@@ -722,7 +727,18 @@ const navigate=useNavigate();
                                         variant="contained"
                                       >
                                          User Pass
-                                      </Button></TableCell>
+                                      </Button>
+                                      <br></br>
+                                      <br></br>
+                                      <Button
+                    onClick={()=>handleHousekeeping(row.auditoriumName)}
+                                        color="warning"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                       Housekeeping
+                                      </Button>
+                                      </TableCell>
                   </TableRow>
                   {/* ))} */}
                 </TableBody>
@@ -761,8 +777,9 @@ export const ViewForUser = () => {
       .catch((error) => setErrorMsg("error "));
   };
   rows = booking;
-  console.log("Booking Data:=- " + JSON.stringify(booking));
-
+  // console.log("Booking Data:=- " + JSON.stringify(booking));
+   console.log((booking)[0].aduitoriamId.auditoriumName);
+  sessionStorage.setItem("audName",(booking)[0].aduitoriamId.auditoriumName)
   return (
     <div
       style={
