@@ -15,7 +15,7 @@ public class SmsService {
 
     private final String ACCOUNT_SID ="AC3edb50e58da775d43f54e0ebd85939e0";
 
-    private final String AUTH_TOKEN = "d541d8a0371def813e453985703eff0d";
+    private final String AUTH_TOKEN = "348269a9ff0566ca8bb179e2585e365e";
 
     private final String FROM_NUMBER = "+14406412988";
 
