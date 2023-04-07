@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/admin")
 public class AuditoriumController {
+
 	@Autowired
 	private AuditoriumService auditoriumService;
 	@Autowired
@@ -127,5 +128,6 @@ public class AuditoriumController {
 		PdfOfAuditorium generator = new PdfOfAuditorium();
 		generator.generateAudi(listOfAuditoriums, response);
 	}
+
 
 }

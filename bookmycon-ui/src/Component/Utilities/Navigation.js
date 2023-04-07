@@ -20,7 +20,7 @@ import { Badge } from "@mui/material";
 import CartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
 
-const pages = ["Home  ", "Floor Map Updation"];
+const pages = ["Home  ", "Floor Map Updation","Housekeeping Request"];
 const commonPages = ["Profile", "Logout"];
 const userPages = ["Home ", "Floor Map", "Calender", "Feedback", "Guest"];
 const nonLoginUser = ["Home"];
@@ -77,7 +77,10 @@ const Navigation = () => {
       navigate("/dashboard");
     } else if (page === "Floor Map Updation") {
       navigate("/admin-floormap");
-    } else {
+    }else if (page === "Housekeeping Request") {
+      navigate("/getHousekeeping");
+    }
+     else {
       navigate("/user-list");
     }
   };
