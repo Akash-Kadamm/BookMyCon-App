@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.client.RestTemplate;
 //import org.springframework.web.client.RestTemplate;
 
 
@@ -22,10 +23,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableCaching
 @EnableEurekaClient
 public class BookMyConApplication {
-//	@Bean
-//	public RestTemplate restTemplate() {
-//		return new RestTemplate();
-//	}
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 
 	static Logger logger = Logger.getLogger(BookMyConApplication.class);
 
