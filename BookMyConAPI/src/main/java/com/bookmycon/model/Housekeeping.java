@@ -1,4 +1,4 @@
-package com.micro.housekeepingservice.entity;
+package com.bookmycon.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

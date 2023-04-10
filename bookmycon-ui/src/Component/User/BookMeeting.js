@@ -128,6 +128,11 @@ export default function BookMeeting() {
   };
 
   const handleSubmit = (event) => {
+    const url = 'http://localhost:8080/sms';
+    axios.post(url)
+            .then((response)=>{
+                console.log(response)}).catch((error=>console.log("error:")));
+                alert("message sent successfully successfully");
     event.preventDefault();
     
     let data = {

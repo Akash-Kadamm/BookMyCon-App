@@ -33,6 +33,7 @@ export default function PaymentForm() {
 
     const cart = useSelector((state) => state);
     const [success, setSuccess] = useState(false)
+    const [disabled, setDisabled] = useState(true);
     const stripe = useStripe()
     const elements = useElements()
     const navigate = useNavigate()
@@ -61,8 +62,23 @@ export default function PaymentForm() {
         setOrderContent((prevState) => { return { ...prevState, productList: cart, total: cartTotal } });
     }, [cart]);
 
+    const handleDisabledButton = (e) => {
+
+    }
     const fetchUser = () => {
         axios
+            .get(
+                "http://localhost:8080/user/get-user-by-email/" +
+                JSON.parse(sessionStorage.getItem("userLogin")).userEmail
+            )
+            .then((response) => {
+                setOrderContent({ ...orderContent, user: response.data });
+            });
+    };
+
+    //fetch order id to show transaction id 
+    const fetchOrderId = () => {
+        const response = axios
             .get(
                 "http://localhost:8080/user/get-user-by-email/" +
                 JSON.parse(sessionStorage.getItem("userLogin")).userEmail
@@ -78,30 +94,85 @@ export default function PaymentForm() {
                 sessionStorage.setItem('total', orderContent.total)
                 setShow(true)
 
+                toast.success('Transaction Successful')
+                navigate("/")
 
             })
-        toast.success('Transaction Successful')
-        navigate("/")
 
 
 
+    }
+
+    const handleChange = (e) => {
+        if (e.target.value.length >= 6) {
+            setDisabled(false)
+        } else {
+            setDisabled(true)
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: "card",
+            card: elements.getElement(CardElement)
+        })
+
+
+        if (!error) {
+            try {
+                const { id } = paymentMethod
+                dispatch({ type: "EMPTY", payload: [] })
+                const response = await axios.post("http://localhost:8080/order/place-order/" + ReactSession.get("BookingIdForFood"), orderContent, {
+                    amount: orderContent.total,
+                    id,
+
+                })
+                console.log(response)
+                console.log(response.status)
+                if (response.status === 200) {
+                    console.log("Successful payment")
+                    toast.success('Transaction Successful')
+                    setSuccess(true)
+                }
+
+
+
+            } catch (error) {
+                toast.error('Your card number is incomplete."')
+                console.log("Error", error)
+
+            }
+        } else {
+            console.log(error.message)
+            toast.error('Your card number is incomplete."')
+            //navigate("/")
+
+        }
     }
 
     return (
 
         <div className="div">
             {!success ?
-                <form >
+                <form onSubmit={handleSubmit}>
                     <fieldset className="FormGroup">
                         <div className="FormRow">
-                            <CardElement options={CARD_OPTIONS} />
+                            <CardElement options={CARD_OPTIONS} onChange={handleChange} />
                         </div>
                     </fieldset>
-                    <button onClick={placeOrder}>Pay  <CurrencyRupeeIcon fontSize="small" ></CurrencyRupeeIcon>{orderContent.total}</button>
+                    <button className="StripeButton" >Pay  <CurrencyRupeeIcon fontSize="small" ></CurrencyRupeeIcon>{orderContent.total}</button>
+
+                    {/* <button className="StripeButton" disabled={disabled} onClick={placeOrder} >Pay  <CurrencyRupeeIcon fontSize="small" ></CurrencyRupeeIcon>{orderContent.total}</button> */}
                 </form>
                 :
+
                 <div>
-                    <h2>You just bought a sweet spatula congrats this is the best decision of you're life</h2>
+                    <h1>Thank You !!</h1>
+                    <h2>Your Order Has Been Received .</h2>
+                    {/* <h2>You just bought a sweet spatula congrats this is the best decision of you're life</h2> */}
+
+                    <button onClick={() => navigate("/")} className="btn btn-primary">Go Home</button>
                 </div>
             }
 

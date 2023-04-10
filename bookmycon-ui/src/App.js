@@ -31,6 +31,9 @@ import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
 import Register from './Component/Utilities/Register';
 
+import AddHousekeepingRequests from './Component/User/AddHousekeepingRequests';
+import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingRequest';
+import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
 import Update from './Component/User/UpdateUser';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
 
@@ -68,6 +71,11 @@ function App() {
           <Route path="/guest" element={ <Guest/>} />
           <Route path="/signup" element={<Register/>} />
           <Route path='/payment' element={<StripeContainer />} />
+
+          <Route path='/addHousekeeping' element={<AddHousekeepingRequests/>} />
+          <Route path='/deleteHousekeeping' element={<DeleteHousekeepingRequest />} />
+          <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
+
         </Routes>
       </BrowserRouter>
       <ToastContainer theme='colored' />
