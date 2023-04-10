@@ -1,49 +1,15 @@
-pipeline{
-    
-    agent 
-//     tools{
-//         'org.jenkinsci.plugins.docker.commons.tools.DockerTool'   
-//     }
-    {
-        docker
-        {
-            image 'node:16.13.1-alpine'
+pipeline {
+    agent {
+        dockerfile {
+            filename 'DockerFile'
         }
     }
-   
-    stages{
-      stage("build-back-end"){
-//           agent {
-//               docker{image 'maven:3.9.0-eclipse-temurin-11'}
-//           }
-          steps{
-           sh"mvn --version"
-            echo'building automatically test'
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+                sh 'cd client && npm install && npm run build'
+            }
         }
-      }
-//         stage("build-front-end")
-//         {
-//             agent
-//             {
-//                 docker { image 'alpine:3.16' }
-//             }
-//             steps
-//             {
-//                 sh'node --version'
-//             }
-//         }
-            
-      stage("test"){
-        steps{
-          echo 'building aplication'
-        }
-        }
-    
-      stage("deploy"){
-        steps{
-          echo 'building aplication'
-        }
-        }
-      
     }
 }

@@ -35,6 +35,7 @@ export default function PaymentForm() {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    const navigate = useNavigate()
 
     const dispatch = useDispatch();
     const add = (previousValue, currentValue) => {
@@ -80,6 +81,8 @@ export default function PaymentForm() {
 
             })
         toast.success('Transaction Successful')
+        navigate("/")
+
 
 
     }

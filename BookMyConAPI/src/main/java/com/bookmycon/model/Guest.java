@@ -3,10 +3,6 @@ package com.bookmycon.model;
 import lombok.*;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.ArrayList;
-
 @Entity
 @Table(name = "guest")
 @AllArgsConstructor
