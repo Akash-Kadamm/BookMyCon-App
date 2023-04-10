@@ -15,14 +15,6 @@
         <module name="DataBaseMigrationApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="api1-gateway" target="11" />
-      <module name="BookMyCon" target="11" />
-      <module name="DataBaseMigrationApp" target="17" />
-      <module name="housekeeping-service" target="11" />
-      <module name="KafkaDemo" target="17" />
-      <module name="service-registry" target="11" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
