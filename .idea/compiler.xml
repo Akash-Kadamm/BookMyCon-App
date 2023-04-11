@@ -9,10 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="KafkaDemo" />
         <module name="housekeeping-service" />
-        <module name="api1-gateway" />
         <module name="BookMyCon" />
-        <module name="service-registry" />
+        <module name="api1-gateway" />
         <module name="DataBaseMigrationApp" />
+        <module name="service-registry" />
       </profile>
     </annotationProcessing>
   </component>
