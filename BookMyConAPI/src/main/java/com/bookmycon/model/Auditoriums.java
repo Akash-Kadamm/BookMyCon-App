@@ -10,12 +10,14 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 
 @Entity
 @Table(name = "auditorium")
-public class Auditoriums {
+public class Auditoriums implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="auditorium_id")

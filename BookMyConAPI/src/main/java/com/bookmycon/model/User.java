@@ -2,6 +2,7 @@ package com.bookmycon.model;
 
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "users")
 @AllArgsConstructor
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @ToString
 @Getter
 @Setter
-public class User {
+public class User  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
