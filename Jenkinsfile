@@ -17,7 +17,7 @@ pipeline {
 //                     sh 'mvn clean install'
 //                 }
                 
-                dir('frontend') {
+                dir('bookmycon-ui') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
