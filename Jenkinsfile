@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git url: 'https://github.com/Akash-Kadamm/BookMyCon-App.git'
+                git branch: 'main', url: 'https://github.com/Akash-Kadamm/BookMyCon-App.git'
                 
                 dir('backend') {
                     sh 'mvn clean package'
