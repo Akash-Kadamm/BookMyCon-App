@@ -82,10 +82,10 @@ public class GuestResponseDTO {
 				+ ", guestEmail=" + guestEmail + ", guestMobileNo=" + guestMobileNo + ", thumbnail=" + thumbnail + "]";
 	}
 	
-	public static GuestResponseDTO fromEntity(Guest entity)
+	/*public static GuestResponseDTO fromEntity(Guest entity)
 	{
 		GuestResponseDTO guestResponseDTO = new GuestResponseDTO();
 		BeanUtils.copyProperties(entity, guestResponseDTO);
 		return guestResponseDTO;
-	}
+	}*/
 }
