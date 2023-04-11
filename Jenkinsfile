@@ -3,7 +3,7 @@ pipeline {
     
     tools {
         maven 'Maven 3.8.2'
-        nodejs 'NodeJS 14.17.0'
+        nodejs 'NodeJS 18.14.0'
     }
     
     stages {
@@ -11,11 +11,13 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/Akash-Kadamm/BookMyCon-App.git'
                 
-                dir('backend') {
-                    sh 'mvn clean package'
-                }
+//                 dir('BookMyConAPI') {
+// //                     sh 'mvn -f /path/to/pom.xml clean install'
+//                     sh 'mvn clean package'
+// //                     sh 'mvn clean install'
+//                 }
                 
-                dir('frontend') {
+                dir('bookmycon-ui') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
