@@ -33,10 +33,16 @@ import { AdminHomePage } from './Component/Admin/AdminHomePage';
 import { UserHomePage } from './Component/User/UserHomePage';
 import { NonUserHome, NonuserHome } from './Component/Utilities/NonUserHome';
 import { ReportPage } from './Component/Admin/ReportPage';
+
+import AddGuest from './Component/User/AddGuest';
+import Guest from './Component/User/Guest';
+import Register from './Component/Utilities/Register';
+
+import AddHousekeepingRequests from './Component/User/AddHousekeepingRequests';
+import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingRequest';
+import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
+import Update from './Component/User/UpdateUser';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
-import AddHousekeeping from './Component/User/AddHousekeepingRequests';
-import {GetHousekeepingRequests} from './Component/Admin/GetHousekeepingRequests';
-import {DeleteHousekeepingRequest} from './Component/Admin/DeleteHousekeepingRequest';
 import ChatBot from './Component/Utilities/ChatBot';
 
 const Card = () => (
@@ -88,18 +94,14 @@ function App() {
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
           <Route path="/report" element={<ReportPage/>}/>
           <Route path ="/payment" element={<StripeContainer />} />
-          <Route path = "/addHousekeeping" element={<AddHousekeeping />} />
-          <Route path = "/viewHouskeeping" element={<GetHousekeepingRequests />} />
-          <Route path = "/deleteHouskeeping" element={<DeleteHousekeepingRequest />} />
           <Route path="/assistant" element={<ChatBot/>}/>
+           <Route path='/addHousekeeping' element={<AddHousekeepingRequests/>} />
+          <Route path='/deleteHousekeeping' element={<DeleteHousekeepingRequest />} />
+          <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           </Routes>
   </Grid>
 </Grid>
-
       </BrowserRouter>
-
-
-
       <ToastContainer theme='colored' />
     </div>
   );

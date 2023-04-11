@@ -1,5 +1,6 @@
 package com.bookmycon.controller;
 
+import com.bookmycon.dto.GuestRequestDTO;
 import com.bookmycon.model.Guest;
 import com.bookmycon.model.User;
 import com.bookmycon.service.GuestService;
@@ -11,11 +12,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import com.bookmycon.dto.GuestRequestDTO;
 //import org.springframework.web.multipart.MultipartFile;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -70,4 +74,9 @@ public class GuestControllerTest {
         ResponseEntity<Object> actual=guestController.updateGuestProfile(null);
         Assert.assertEquals(response, actual.getBody());
     }
+
+
+
+
+
 }

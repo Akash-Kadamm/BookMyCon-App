@@ -2,12 +2,17 @@ package com.bookmycon.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -45,9 +50,12 @@ public class BookingServiceTest {
 	
 	
 //	@org.junit.Test
+	@Test
 	public void testGetAllBookingOfUser() {
 		List<Booking> actual=bookingService.getAllBookingOfUser(1);
 		assertEquals(bookings,actual);
 	}
+
+
 	
 }

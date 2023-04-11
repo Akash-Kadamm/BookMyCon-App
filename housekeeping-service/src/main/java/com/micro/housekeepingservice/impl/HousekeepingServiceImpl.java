@@ -41,7 +41,7 @@ public class HousekeepingServiceImpl implements HousekeepingService {
     }
 
     @Override
-    public void deleteHouskeepingRequest(Long HousekeepingId) {
-        housekeepingRepository.deleteById(HousekeepingId);
+    public void deleteHouskeepingRequest(Long housekeepingId) {
+        housekeepingRepository.deleteById(housekeepingId);
     }
 }

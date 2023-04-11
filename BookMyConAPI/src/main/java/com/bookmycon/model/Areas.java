@@ -24,8 +24,11 @@ public class Areas {
 	@Id
 	@GeneratedValue
 	private int areaId ;
-	
-	public int getAreaId() {
+
+    public Areas(int id, String s) {
+    }
+
+    public int getAreaId() {
 		return areaId;
 	}
 
@@ -121,5 +124,6 @@ public class Areas {
 		this.fillColor = fillColor;
 		this.userLayout = userLayout;
 	}
+
 
 }
