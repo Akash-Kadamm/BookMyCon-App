@@ -12,7 +12,8 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Akash-Kadamm/BookMyCon-App.git'
                 
                 dir('backend') {
-                    sh 'mvn clean package'
+                    sh 'mvn -f /path/to/pom.xml clean install'
+//                     sh 'mvn clean package'
                 }
                 
                 dir('frontend') {
