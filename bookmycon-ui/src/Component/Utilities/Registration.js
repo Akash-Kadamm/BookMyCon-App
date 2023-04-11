@@ -61,6 +61,7 @@ const Registration = () => {
             <Container component="main" maxWidth="xs"
             sx={{
                 marginTop: -9,
+                marginLeft:"70px",
                 height: "40rem",
                 display: "flex",
                 alignItems: "center",

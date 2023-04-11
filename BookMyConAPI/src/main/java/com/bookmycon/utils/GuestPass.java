@@ -2,6 +2,7 @@ package com.bookmycon.utils;
 
 import com.bookmycon.model.Guest;
 import com.lowagie.text.*;
+import com.lowagie.text.pdf.CMYKColor;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,13 @@ public class GuestPass {
 
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle.setSize(30);
+
+        PdfPTable table1 = new PdfPTable(1);
+        table1.setSpacingBefore(10);
+        Image image = Image.getInstance("E://Manager/bookmycon-logo.png");
+//        Image myImage = Image.getInstance("E://uploads//"+guest.getThumbnail());
+        image.setAlignment(Paragraph.ALIGN_CENTER);
+        document.add(image);
 
         Paragraph paragraph1 = new Paragraph("Guest Pass", fontTiltle);
 

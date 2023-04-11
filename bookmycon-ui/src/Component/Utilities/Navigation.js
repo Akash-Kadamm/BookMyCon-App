@@ -20,10 +20,15 @@ import { Badge } from "@mui/material";
 import CartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
 
-const pages = ["Home  ", "Floor Map Updation","Housekeeping Request"];
+// const pages = ["Home  ", "Floor Map Updation"];
+// const commonPages = ["Profile", "Logout"];
+// const userPages = ["Home ", "Floor Map", "Calender", "Feedback"];
+// const nonLoginUser = ["Home"];
+
+const pages = [];
 const commonPages = ["Profile", "Logout"];
-const userPages = ["Home ", "Floor Map", "Calender", "Feedback", "Guest"];
-const nonLoginUser = ["Home"];
+const userPages = [];
+const nonLoginUser = [];
 const login = "Login";
 
 const Navigation = () => {
@@ -67,9 +72,7 @@ const Navigation = () => {
       navigate("/product-list");
     } else if (page === "Cart") {
       navigate("/cart");
-    } else if (page === "Guest") {
-      navigate("/guest");
-    }else if (page === "Floor Map") {
+    } else if (page === "Floor Map") {
       navigate("/floormap");
     } else if (page === "Home ") {
       navigate("/auditorium-view");
@@ -77,10 +80,7 @@ const Navigation = () => {
       navigate("/dashboard");
     } else if (page === "Floor Map Updation") {
       navigate("/admin-floormap");
-    }else if (page === "Housekeeping Request") {
-      navigate("/getHousekeeping");
-    }
-     else {
+    } else {
       navigate("/user-list");
     }
   };

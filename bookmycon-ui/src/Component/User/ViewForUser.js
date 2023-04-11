@@ -22,7 +22,6 @@ import { ReactSession } from "react-client-session";
 import { useNavigate } from "react-router";
 import fileDownload from 'js-file-download'
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses}`]: {
     backgroundColor: theme.palette.common.black,
@@ -454,7 +453,6 @@ const navigate=useNavigate();
     navigate('/addHousekeeping')
   }
 
-
   const handleComplaint=()=>{
       navigate('/make-complaint')
   }
@@ -467,7 +465,6 @@ const navigate=useNavigate();
     console.log(error)
   })
   }
-
 
   const handleFlag9 = (t1, t2) => {
     // t1="10:10:10";
@@ -751,7 +748,6 @@ const navigate=useNavigate();
   );
 }
 
-
 let rows = [
   createData("10/02/2022", "Book", 6.0, 24, 4.0, 3.99),
   createData("10/02/2022", 237, 9.0, 37, 4.3, 4.99),
@@ -777,9 +773,7 @@ export const ViewForUser = () => {
       .catch((error) => setErrorMsg("error "));
   };
   rows = booking;
-  // console.log("Booking Data:=- " + JSON.stringify(booking));
-   console.log((booking)[0].aduitoriamId.auditoriumName);
-  sessionStorage.setItem("audName",(booking)[0].aduitoriamId.auditoriumName)
+
   return (
     <div
       style={
@@ -861,3 +855,4 @@ export const ViewForUser = () => {
     </div>
   );
 };
+

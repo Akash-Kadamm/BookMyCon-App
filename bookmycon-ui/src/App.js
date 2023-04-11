@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './Component/Utilities/Login';
-
+import UpdateUser from './Component/User/UpdateUser';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -9,7 +9,7 @@ import AddAudi from './Component/Admin/AddAudi';
 import { AuditoriumList } from './Component/Admin/AuditoriumList';
 import UpdateAuditorium from './Component/Admin/UpdateAuditorium';
 import Feedback from './Component/User/Feedback';
-import BookMeeting from './Component/User/BookMeeting';
+import Registration from './Component/Utilities/Registration';
 import AboutUs from './Component/Utilities/AboutUs';
 import ContactUs from './Component/Utilities/ContactUs';
 import BookingListOfUser from './Component/User/BookingListOfUser';
@@ -26,36 +26,53 @@ import {ViewForUser} from './Component/User/ViewForUser';
 import Dashboard from './Component/Admin/Dashboard';
 import NonUserHomePage from './Component/User/NonUserHomePage';
 import VendorViewOfComplaints from './Component/Vendor/VendorViewOfComplaints';
-
-import AddGuest from './Component/User/AddGuest';
-import Guest from './Component/User/Guest';
-import Register from './Component/Utilities/Register';
-
-import PaymentGateway from './Component/User/PaymentGateway';
-import PaypalPayment from './Component/User/RazorpayPayment'
-import AddHousekeepingRequests from './Component/User/AddHousekeepingRequests';
-import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingRequest';
-import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
-import Update from './Component/User/UpdateUser';
+import BookMeeting2 from './Component/User/BookMeeting2';
+import UserDashboard from './Component/DashBoard/UserDashboard';
+import { Grid } from '@mui/material';
+import { AdminHomePage } from './Component/Admin/AdminHomePage';
+import { UserHomePage } from './Component/User/UserHomePage';
+import { NonUserHome, NonuserHome } from './Component/Utilities/NonUserHome';
+import { ReportPage } from './Component/Admin/ReportPage';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
+import AddHousekeeping from './Component/User/AddHousekeepingRequests';
+import {GetHousekeepingRequests} from './Component/Admin/GetHousekeepingRequests';
+import {DeleteHousekeepingRequest} from './Component/Admin/DeleteHousekeepingRequest';
+import ChatBot from './Component/Utilities/ChatBot';
+
+const Card = () => (
+  <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
+)
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      
+ <BrowserRouter>
         <Navigation />
-        <Routes>
+        
+       
+<Grid container>
+  
+  <Grid item xs={3}>
+  <UserDashboard/>
+  </Grid>
+  <Grid item xs={9}>
+  <Routes>
         <Route exact path="/" element={<NonUserHomePage />} />
+        <Route exact path="/adminHomePage" element={<AdminHomePage />} />
+        <Route exact path="/userHomePage" element={<UserHomePage />} />
+        <Route exact path="/nonUserHome" element={<NonUserHome />} />
           <Route exact path="/calender-view" element={<HomePage />} />
           <Route exact path="/floormap" element={<UserFloorMap />} />
-          <Route exact path="/auditorium-view" element={<ViewForUser />} />
+           <Route exact path="/auditorium-view" element={<ViewForUser/>} />
           <Route path="/signin" element={<Login />} />
-          <Route path="/user-update" element={<Update />} />
+          <Route path="/signup" element={<Registration />} />
+          <Route path="/user-update" element={<UpdateUser />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
           <Route path="/auditorium-list" element={<AuditoriumList />} />
-          <Route path="/auditorium-Booking" element={<BookMeeting />} />
+          <Route path="/auditorium-Booking" element={<BookMeeting2 />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser />} />
@@ -69,18 +86,20 @@ function App() {
           <Route path="/make-complaint" element={<Complaint/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/vendor" element={<VendorViewOfComplaints/>}/>
-          <Route path="/add-guest" element={ <AddGuest/>} />
-          <Route path="/guest" element={ <Guest/>} />
-          <Route path="/signup" element={<Register/>} />
-          <Route path='/payment' element={<StripeContainer />} />
+          <Route path="/report" element={<ReportPage/>}/>
+          <Route path ="/payment" element={<StripeContainer />} />
+          <Route path = "/addHousekeeping" element={<AddHousekeeping />} />
+          <Route path = "/viewHouskeeping" element={<GetHousekeepingRequests />} />
+          <Route path = "/deleteHouskeeping" element={<DeleteHousekeepingRequest />} />
+          <Route path="/assistant" element={<ChatBot/>}/>
+          </Routes>
+  </Grid>
+</Grid>
 
-          <Route path='/payment' element={<PaypalPayment />} />
-          <Route path='/addHousekeeping' element={<AddHousekeepingRequests/>} />
-          <Route path='/deleteHousekeeping' element={<DeleteHousekeepingRequest />} />
-          <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
-
-        </Routes>
       </BrowserRouter>
+
+
+
       <ToastContainer theme='colored' />
     </div>
   );

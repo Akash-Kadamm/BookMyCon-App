@@ -16,7 +16,7 @@ import Popover from '@mui/material/Popover';
 import { ReactSession } from 'react-client-session';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import BookMeeting from "./BookMeeting";
+import BookMeeting from "../User/BookMeeting";
 import { borderRadius } from "@mui/system";
 ReactSession.setStoreType("localStorage");
 export const UserFloorMap = () => {
@@ -358,13 +358,13 @@ export const UserFloorMap = () => {
      
 
         
-      <div  style={{marginTop:"20px",marginLeft:"60px"}}>
+      <div  style={{marginTop:"20px"}}>
        <ImageMapper
        
        src={a1}
        map={userLayout}
        
-       width={700}
+       width={500}
       onImageClick={(evt) => clickedOutside(evt)}
       onImageMouseMove={(evt) => moveOnImage(evt)}
    // onClick={(evt) => handleClick(evt)}
@@ -383,13 +383,13 @@ export const UserFloorMap = () => {
        <div style={{marginTop:"75px",
        backgroundColor:"#85d1f4",
       textDecorationColor:"red",
-      marginLeft:"40px",
+      marginLeft:"0px",
       borderRadius: "25px",
-      fontSize:"20px",
+      fontSize:"15px",
       borderWidth:"2px", 
       border:"solid",
       padding: "20px",
-      width: "300px",
+      width: "200px",
       height: "250px"}} >
        
          Name: {textData}

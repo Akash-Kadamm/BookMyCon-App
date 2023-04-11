@@ -92,7 +92,6 @@ export default function AddAudi() {
                     fullWidth
                     id="name"
                     label="Auditorium Name"
-                    // value={audi.auditoriumName}
                     autoFocus
                   />
                 </Grid>
@@ -107,7 +106,6 @@ export default function AddAudi() {
                     label="location"
                     id="location"
                     autoFocus
-                    // value={audi.location}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -121,7 +119,6 @@ export default function AddAudi() {
                     type="number"
                     label="Auditorium Capacity"
                     name="capacity"
-                    // value={audi.capacity}
                   />
                 </Grid>
 
@@ -136,7 +133,6 @@ export default function AddAudi() {
                     label="Auditorium Type"
                     type="text"
                     id="type"
-                    // value={audi.type}
                   />
                 </Grid>
 
@@ -144,16 +140,7 @@ export default function AddAudi() {
                     <br></br>
                 </Grid>
                 <Grid>
-                  {/* <TextField
-                                    onChange={handleChange('type')}
-                                        required
-                                        fullWidth
-                                        name="type"
-                                        label="Auditorium Type"
-                                        type="text"
-                                        id="type"
-                                        value={audi.type}
-                                    /> */}
+                  
                   <div>
                     {aminityList.map((am) => {
                       return (
@@ -164,7 +151,6 @@ export default function AddAudi() {
                               onChange={(e) => {
                                 getAminity(e);
                               }}
-                              // value={audi.amenitites}
                               control={<input type="checkbox" value={am} />}
                               label={am}
                             />
@@ -172,39 +158,6 @@ export default function AddAudi() {
                         </div>
                       );
                     })}
-
-                    {/* <FormGroup>
-                      <FormControlLabel
-                        onChange={(e) => {
-                          SetAuditoriumAminity(e.target.name);
-                        }}
-                        // value={audi.amenitites}
-                        control={<Checkbox />}
-                        label="AC"
-                        type="text"
-                        name="AC"
-                      />
-                      <FormControlLabel
-                        onChange={(e) => {
-                          SetAuditoriumAminity(e.target.name);
-                        }}
-                        // value={audi.amenitites}
-                        control={<Checkbox />}
-                        label="Network"
-                        type="text"
-                        name="Network"
-                      />
-                      <FormControlLabel
-                        onChange={(e) => {
-                          SetAuditoriumAminity(e.target.name);
-                        }}
-                        // value={audi.amenitites}
-                        control={<Checkbox />}
-                        label="Housekeeping"
-                        type="text"
-                        name="Housekeeping"
-                      />
-                    </FormGroup> */}
                   </div>
                 </Grid>
               </Grid>
@@ -220,9 +173,6 @@ export default function AddAudi() {
               </Button>
               <Grid container justifyContent="flex-start">
                 <Grid item>
-                  {/* <Link href="http://localhost:3000/sign-in" variant="body2">
-                                        Already have an account? Sign in
-                                    </Link> */}
                 </Grid>
               </Grid>
             </Box>
