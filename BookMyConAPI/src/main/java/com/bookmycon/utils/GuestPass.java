@@ -22,17 +22,14 @@ public class GuestPass {
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle.setSize(30);
 
-        PdfPTable table1 = new PdfPTable(1);
-        table1.setSpacingBefore(10);
-        Image image = Image.getInstance("E://Manager/bookmycon-logo.png");
-//        Image myImage = Image.getInstance("E://uploads//"+guest.getThumbnail());
+
+        Image image = Image.getInstance("E://Manager/small-logo.png");
         image.setAlignment(Paragraph.ALIGN_CENTER);
+        image.scaleAbsolute(100,80);
         document.add(image);
 
         Paragraph paragraph1 = new Paragraph("Guest Pass", fontTiltle);
-
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
-
         document.add(paragraph1);
 
         PdfPTable table = new PdfPTable(2);

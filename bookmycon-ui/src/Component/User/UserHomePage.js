@@ -7,6 +7,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { useNavigate } from "react-router";
+import {  Link } from "react-router-dom";
 import MapIcon from '@mui/icons-material/Map';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
@@ -14,14 +15,21 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CycloneIcon from '@mui/icons-material/Cyclone';
 import EmergencyShareIcon from '@mui/icons-material/EmergencyShare';
+import { Badge } from "@mui/material";
+import CartIcon from "@mui/icons-material/ShoppingCart";
+
+import { useSelector } from "react-redux";
 
 export const UserHomePage = () => {
+
+    const cart = useSelector((state) => state);
+
     const navigate = useNavigate();
   return (
     
     <div style={{marginLeft:"20px",marginTop:"80px", textAlign:"left"}} ><Grid container spacing={2}>
     <Grid item xs={6}>
-    <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/cart")}}  >
+    <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/alexa")}}  >
     <EmergencyShareIcon sx={{ fontSize: 40 }} color="secondary" />
     Alexa  
      </div>    
@@ -57,8 +65,16 @@ export const UserHomePage = () => {
     </Grid>
     <Grid item xs={6}>
     <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/cart")}}  >
+    <Badge  badgeContent={cart.length}  sx={{ mr: 1}} >
     <ShoppingCartIcon sx={{ fontSize: 40 }} color="secondary" />
-    Cart   
+      </Badge>  
+    Cart    
+     </div>    
+    </Grid>
+    <Grid item xs={6}>
+    <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/guest")}} >
+    <CollectionsBookmarkIcon sx={{ fontSize: 40 }} color="secondary"  />
+    Guest
      </div>    
     </Grid>
    

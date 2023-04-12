@@ -98,6 +98,8 @@ function App() {
            <Route path='/addHousekeeping' element={<AddHousekeepingRequests/>} />
           <Route path='/deleteHousekeeping' element={<DeleteHousekeepingRequest />} />
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
+          <Route path='/guest' element={<Guest/>}/>
+          <Route path='/add-guest' element={<AddGuest/>}/>
           </Routes>
   </Grid>
 </Grid>
