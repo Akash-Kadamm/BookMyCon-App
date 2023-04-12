@@ -14,10 +14,10 @@ export default function navbar() {
         <li>Home</li></Link>
 
         <Link to="/profile"> 
-        <li>ByCompaneyName</li></Link>
+        <li>Company Details</li></Link>
 
         <Link to="/None"> 
-        <li>ByUserId</li></Link>
+        <li>User Details</li></Link>
     </div>
     
   )
