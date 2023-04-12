@@ -33,7 +33,6 @@ public class BookingService {
 	}
 
 	public Booking addBooking(Booking booking) {
-
 		logger.info("Adding new booking: " + booking.toString());
 		return 	bookingRepository.save(booking);
 
@@ -61,10 +60,10 @@ public class BookingService {
 		return bookingRepository.findByBookingDateFromAndBookingDateTo(dateFrom, dateTo);
 	}
 
-	public List<Booking> getByAuditoriumId(Auditoriums auditoriums) {
-		logger.info("Retrieving bookings for auditorium: " + auditoriums.toString());
-		return bookingRepository.findByAduitoriamId(auditoriums);
-	}
+//	public List<Booking> getByAuditoriumId(Auditoriums auditoriums) {
+//		logger.info("Retrieving bookings for auditorium: " + auditoriums.toString());
+//		return bookingRepository.findByAduitoriamId(auditoriums);
+//	}
 
 	
 	public List<Booking> getBookingByUserId(int userId) {

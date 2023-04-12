@@ -45,28 +45,15 @@ public class ProductServiceTest {
         products= new Product();
     }
 
-
-//    @Test
-//    public void testUpdateProduct() {
-//        productService.updateProduct( products);
-//        verify(productRepository, times(1)).save(products);
-//    }
-
-
     @Test
     public void testUpdateProduct() {
 
         Product product = new Product();
         product.setProductId(1);
         product.setProductName("Test Product");
-
-
         when(productRepository.findById(1)).thenReturn(Optional.of(product));
-
         productService.updateProduct(product);
-
         verify(productRepository, times(1)).save(product);
-
         assertEquals("Test Product", product.getProductName());
     }
 

@@ -20,9 +20,6 @@ public class AreasService {
 
     Logger logger=Logger.getLogger(AreasService.class);
 
-//    public AreasService(AreasRepository areasRepository) {
-//    }
-
     public List<Areas> findAll() {
 
         logger.debug("Finding all areas: ");
