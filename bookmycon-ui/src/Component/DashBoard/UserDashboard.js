@@ -43,6 +43,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import CycloneIcon from '@mui/icons-material/Cyclone';
 import EmergencyShareIcon from '@mui/icons-material/EmergencyShare';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
+import { useSelector } from 'react-redux';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -106,6 +107,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+  const cart = useSelector((state) => state);
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -192,11 +194,21 @@ function DashboardContent() {
            </ListItemButton>
            <ListItemButton>
              <ListItemIcon>
+             <Badge  badgeContent={cart.length}  sx={{ mr: 1}} >
                <ShoppingCartIcon color="secondary"  onClick={toggleDrawer} />
+      </Badge>
+
              </ListItemIcon>
              <ListItemText onClick={()=>{toggleDrawer(); navigate("/cart");
               }} primary="Cart" />
            </ListItemButton>
+           <ListItemButton>
+             <ListItemIcon>
+             <CollectionsBookmarkIcon color="secondary"  onClick={toggleDrawer} />
+             </ListItemIcon>
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/guest");
+              }} primary="Guest" />
+           </ListItemButton>     
            
          </React.Fragment>
            :

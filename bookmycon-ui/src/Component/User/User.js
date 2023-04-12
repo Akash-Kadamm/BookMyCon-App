@@ -57,7 +57,7 @@ const User = () => {
             <StyledTableCell>User Id</StyledTableCell>
             <StyledTableCell align="right">User Name</StyledTableCell>
             <StyledTableCell align="right">User Email Id</StyledTableCell>
-            <StyledTableCell align="right">User Password</StyledTableCell>
+            {/* <StyledTableCell align="right">User Password</StyledTableCell> */}
             <StyledTableCell align="right">User Mobile No.</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -69,7 +69,7 @@ const User = () => {
               </StyledTableCell>
               <StyledTableCell align="right">{user.userName}</StyledTableCell>
               <StyledTableCell align="right">{user.userEmail}</StyledTableCell>
-              <StyledTableCell align="right">{user.userPassword}</StyledTableCell>
+              {/* <StyledTableCell align="right">{user.userPassword}</StyledTableCell> */}
               <StyledTableCell align="right">{user.userContact}</StyledTableCell>
             </StyledTableRow>
           ))}
