@@ -2,6 +2,7 @@ package com.bookmycon.service;
 
 import com.bookmycon.model.Areas;
 import com.bookmycon.model.Product;
+import com.bookmycon.model.UserLayout;
 import com.bookmycon.repository.AreasRepository;
 import com.bookmycon.repository.ProductRepository;
 import org.junit.Before;
@@ -43,16 +44,10 @@ public class AreaServiceTest {
 
     @Test
     public void testFindById() {
-        // Arrange
         int id = 99;
         Areas area = new Areas(id, "Area 1");
-
         when(areasRepository.findById(id)).thenReturn(Optional.of(area));
-
-        // Act
         Optional<Areas> result = areasService.findById(id);
-
-        // Assert
         assertEquals(area, result.get());
     }
 
@@ -62,21 +57,15 @@ public class AreaServiceTest {
         Areas areas = new Areas();
         areas.setAreaId(1);
         areas.setName("Test Area");
-
         when(areasRepository.findById(ArgumentMatchers.anyInt())).thenReturn(Optional.of(areas));
-
         Optional<Areas> foundAreas = areasService.getAreasById(1);
-
-        //assertTrue(foundAreas.isPresent());
         assertEquals(areas.getName(), foundAreas.get().getName());
     }
 
     @Test
     public void testDeleteAreas() {
         int idToDelete = 1;
-
         areasService.deleteAreas(idToDelete);
-
         verify(areasRepository).deleteById(idToDelete);
     }
 
@@ -86,14 +75,42 @@ public class AreaServiceTest {
         Areas areas = new Areas();
         areas.setAreaId(1);
         areas.setName("Updated Test Area");
-
         areasService.editAreas(idToEdit, areas);
-
         ArgumentCaptor<Areas> argumentCaptor = ArgumentCaptor.forClass(Areas.class);
         verify(areasRepository).save(argumentCaptor.capture());
         Areas capturedAreas = argumentCaptor.getValue();
         assertEquals(idToEdit, capturedAreas.getAreaId());
         assertEquals(areas.getName(), capturedAreas.getName());
+    }
+    @Test
+    public void testFindByUserLayout() {
+        UserLayout userLayout = new UserLayout();
+        List<Areas> areasList = new ArrayList<>();
+        Areas area1 = new Areas();
+        area1.setAreaId(1);
+        area1.setName("Area1");
+        areasList.add(area1);
+        Areas area2 = new Areas();
+        area2.setAreaId(2);
+        area2.setName("Area2");
+        areasList.add(area2);
+        when(areasRepository.findByUserLayout(userLayout)).thenReturn(areasList);
+        List<Areas> result = areasService.findByUserLayout(userLayout);
+        verify(areasRepository, times(1)).findByUserLayout(userLayout);
+        assertEquals(2, result.size());
+        assertEquals(area1, result.get(0));
+        assertEquals(area2, result.get(1));
+    }
+    @Test
+    public void testAddAreas() {
+        Areas areas = new Areas();
+        areas.setAreaId(1);
+        areas.setName("Test Area");
+        areasService.addAreas(areas);
+        ArgumentCaptor<Areas> areasCaptor = ArgumentCaptor.forClass(Areas.class);
+        verify(areasRepository, times(1)).save(areasCaptor.capture());
+        Areas capturedAreas = areasCaptor.getValue();
+        assertEquals(areas, capturedAreas);
     }
 
 }
