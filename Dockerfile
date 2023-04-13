@@ -13,7 +13,7 @@ WORKDIR /app
 COPY bookmycon-ui/package*.json ./
 
 # Install dependencies
-RUN npm install 
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of the frontend code to the container
 COPY bookmycon-ui/ ./
