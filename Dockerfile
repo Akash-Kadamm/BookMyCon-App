@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18.14-alpine AS react-build
+FROM node:18-alpine AS react-build
 # RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
 #   && tar xzvf docker-17.04.0-ce.tgz \
 #   && mv docker/docker /usr/local/bin \
@@ -13,7 +13,7 @@ WORKDIR /app
 COPY bookmycon-ui/package*.json ./
 
 # Install dependencies
-RUN npm install --silent
+RUN npm install 
 
 # Copy the rest of the frontend code to the container
 COPY bookmycon-ui/ ./
