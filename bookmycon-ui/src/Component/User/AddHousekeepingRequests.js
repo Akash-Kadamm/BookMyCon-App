@@ -29,6 +29,8 @@ export default function AddHousekeepingRequests() {
     SetHousekeepingTasks(hsTasks.toString())
   };
 
+  const navigate = useNavigate()
+
   const HousekeepingTasksList = ["mopping floors","vacuuming", "sweeping", "emptying trash cans","Sanitize floors","dusting shelves"];
 
   const onSubmitAll = (e) => {
@@ -49,6 +51,8 @@ export default function AddHousekeepingRequests() {
       })
 
       .catch((error) => console.log("error:"));
+      toast.success("Request Raised Successfully")
+      navigate("/auditorium-view")
   };
   return (
     <div id="div_reg">
