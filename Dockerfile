@@ -33,7 +33,7 @@ COPY --from=react-build /app/build ./src/main/resources/static/
 # Copy the Spring Boot project files to the container
 COPY . .
 
-
+RUN pwd && ls -al
 
 # Build the Spring Boot app
 RUN mvn clean package 
