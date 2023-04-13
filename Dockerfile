@@ -33,7 +33,8 @@ COPY --from=react-build /app/build ./src/main/resources/static/
 # Copy the Spring Boot project files to the container
 # COPY . .
 COPY BookMyConAPI/pom.xml .
-COPY src/ ./src/
+# COPY src/ ./src/
+COPY . .
 
 # RUN pwd && ls -al
 
