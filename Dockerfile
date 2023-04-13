@@ -22,7 +22,7 @@ COPY bookmycon-ui/ ./
 RUN npm run build
 
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:11.0.11-jdk-slim AS spring-build
+FROM maven:3.8.1-openjdk-11-slim AS spring-build
 
 # Set the working directory to /app
 WORKDIR /app
@@ -32,8 +32,7 @@ COPY --from=react-build /app/build ./src/main/resources/static/
 
 # Copy the Spring Boot project files to the container
 COPY . .
-# Install Maven
-RUN apt-get update && apt-get install -y maven
+
 
 
 # Build the Spring Boot app
