@@ -34,7 +34,7 @@ COPY --from=react-build /app/build ./src/main/resources/static/
 COPY . .
 
 # Build the Spring Boot app
-RUN ./mvnw package -DskipTests
+RUN ./mvnw clean package 
 
 # Expose the port that the app will run on
 EXPOSE 8080
