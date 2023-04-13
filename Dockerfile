@@ -32,6 +32,9 @@ COPY --from=react-build /app/build ./src/main/resources/static/
 
 # Copy the Spring Boot project files to the container
 COPY . .
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
 
 # Build the Spring Boot app
 RUN mvn clean package 
