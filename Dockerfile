@@ -31,9 +31,11 @@ WORKDIR /app
 COPY --from=react-build /app/build ./src/main/resources/static/
 
 # Copy the Spring Boot project files to the container
-COPY . .
+# COPY . .
+COPY BookMyConAPI/pom.xml .
+COPY src/ ./src/
 
-RUN pwd && ls -al
+# RUN pwd && ls -al
 
 # Build the Spring Boot app
 RUN mvn clean package 
