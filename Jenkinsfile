@@ -21,6 +21,7 @@ pipeline {
                     sh 'npm install'
                     sh 'npm run build'
                 }
+                 sh 'docker build -t my-app .'
             }
         }
     }
