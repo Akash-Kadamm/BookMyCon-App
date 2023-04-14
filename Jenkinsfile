@@ -34,8 +34,14 @@ pipeline {
 //       }
             
             steps {
-        sh 'docker tag bookmycon localhost:5000/bookmycon'
-        sh 'docker push localhost:5000/bookmycon'
+//         sh 'docker tag bookmycon localhost:5000/bookmycon'
+//         sh 'docker push localhost:5000/bookmycon'
+                script {
+                    withCredendials([string(credentialsId: 'dockerhubpwd', variable'dockerhubpwd')]){
+                        sh'docker login -u atharvaso -p ${dockerhubpwd}'
+                        sh'docker push bookmycon'
+          }
+                
     }
     }
   }   
