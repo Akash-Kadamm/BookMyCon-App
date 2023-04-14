@@ -34,7 +34,7 @@ pipeline {
 //       }
             
             steps {
-        sh 'docker tag myapp localhost:5000/bookmycon'
+        sh 'docker tag bookmycon localhost:5000/bookmycon'
         sh 'docker push localhost:5000/bookmycon'
     }
     }
