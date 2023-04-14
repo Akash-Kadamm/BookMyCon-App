@@ -40,6 +40,7 @@ pipeline {
                     withCredendials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]){
                         sh'docker login -u atharvaso -p ${dockerhubpwd}'
                         sh'docker push bookmycon'
+                    }
           }
                 
     }
