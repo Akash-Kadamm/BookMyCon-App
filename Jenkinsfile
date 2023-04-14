@@ -25,4 +25,12 @@ pipeline {
             }
         }
     }
+    stage('Deploy') {
+      steps {
+        script {
+          docker.withRegistry('https://localhost:5000/bookmycon') {
+            docker.image('bookmycon:latest').push()
+          }
+        }
+      }
 }
