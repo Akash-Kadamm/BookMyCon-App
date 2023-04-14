@@ -24,8 +24,7 @@ pipeline {
                  sh 'docker build -t bookmycon .'
             }
         }
-    }
-    stage('Deploy') {
+        stage('Deploy') {
       steps {
         script {
           docker.withRegistry('https://localhost:5000/bookmycon') {
@@ -34,4 +33,5 @@ pipeline {
         }
       }
     }
+  }   
 }
