@@ -39,7 +39,7 @@ pipeline {
                 script {
 //                     withCredendials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]){
                         sh'docker login -u atharvaso -p A1t9h0a2r2v0a01'
-                        sh'docker push bookmycon'
+                        sh'docker push atharvaso/bookmycon'
 //                     }
           }
                 
