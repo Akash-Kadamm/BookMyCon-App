@@ -21,7 +21,7 @@ pipeline {
 //                     sh 'npm install'
 //                     sh 'npm run build'
 //                 }
-                 sh 'docker build -t bookmycon .'
+                 sh 'docker build -t atharvaso/bookmycon .'
             }
         }
         stage('Deploy') {
