@@ -37,10 +37,10 @@ pipeline {
 //         sh 'docker tag bookmycon localhost:5000/bookmycon'
 //         sh 'docker push localhost:5000/bookmycon'
                 script {
-                    withCredendials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]){
-                        sh'docker login -u atharvaso -p ${dockerhubpwd}'
+//                     withCredendials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]){
+                        sh'docker login -u atharvaso -p A1t9h0a2r2v0a01'
                         sh'docker push bookmycon'
-                    }
+//                     }
           }
                 
     }
