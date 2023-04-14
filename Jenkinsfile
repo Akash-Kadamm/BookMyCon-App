@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
       steps {
         script {
-          docker.withRegistry('https://localhost:5000/bookmycon') {
+          docker.withRegistry('https://0.0.0.0:5000/bookmycon') {
             docker.image('bookmycon:latest').push()
           }
         }
