@@ -25,13 +25,18 @@ pipeline {
             }
         }
         stage('Deploy') {
-      steps {
-        script {
-          docker.withRegistry('https://index.docker.io/v1/') {
-            docker.image('bookmycon:latest').push()
-          }
-        }
-      }
+//       steps {
+//         script {
+//           docker.withRegistry('https://index.docker.io/v1/') {
+//             docker.image('bookmycon:latest').push()
+//           }
+//         }
+//       }
+            
+            steps {
+        sh 'docker tag myapp localhost:5000/bookmycon'
+        sh 'docker push localhost:5000/bookmycon'
+    }
     }
   }   
 }
