@@ -34,8 +34,8 @@ pipeline {
 //       }
             
             steps {
-        sh 'docker tag bookmycon 0.0.0.0:5000/bookmycon'
-        sh 'docker push 0.0.0.0:5000/bookmycon'
+        sh 'docker tag bookmycon localhost:5000/bookmycon'
+        sh 'docker push localhost:5000/bookmycon'
     }
     }
   }   
