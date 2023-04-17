@@ -100,10 +100,11 @@ public class GuestResponseDTO {
 				'}';
 	}
 
-	public static GuestResponseDTO fromEntity(Guest entity)
+	
+	/*public static GuestResponseDTO fromEntity(Guest entity)
 	{
 		GuestResponseDTO guestResponseDTO = new GuestResponseDTO();
 		BeanUtils.copyProperties(entity, guestResponseDTO);
 		return guestResponseDTO;
-	}
+	}*/
 }
