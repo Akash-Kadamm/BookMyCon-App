@@ -14,7 +14,7 @@ const AddGuest = () => {
     const [error, setError] = useState('');
     const [errorResponse, setErrorResponse] = useState('');
     const navigate = useNavigate()
-
+    const users = useState(JSON.parse(sessionStorage.getItem("userLogin")))
     const onFileSelect = (event) => {
         setThumbnail(event.target.files[0])
     }
@@ -25,14 +25,15 @@ const AddGuest = () => {
 
     const addGuest = () => {
 
-        if (thumbnail && guestName && guestCompany && guestMobileNo && guestEmail) {
+        if (thumbnail && guestName && guestCompany && guestMobileNo && guestEmail && users) {
             const data = new FormData()
             data.append('thumbnail', thumbnail)
             data.append('guestName', guestName)
             data.append('guestCompany', guestCompany)
             data.append('guestMobileNo', guestMobileNo)
             data.append('guestEmail', guestEmail)
-
+            data.append('users' , users)
+console.log(users)
             axios.post('http://localhost:8080/guest/addGuest', data)
                 .then((response) => {
                     toast.success("Guest Added Successfully");

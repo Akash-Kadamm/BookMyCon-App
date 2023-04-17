@@ -22,10 +22,13 @@ public class UserPass {
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTiltle.setSize(30);
 
+        Image image = Image.getInstance("E://Manager/small-logo.png");
+        image.setAlignment(Paragraph.ALIGN_CENTER);
+        image.scaleAbsolute(100,80);
+        document.add(image);
+
         Paragraph paragraph1 = new Paragraph("User Pass", fontTiltle);
-
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
-
         document.add(paragraph1);
 
         PdfPTable table = new PdfPTable(2);

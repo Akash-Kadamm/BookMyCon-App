@@ -14,7 +14,6 @@ import java.io.Serializable;
 
 @Data
 @Builder
-
 @Entity
 @Table(name = "auditorium")
 public class Auditoriums implements Serializable {
@@ -52,8 +51,6 @@ public class Auditoriums implements Serializable {
 		this.auditoriumType = auditoriumType;
 		this.auditoriumAminity = auditoriumAminity;
 	}
-	
-	
 
 	public int getAuditoriumId() {
 		return auditoriumId;

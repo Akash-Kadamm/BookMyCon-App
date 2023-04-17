@@ -1,15 +1,49 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'DockerFile'
-        }
+    agent any
+    
+    tools {
+        maven 'Maven 3.8.2'
+        nodejs 'NodeJS 18.14.0'
     }
+    
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
-                sh 'cd client && npm install && npm run build'
+                git branch: 'main', url: 'https://github.com/Akash-Kadamm/BookMyCon-App.git'
+                
+//                 dir('BookMyConAPI') {
+// //                     sh 'mvn -f /path/to/pom.xml clean install'
+//                     sh 'mvn clean package'
+// //                     sh 'mvn clean install'
+//                 }
+                
+//                 dir('bookmycon-ui') {
+//                     sh 'npm install'
+//                     sh 'npm run build'
+//                 }
+                 sh 'docker build -t atharvaso/bookmycon .'
             }
         }
+        stage('Deploy') {
+//       steps {
+//         script {
+//           docker.withRegistry('https://index.docker.io/v1/') {
+//             docker.image('bookmycon:latest').push()
+//           }
+//         }
+//       }
+            
+            steps {
+//         sh 'docker tag bookmycon localhost:5000/bookmycon'
+//         sh 'docker push localhost:5000/bookmycon'
+                script {
+//                     withCredendials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]){
+                        sh'docker login -u atharvaso -p A1t9h0a2r2v0a01'
+                        sh'docker push atharvaso/bookmycon'
+//                     }
+          }
+                
     }
+    }
+  }   
 }

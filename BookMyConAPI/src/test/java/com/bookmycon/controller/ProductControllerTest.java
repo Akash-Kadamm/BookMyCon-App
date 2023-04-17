@@ -1,4 +1,7 @@
+
+
 package com.bookmycon.controller;
+
 
 import com.bookmycon.dto.StockDTO;
 import com.bookmycon.model.Product;
@@ -12,12 +15,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.util.ArrayList;
+  import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+        import static org.junit.Assert.assertEquals;
+        import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductControllerTest {
@@ -98,3 +100,6 @@ public void testAddNewProduct() {
         verify(productService, times(1)).addStock(stockDTO);
     }
 }
+
+
+

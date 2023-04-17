@@ -22,6 +22,10 @@ public class AuditoriumService {
 
 	Logger logger=Logger.getLogger(AuditoriumService.class);
 
+	public AuditoriumService(AuditoriumRepository mockRepo) {
+
+	}
+
 	@CacheEvict(value = "auditoriums",allEntries = true)
 	public Auditoriums addAuditorium(Auditoriums auditoriums) {
 		auditoriumRepo.save(auditoriums);
