@@ -1,5 +1,5 @@
 #Login-div {
-    background-image: url(../Image/img.jpg);
+    /* background-image: url(../Image/img.jpg); */
      background-repeat: no-repeat;
      background-size: cover;
      width: 100%;
@@ -8,7 +8,7 @@
    }
    
    #Login-card {
-     background-color:white;
+     background-color:rgb(236, 234, 234);
       border-radius: 1rem; 
      height: 30rem;
      width: 90%;
@@ -22,7 +22,7 @@
    
    #submit-button{
     border-radius: 10px;
-    background-color: rgb(68, 183, 187);
+    background-color: #a828be;
   
    }
    #error{
