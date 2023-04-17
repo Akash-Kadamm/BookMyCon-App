@@ -1,5 +1,6 @@
 package com.bookmycon.service;
 
+import com.bookmycon.dto.StockDTO;
 import com.bookmycon.model.Product;
 import com.bookmycon.repository.ProductRepository;
 import org.junit.Before;
@@ -85,4 +86,43 @@ public class ProductServiceTest {
         List<Product> actual=productService.getAllProducts();
         assertEquals(productList,actual);
     }
+
+    @Test
+    public void testAddProduct() {
+        Product product = new Product();
+        product.setProductName("Test Product");
+        product.setProductPrice(10);
+
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product result = productService.addProduct(product);
+
+        assertEquals("Test Product", result.getProductName());
+        assertEquals(10.0, result.getProductPrice(), 0.0);
+        verify(productRepository, times(1)).save(product);
+    }
+
+
+    @Test
+    public void testAddStock() {
+        int productId = 123;
+        int stockValue = 50;
+        Product product = new Product();
+        product.setProductId(productId);
+        product.setProductAvailableQTY(stockValue);
+
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+        when(productRepository.save(product)).thenReturn(product);
+
+        StockDTO stockDTO = new StockDTO();
+        stockDTO.setProductId(productId);
+        stockDTO.setStockValue(stockValue);
+
+        String result = productService.addStock(stockDTO);
+
+        assertEquals("Stock is Updated For product : " + product, result);
+        verify(productRepository, times(1)).findById(productId);
+        verify(productRepository, times(1)).save(product);
+    }
+
 }
