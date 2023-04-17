@@ -1,5 +1,6 @@
 package com.bookmycon.controller;
 
+import com.bookmycon.dto.GuestRequestDTO;
 import com.bookmycon.model.Guest;
 import com.bookmycon.model.User;
 import com.bookmycon.service.GuestService;
@@ -11,11 +12,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import com.bookmycon.dto.GuestRequestDTO;
 //import org.springframework.web.multipart.MultipartFile;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,11 +61,32 @@ public class GuestControllerTest {
     @Test
     public void testShowAllGuest()
     {
-        List<Guest> list = new ArrayList<>();
-        list.add(guest);
-        when(guestService.findAllGuests()).thenReturn(list);
-        ResponseEntity<List<Guest>> actual = guestController.getAllGuest();
-        assertEquals(list,actual.getBody());
+//        List<Guest> list = new ArrayList<>();
+//        list.add(guest);
+//        when(guestService.findAllGuests()).thenReturn(list);
+//        ResponseEntity<List<Guest>> actual = guestController.getAllGuest();
+//        assertEquals(list,actual.getBody());
+
+        // Create a list of guests
+        List<Guest> guests = new ArrayList<>();
+        guests.add(new Guest(1,"Rakhi","cybage","rakhi@cybage.com","7845789856","gyhjkk145",new User()));
+        guests.add(new Guest(2,"Rakhi","cybage","rakhi@cybage.com","7845789856","gyhjkk145",new User()));
+
+        // Mock the guestService to return the list of guests
+        when(guestService.findAllGuests()).thenReturn(guests);
+
+        // Call the getAllGuest() method on the guestController
+        ResponseEntity<List<Guest>> response = guestController.getAllGuest();
+
+        // Verify that guestService.findAllGuests() was called
+        verify(guestService).findAllGuests();
+
+        // Verify that the HttpStatus is OK
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        // Verify that the response body contains the list of guests
+        assertEquals(guests, response.getBody());
+
     }
 
     @Test
@@ -70,4 +95,9 @@ public class GuestControllerTest {
         ResponseEntity<Object> actual=guestController.updateGuestProfile(null);
         Assert.assertEquals(response, actual.getBody());
     }
+
+
+
+
+
 }

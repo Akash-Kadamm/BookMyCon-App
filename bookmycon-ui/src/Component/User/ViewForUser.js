@@ -22,7 +22,6 @@ import { ReactSession } from "react-client-session";
 import { useNavigate } from "react-router";
 import fileDownload from 'js-file-download'
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses}`]: {
     backgroundColor: theme.palette.common.black,
@@ -449,6 +448,10 @@ const navigate=useNavigate();
     ReactSession.set("BookingIdForFood",e)
     navigate('/product-List')
   }
+  const handleHousekeeping=(e)=>{
+    ReactSession.set("Housekeeping",e)
+    navigate('/addHousekeeping')
+  }
 
   const handleComplaint=()=>{
       navigate('/make-complaint')
@@ -462,7 +465,6 @@ const navigate=useNavigate();
     console.log(error)
   })
   }
-
 
   const handleFlag9 = (t1, t2) => {
     // t1="10:10:10";
@@ -722,7 +724,18 @@ const navigate=useNavigate();
                                         variant="contained"
                                       >
                                          User Pass
-                                      </Button></TableCell>
+                                      </Button>
+                                      <br></br>
+                                      <br></br>
+                                      <Button
+                    onClick={()=>handleHousekeeping(row.auditoriumName)}
+                                        color="warning"
+                                        size="small"
+                                        variant="contained"
+                                      >
+                                       Housekeeping
+                                      </Button>
+                                      </TableCell>
                   </TableRow>
                   {/* ))} */}
                 </TableBody>
@@ -734,7 +747,6 @@ const navigate=useNavigate();
     </React.Fragment>
   );
 }
-
 
 let rows = [
   createData("10/02/2022", "Book", 6.0, 24, 4.0, 3.99),
@@ -761,7 +773,8 @@ export const ViewForUser = () => {
       .catch((error) => setErrorMsg("error "));
   };
   rows = booking;
-  console.log("Booking Data:=- " + JSON.stringify(booking));
+
+  
 
   return (
     <div
@@ -844,3 +857,4 @@ export const ViewForUser = () => {
     </div>
   );
 };
+

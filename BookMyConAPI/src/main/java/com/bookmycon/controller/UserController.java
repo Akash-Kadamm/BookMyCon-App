@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.bookmycon.model.User;
 import com.bookmycon.service.LoginService;
 import com.bookmycon.service.UserService;
 import com.bookmycon.utils.ResponseMessage;
+import org.springframework.web.client.RestTemplate;
+
 import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
@@ -31,6 +35,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("user")
 public class UserController {
 
+	@Autowired
+	private RestTemplate restTemplate;
 	@Autowired
 	private UserService userService;
 
@@ -173,5 +179,39 @@ public class UserController {
 		UserPass userPass = new UserPass();
 		userPass.generatePassOfUser(userDetails, response);
 	}
+	@GetMapping("/getAllHk")
+
+	public List<Object> getAllHousekeepingRequest(){
+		try{
+			logger.info("Getting all housekeeping requests...");
+			String url = "http://localhost:8081/api/housekeeping";
+			Object[] objects = restTemplate.getForObject(url,Object[].class);
+			return Arrays.asList(objects);
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@PostMapping("/AddHK")
+	public Object addHousekeepingRequest(@RequestBody Object object){
+		try{
+			logger.info("Adding the housekeeping request");
+			String url="http://localhost:8081/api/housekeeping";
+			return restTemplate.postForEntity(url,object,Object.class);
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+//	@DeleteMapping()
+//	public void deleteHousekeepingRequest(){
+//		try{
+//			logger.info("Deleting the housekeeping request");
+//			String url="http://localhost:8081/api/housekeeping/{id}";
+//			  restTemplate.delete(url);
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		return new ResponseEntity<>("Housekeeping Request Deleted Successfully!!!",HttpStatus.OK);
 
 }

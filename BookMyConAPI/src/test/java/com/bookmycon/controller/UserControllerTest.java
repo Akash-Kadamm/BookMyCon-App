@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bookmycon.dto.UserRequestDTO;
-import com.bookmycon.dto.UserResponseDTO;
+import com.bookmycon.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +39,9 @@ public class UserControllerTest {
 	@InjectMocks
 	UserController userController;
 
+	@Mock
+	UserRepository userRepository;
+
 	Map<String, Object> response=new HashMap<>();
 	
 	User user;
@@ -53,6 +56,7 @@ public class UserControllerTest {
 	
 	private void setData() {
 		user=new User(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693","e3da01b141884ca0a4d01568551bdf2f");
+		userRequestDTO=new UserRequestDTO(1, "Akash Kadam", "akashkad@cybage.com", "ak@123", "user", "7038967693",thumbnail);
 	}
 	
 	
@@ -60,6 +64,7 @@ public class UserControllerTest {
 	private void setMock() {
 		when(userService.userRegistration(user,null)).thenReturn(response);
 		when(userService.updateUserProfile(user)).thenReturn(response);
+		when(userRepository.save(user)).thenReturn(user);
 	}
 
 	@Test
@@ -96,6 +101,7 @@ public class UserControllerTest {
 	public void testRegisterUser_ConditionUserInvalidEmailAndPassword() {
 		user=new User(1, "Akash Kadam", "akashkadcybage.com", "ak@12", "user", "7038967693","e3da01b141884ca0a4d01568551bdf2f");
 		response.put("message", ResponseMessage.INVALID_EMAIL_AND_PASSWORD.getMessage());
+		userRequestDTO.setUserEmail("akashkadcybage.com");
 		ResponseEntity<Object> actual=userController.registerUser(userRequestDTO);
 		assertEquals(response, actual.getBody());
 		

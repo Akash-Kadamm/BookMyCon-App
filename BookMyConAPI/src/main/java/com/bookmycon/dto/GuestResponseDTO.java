@@ -1,7 +1,9 @@
 package com.bookmycon.dto;
 
 import com.bookmycon.model.Guest;
+import com.bookmycon.model.User;
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public class GuestResponseDTO {
@@ -12,20 +14,29 @@ public class GuestResponseDTO {
 	private String guestEmail;
 	private String guestMobileNo;
 	private String thumbnail;
-	
-	public GuestResponseDTO() {
-		
+
+	private User user;
+
+	public GuestResponseDTO(){
+
 	}
 
-	public GuestResponseDTO(int guestId, String guestName, String guestCompany, String guestEmail,
-			String guestMobileNo, String thumbnail) {
-		super();
+	public GuestResponseDTO(int guestId, String guestName, String guestCompany, String guestEmail, String guestMobileNo, String thumbnail, User user) {
 		this.guestId = guestId;
 		this.guestName = guestName;
 		this.guestCompany = guestCompany;
 		this.guestEmail = guestEmail;
 		this.guestMobileNo = guestMobileNo;
 		this.thumbnail = thumbnail;
+		this.user = user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 	public int getGuestId() {
@@ -78,14 +89,22 @@ public class GuestResponseDTO {
 
 	@Override
 	public String toString() {
-		return "GuestResponseDTO [guestId=" + guestId + ", guestName=" + guestName + ", guestCompany=" + guestCompany
-				+ ", guestEmail=" + guestEmail + ", guestMobileNo=" + guestMobileNo + ", thumbnail=" + thumbnail + "]";
+		return "GuestResponseDTO{" +
+				"guestId=" + guestId +
+				", guestName='" + guestName + '\'' +
+				", guestCompany='" + guestCompany + '\'' +
+				", guestEmail='" + guestEmail + '\'' +
+				", guestMobileNo='" + guestMobileNo + '\'' +
+				", thumbnail='" + thumbnail + '\'' +
+				", user=" + user +
+				'}';
 	}
+
 	
-	public static GuestResponseDTO fromEntity(Guest entity)
+	/*public static GuestResponseDTO fromEntity(Guest entity)
 	{
 		GuestResponseDTO guestResponseDTO = new GuestResponseDTO();
 		BeanUtils.copyProperties(entity, guestResponseDTO);
 		return guestResponseDTO;
-	}
+	}*/
 }
