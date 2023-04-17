@@ -70,7 +70,16 @@ public class ProductServiceTest {
         assertEquals("Test Product", product.getProductName());
     }
 
+    @Test
+    public void testDeleteProduct() {
+        int productId = 123;
+        doNothing().when(productRepository).deleteById(productId);
 
+        String result = productService.deleteProduct(productId);
+
+        assertEquals("Product is deleted..", result);
+        verify(productRepository, times(1)).deleteById(productId);
+    }
     @Test
     public void testAllProducts() {
         List<Product> actual=productService.getAllProducts();
