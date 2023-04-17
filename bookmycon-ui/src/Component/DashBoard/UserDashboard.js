@@ -153,14 +153,14 @@ function DashboardContent() {
              <ListItemIcon>
                <EmergencyShareIcon color="secondary"  />
              </ListItemIcon>
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/userHomePage");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/alexa");
               }}  primary="Alexa" />
            </ListItemButton>
            <ListItemButton   >
              <ListItemIcon>
                <CycloneIcon color="secondary"  />
              </ListItemIcon>
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/userHomePage");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/assistant");
               }}  primary="Chat GPT" />
            </ListItemButton>
           
@@ -254,7 +254,7 @@ function DashboardContent() {
              <ListItemIcon>
                <SyncAltIcon color="secondary"  onClick={toggleDrawer} />
              </ListItemIcon>
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/all_booking");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/logs");
               }} primary="Logs" />
            </ListItemButton>
            <ListItemButton>
@@ -268,7 +268,7 @@ function DashboardContent() {
                
              </ListItemIcon>
              1.
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/signin");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/auditorium-list");
               }} primary="Auditoriums" />
            </ListItemButton>
            <ListItemButton>
@@ -276,7 +276,7 @@ function DashboardContent() {
                
              </ListItemIcon>
              2.
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/signin");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/user_details");
               }} primary="All User" />
            </ListItemButton>
            <ListItemButton>
@@ -284,7 +284,7 @@ function DashboardContent() {
               
              </ListItemIcon>
              3.
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/signin");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/all_booking");
               }} primary="Bookings" />
            </ListItemButton>
          </React.Fragment>
