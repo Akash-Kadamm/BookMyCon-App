@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Report.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/ReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/ReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +48,7 @@
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.BookMyConApplication">
+  <component name="RunManager" selected="JUnit.All in BookMyCon">
     <configuration name="BookMyConApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bookmycon.main.BookMyConApplication" />
       <module name="BookMyCon" />
@@ -79,15 +75,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.micro.serviceregistry.ServiceRegistryApplication" />
-      <module name="service-registry" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.micro.serviceregistry.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="All in BookMyCon-App (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon-App" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in BookMyCon-App" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon-App" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in BookMyCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,9 +114,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in BookMyCon" />
+        <item itemvalue="JUnit.All in BookMyCon-App (1)" />
+        <item itemvalue="JUnit.All in BookMyCon-App" />
         <item itemvalue="Application.BookMyConApplication" />
         <item itemvalue="Application.HousekeepingServiceApplication" />
-        <item itemvalue="Application.ServiceRegistryApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681291713306</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681708303815</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681708303815</updated>
+    </task>
+    <task id="LOCAL-00003" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681708677720</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681708677720</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -138,6 +161,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681211653930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681709499160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App__1_.ic" NAME="All in BookMyCon-App (1) Coverage Results" MODIFIED="1681709247575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1681709218340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

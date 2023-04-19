@@ -5,7 +5,7 @@ import {useState} from 'react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {MainContainer,ChatContainer,MessageList,Message,MessageInput,TypingIndicator} from "@chatscope/chat-ui-kit-react"
 
-const API_KEY="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";
+const API_KEY="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";
 
 
 
