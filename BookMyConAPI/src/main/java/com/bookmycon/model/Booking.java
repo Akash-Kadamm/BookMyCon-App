@@ -52,5 +52,10 @@ public class Booking {
     @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
     List<Order> orders;
 
+    public Booking(int i, LocalDate now, int i1, String s) {
+    }
+
+    public Booking(String johnDoe, String s) {
+    }
 }
 

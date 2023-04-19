@@ -778,8 +778,8 @@ export const ViewForUser = () => {
   };
   rows = booking;
   // console.log("Booking Data:=- " + JSON.stringify(booking));
-   console.log((booking)[0].aduitoriamId.auditoriumName);
-  sessionStorage.setItem("audName",(booking)[0].aduitoriamId.auditoriumName)
+  //  console.log((booking)[0].aduitoriamId.auditoriumName);
+  // sessionStorage.setItem("audName",(booking)[0].aduitoriamId.auditoriumName)
   return (
     <div
       style={
