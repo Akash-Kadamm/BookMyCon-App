@@ -64,23 +64,23 @@ public class BookingController {
 	@GetMapping("/searchBooking/{dateFrom}/{dateTo}")
 	public ResponseEntity<List<Booking>> searchBooking(@PathVariable String dateFrom,
 			@PathVariable String dateTo) {
-		
+
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
 		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		 String str1 = dateFrom; 
-	        String[] arrOfStr1 = str1.split("-", 5); 
-	  
+		 String str1 = dateFrom;
+	        String[] arrOfStr1 = str1.split("-", 5);
+
 	       String newdateFrom=arrOfStr1[2]+"/"+arrOfStr1[1]+"/"+arrOfStr1[0];
-		 
-		 
-	       String str2 = dateTo; 
-	        String[] arrOfStr2 = str2.split("-", 5); 
-	  
+
+
+	       String str2 = dateTo;
+	        String[] arrOfStr2 = str2.split("-", 5);
+
 	       String newdateTo=arrOfStr2[2]+"/"+arrOfStr2[1]+"/"+arrOfStr2[0];
-		 
+
 	       LocalDate from=LocalDate.parse(newdateFrom, formatter);
 			LocalDate to=LocalDate.parse(newdateTo, formatter);
-	       
+
 //		LocalDate from=LocalDate.parse(dateFrom, formatter);
 //		LocalDate to=LocalDate.parse(dateTo, formatter);
 		return new ResponseEntity<List<Booking>>(bookingService.getByDateFromDateTo(from, to), HttpStatus.OK);
