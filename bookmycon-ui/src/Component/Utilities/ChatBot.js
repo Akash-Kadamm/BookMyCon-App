@@ -33,13 +33,13 @@ export default function ChatBot() {
         // Set a typing indicator..
         setTyping(true);
          
-        // process message to chatGpt(send it over and see the response.)
-        await processMessageToChatGPT(newMessages);
+        // process message to Assistant(send it over and see the response.)
+        await processMessageToAssistant(newMessages);
 
     }
 
-   async function processMessageToChatGPT(chatMessages){
-     // chatMessages{sender:"user" or "ChatGPT", message:"The message content here."}
+   async function processMessageToAssistant(chatMessages){
+     // chatMessages{sender:"user" or "Assistant", message:"The message content here."}
      // apiMessage{role:"user" or "assistant", content:"The message content here."}
 
      let apiMessages= chatMessages.map((messageObject)=>{
@@ -52,7 +52,7 @@ export default function ChatBot() {
          return {role: role,content:messageObject.message }
      });
 
-     // role:"user" -> a message from the user,"assistant" -> a response from chatGPT
+     // role:"user" -> a message from the user,"assistant" -> a response from Assistant.
      // "system" -> generally one inital message defininghow we want chat gpt to talk.
 
      const systemMessage={
