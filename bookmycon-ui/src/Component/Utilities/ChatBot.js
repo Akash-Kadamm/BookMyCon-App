@@ -1,11 +1,10 @@
 import React from 'react'
 import '../../App.css';
-//import "../../css/Login.css";
 import {useState} from 'react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {MainContainer,ChatContainer,MessageList,Message,MessageInput,TypingIndicator} from "@chatscope/chat-ui-kit-react"
 
-const API_KEY="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";
+const API_KEY="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";
 
 
 
@@ -33,13 +32,13 @@ export default function ChatBot() {
         // Set a typing indicator..
         setTyping(true);
          
-        // process message to Assistant(send it over and see the response.)
+        // process message to chatGpt(send it over and see the response.)
         await processMessageToAssistant(newMessages);
 
     }
 
    async function processMessageToAssistant(chatMessages){
-     // chatMessages{sender:"user" or "Assistant", message:"The message content here."}
+     // chatMessages{sender:"user" or "assistant", message:"The message content here."}
      // apiMessage{role:"user" or "assistant", content:"The message content here."}
 
      let apiMessages= chatMessages.map((messageObject)=>{
@@ -52,8 +51,8 @@ export default function ChatBot() {
          return {role: role,content:messageObject.message }
      });
 
-     // role:"user" -> a message from the user,"assistant" -> a response from Assistant.
-     // "system" -> generally one inital message defininghow we want chat gpt to talk.
+     // role:"user" -> a message from the user,"assistant" -> a response from assistant.
+     // "system" -> generally one inital message defininghow we want assistant to talk.
 
      const systemMessage={
          role:"system",
