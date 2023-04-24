@@ -99,7 +99,7 @@ public class AuditoriumController {
 	}
 
 	@GetMapping("/export-to-pdf-audi")
-	public void generatePdfFile(HttpServletResponse response) throws IOException
+	public void generatePdfFileOfAudi(HttpServletResponse response) throws IOException
 	{
 		response.setContentType("application/pdf");
 		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");

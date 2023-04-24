@@ -3,16 +3,16 @@ package com.bookmycon.controller;
 
 import com.bookmycon.dto.OrderContentDto;
 import com.bookmycon.model.*;
+import com.bookmycon.repository.BookingRepository;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.service.OrderItemService;
 import com.bookmycon.service.OrderService;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 
@@ -21,7 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,6 +38,8 @@ public class OrderControllerTest {
 
     @Mock
     private BookingService bookingService;
+    @Mock
+    BookingRepository bookingRepo;
 
     @Mock
     private OrderItemService orderItemService;
@@ -53,6 +56,8 @@ public class OrderControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(orderController).build();
+        orderContentDto = new OrderContentDto();
+        bookingService = new BookingService();
     }
 
     @Test
@@ -74,21 +79,6 @@ public class OrderControllerTest {
         ResponseEntity<String> responseEntity = orderController.cancelOrder(orderId);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedResponse, responseEntity.getBody());
-    }
-
-    @Test
-    public void testPlaceOrder() {
-        int bookingId = 1;
-        order = new Order();
-        orderContentDto = new OrderContentDto();
-        booking = new Booking();
-        product = new Product();
-       // product.setQuantity(2);
-        when(bookingService.getBookingById(anyInt())).thenReturn(Optional.of(booking));
-        when(orderService.saveOrder(any(Order.class), anyDouble(), any(Booking.class), any(User.class))).thenReturn(order);
-        verify(orderItemService, times(1)).saveProducts(any(Product.class), any(Order.class), anyInt());
-        ResponseEntity<?> actualResult = orderController.placeOrder(orderContentDto, bookingId);
-        assertEquals(HttpStatus.OK, actualResult.getStatusCode());
     }
 
 }

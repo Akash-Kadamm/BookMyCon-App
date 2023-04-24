@@ -30,6 +30,9 @@ public class GuestRequestDTO {
 		this.user = user;
 	}
 
+	public GuestRequestDTO(int i, String akashKadam, String s, String s1, String user, String s2, MultipartFile thumbnail, User user1) {
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
