@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/HousekeepingDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/SmsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/SmsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/SmsPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/SmsPojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/BookingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/BookingControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/AuditoriumControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/AuditoriumControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/GuestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/GuestControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/OrderServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/SmsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/SmsServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/OrderControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,47 +67,8 @@
       <recent name="com.bookmycon.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BookMyConApplication">
-    <configuration name="BookMyConApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bookmycon.main.BookMyConApplication" />
-      <module name="BookMyCon" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bookmycon.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HousekeepingServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.micro.housekeepingservice.HousekeepingServiceApplication" />
-      <module name="housekeeping-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.micro.housekeepingservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.micro.serviceregistry.ServiceRegistryApplication" />
-      <module name="service-registry" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.micro.serviceregistry.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in BookMyCon (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.OrderControllerTest.testPlaceOrder">
+    <configuration name="All in BookMyCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BookMyCon" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -131,16 +76,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.bookmycon.service in BookMyCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuditoriumControllerTest.testGeneratePdfFileFindAllAuditoriums" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BookMyCon" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bookmycon.service.*" />
+          <option name="PATTERN" value="com.bookmycon.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bookmycon.service" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="com.bookmycon.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmycon.controller.AuditoriumControllerTest" />
+      <option name="METHOD_NAME" value="testGeneratePdfFileFindAllAuditoriums" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditoriumControllerTest.testGeneratePdfOfAudiFileContentType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmycon.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bookmycon.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmycon.controller.AuditoriumControllerTest" />
+      <option name="METHOD_NAME" value="testGeneratePdfOfAudiFileContentType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditoriumControllerTest.testGeneratePdfOfAuditoriumFileContentType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmycon.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bookmycon.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmycon.controller.AuditoriumControllerTest" />
+      <option name="METHOD_NAME" value="testGeneratePdfOfAuditoriumFileContentType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderControllerTest.testPlaceOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmycon.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bookmycon.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmycon.controller.OrderControllerTest" />
+      <option name="METHOD_NAME" value="testPlaceOrder" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BookMyConApplication" />
-        <item itemvalue="Application.HousekeepingServiceApplication" />
-        <item itemvalue="Application.ServiceRegistryApplication" />
-        <item itemvalue="JUnit.com.bookmycon.service in BookMyCon" />
-        <item itemvalue="JUnit.All in BookMyCon (1)" />
+        <item itemvalue="JUnit.OrderControllerTest.testPlaceOrder" />
+        <item itemvalue="JUnit.All in BookMyCon" />
+        <item itemvalue="JUnit.AuditoriumControllerTest.testGeneratePdfFileFindAllAuditoriums" />
+        <item itemvalue="JUnit.AuditoriumControllerTest.testGeneratePdfOfAuditoriumFileContentType" />
+        <item itemvalue="JUnit.AuditoriumControllerTest.testGeneratePdfOfAudiFileContentType" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681884042333</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1682312819356</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682312819356</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -215,16 +217,25 @@
     <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681884902684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1682325463751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1681965398617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$AuditoriumControllerTest.ic" NAME="AuditoriumControllerTest Coverage Results" MODIFIED="1682324836366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$com_bookmycon_controller_in_BookMyCon.ic" NAME="com.bookmycon.controller in BookMyCon Coverage Results" MODIFIED="1682323810283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App__1_.ic" NAME="All in BookMyCon-App (1) Coverage Results" MODIFIED="1681709247575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__1_.ic" NAME="All in BookMyCon (1) Coverage Results" MODIFIED="1681965513547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1681709218340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__1_.ic" NAME="All in BookMyCon (1) Coverage Results" MODIFIED="1682324533572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1682323788605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$GuestControllerTest.ic" NAME="GuestControllerTest Coverage Results" MODIFIED="1682324508935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$com_bookmycon_service_in_BookMyCon.ic" NAME="com.bookmycon.service in BookMyCon Coverage Results" MODIFIED="1681965627692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.service.*</FILTER>
     </SUITE>
