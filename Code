@@ -5,3 +5,45 @@ https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-j
 
 
 https://www.amitph.com/java-download-file-from-url/#:~:text=Long.MAX_VALUE)%3B%20%7D-,Using%20Java%20HttpClient,save%20it%20on%20the%20disk.&text=First%2C%20we%20simply%20create%20an,and%20HTTP%20GET%20method%20type.
+
+
+
+package BoardGame1;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class HttpclientFileDownload {
+	
+
+	
+
+	
+	private static URI outputPath;
+	    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
+	    	
+	    	HttpClient httpClient = HttpClient.newBuilder().build();
+
+	    	HttpRequest httpRequest = HttpRequest
+	    	        .newBuilder()
+	    	        .uri(new URI("https://0ac8-34-227-195-100.ngrok-free.app/export-to-pass/bob@gmail.com"))
+	    	        .GET()
+	    	        .build();
+
+	    	HttpResponse<InputStream> response = httpClient
+	    	        .send(httpRequest, responseInfo ->
+	    	                HttpResponse.BodySubscribers.ofInputStream());
+
+	    	Files.copy(response.body(), Paths.get(outputPath));
+
+	    
+	}
+
+}
