@@ -47,3 +47,39 @@ public class HttpclientFileDownload {
 	}
 
 }
+
+
+
+
+
+Another Method:
+private static HttpRequest getHttpRequest(String uri) {
+        HttpRequest request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(uri))
+                .GET()
+                .build();
+        return request;
+}
+
+private static HttpResponse<InputStream> getResponse(HttpRequest request) throws IOException, InterruptedException {
+        return HttpClient
+                .newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofInputStream());
+}
+
+private static void WriteLocal(InputStream body, String destinationFIle) throws IOException {
+        FileOutputStream fos = new FileOutputStream(destinationFIle);
+        fos.write(body.readAllBytes());
+        fos.close();
+}
+
+private static void downloadPDF(String pdfFile) throws IOException, InterruptedException {
+        HttpRequest request = getHttpRequest(pdfFile);
+        HttpResponse<InputStream> response = getResponse(request);
+ 
+        System.out.println("status code: "+response.statusCode());
+        InputStream body = response.body();
+ 
+        WriteLocal(body, "sample.pdf");
+}
