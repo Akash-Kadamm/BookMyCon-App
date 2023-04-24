@@ -45,21 +45,9 @@ public class UserLayoutController {
 	@Autowired
 	AreasService areasService;
 
-
 	@Autowired
 	AreasRepository areasRepository;
 
-	
-	
-//	@Autowired
-//	ResponseHandler responseHandler;
-//
-//	
-//	@GetMapping(value = "/userLayoutObj")
-//    public ResponseEntity<Object> Get() {
-//          return responseHandler.generateResponse("ak", responseHandler);
-// }
-//
 	@GetMapping(value = "/areasList")
     public ResponseEntity<List<AreasDto>>  GetAreas() {
 		
@@ -78,42 +66,22 @@ public class UserLayoutController {
 }
 
 
-
-
-
-	
 	@GetMapping("/")
 	public ResponseEntity<List<UserLayout>>  getAllUserLayout()
-
 	{
-		
 		return  new ResponseEntity<List<UserLayout>>(userLayoutService.findAll(),HttpStatus.OK);
-		
 	}
 	
 	
 	@GetMapping("/areas")
 	public ResponseEntity<List<Areas>>  getAllAreas()
-
 	{
-		
 		return  new ResponseEntity<List<Areas>>(areasService.findAll(),HttpStatus.OK);
-		
 	}
 
 	@GetMapping("/areasByCoords/{id}")
 	public Areas  getAreaById(@PathVariable(value = "id") int[] id)
-
 	{
-//		System.out.println(id.split(",").length);
-//	int[] intarray=new int[9];
-//		for (int i=0;i<id.split(",").length;i++)
-//		{
-//			int a=Integer.parseInt(id.split(",")[i]);
-//			intarray[i]=a;
-//		}
-
-
 		if(areasRepository.findByCoords(id).get(0)==null)
 		{
 			return areasRepository.findByCoords(id).get(1);
@@ -126,12 +94,7 @@ public class UserLayoutController {
 	@PostMapping("/addareas")
 	public ResponseEntity<String> addareas(@RequestBody DataDto dataDto)
 	{
-        // preFillColor: "transperant",
-
 		Areas areas=new Areas(1, dataDto.getName(), dataDto.getShape(), dataDto.getCoords(),"transperant",dataDto.getFillColor(),userLayoutService.findById(dataDto.getNameId()).get());
-		
-
-//		System.out.println(areas);
 		areasService.addAreas(areas);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
 	}
@@ -140,7 +103,6 @@ public class UserLayoutController {
 	@PutMapping("/addareas")
 	public ResponseEntity<String> addareas(@RequestBody Areas areas)
 	{
-
 		areasService.addAreas(areas);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
 	}
@@ -148,9 +110,6 @@ public class UserLayoutController {
 	@PostMapping("/addUserLayout")
 	public ResponseEntity<String> addUserLayout(@RequestBody UserLayout userLayout)
 	{
-		
-		
-
 		System.out.println(userLayout);
 		userLayoutService.addUserLayout(userLayout);
 		return new ResponseEntity<String>("record added successfully", HttpStatus.CREATED);
@@ -160,7 +119,6 @@ public class UserLayoutController {
 	public ResponseEntity<Optional<UserLayout>> getUserLayoutById(@PathVariable(value = "name") String name)
 	{
 		Optional<UserLayout> user=userLayoutService.findById(name);
-		
 	return new ResponseEntity<Optional<UserLayout>>(user,HttpStatus.OK);
 	}
 
@@ -174,17 +132,8 @@ public class UserLayoutController {
 	@DeleteMapping("/{name}")
 	public ResponseEntity<String> deleteUserById(@PathVariable String name)
 	{
-//		
-//	Areas areas=	userLayoutRepository.getById(name).getAreas();
-//	
-//	aerAreasRepository.delete(areas);
-//	
 		userLayoutService.deleteUserLayout(name);
-	
-	
 		return new ResponseEntity<String>("record deleted",HttpStatus.OK);
 	}
-
-
 
 }

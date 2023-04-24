@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
-
 import com.bookmycon.repository.UserRepository;
 import com.bookmycon.utils.PdfOfBooking;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +20,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.bookmycon.model.Booking;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.dto.BookingDTO;
-
 import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
@@ -35,8 +32,7 @@ public class BookingController {
 
 	@Autowired
 	BookingService bookingService;
-	@Autowired
-	UserRepository userRepository;
+
 	@GetMapping("/getAllBookings")
 	public ResponseEntity<List<Booking>> getAllBookings() {
 		return new ResponseEntity<List<Booking>>(bookingService.showAll(), HttpStatus.OK);
@@ -65,7 +61,6 @@ public class BookingController {
 	public ResponseEntity<List<Booking>> searchBooking(@PathVariable String dateFrom,
 			@PathVariable String dateTo) {
 
-		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
 		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		 String str1 = dateFrom;
 	        String[] arrOfStr1 = str1.split("-", 5);
@@ -81,8 +76,6 @@ public class BookingController {
 	       LocalDate from=LocalDate.parse(newdateFrom, formatter);
 			LocalDate to=LocalDate.parse(newdateTo, formatter);
 
-//		LocalDate from=LocalDate.parse(dateFrom, formatter);
-//		LocalDate to=LocalDate.parse(dateTo, formatter);
 		return new ResponseEntity<List<Booking>>(bookingService.getByDateFromDateTo(from, to), HttpStatus.OK);
 	}
 
@@ -98,28 +91,22 @@ public class BookingController {
 		return new ResponseEntity<List<Booking>>(bookingService.getBookingByUserId(userId),HttpStatus.OK);
 	}
 	
-	@GetMapping("/get-all-bookings/{userId}")
-	public ResponseEntity<Stream<BookingDTO>> getAlllBookingsOfUser(@PathVariable int userId){
-		return new ResponseEntity<Stream<BookingDTO>>(bookingService.getBookingByUserId(userId).stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
-	}
-	
-	@GetMapping("/get-all-bookings")
-	public ResponseEntity<Stream<BookingDTO>> findAllBookings(){		
-		return new ResponseEntity<Stream<BookingDTO>>(bookingService.showAll().stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
-	}
-
-	@GetMapping("/export-to-pdf-book")
-	public void generatePdfFileForBooking(HttpServletResponse response) throws IOException
-	{
-//		response.setContentType("application/pdf");
-//		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
-//		String currentDateTime = dateFormat.format(new Date());
-//		String headerKey = "Content-Disposition";
-//		String headerValue = "attachment; filename=Booking Report Generation " + currentDateTime + ".pdf";
-//		response.setHeader(headerKey, headerValue);
-		List <Booking> bookingList = bookingService.showAll();
-		PdfOfBooking generator = new PdfOfBooking();
-		System.out.println(bookingList);
-		generator.generateBooking(bookingList, response);
-	}
+//	@GetMapping("/get-all-bookings/{userId}")
+//	public ResponseEntity<Stream<BookingDTO>> getAlllBookingsOfUser(@PathVariable int userId){
+//		return new ResponseEntity<Stream<BookingDTO>>(bookingService.getBookingByUserId(userId).stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
+//	}
+//
+//	@GetMapping("/get-all-bookings")
+//	public ResponseEntity<Stream<BookingDTO>> findAllBookings(){
+//		return new ResponseEntity<Stream<BookingDTO>>(bookingService.showAll().stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
+//	}
+//
+//	@GetMapping("/export-to-pdf-book")
+//	public void generatePdfFileForBooking(HttpServletResponse response) throws IOException
+//	{
+//		List <Booking> bookingList = bookingService.showAll();
+//		PdfOfBooking generator = new PdfOfBooking();
+//		System.out.println(bookingList);
+//		generator.generateBooking(bookingList, response);
+//	}
 }

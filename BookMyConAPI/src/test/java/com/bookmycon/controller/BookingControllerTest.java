@@ -1,8 +1,9 @@
 package com.bookmycon.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
-
+import java.util.stream.Stream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
+import com.bookmycon.dto.BookingDTO;
 import com.bookmycon.model.Booking;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.utils.PdfOfBooking;
@@ -118,6 +120,23 @@ public class BookingControllerTest {
         assertEquals(bookings, response.getBody());
     }
 
+    @Test
+    public void testGetAlllBookingsOfUser() {
+        int userId = 123;
+        List<Booking> bookings = Arrays.asList(
+                new Booking(1, LocalDate.now(), 1, "Test booking 1"),
+                new Booking(2, LocalDate.now(), 1, "Test booking 2")
+        );
+        when(bookingService.getBookingByUserId(userId)).thenReturn(bookings);
+
+        ResponseEntity<List<Booking>> response = bookingController.getAllBookingsOfUser(userId);
+
+        verify(bookingService).getBookingByUserId(userId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(bookings, response.getBody());
+    }
+
 @Test
 public void testEditBooking() {
     Booking booking = new Booking();
@@ -150,5 +169,7 @@ public void testEditBooking() {
 
         assertEquals(bookingList, responseEntity.getBody());
     }
+
+
 }
 

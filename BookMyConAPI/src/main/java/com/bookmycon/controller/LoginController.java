@@ -1,7 +1,6 @@
 package com.bookmycon.controller;
 
 import java.util.regex.Pattern;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.bookmycon.model.Login;
 import com.bookmycon.service.LoginService;
 import com.bookmycon.utils.ResponseMessage;
@@ -28,15 +26,7 @@ public class LoginController {
 	
     Logger logger=Logger.getLogger(LoginController.class);
 	
-    
-    
-	/*
-	 * Login according to role of user
-	 * 
-	 * @param Login object contain user credentials
-	 * @return User object
-	 * 
-	 * */
+
 	@PostMapping("loginCheck")
 	public ResponseEntity<Object> loginCheckByPassword(@RequestBody Login login){
 	

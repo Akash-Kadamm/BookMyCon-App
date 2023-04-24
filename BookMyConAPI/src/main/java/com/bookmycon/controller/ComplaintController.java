@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -18,14 +17,6 @@ public class ComplaintController {
     @Autowired
     private ComplaintService complaintService;
 
-
-    /*
-     * Retrieve All Complaints.
-     *
-     * @param
-     * @return ResponseEntity object
-     *
-     * */
     @GetMapping("/getAllComplaints")
     public ResponseEntity<List<Complaint>> allComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -34,13 +25,6 @@ public class ComplaintController {
          );
     }
 
-    /*
-     * Retrieve All Drinks and Snacks Complaints.
-     *
-     * @param
-     * @return ResponseEntity object
-     *
-     * */
     @GetMapping("/getAllDrinksAndSnacksComplaints")
     public ResponseEntity<List<Complaint>> drinksAndSnacksComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -50,13 +34,6 @@ public class ComplaintController {
     }
 
 
-    /*
-     * Retrieve All HouseKeeping Complaints .
-     *
-     * @param
-     * @return ResponseEntity object
-     *
-     * */
     @GetMapping("/getAllHouseKeepingComplaints")
     public ResponseEntity<List<Complaint>> houseKeepingComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -74,14 +51,6 @@ public class ComplaintController {
         );
     }
 
-//
-//    @PostMapping("/makeComplaint")
-//    public ResponseEntity<String> makeComplaints(@RequestBody Complaint complaint){
-//        return  new ResponseEntity<>(
-//                complaintService.makeComplaint(complaint),
-//                HttpStatus.CREATED
-//        );
-//    }
 
     @DeleteMapping("/resolveComplaint/{complaintId}")
     public ResponseEntity<String> deleteComplaint(@PathVariable int complaintId){
@@ -90,7 +59,5 @@ public class ComplaintController {
             HttpStatus.OK
          );
     }
-
-
 
 }

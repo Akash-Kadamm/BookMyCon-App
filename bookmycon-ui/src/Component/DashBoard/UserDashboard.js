@@ -161,7 +161,7 @@ function DashboardContent() {
                <CycloneIcon color="secondary"  />
              </ListItemIcon>
              <ListItemText onClick={()=>{toggleDrawer(); navigate("/assistant");
-              }}  primary="Chat GPT" />
+              }}  primary="Solution Assistant" />
            </ListItemButton>
           
            <ListItemButton>

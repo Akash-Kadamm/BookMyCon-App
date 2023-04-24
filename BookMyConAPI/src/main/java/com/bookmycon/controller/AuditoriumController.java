@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.bookmycon.utils.PdfOfAuditorium;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.bookmycon.model.Auditoriums;
 import com.bookmycon.model.Booking;
 import com.bookmycon.repository.AuditoriumRepository;
@@ -30,7 +28,6 @@ import com.bookmycon.repository.BookingRepository;
 import com.bookmycon.service.AuditoriumService;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.utils.ResponseMessage;
-
 import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
@@ -72,15 +69,6 @@ public class AuditoriumController {
 		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
 	}
 
-
-
-	/*
-	 * Update Auditorium
-	 * 
-	 * @param Auditorium Id- Path Variable and Auditorium object
-	 * @return Updated Auditorium Object
-	 * 
-	 * */
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
 	    logger.info("Auditorium id: "+id+" Auditorium object: "+auditorium);
@@ -89,14 +77,11 @@ public class AuditoriumController {
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
 	}
 	
-	
-	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
 		System.out.println(id);
 		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
 		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
-	//	Booking objBooking= listBooking.get(0);
 		for  (Booking booking : listBooking) {
 			booking.setAduitoriamId(null);
 			bookingService.addBooking(booking);
@@ -104,8 +89,6 @@ public class AuditoriumController {
 		auditoriumService.deleteById(id);
 		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
 	}
-	
-	
 	
 	@GetMapping("/getAudi/{id}")
 	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
@@ -128,7 +111,5 @@ public class AuditoriumController {
 		PdfOfAuditorium generator = new PdfOfAuditorium();
 		generator.generateAudi(listOfAuditoriums, response);
 	}
-
-
 
 }
