@@ -1,29 +1,18 @@
 package com.bookmycon.controller;
 
-import com.bookmycon.dto.GuestRequestDTO;
 import com.bookmycon.model.Guest;
 import com.bookmycon.model.User;
 import com.bookmycon.service.GuestService;
-import com.bookmycon.utils.ResponseMessage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.web.multipart.MultipartFile;
-//import com.bookmycon.dto.GuestRequestDTO;
-//import org.springframework.web.multipart.MultipartFile;
-import static org.mockito.ArgumentMatchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.Mockito.*;
-
-import java.io.IOException;
 import java.util.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -38,6 +27,9 @@ public class GuestControllerTest {
     Map<String , Object> response = new HashMap<>();
 
     Guest guest;
+
+    private MockMvc mockMvc;
+
 
     @Before
     public void setUp()
@@ -145,6 +137,8 @@ public class GuestControllerTest {
 //        Assert.assertNotNull(headerValue);
 //        Assert.assertTrue(headerValue.contains("Guest Pass Generation"));
 //    }
+
+
 }
 
 

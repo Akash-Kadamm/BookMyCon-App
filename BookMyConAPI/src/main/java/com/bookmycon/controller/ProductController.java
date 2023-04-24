@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -18,13 +17,6 @@ public class ProductController {
     @Autowired
    private ProductService productService;
 
-    /*
-    * Retrieve All products.
-    *
-    * @param
-    * @return ResponseEntity object
-    *
-    * */
     @GetMapping("/getAllProduct")
    public ResponseEntity<List<Product>> getAllProducts(){
         return  new ResponseEntity<>(
@@ -34,13 +26,6 @@ public class ProductController {
    }
 
 
-    /*
-     * Add new product.
-     *
-     * @param Product object
-     * @return ResponseEntity object
-     *
-     * */
    @PostMapping("/addNewProduct")
    public ResponseEntity<Product> addNewProduct(@RequestBody Product product){
         return new ResponseEntity<>(
@@ -50,13 +35,6 @@ public class ProductController {
    }
 
 
-    /*
-     * Update product.
-     *
-     * @param Product object
-     * @return ResponseEntity object
-     *
-     * */
    @PutMapping("/updateProduct")
    public ResponseEntity<String> updateProduct(@RequestBody Product product){
        productService.updateProduct(product);
@@ -66,13 +44,7 @@ public class ProductController {
         );
    }
 
-    /*
-     * Delete product.
-     *
-     * @param  int ProductID
-     * @return ResponseEntity object
-     *
-     * */
+
    @DeleteMapping("/deleteProduct/{id}")
    public ResponseEntity<String> deleteProduct(@PathVariable int id){
         return  new ResponseEntity<>(

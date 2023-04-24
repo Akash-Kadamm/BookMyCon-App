@@ -4,32 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_7_2023_11_37_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_7_2023_11_37_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/HousekeepingDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/SmsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/SmsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/GuestPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/GuestPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/UserPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/UserPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/SmsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/SmsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/SmsPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/SmsPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/BookingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/BookingControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/GuestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/GuestControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/OrderServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/SmsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/test/java/com/bookmycon/service/SmsServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AddGuest.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AddGuest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewForUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewForUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -53,17 +66,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/abhishekchik/Desktop/BookMyConProject/BookMyCon-App",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abhishekchik/Desktop/BookMyConProject/BookMyCon-App&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bookmycon.dto" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.BookMyConApplication">
     <configuration name="BookMyConApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bookmycon.main.BookMyConApplication" />
@@ -104,6 +123,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in BookMyCon (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.bookmycon.service in BookMyCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmycon.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bookmycon.service" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="service-registry" />
       <method v="2">
@@ -122,21 +163,70 @@
         <item itemvalue="Application.BookMyConApplication" />
         <item itemvalue="Application.HousekeepingServiceApplication" />
         <item itemvalue="Application.ServiceRegistryApplication" />
+        <item itemvalue="JUnit.com.bookmycon.service in BookMyCon" />
+        <item itemvalue="JUnit.All in BookMyCon (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a4e7f88e-1007-492b-a343-328601b78469" name="Changes" comment="" />
+      <changelist id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
       <created>1680782832981</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680782832981</updated>
     </task>
+    <task id="LOCAL-00001" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681291713305</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681291713306</updated>
+    </task>
+    <task id="LOCAL-00002" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681708303815</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681708303815</updated>
+    </task>
+    <task id="LOCAL-00003" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681708677720</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681708677720</updated>
+    </task>
+    <task id="LOCAL-00004" summary="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
+      <created>1681884042333</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681884042333</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681211653930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681884902684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1681965398617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App__1_.ic" NAME="All in BookMyCon-App (1) Coverage Results" MODIFIED="1681709247575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__1_.ic" NAME="All in BookMyCon (1) Coverage Results" MODIFIED="1681965513547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1681709218340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$com_bookmycon_service_in_BookMyCon.ic" NAME="com.bookmycon.service in BookMyCon Coverage Results" MODIFIED="1681965627692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.service.*</FILTER>
+    </SUITE>
   </component>
 </project>
