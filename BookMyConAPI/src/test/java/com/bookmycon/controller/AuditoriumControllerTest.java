@@ -1,10 +1,13 @@
 package com.bookmycon.controller;
+import com.bookmycon.dto.UserRequestDTO;
 import com.bookmycon.model.Auditoriums;
 import com.bookmycon.model.Booking;
+import com.bookmycon.model.User;
 import com.bookmycon.repository.AuditoriumRepository;
 import com.bookmycon.repository.BookingRepository;
 import com.bookmycon.service.AuditoriumService;
 import com.bookmycon.service.BookingService;
+import com.bookmycon.utils.PdfGenerator;
 import com.bookmycon.utils.PdfOfAuditorium;
 import com.bookmycon.utils.ResponseMessage;
 import org.apache.log4j.Logger;
@@ -19,6 +22,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -44,6 +48,10 @@ public class AuditoriumControllerTest {
 
 	@InjectMocks
 	private AuditoriumController auditoriumController;
+
+	PdfOfAuditorium pdfOfAuditorium;
+	HttpServletResponse servletResponse;
+
 
 	@Test
 	public void testAddAuditorium() {
@@ -112,6 +120,8 @@ public class AuditoriumControllerTest {
 	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
+		pdfOfAuditorium = new PdfOfAuditorium();
+		servletResponse = new MockHttpServletResponse();
 	}
 
 	@Test
@@ -188,5 +198,20 @@ public class AuditoriumControllerTest {
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		assertEquals(expectedResponse, responseEntity.getBody());
 	}
+
+	@Test
+	public void testGeneratePdfOfAuditoriumFileContentType()  throws IOException {
+		auditoriumController.generatePdfFileOfAudi(servletResponse);
+		assertEquals("application/pdf", servletResponse.getContentType());
 	}
+
+
+
+	@Test
+	public void testGeneratePdfFileFindAllAuditoriums() throws IOException {
+		auditoriumController.generatePdfFileOfAudi(servletResponse);
+		verify(auditoriumService).showAll();
+	}
+
+}
 

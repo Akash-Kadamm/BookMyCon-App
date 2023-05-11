@@ -25,34 +25,17 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    /*
-     * Fetch Order by Order Id.
-     *
-     * @param int Order id
-     * @return Response Entity object
-     * */
     @GetMapping("/getOrder/{id}")
     public ResponseEntity<Order> findOrder(@PathVariable int id) {
         return new ResponseEntity<>(orderService.getOrderById(id), HttpStatus.OK);
     }
-    
-    /*
-     * Cancel Order
-     *
-     * @param integer id
-     * @return ResponseEntity Object
-     * */
+
     @DeleteMapping("/cancelOrder/{id}")
     public ResponseEntity<String> cancelOrder(@PathVariable int orderId) {
         return new ResponseEntity<>(orderService.deleteOrder(orderId), HttpStatus.OK);
     }
 
-    /*
-     * Place Order
-     *
-     * @param OderDTO orderDTO
-     * @return ResponseEntity Object
-     * */
+
     @PostMapping("/place-order/{bookingId}")
     public ResponseEntity<?> placeOrder(@RequestBody OrderContentDto orderContent, @PathVariable int bookingId) {
         Order userOrder = new Order();

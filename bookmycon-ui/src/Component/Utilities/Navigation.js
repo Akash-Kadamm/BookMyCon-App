@@ -323,7 +323,7 @@ const Navigation = () => {
                       key={commonPage}
                       onClick={() => handleCloseUserMenu(commonPage)}
                     >
-                      <Typography sx={{ color: "white" }} textAlign="center">
+                      <Typography sx={{ color: "black" }} textAlign="center">
                         {commonPage}
                       </Typography>
                     </MenuItem>
@@ -336,7 +336,7 @@ const Navigation = () => {
               <Box sx={{ flexGrow: 0 ,float:"right"}}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar sx={{ backgroundColor: "white" }} variant="soft" />
+                    <Avatar sx={{ backgroundColor: "black" }} variant="soft" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -360,7 +360,7 @@ const Navigation = () => {
                       key={commonPage}
                       onClick={() => handleCloseUserMenu(commonPage)}
                     >
-                      <Typography sx={{ color: "white" }} textAlign="center">
+                      <Typography sx={{ color: "black" }} textAlign="center">
                         {commonPage}
                       </Typography>
                     </MenuItem>
@@ -375,7 +375,7 @@ const Navigation = () => {
                   <Button
                     key={nonLoginUserPage}
                     onClick={() => handleCloseNavMenu(nonLoginUserPage)}
-                    sx={{ my: 2, color: "white", display: "block" }}
+                    sx={{ my: 2, color: "black", display: "block" }}
                   >
                     {nonLoginUserPage}
                   </Button>

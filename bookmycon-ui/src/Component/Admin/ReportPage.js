@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import fileDownload from 'js-file-download'
 import axios from "axios";
 import BarChartIcon from '@mui/icons-material/BarChart';
+import '../../css/Report.css'
 
 export const ReportPage = () => {
     const navigate = useNavigate();
@@ -47,21 +48,24 @@ export const ReportPage = () => {
      </div>    
     </Grid>
     
-    <Grid item xs={12} onClick={() => { getReportOfAudi();}} >
-    <div style={{color: "#9c27b0", textAlign:"left"}}  >
-    Auditorium   
+    <Grid item xs={12}  >
+    <div className='test' style={{color: "#9c27b0", textAlign:"left"}}  >
+    <div>Auditorium</div>   
+       <div onClick={() => { getReportOfAudi();}} className='dnwld'>Download PDF</div> 
      </div>    
     </Grid>
 
-    <Grid item xs={12} onClick={() => { getReportOfUser();}}>
-    <div style={{color: "#9c27b0", textAlign:"left"}}  >
-    All User
+    <Grid item xs={12} >
+    <div className='test' style={{color: "#9c27b0", textAlign:"left"}}  >
+    <div>All User</div>
+    <div onClick={() => { getReportOfUser();}} className='dnwld'>Download PDF</div> 
      </div>    
     </Grid>
 
-    <Grid item xs={12}  onClick={() => { getReportOfBooking();}}>
-    <div style={{color: "#9c27b0", textAlign:"left"}}  >
-    Booking   
+    <Grid item xs={12} >
+    <div className='test' style={{color: "#9c27b0", textAlign:"left"}}  >
+    <div>Booking</div> 
+    <div onClick={() => { getReportOfBooking();}} className='dnwld'>Download PDF</div> 
      </div>    
     </Grid>
     

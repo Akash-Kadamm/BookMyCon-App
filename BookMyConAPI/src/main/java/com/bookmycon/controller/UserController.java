@@ -20,14 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
 import com.bookmycon.model.User;
 import com.bookmycon.service.LoginService;
 import com.bookmycon.service.UserService;
 import com.bookmycon.utils.ResponseMessage;
 import org.springframework.web.client.RestTemplate;
-
 import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin("*")
@@ -45,16 +42,6 @@ public class UserController {
 
 	Logger logger = Logger.getLogger(UserController.class);
 
-	/*
-	 * Register new user
-	 * 
-	 * check-upcoming user object , pattern check , is user already exists
-	 * 
-	 * @param User
-	 * 
-	 * @return Response entity contain object and httpStatus code
-	 * 
-	 */
 	@PostMapping("/registration")
 	public ResponseEntity<Object> registerUser(UserRequestDTO user) {
 		Map<String, Object> response = new HashMap<>();
@@ -101,14 +88,6 @@ public class UserController {
 
 	}
 
-	/*
-	 * Update User Profile
-	 * 
-	 * @param User
-	 * 
-	 * @return updated User object
-	 *
-	 */
 	@PostMapping("updateProfile")
 	public ResponseEntity<Object> updateProfile(@RequestBody User user) {
 		Map<String, Object> response = new HashMap<>();
@@ -127,11 +106,11 @@ public class UserController {
 
 	/*
 	 * Retrieves all users which are register
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return List of users
-	 * 
+	 *
 	 */
 	@GetMapping("allUser")
 	public ResponseEntity<List<User>> getAllUser() {
