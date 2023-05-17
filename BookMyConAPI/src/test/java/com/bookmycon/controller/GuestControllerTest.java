@@ -103,6 +103,13 @@ public class GuestControllerTest {
         assertEquals("Jane", responseEntity.getBody().get(1).getGuestName());
     }
 
+//    @Test(expected = Exception.class)
+//    public void testGeneratePassFileContentType() throws IOException {
+//        String name = "prerana";
+//        guestController.generatePassFile(servletResponse,name);
+//        assertEquals("application/pdf", servletResponse.getContentType());
+//    }
+
 
     @Test(expected = Exception.class)
     public void testGeneratePassFile_withInvalidName() throws Exception {

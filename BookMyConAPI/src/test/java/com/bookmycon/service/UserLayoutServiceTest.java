@@ -96,4 +96,5 @@ public class UserLayoutServiceTest {
         Optional<UserLayout> result = userLayoutRepository.findById(id);
         assertEquals(Optional.empty(), result);
     }
+
 }
