@@ -24,4 +24,12 @@
 - Vendor can view all types of complaints like Drinks And snacks, Housekeeping.
 - Vendor can resolve it.
 
+## Installations
+- Install Redis Cache server
+- Install node modules
+
+## Run
+- First run serviceRegistry main file in backend then bookmycon main file after that housekeeping main file.
+- Then run frontend 
+
 
