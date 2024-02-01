@@ -33,7 +33,7 @@ import { AdminHomePage } from './Component/Admin/AdminHomePage';
 import { UserHomePage } from './Component/User/UserHomePage';
 import { NonUserHome, NonuserHome } from './Component/Utilities/NonUserHome';
 import { ReportPage } from './Component/Admin/ReportPage';
-
+import  UserFloorCards from './Component/User/UserFloorCards';
 import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
 import Register from './Component/Utilities/Register';
@@ -44,6 +44,8 @@ import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingReques
 import Update from './Component/User/UpdateUser';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
 import ChatBot from './Component/Utilities/ChatBot';
+import UserFloor from './Component/User/UserFloor';
+import ModalPieChart from './Component/User/ModalPieChart';
 
 const Card = () => (
   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
@@ -69,7 +71,10 @@ function App() {
         <Route exact path="/userHomePage" element={<UserHomePage />} />
         <Route exact path="/nonUserHome" element={<NonUserHome />} />
           <Route exact path="/calender-view" element={<HomePage />} />
+          <Route exact path='/floor' element={<UserFloor/>} />
           <Route exact path="/floormap" element={<UserFloorMap />} />
+          <Route exact path="/floormain" element={<UserFloorCards/>} />
+          <Route exact path='/piechart' element={<ModalPieChart/>}/>
            <Route exact path="/auditorium-view" element={<ViewForUser/>} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
@@ -100,6 +105,7 @@ function App() {
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           <Route path='/guest' element={<Guest/>}/>
           <Route path='/add-guest' element={<AddGuest/>}/>
+        
           </Routes>
   </Grid>
 </Grid>

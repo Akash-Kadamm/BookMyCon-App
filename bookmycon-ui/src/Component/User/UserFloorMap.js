@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../src/App.css";
+import { Link } from 'react-router-dom';
 import ImageMapper from "react-image-mapper";
 import a1 from "../../Image/OfficePlan.jpg"
 import Box from '@mui/material/Box';
@@ -341,7 +342,7 @@ export const UserFloorMap = () => {
       
       
     // console.log("areaList :"+ JSON.stringify(areaslist))
-    const text="Name: "+textData+"\n"+
+    const text="Nam,e: "+textData+"\n"+
     "Location: "+userLocation+"\n"+
     "Type: "+userType+"\n"+
     "Amenities: "+userAmenities+"\n"+
@@ -392,19 +393,45 @@ export const UserFloorMap = () => {
       width: "200px",
       height: "250px"}} >
        
-         Name: {textData}
-         <br></br>
-
-         Location: {userLocation}<br></br>
-         Type: {userType}<br></br>
-         Amenities: {userAmenities}<br></br>
-         Capacity: {userCapacity}
+       <Typography variant="subtitle1">
+                Name: {textData}
+              </Typography>
+              <Typography variant="subtitle1">
+                Location: {userLocation}
+              </Typography>
+              <Typography variant="subtitle1">
+                Type: {userType}
+              </Typography>
+              <Typography variant="subtitle1">
+                Amenities: {userAmenities}
+              </Typography>
+              <Typography variant="subtitle1">
+                Capacity: {userCapacity}
+              </Typography>
        </div>
 
         </Grid>
       
       </Grid>
+
+    
+     
+     <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
+          <Grid item style={{ marginLeft: '30vh' }}>
+            <Button component={Link} to="/floor" variant="contained" color="primary">
+              Watch Table
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid item style={{ marginLeft: '112vh' }}>
+          <Button component={Link} to="/floormain" variant="contained" color="secondary" >
+            Back
+          </Button>
+        </Grid>
     </Box>
+
+    
 </div>
-  )
+);
 }
+ export default UserFloorMap;
