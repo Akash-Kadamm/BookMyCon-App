@@ -37,7 +37,7 @@ class UserFloor extends React.Component {
                             <td> Location </td>
                             <td> Type </td>
                             <td> Amenties</td>
-                            <td> Availability </td>
+                            <td> Availability: </td>
                         </tr>
 
                     </thead>

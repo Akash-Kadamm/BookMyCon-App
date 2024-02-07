@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for .">
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FloorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/PieChartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Floor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/PieChart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/FloorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code.">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_7_2023_11_37_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_7_2023_11_37_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -32,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ab11992b6317788cbdab5ceaf19edaf54c95e3f3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,9 +37,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2O3IQiTdQt5hI1F3ANWkKkAuEP9" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -59,7 +53,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev__zeel",
+    "git-widget-placeholder": "dev__zeelp",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/zeelp/Desktop/BOOK/BookMyCon-App",
     "project.structure.last.edited": "Project",
