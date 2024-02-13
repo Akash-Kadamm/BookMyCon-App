@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code.">
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api1-gateway/src/main/java/com/micro/api1gateway/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/housekeeping-service/src/main/java/com/micro/housekeepingservice/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api1-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api1-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api1-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api1-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housekeeping-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/housekeeping-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housekeeping-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/housekeeping-service/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,10 +23,24 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ab11992b6317788cbdab5ceaf19edaf54c95e3f3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;zeelpatel12&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3e44d039-2693-4cbc-85d4-33a9fc084408" />
+        <option name="url" value="https://github.com/Akash-Kadamm/BookMyCon-App.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" root0="FORCE_HIGHLIGHTING" />
@@ -47,7 +49,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
+  &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2O3IQiTdQt5hI1F3ANWkKkAuEP9" />
   <component name="ProjectLevelVcsManager">
@@ -60,61 +62,34 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Api1GatewayApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.BookMyConApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HousekeepingServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev__amey&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__zeelp&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ameyd/Documents/iOffice-Calendar-App&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zeelp/Desktop/BOOK/BookMyCon-App&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.micro.housekeepingservice" />
-      <recent name="com.micro.api1gateway" />
+      <recent name="com.bookmycon.controller" />
+      <recent name="com.bookmycon.model" />
+      <recent name="com.bookmycon.repository" />
       <recent name="com.bookmycon.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HousekeepingServiceApplication">
-    <configuration name="Api1GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.micro.api1gateway.Api1GatewayApplication" />
-      <module name="api1-gateway" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.micro.api1gateway.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.BookMyConApplication">
     <configuration name="BookMyConApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bookmycon.main.BookMyConApplication" />
       <module name="BookMyCon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.bookmycon.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HousekeepingServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.micro.housekeepingservice.HousekeepingServiceApplication" />
-      <module name="housekeeping-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.micro.housekeepingservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,6 +110,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in BookMyCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditoriumControllerTest.testGeneratePdfFileFindAllAuditoriums" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyCon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmycon.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bookmycon.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmycon.controller.AuditoriumControllerTest" />
+      <option name="METHOD_NAME" value="testGeneratePdfFileFindAllAuditoriums" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderControllerTest.testPlaceOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BookMyCon" />
       <extension name="coverage">
@@ -151,20 +150,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="service-registry" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="service-registry" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderControllerTest.testPlaceOrder" />
-        <item itemvalue="Application.ServiceRegistryApplication" />
-        <item itemvalue="Application.HousekeepingServiceApplication" />
         <item itemvalue="Application.BookMyConApplication" />
-        <item itemvalue="Application.Api1GatewayApplication" />
+        <item itemvalue="Application.ServiceRegistryApplication" />
+        <item itemvalue="JUnit.OrderControllerTest.testPlaceOrder" />
+        <item itemvalue="JUnit.All in BookMyCon" />
+        <item itemvalue="JUnit.AuditoriumControllerTest.testGeneratePdfFileFindAllAuditoriums" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-19.0.2-corretto-19.0.2-f644763e9732-f4b396da" />
+        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
       </set>
     </attachedChunks>
   </component>
@@ -212,7 +224,23 @@
       <option name="project" value="LOCAL" />
       <updated>1682312819356</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="# Ticket Id:- rm9oUImq: new branch for test&#10;===&#10;-new branch for test&#10;&#10;## Why&#10;===&#10;- As per ticket's description added pie chart and floor map table using API">
+      <option name="closed" value="true" />
+      <created>1707299119195</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707299119195</updated>
+    </task>
+    <task id="LOCAL-00007" summary="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table">
+      <option name="closed" value="true" />
+      <created>1707822342198</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707822342198</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,42 +258,32 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: new branch for test&#10;===&#10;-new branch for test&#10;&#10;## Why&#10;===&#10;- As per ticket's description added pie chart and floor map table using API" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__3_.ic" NAME="All in BookMyCon (3) Coverage Results" MODIFIED="1680865733042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__1_.ic" NAME="All in BookMyCon (1) Coverage Results" MODIFIED="1681713785961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$RatingServiceTest.ic" NAME="RatingServiceTest Coverage Results" MODIFIED="1680848915036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.service.*</FILTER>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1682325463751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1681965398617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$AuditoriumControllerTest.ic" NAME="AuditoriumControllerTest Coverage Results" MODIFIED="1682324836366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$com_bookmycon_controller_in_BookMyCon.ic" NAME="com.bookmycon.controller in BookMyCon Coverage Results" MODIFIED="1682323810283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$RatingControllerTest.ic" NAME="RatingControllerTest Coverage Results" MODIFIED="1680865227984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1681965398617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App__1_.ic" NAME="All in BookMyCon-App (1) Coverage Results" MODIFIED="1681709247575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__1_.ic" NAME="All in BookMyCon (1) Coverage Results" MODIFIED="1682324533572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1682323788605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$GuestControllerTest.ic" NAME="GuestControllerTest Coverage Results" MODIFIED="1682324508935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$com_bookmycon_service_in_BookMyCon.ic" NAME="com.bookmycon.service in BookMyCon Coverage Results" MODIFIED="1681965627692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.bookmycon.service.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__2_.ic" NAME="All in BookMyCon (2) Coverage Results" MODIFIED="1680865656719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon.ic" NAME="All in BookMyCon Coverage Results" MODIFIED="1681713025725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__4_.ic" NAME="All in BookMyCon (4) Coverage Results" MODIFIED="1680870077525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookMyConApplication.ic" NAME="BookMyConApplication Coverage Results" MODIFIED="1680865290537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.main.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$GuestControllerTest.ic" NAME="GuestControllerTest Coverage Results" MODIFIED="1682324508935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App__1_.ic" NAME="All in BookMyCon-App (1) Coverage Results" MODIFIED="1681709247575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon_App.ic" NAME="All in BookMyCon-App Coverage Results" MODIFIED="1682323788605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iOffice_Calendar_App$AuditoriumControllerTest.ic" NAME="AuditoriumControllerTest Coverage Results" MODIFIED="1682324836366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.bookmycon.controller.*</FILTER>
     </SUITE>
   </component>
 </project>

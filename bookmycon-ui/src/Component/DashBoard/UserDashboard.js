@@ -168,7 +168,7 @@ function DashboardContent() {
              <ListItemIcon>
                <MapIcon color="secondary"  onClick={toggleDrawer} />
              </ListItemIcon>
-             <ListItemText onClick={()=>{toggleDrawer(); navigate("/floormap");
+             <ListItemText onClick={()=>{toggleDrawer(); navigate("/floormain");
               }} primary="Floor Map" />
            </ListItemButton>
            <ListItemButton>
