@@ -1,75 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import ModalPieChart from './ModalPieChart';
 import FloorService from './FloorService';
+import BookingDialog from './BookingDialog';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
- import { Button } from '@mui/material';
- import "../../../src/App.css";
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import "../../../src/App.css";
+
 const floorstyle = {
-    marginLeft:-127,
-    marginRight:0
-}
+    marginLeft: 73,
+    maxWidth: 1200, 
+   
+};
 
-class UserFloor extends React.Component {
+function UserFloor() {
+    const [floors, setFloors] = useState([]);
 
-    constructor(props){
-        super(props)
-        this.state = {
-            floors:[]
-        }
-    }
-
-    componentDidMount(){
+    useEffect(() => {
         FloorService.getFloors().then((response) => {
-            this.setState({ floors: response.data})
+            setFloors(response.data);
         });
-    }
+    }, []);
 
-
-    render (){
-        return (
-            <><div>
+    return (
+        <>
+            <div>
                 <h1 className="text-center" style={floorstyle}> Floor List</h1>
-                <table className="table table-striped" style={floorstyle}>
-                    <thead>
-                        <tr>
-                            <td> Name </td>
-                            <td> Location </td>
-                            <td> Type </td>
-                            <td> Amenties</td>
-                            <td> Availability: </td>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        {this.state.floors.map(
-                            floor => <tr key={floor.id}>
-                                <td> {floor.name}</td>
-                                <td> {floor.location}</td>
-                                <td> {floor.type}</td>
-                                <td> {floor.amenities}</td>
-                                <td>{floor.availability} <Button component={Link} to="/auditorium-Booking" variant="contained" color="secondary"
-                                >Check</Button></td>
-
-                            </tr>
-                        )}
-
-                    </tbody>
-                </table>
+                <TableContainer>
+                    <Table className="table table-striped" style={floorstyle}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Location</TableCell>
+                                <TableCell>Type</TableCell>
+                                <TableCell>Amenities</TableCell>
+                                <TableCell>Availability</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {floors.map((floor) => (
+                                <TableRow key={floor.fid}>
+                                    <TableCell>{floor.name}</TableCell>
+                                    <TableCell>{floor.location}</TableCell>
+                                    <TableCell>{floor.type}</TableCell>
+                                    <TableCell>{floor.amenities}</TableCell>
+                                    <TableCell> <BookingDialog/> </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
-            <Grid item style={{marginRight:'10vh'}}>
-            <ModalPieChart/>  
+            <Grid item style={{ marginRight: '10vh' }}>
+                <ModalPieChart />
             </Grid>
-                   <Grid item style={{marginLeft:'112vh',marginTop:'-4vh'}}>
-                    <Button component={Link} to="/floormap" variant="contained" color="primary" >
-                        Back
-                    </Button>
-                </Grid>
-                </>
-
-        )
-    }
+            <Grid item style={{ marginLeft: '112vh', marginTop: '-4vh' }}>
+                <Button component={Link} to="/floormap" variant="contained" color="primary">
+                    Back
+                </Button>
+            </Grid>
+        </>
+    );
 }
-
 
 export default UserFloor;

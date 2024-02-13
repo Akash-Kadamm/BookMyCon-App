@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Legend, Tooltip, Cell,ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Legend, Tooltip, Cell } from 'recharts';
 import { CircularProgress, Dialog, DialogTitle, DialogContent, Typography } from '@material-ui/core';
 import '../../css/Piechart.css'
 

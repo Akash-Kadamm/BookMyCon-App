@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Button, Grid, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import "../../../src/App.css";
 
@@ -73,7 +73,7 @@ const UserFloorCards = () => {
         </Grid>
       ))}
     </Grid>
-  );
+  ); 
 };
 
 export default UserFloorCards;

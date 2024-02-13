@@ -15,7 +15,7 @@ public class Floor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int id;
+    private int fid;
     @Column(name="name")
     private String name;
     @Column(name="location")
@@ -32,7 +32,7 @@ public class Floor {
      public Floor(){
 
      }
-    public Floor(int id, String name, String location, String type, String amenities, int capacity, boolean availability) {
+    public Floor(int fid, String name, String location, String type, String amenities, int capacity, boolean availability) {
         super();
 
         this.name = name;
@@ -45,12 +45,12 @@ public class Floor {
 
 
 
-    public int getId() {
-        return id;
+    public int getFid() {
+        return fid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFid(int id) {
+        this.fid = fid;
     }
 
     public String getName() {

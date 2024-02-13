@@ -3,6 +3,9 @@ package com.bookmycon.repository;
 import com.bookmycon.model.Floor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FloorRepository extends JpaRepository<Floor, Long> {
+import java.util.Optional;
+
+public interface FloorRepository extends JpaRepository<Floor, Integer> {
+    Optional<Floor> findByFid (int fid);
 
 }

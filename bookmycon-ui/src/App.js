@@ -47,6 +47,8 @@ import ChatBot from './Component/Utilities/ChatBot';
 import UserFloor from './Component/User/UserFloor';
 import ModalPieChart from './Component/User/ModalPieChart';
 
+import BookingDialog from './Component/User/BookingDialog';
+
 const Card = () => (
   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
 )
@@ -71,6 +73,7 @@ function App() {
         <Route exact path="/userHomePage" element={<UserHomePage />} />
         <Route exact path="/nonUserHome" element={<NonUserHome />} />
           <Route exact path="/calender-view" element={<HomePage />} />
+          <Route exact path="/bookm" element={<BookingDialog/>}/>
           <Route exact path='/floor' element={<UserFloor/>} />
           <Route exact path="/floormap" element={<UserFloorMap />} />
           <Route exact path="/floormain" element={<UserFloorCards/>} />
