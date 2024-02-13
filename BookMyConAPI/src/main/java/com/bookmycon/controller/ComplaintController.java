@@ -2,6 +2,7 @@ package com.bookmycon.controller;
 
 import com.bookmycon.model.Complaint;
 import com.bookmycon.service.ComplaintService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class ComplaintController {
 
     @Autowired
     private ComplaintService complaintService;
-
+    @Operation(summary = "Get all complaints ", description = "Get all complaints of all services from database")
     @GetMapping("/getAllComplaints")
     public ResponseEntity<List<Complaint>> allComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -24,7 +25,7 @@ public class ComplaintController {
                 HttpStatus.OK
          );
     }
-
+    @Operation(summary = "Get all Drinks And Snacks complaints ", description = "Get all Drinks And Snacks complaints from database")
     @GetMapping("/getAllDrinksAndSnacksComplaints")
     public ResponseEntity<List<Complaint>> drinksAndSnacksComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -33,7 +34,7 @@ public class ComplaintController {
         );
     }
 
-
+    @Operation(summary = "Get all HouseKeeping complaints ", description = "Get all HouseKeeping complaints from database")
     @GetMapping("/getAllHouseKeepingComplaints")
     public ResponseEntity<List<Complaint>> houseKeepingComplaints(){
         return  new ResponseEntity<List<Complaint>>(
@@ -42,7 +43,7 @@ public class ComplaintController {
         );
     }
 
-
+    @Operation(summary = "make a Complaint ", description = "make a new Complaint")
     @PostMapping("/makeComplaint")
     public ResponseEntity<String> makeComplaints(@RequestBody Complaint complaint){
         return  new ResponseEntity<>(
@@ -51,7 +52,7 @@ public class ComplaintController {
         );
     }
 
-
+    @Operation(summary = "Resolve a Complaint by id ", description = "Resolve a Complaint by ID")
     @DeleteMapping("/resolveComplaint/{complaintId}")
     public ResponseEntity<String> deleteComplaint(@PathVariable int complaintId){
          return new ResponseEntity<>(

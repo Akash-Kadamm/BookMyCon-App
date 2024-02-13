@@ -1,6 +1,8 @@
 package com.bookmycon.controller;
 
 import java.util.regex.Pattern;
+
+import io.swagger.v3.oas.annotations.Operation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +27,8 @@ public class LoginController {
 	LoginService loginService;       
 	
     Logger logger=Logger.getLogger(LoginController.class);
-	
 
+	@Operation(summary = "Login Check  ", description = "Login Check by email and password")
 	@PostMapping("loginCheck")
 	public ResponseEntity<Object> loginCheckByPassword(@RequestBody Login login){
 	

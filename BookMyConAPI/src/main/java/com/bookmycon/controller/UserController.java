@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.bookmycon.dto.UserRequestDTO;
 import com.bookmycon.utils.UserPass;
 import com.bookmycon.utils.PdfGenerator;
+import io.swagger.v3.oas.annotations.Operation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class UserController {
 	private LoginService loginService;
 
 	Logger logger = Logger.getLogger(UserController.class);
-
+	@Operation(summary = "Register a new User", description = "Adds new user into database")
 	@PostMapping("/registration")
 	public ResponseEntity<Object> registerUser(UserRequestDTO user) {
 		Map<String, Object> response = new HashMap<>();
@@ -87,7 +88,7 @@ public class UserController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}
-
+	@Operation(summary = "Update Users profile", description = "Update Users profile into database")
 	@PostMapping("updateProfile")
 	public ResponseEntity<Object> updateProfile(@RequestBody User user) {
 		Map<String, Object> response = new HashMap<>();
@@ -112,6 +113,7 @@ public class UserController {
 	 * @return List of users
 	 *
 	 */
+	@Operation(summary = "Retrieves all users which are register", description = "Return List of  all users which are register from database")
 	@GetMapping("allUser")
 	public ResponseEntity<List<User>> getAllUser() {
 		logger.debug("getting all users.");
@@ -132,6 +134,7 @@ public class UserController {
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
 
+	@Operation(summary = "Create new Pdf file ", description = "Generate new Pdf file export users data from database")
 	@GetMapping("/export-to-pdf")
 	public void generatePdfFile(HttpServletResponse response) throws IOException
 	{
@@ -159,6 +162,7 @@ public class UserController {
 		userPass.generatePassOfUser(userDetails, response);
 	}
 	@GetMapping("/getAllHk")
+	@Operation(summary = "Getting all housekeeping requests ", description = "Show all housekeeping requests from database")
 
 	public List<Object> getAllHousekeepingRequest(){
 		try{
@@ -171,6 +175,7 @@ public class UserController {
 			return null;
 		}
 	}
+	@Operation(summary = "Raise a housekeeping requests ", description = "Raise a housekeeping requests")
 	@PostMapping("/AddHK")
 	public Object addHousekeepingRequest(@RequestBody Object object){
 		try{

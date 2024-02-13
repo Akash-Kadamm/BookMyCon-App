@@ -6,6 +6,7 @@ import java.util.*;
 
 import com.bookmycon.service.AreasService;
 import com.bookmycon.service.UserLayoutService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +48,7 @@ public class UserLayoutController {
 
 	@Autowired
 	AreasRepository areasRepository;
-
+	@Operation(summary = "Get a area List ", description = "Returns a area list")
 	@GetMapping(value = "/areasList")
     public ResponseEntity<List<AreasDto>>  GetAreas() {
 		
@@ -71,13 +72,14 @@ public class UserLayoutController {
 	{
 		return  new ResponseEntity<List<UserLayout>>(userLayoutService.findAll(),HttpStatus.OK);
 	}
-	
-	
+
+	@Operation(summary = "Get a areas", description = "Returns a areas")
 	@GetMapping("/areas")
 	public ResponseEntity<List<Areas>>  getAllAreas()
 	{
 		return  new ResponseEntity<List<Areas>>(areasService.findAll(),HttpStatus.OK);
 	}
+	@Operation(summary = "Get a area coords by User id", description = "Returns a area coordinates as per the User id")
 
 	@GetMapping("/areasByCoords/{id}")
 	public Areas  getAreaById(@PathVariable(value = "id") int[] id)
@@ -90,7 +92,7 @@ public class UserLayoutController {
 		}
 	}
 
-
+	@Operation(summary = "Add a area coords", description = "Adds a area coordinates ")
 	@PostMapping("/addareas")
 	public ResponseEntity<String> addareas(@RequestBody DataDto dataDto)
 	{

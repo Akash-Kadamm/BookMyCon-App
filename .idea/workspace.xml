@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code.">
-      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api1-gateway/src/main/java/com/micro/api1gateway/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/housekeeping-service/src/main/java/com/micro/housekeepingservice/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api1-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api1-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api1-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api1-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housekeeping-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/housekeeping-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housekeeping-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/housekeeping-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ComplaintController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FileControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FileControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/UserLayoutController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +39,20 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ameyd96&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5828b006-daac-42a6-893e-8f0b124f3fd8" />
+        <option name="url" value="https://github.com/Akash55915/iOffice-Calendar-App.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AreasService.java" root0="FORCE_HIGHLIGHTING" />
@@ -82,7 +96,7 @@
       <recent name="com.bookmycon.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HousekeepingServiceApplication">
+  <component name="RunManager" selected="Application.BookMyConApplication">
     <configuration name="Api1GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.micro.api1gateway.Api1GatewayApplication" />
       <module name="api1-gateway" />
@@ -153,10 +167,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderControllerTest.testPlaceOrder" />
+        <item itemvalue="Application.BookMyConApplication" />
         <item itemvalue="Application.ServiceRegistryApplication" />
         <item itemvalue="Application.HousekeepingServiceApplication" />
-        <item itemvalue="Application.BookMyConApplication" />
+        <item itemvalue="JUnit.OrderControllerTest.testPlaceOrder" />
         <item itemvalue="Application.Api1GatewayApplication" />
       </list>
     </recent_temporary>
@@ -212,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1682312819356</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code.">
+      <option name="closed" value="true" />
+      <created>1706620571265</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706620571265</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +252,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Test cases ,New UI and modified changes.&#10;## What&#10;===&#10;- New UI changes.&#10;- Modified changes.&#10;&#10;## Why&#10;===&#10;- As per ticket's description written test cases for ." />
+    <MESSAGE value="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ticket Id : 9AHqlS0Z : Swagger API Documentation&#10;&#10;## What : Added Swagger api documentation dependency and code.&#10;&#10;## Why : As per ticket description  Added Added Swagger api documentation dependency and code." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$All_in_BookMyCon__3_.ic" NAME="All in BookMyCon (3) Coverage Results" MODIFIED="1680865733042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

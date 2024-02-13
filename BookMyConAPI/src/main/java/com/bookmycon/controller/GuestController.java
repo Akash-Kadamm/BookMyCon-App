@@ -12,6 +12,7 @@ import com.bookmycon.repository.UserRepository;
 import com.bookmycon.service.GuestService;
 import com.bookmycon.utils.GuestPass;
 import com.bookmycon.utils.ResponseMessage;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,13 @@ public class GuestController {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	
+	@Operation(summary = "Fetch all guest ", description = "Fetch all guests created by user")
 	@GetMapping("/allGuest")
 	public ResponseEntity<List<Guest>> getAllGuest() {
 		return new ResponseEntity<List<Guest>>(guestService.findAllGuests(), HttpStatus.OK);
 	}
 
+	@Operation(summary = "Fetch all guests by user id ", description = "Fetch all guest created by user by ID")
 	@GetMapping("/allGuest/{userId}")
 	public ResponseEntity<List<Guest>> getAllGuest(@PathVariable int userId) {
 		User user = userRepository.findByUserId(userId);
@@ -54,12 +55,13 @@ public class GuestController {
 		guestPass.generatePass(guestDetails, response);
 	}
 
+	@Operation(summary = "Delete guest by id ", description = "Delete guest created by user by ID")
 	@DeleteMapping("/delete-guest/{id}")
 	public ResponseEntity<String> deleteGuest(@PathVariable int id){
 		guestService.deleteByGuestId(id);
 		return new ResponseEntity<>("Guest deleted",HttpStatus.OK);
 	}
-
+	@Operation(summary = "Fetch guest by name ", description = "Fetch guest created by user by name")
 	@GetMapping("/get-guest-by-name/{name}")
 	public ResponseEntity<?> getGuestByName(@PathVariable String name) {
 		return new ResponseEntity<>(guestService.findByGuestName(name), HttpStatus.OK);

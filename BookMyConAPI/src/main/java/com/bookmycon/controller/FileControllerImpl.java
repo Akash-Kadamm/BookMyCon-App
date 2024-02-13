@@ -5,6 +5,7 @@ import java.io.InputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import com.bookmycon.utils.StorageService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ public class FileControllerImpl {
 	@Autowired
 	private StorageService storageService;
 
+	@Operation(summary = "To download PDF", description = "To download PDF of guest added by user ")
 	@RequestMapping(value="/{fileName}", produces = "image/*")
 	public void download(@PathVariable("fileName") String fileName, HttpServletResponse resp) {
 		Resource resource = storageService.load(fileName);
