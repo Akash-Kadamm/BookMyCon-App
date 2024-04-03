@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 //import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 @EntityScan("com.bookmycon.model")
 @SpringBootApplication(scanBasePackages = "com.bookmycon.*")
 @EnableCaching
+@CrossOrigin(origins = "http://localhost:3000")
 @EnableEurekaClient
 public class BookMyConApplication {
 	@Bean

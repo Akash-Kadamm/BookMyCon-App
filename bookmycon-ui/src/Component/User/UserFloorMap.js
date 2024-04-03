@@ -418,7 +418,7 @@ export const UserFloorMap = () => {
      
      <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
           <Grid item style={{ marginLeft: '30vh' }}>
-            <Button component={Link} to="/floor" variant="contained" color="primary">
+            <Button component={Link} to="/floortable" variant="contained" color="primary">
               Watch Table
             </Button>
           </Grid>
@@ -434,4 +434,3 @@ export const UserFloorMap = () => {
 </div>
 );
 }
- export default UserFloorMap;

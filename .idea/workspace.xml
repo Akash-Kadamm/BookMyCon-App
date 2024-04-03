@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table">
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/DemoBooking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/BookingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/DemoBookingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FloorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FloorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/BookMyConApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/BookMyConApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting2.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingDialog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingListOfUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingListOfUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/FloorService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartFloor.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartFloor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +75,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
