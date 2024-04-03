@@ -31,27 +31,26 @@ import UserDashboard from './Component/DashBoard/UserDashboard';
 import { Grid } from '@mui/material';
 import { AdminHomePage } from './Component/Admin/AdminHomePage';
 import { UserHomePage } from './Component/User/UserHomePage';
-import { NonUserHome, NonuserHome } from './Component/Utilities/NonUserHome';
+import { NonUserHome} from './Component/Utilities/NonUserHome';
 import { ReportPage } from './Component/Admin/ReportPage';
 import  UserFloorCards from './Component/User/UserFloorCards';
 import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
-import Register from './Component/Utilities/Register';
-
 import AddHousekeepingRequests from './Component/User/AddHousekeepingRequests';
 import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingRequest';
 import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
-import Update from './Component/User/UpdateUser';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
 import ChatBot from './Component/Utilities/ChatBot';
-import UserFloor from './Component/User/UserFloor';
 import ModalPieChart from './Component/User/ModalPieChart';
+import AuditoriumList1 from './Component/User/AuditoriumList1';
+import UserFloorTable from './Component/User/UserFloorTable';
+import BookMeeting from './Component/User/BookMeeting';
+import BookingForm from './Component/User/BookingForm';
 
-import BookingDialog from './Component/User/BookingDialog';
 
-const Card = () => (
-  <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
-)
+// const Card = () => (
+//   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
+// )
 
 function App() {
   return (
@@ -68,14 +67,16 @@ function App() {
   </Grid>
   <Grid item xs={9}>
   <Routes>
+    <Route exact path='bookmeet' element={<BookingForm />}/>
         <Route exact path="/" element={<NonUserHomePage />} />
+        <Route exact path="/bookm" element={<BookMeeting/>}/>
         <Route exact path="/adminHomePage" element={<AdminHomePage />} />
         <Route exact path="/userHomePage" element={<UserHomePage />} />
         <Route exact path="/nonUserHome" element={<NonUserHome />} />
           <Route exact path="/calender-view" element={<HomePage />} />
-          <Route exact path="/bookm" element={<BookingDialog/>}/>
-          <Route exact path='/floor' element={<UserFloor/>} />
-          <Route exact path="/floormap" element={<UserFloorMap />} />
+          <Route exact path='/demo' element={<AuditoriumList1/>}/>
+          <Route exact path='/floortable' element={<UserFloorTable/>} />
+          <Route exact path='/floormap' element={<UserFloorMap/>} />
           <Route exact path="/floormain" element={<UserFloorCards/>} />
           <Route exact path='/piechart' element={<ModalPieChart/>}/>
            <Route exact path="/auditorium-view" element={<ViewForUser/>} />
@@ -86,12 +87,11 @@ function App() {
           <Route path="/auditorium-update/:id" element={<UpdateAuditorium />} />
           <Route path="/add-auditorium" element={<AddAudi />} />
           <Route path="/auditorium-list" element={<AuditoriumList />} />
-          <Route path="/auditorium-Booking" element={<BookMeeting2 />} />
+          <Route path="/auditoriumBooking" element={<BookMeeting2 />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/booking-List-user" element={<BookingListOfUser />} />
           <Route path='/feedback' element={<Feedback />} />
-          <Route path="/booking-List-user" element={<BookingListOfUser/>} />
           <Route path="/product-List" element={<ProductList/>} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>}/>
           <Route path="/admin-FloorMap" element={<AdminFloorMap/>}/>

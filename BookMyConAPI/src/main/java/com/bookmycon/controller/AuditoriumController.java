@@ -30,7 +30,7 @@ import com.bookmycon.service.BookingService;
 import com.bookmycon.utils.ResponseMessage;
 import javax.servlet.http.HttpServletResponse;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/admin")
 public class AuditoriumController {

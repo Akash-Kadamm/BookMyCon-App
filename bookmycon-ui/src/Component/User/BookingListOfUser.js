@@ -1,157 +1,81 @@
-// import * as React from 'react';
-// import { styled } from '@mui/material/styles';
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-// import TableContainer from '@mui/material/TableContainer';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-// import { useEffect, useState } from 'react'
-// import axios from 'axios'
-// import Button from '@mui/material/Button';
-// import DeleteIcon from "@mui/icons-material/Delete";
-// import CancelIcon from '@mui/icons-material/Cancel';
-// import UpdateIcon from '@mui/icons-material/Update';
-// import { toast } from 'react-toastify'
-// import Alert from '@mui/material/Alert';
-// import Stack from '@mui/material/Stack';
-// import ConfirmDialog from './ConfirmDialog';
+import React, { useState, useEffect } from 'react';
+import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
+import { makeStyles } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+  },
+  table: {
+    width: '80%',
+    borderCollapse: 'collapse',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  tableCell: {
+    padding: '12px 15px',
+    textAlign: 'left',
+    backgroundColor: theme.palette.grey[200],
+  },
+  tableRow: {
+    '&:nth-of-type(even)': {
+      backgroundColor: theme.palette.grey[300], 
+    },
+    '&:hover': {
+      backgroundColor: theme.palette.grey[400], 
+    },
+  },
+}));
 
-// const StyledTableCell = styled(TableCell)(({ theme }) => ({
-//   [`&.${tableCellClasses.head}`]: {
-//     backgroundColor: theme.palette.common.black,
-//     color: theme.palette.common.white,
+const BackendApiTable = () => {
+  const classes = useStyles();
+  const [data, setData] = useState([]);
 
-//   },
-//   [`&.${tableCellClasses.body}`]: {
-//     fontSize: 14,
-//   },
-// }));
+  useEffect(() => {
+    fetch('http://localhost:8080/bookings')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
-// const StyledTableRow = styled(TableRow)(({ theme }) => ({
-//   '&:nth-of-type(odd)': {
-//     backgroundColor: theme.palette.action.hover,
-//   },
-//   // hide last border
-//   '&:last-child td, &:last-child th': {
-//     border: 0,
-//   },
-// }));
+  return (
+    <div className={classes.container}>
+      <TableContainer component={Paper}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.tableCell}>Booking ID</TableCell>
+              <TableCell className={classes.tableCell}>User Name</TableCell>
+              <TableCell className={classes.tableCell}>User Email</TableCell>
+              <TableCell className={classes.tableCell}>Auditorium Name</TableCell>
+              <TableCell className={classes.tableCell}>Booking Date From</TableCell>
+              <TableCell className={classes.tableCell}>Booking Date To</TableCell>
+              <TableCell className={classes.tableCell}>Booking Time From</TableCell>
+              <TableCell className={classes.tableCell}>Booking Time To</TableCell>
+              <TableCell className={classes.tableCell}>Booking Agenda</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map(booking => (
+              <TableRow key={booking.bookingId} className={classes.tableRow}>
+                <TableCell className={classes.tableCell}>{booking.bookingId}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.userId.userName}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.userId.userEmail}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.aduitoriamId.auditoriumName}</TableCell>
+                <TableCell className={classes.tableCell}>{new Date(...booking.bookingDateFrom).toLocaleDateString()}</TableCell>
+                <TableCell className={classes.tableCell}>{new Date(...booking.bookingDateTo).toLocaleDateString()}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.bookingTimeFrom.join(':')}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.bookingTimeTO.join(':')}</TableCell>
+                <TableCell className={classes.tableCell}>{booking.bookingAgenda}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
 
-
-
-// function BookingListOfUser() {
-
-//   let [booking, setBooking] = useState([]);
-//   const [user, setUser] = useState();
-//   let [errorMsg, setErrorMsg] = useState('');
-
-
-//   // setUser(sessionStorage.getItem("userLogin"));
-
-//   useEffect(() => {
-//     getAllBookings()
-//   }, []);
-
-//   const id = 2;
-
-//   const getAllBookings = () => {
-//     console.log(id);
-//         axios
-//         .get(`http://localhost:8080/admins/get-all-bookings/${id}`)
-//         .then(response =>{ setBooking(response.data);
-//                   console.log(response.date);
-//                   console.log(booking);
-//         })
-//         .catch((error=>setErrorMsg("error occered ")));
-//     }
-   
-//     const cancelBooking = (bookId) => {
-        
-     
-//         console.log(bookId);
-    
-//         const url = `http://localhost:8080/admins/${bookId}`;
-//         axios
-//           .delete(url)
-//           .then((response) => {
-//               toast.success(response.data);
-//             getAllBookings()
-           
-
-//       })
-//       .catch((error) => console.log("error:"));
-
-//   };
-
-//   return (
-//     <>
-//       <div>
-//         <TableContainer component={Paper}>
-//           <Table sx={{ minWidth: 700 }} aria-label="customized table">
-//             <TableHead>
-//               <TableRow>
-//                 {/* <StyledTableCell>Offer Id</StyledTableCell> */}
-//                 <StyledTableCell align='center' >Booking ID</StyledTableCell>
-//                 <StyledTableCell align='center'> Auditorium Name</StyledTableCell>
-//                 <StyledTableCell align='center'>Auditorium Location</StyledTableCell>
-//                 <StyledTableCell align='center'>Booking From</StyledTableCell>
-//                 <StyledTableCell align='center'>Booking To</StyledTableCell>
-//                 <StyledTableCell align='center'>Booking From</StyledTableCell>
-//                 <StyledTableCell align='center'>Booking To</StyledTableCell>
-//                 <StyledTableCell align='center'>Booking Agenda</StyledTableCell>
-//                 <StyledTableCell align='center'>Action</StyledTableCell>
-
-//               </TableRow>
-//             </TableHead>
-//             <TableBody>
-//               {booking.map((b) => (
-//                 <StyledTableRow >
-//                   <StyledTableCell align='center'>{b.bookingId}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.aduitoriamId.auditoriumName}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.aduitoriamId.auditoriumLocation}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.bookingDateFrom}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.bookingDateTo}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.bookingTimeFrom}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.bookingTimeTO}</StyledTableCell>
-//                   <StyledTableCell align='center'>{b.bookingAgenda}</StyledTableCell>
-//                   <StyledTableCell align="center">
-//                     <Button
-//                       className="m-2"
-//                       color='secondary'
-//                       variant="outlined"
-//                       startIcon={<UpdateIcon />}
-//                       onClick={() => {
-
-//                       }}
-
-//                     >
-//                       UPDATE
-//                     </Button>
-//                     {/* <ConfirmDialog props={b.bookingId}/> */}
-//                     <Button
-//                       color='error'
-//                       variant="outlined"
-//                       startIcon={<CancelIcon />}
-//                       onClick={() => {
-//                         cancelBooking(b.bookingId);
-//                       }}
-
-//                     >
-//                       CANCEL
-//                     </Button>
-//                   </StyledTableCell>
-
-//                 </StyledTableRow>
-//               ))}
-//             </TableBody>
-//           </Table>
-//         </TableContainer>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default BookingListOfUser
+export default BackendApiTable;
