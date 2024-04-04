@@ -29,7 +29,7 @@ const UserFloorTable = () => {
 };
 
   useEffect(() => {
-    fetch('http://localhost:8080/bookings')
+    fetch('http://localhost:8080/admins/getAllBookings')
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -61,7 +61,7 @@ const UserFloorTable = () => {
                               <TableCell>{booking.aduitoriamId.auditoriumCapacity}</TableCell>
                               <TableCell>{booking.bookingAgenda}</TableCell>
                               <TableCell>{checkAvailability(booking) ? (
-                              <Button variant="contained" color="success" onClick={() => handleBookClick(booking)}> Book </Button> 
+                              <Button  component={Link} to="/auditoriumBooking" variant="contained" color="success" onClick={() => handleBookClick(booking)}> Book </Button> 
                                ) : ( "Unavailable")}</TableCell>
 
                           </TableRow>

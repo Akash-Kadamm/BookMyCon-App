@@ -50,7 +50,7 @@ export const AuditoriumList = () => {
 
   const getAllAuditorium = () => {
     axios
-      .get("http://localhost:8080/admin/getAll")
+      .get("http://localhost:8080/admins/getAllBookings")
       .then((response) => setAuditorium(response.data))
       .catch((error) => setErrorMsg("error occered "));
   };
@@ -63,7 +63,7 @@ export const AuditoriumList = () => {
   
     console.log(id);
 
-    const url = `http://localhost:8080/admin/${id}`;
+    const url = `http://localhost:8080/admins/${id}`;
     axios
       .delete(url)
       .then((response) => {
@@ -76,7 +76,7 @@ export const AuditoriumList = () => {
   };
 
   const getReportOfAudi = () => {
-    axios({url:"http://localhost:8080/admin/export-to-pdf-audi",method:"GET",responseType:"blob"}).then((response) => {
+    axios({url:"http://localhost:8080/admins/export-to-pdf-audi",method:"GET",responseType:"blob"}).then((response) => {
         fileDownload(response.data,'downlodedAudi.pdf')
         console.log(response)
     }).catch((error) => {
@@ -136,7 +136,7 @@ export const AuditoriumList = () => {
             </TableHead>
             <TableBody>
               {auditorium.map((auditorium) => (
-                <StyledTableRow>
+                <StyledTableRow >
                   <StyledTableCell align="center">
                     {auditorium.auditoriumId}
                   </StyledTableCell>

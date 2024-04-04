@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.bookmycon.model.Auditoriums;
 import com.bookmycon.model.Booking;
-import com.bookmycon.repository.AuditoriumRepository;
+
 import com.bookmycon.repository.BookingRepository;
 import com.bookmycon.repository.UserRepository;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ public class BookingService {
 
 	public Booking addBooking(Booking booking) {
 		logger.info("Adding new booking: " + booking.toString());
-		return 	bookingRepository.save(booking);
+		return  bookingRepository.save(booking);
 
 	}
 
@@ -50,22 +50,22 @@ public class BookingService {
 		bookingRepository.deleteById(id);
 	}
 
-//	public void editBooking(int id, Booking booking) {
-//		logger.info("Updating booking with ID: " + id + ", new booking: " + booking.toString());
-//		bookingRepository.save(booking);
-//	}
+	public void editBooking(int id, Booking booking) {
+		logger.info("Updating booking with ID: " + id + ", new booking: " + booking.toString());
+		bookingRepository.save(booking);
+	}
 
 	public List<Booking> getByDateFromDateTo(LocalDate dateFrom, LocalDate dateTo) {
 		logger.info("Retrieving bookings between dates: " + dateFrom + " and " + dateTo);
 		return bookingRepository.findByBookingDateFromAndBookingDateTo(dateFrom, dateTo);
 	}
 
-	public List<Booking> getByAuditoriumId(Auditoriums auditoriums) {
-		logger.info("Retrieving bookings for auditorium: " + auditoriums.toString());
-		return bookingRepository.findByAduitoriamId(auditoriums);
-	}
+//  public List<Booking> getByAuditoriumId(Auditoriums auditoriums) {
+//      logger.info("Retrieving bookings for auditorium: " + auditoriums.toString());
+//      return bookingRepository.findByAduitoriamId(auditoriums);
+//  }
 
-	
+
 	public List<Booking> getBookingByUserId(int userId) {
 		logger.info("Retrieving bookings for user with ID: " + userId);
 		return bookingRepository.findByUserId(userRepository.findById(userId).get());
@@ -76,22 +76,4 @@ public class BookingService {
 		logger.info("Retrieving all bookings for user with ID: " + userId);
 		return bookingRepository.findByUserId(userId);
 	}
-	public Booking updateBooking(int bookingId, Booking newBookingData) {
-		Optional<Booking> optionalBooking = bookingRepository.findById(bookingId);
-		if (optionalBooking.isPresent()) {
-			Booking existingBooking = optionalBooking.get();
-			existingBooking.setAduitoriamId(newBookingData.getAduitoriamId());
-			existingBooking.setUserId(newBookingData.getUserId());
-			existingBooking.setBookingDateFrom(newBookingData.getBookingDateFrom());
-			existingBooking.setBookingDateTo(newBookingData.getBookingDateTo());
-			existingBooking.setBookingTimeFrom(newBookingData.getBookingTimeFrom());
-			existingBooking.setBookingTimeTO(newBookingData.getBookingTimeTO());
-			existingBooking.setBookingAgenda(newBookingData.getBookingAgenda());
-
-			return bookingRepository.save(existingBooking);
-		} else {
-			throw new RuntimeException("Booking not found with id: " + bookingId);
-		}
-	}
-
 }
