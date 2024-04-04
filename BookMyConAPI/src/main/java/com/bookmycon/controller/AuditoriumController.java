@@ -59,15 +59,20 @@ public class AuditoriumController {
 		logger.info("All Auditoriums fetched successfully!!");
 		return new ResponseEntity<List<Auditoriums>>(auditoriumService.showAll(), HttpStatus.OK);
 	}
-	
-	@GetMapping("/getAuditoriunByName/{name}")
-	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
-		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
-		Auditoriums adui=audiList.get(0);
 
-		logger.info("Auditorium fetched sucessfully by Name!!");
-		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
-	}
+//@GetMapping("/getAll")
+//public List<Auditoriums> getAllAuditorium() {
+//	return auditoriumRepository.findAll();
+//}
+	
+//	@GetMapping("/getAuditoriunByName/{name}")
+//	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
+//		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
+//		Auditoriums adui=audiList.get(0);
+//
+//		logger.info("Auditorium fetched sucessfully by Name!!");
+//		return new ResponseEntity<Auditoriums>(adui, HttpStatus.OK);
+//	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
