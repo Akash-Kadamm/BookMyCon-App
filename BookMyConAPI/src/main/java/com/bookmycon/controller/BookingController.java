@@ -2,6 +2,7 @@ package com.bookmycon.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -9,25 +10,18 @@ import java.util.stream.Stream;
 import com.bookmycon.repository.UserRepository;
 import com.bookmycon.utils.PdfOfBooking;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.bookmycon.model.Booking;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.dto.BookingDTO;
 import javax.servlet.http.HttpServletResponse;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/admins")
-@CrossOrigin(origins = "http://localhost:3000")
 public class BookingController {
 
     @Autowired
@@ -37,7 +31,6 @@ public class BookingController {
     public ResponseEntity<List<Booking>> getAllBookings() {
         return new ResponseEntity<List<Booking>>(bookingService.showAll(), HttpStatus.OK);
     }
-
 
     @PostMapping("/addBooking")
     public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
@@ -92,22 +85,28 @@ public class BookingController {
         return new ResponseEntity<List<Booking>>(bookingService.getBookingByUserId(userId),HttpStatus.OK);
     }
 
-//  @GetMapping("/get-all-bookings/{userId}")
-//  public ResponseEntity<Stream<BookingDTO>> getAlllBookingsOfUser(@PathVariable int userId){
-//      return new ResponseEntity<Stream<BookingDTO>>(bookingService.getBookingByUserId(userId).stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
-//  }
+    // @GetMapping("/get-all-bookings/{userId}")
+// public ResponseEntity<Stream<BookingDTO>> getAlllBookingsOfUser(@PathVariable int userId){
+//    return new ResponseEntity<Stream<BookingDTO>>(bookingService.getBookingByUserId(userId).stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
+// }
 //
-//  @GetMapping("/get-all-bookings")
-//  public ResponseEntity<Stream<BookingDTO>> findAllBookings(){
-//      return new ResponseEntity<Stream<BookingDTO>>(bookingService.showAll().stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
-//  }
+// @GetMapping("/get-all-bookings")
+// public ResponseEntity<Stream<BookingDTO>> findAllBookings(){
+//    return new ResponseEntity<Stream<BookingDTO>>(bookingService.showAll().stream().map(element->BookingDTO.entityToDto(element)), HttpStatus.OK);
+// }
 //
-//  @GetMapping("/export-to-pdf-book")
-//  public void generatePdfFileForBooking(HttpServletResponse response) throws IOException
-//  {
-//      List <Booking> bookingList = bookingService.showAll();
-//      PdfOfBooking generator = new PdfOfBooking();
-//      System.out.println(bookingList);
-//      generator.generateBooking(bookingList, response);
-//  }
+// @GetMapping("/export-to-pdf-book")
+// public void generatePdfFileForBooking(HttpServletResponse response) throws IOException
+// {
+//    List <Booking> bookingList = bookingService.showAll();
+//    PdfOfBooking generator = new PdfOfBooking();
+//    System.out.println(bookingList);
+//    generator.generateBooking(bookingList, response);
+// }
+    @GetMapping("/booked-auditoriums/count")
+    public long getBookedAuditoriumCount(
+            @RequestParam(value = "endDate",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            @RequestParam(value = "endTime",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime endTime) {
+        return bookingService.getBookedAuditoriumCount(endDate, endTime);
+    }
 }

@@ -1,11 +1,6 @@
 package com.bookmycon.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Builder;
 import lombok.Data;
@@ -17,32 +12,38 @@ import java.io.Serializable;
 @Entity
 @Table(name = "auditorium")
 public class Auditoriums implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="auditorium_id")
-    private int auditoriumId;
-    
-    @Column(name="auditorium_name")
-    private String auditoriumName;
-    
-    @Column(name="auditorium_location")
-    private String auditoriumLocation;
-    
-    @Column(name="auditorium_Capacity")
-    private int auditoriumCapacity;
-    
-    @Column(name="auditorium_type")
-    private String auditoriumType;
-    
-    @Column(name="auditorium_aminity")
-    private String auditoriumAminity;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="auditorium_id")
+	private int auditoriumId;
+
+	@Column(name="auditorium_name")
+	private String auditoriumName;
+
+	@Column(name="auditorium_location")
+	private String auditoriumLocation;
+
+	@Column(name="auditorium_Capacity")
+	private int auditoriumCapacity;
+
+	@Column(name="auditorium_type")
+	private String auditoriumType;
+
+	@Column(name="auditorium_aminity")
+	private String auditoriumAminity;
+	@Column(name="auditorium_book")
+	private boolean booked;
 
 	public Auditoriums() {
 		super();
 	}
 
+	@OneToOne(mappedBy = "auditoriums", cascade = CascadeType.ALL)
+	private Booking booking;
+
+
 	public Auditoriums(int auditoriumId, String auditoriumName, String auditoriumLocation, int auditoriumCapacity,
-			String auditoriumType, String auditoriumAminity) {
+					   String auditoriumType, String auditoriumAminity, boolean booked, Booking booking) {
 		super();
 		this.auditoriumId = auditoriumId;
 		this.auditoriumName = auditoriumName;
@@ -50,6 +51,8 @@ public class Auditoriums implements Serializable {
 		this.auditoriumCapacity = auditoriumCapacity;
 		this.auditoriumType = auditoriumType;
 		this.auditoriumAminity = auditoriumAminity;
+		this.booked = booked;
+		this.booking = booking;
 	}
 
 	public int getAuditoriumId() {
@@ -100,15 +103,38 @@ public class Auditoriums implements Serializable {
 		this.auditoriumAminity = auditoriumAminity;
 	}
 
+	public boolean isBooked() {
+		return booked;
+	}
+
+	public void setBooked(boolean booked) {
+		this.booked = booked;
+	}
+
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+
 	@Override
 	public String toString() {
-		return "Auditoriums [auditoriumId=" + auditoriumId + ", auditoriumName=" + auditoriumName
-				+ ", auditoriumLocation=" + auditoriumLocation + ", auditoriumCapacity=" + auditoriumCapacity
-				+ ", auditoriumType=" + auditoriumType + ", auditoriumAminity=" + auditoriumAminity + "]";
+		return "Auditoriums{" +
+				"auditoriumId=" + auditoriumId +
+				", auditoriumName='" + auditoriumName + '\'' +
+				", auditoriumLocation='" + auditoriumLocation + '\'' +
+				", auditoriumCapacity=" + auditoriumCapacity +
+				", auditoriumType='" + auditoriumType + '\'' +
+				", auditoriumAminity='" + auditoriumAminity + '\'' +
+				", booked=" + booked +
+				", booking=" + booking +
+				'}';
 	}
 
 	public Auditoriums(String auditoriumName, String auditoriumLocation, int auditoriumCapacity, String auditoriumType,
-			String auditoriumAminity) {
+					   String auditoriumAminity) {
 		super();
 		this.auditoriumName = auditoriumName;
 		this.auditoriumLocation = auditoriumLocation;
@@ -116,8 +142,6 @@ public class Auditoriums implements Serializable {
 		this.auditoriumType = auditoriumType;
 		this.auditoriumAminity = auditoriumAminity;
 	}
-    
-    
+
+
 }
-
-

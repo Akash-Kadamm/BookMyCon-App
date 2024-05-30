@@ -41,13 +41,12 @@ import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingR
 import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
 import StripeContainer from './Component/User/Stripe/StripeContainer';
 import ChatBot from './Component/Utilities/ChatBot';
-import ModalPieChart from './Component/User/ModalPieChart';
 import AuditoriumList1 from './Component/User/AuditoriumList1';
 import UserFloorTable from './Component/User/UserFloorTable';
 import BookMeeting from './Component/User/BookMeeting';
 import BookingForm from './Component/User/BookingForm';
-
-
+import PieChart from './Component/User/PieChart';
+import BarChart from './Component/User/Barchart';
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
 // )
@@ -78,7 +77,6 @@ function App() {
           <Route exact path='/floortable' element={<UserFloorTable/>} />
           <Route exact path='/floormap' element={<UserFloorMap/>} />
           <Route exact path="/floormain" element={<UserFloorCards/>} />
-          <Route exact path='/piechart' element={<ModalPieChart/>}/>
            <Route exact path="/auditorium-view" element={<ViewForUser/>} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Registration />} />
@@ -108,6 +106,8 @@ function App() {
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           <Route path='/guest' element={<Guest/>}/>
           <Route path='/add-guest' element={<AddGuest/>}/>
+          <Route path="/Piechart" element={<PieChart />} />
+          <Route path="/Barchart" element={<BarChart />} />
         
           </Routes>
   </Grid>
