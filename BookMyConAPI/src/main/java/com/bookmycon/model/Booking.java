@@ -1,7 +1,6 @@
 package com.bookmycon.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -53,17 +52,81 @@ public class Booking {
     @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
     List<Order> orders;
 
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public Auditoriums getAduitoriamId() {
+        return aduitoriamId;
+    }
+
+    public void setAduitoriamId(Auditoriums aduitoriamId) {
+        this.aduitoriamId = aduitoriamId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+    public LocalDate getBookingDateFrom() {
+        return bookingDateFrom;
+    }
+
+    public void setBookingDateFrom(LocalDate bookingDateFrom) {
+        this.bookingDateFrom = bookingDateFrom;
+    }
+
+    public LocalDate getBookingDateTo() {
+        return bookingDateTo;
+    }
+
+    public void setBookingDateTo(LocalDate bookingDateTo) {
+        this.bookingDateTo = bookingDateTo;
+    }
+
+    public LocalTime getBookingTimeFrom() {
+        return bookingTimeFrom;
+    }
+
+    public void setBookingTimeFrom(LocalTime bookingTimeFrom) {
+        this.bookingTimeFrom = bookingTimeFrom;
+    }
+
+    public LocalTime getBookingTimeTO() {
+        return bookingTimeTO;
+    }
+
+    public void setBookingTimeTO(LocalTime bookingTimeTO) {
+        this.bookingTimeTO = bookingTimeTO;
+    }
+
+    public String getBookingAgenda() {
+        return bookingAgenda;
+    }
+
+    public void setBookingAgenda(String bookingAgenda) {
+        this.bookingAgenda = bookingAgenda;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     public Booking(int i, LocalDate now, int i1, String s) {
     }
 
     public Booking(String johnDoe, String s) {
     }
-
-    public void setBookingTimeTo(LocalDateTime bookingTimeTo) {
-    }
-
-    @OneToOne
-    @JoinColumn(name = "auditorium_id")
-    private Auditoriums auditoriums;
-
 }

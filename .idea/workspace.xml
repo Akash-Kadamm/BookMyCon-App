@@ -4,32 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Changes in available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added changes in available and cancel booking status for floor map table">
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/DemoBooking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/FloorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/PieChartController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/BookingDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/BookingRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Floor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/FloorRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/DemoBookingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting2.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingListOfUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingListOfUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartFloor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Barchart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewChartButton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewChartTable.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +88,7 @@
     "git-widget-placeholder": "dev__zeelp",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/zeelp/Documents/BookMyCon-App-main/BookMyCon-App-main",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -277,7 +267,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712239395171</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart">
+      <option name="closed" value="true" />
+      <created>1717065786250</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717065786250</updated>
+    </task>
+    <task id="LOCAL-00010" summary="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart">
+      <option name="closed" value="true" />
+      <created>1717065825186</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717065825186</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,7 +304,8 @@
     <MESSAGE value="# Ticket Id:- rm9oUImq: new branch for test&#10;===&#10;-new branch for test&#10;&#10;## Why&#10;===&#10;- As per ticket's description added pie chart and floor map table using API" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Changes in available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added changes in available and cancel booking status for floor map table" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Changes in available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added changes in available and cancel booking status for floor map table" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

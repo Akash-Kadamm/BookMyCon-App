@@ -1,8 +1,6 @@
 package com.bookmycon.repository;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,8 +22,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
 	List<Booking> findByUserId(User userId);
 
-	// List<Booking> findByStartTimeBetweenAndEndTimeBetween(LocalDateTime bookingTimeFrom, LocalDateTime bookingTimeTO, LocalDateTime bookingTimeFrom1, LocalDateTime bookingTimeTO1);
-	@Query(value = "select * from booking where booking_date_to between curDate() and :bookingDateTo and booking_time_to between curtime() and :bookingTimeTo",nativeQuery = true)
-	List<Booking> findByBookingDateFromAndBookingDateToAndBookingTimeFromAndBookingTimeTo(LocalDate bookingDateTo, LocalTime bookingTimeTo);
-}
 
+}

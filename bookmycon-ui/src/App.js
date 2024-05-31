@@ -106,9 +106,7 @@ function App() {
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           <Route path='/guest' element={<Guest/>}/>
           <Route path='/add-guest' element={<AddGuest/>}/>
-          <Route path="/Piechart" element={<PieChart />} />
-          <Route path="/Barchart" element={<BarChart />} />
-        
+       
           </Routes>
   </Grid>
 </Grid>
