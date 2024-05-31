@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart">
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Barchart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewChartButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewChartTable.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +38,12 @@
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="Akash-Kadamm" />
+        <option name="repository" value="BookMyCon-App" />
+      </RepoCoordinatesHolder>
+    </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="3e44d039-2693-4cbc-85d4-33a9fc084408" />
@@ -283,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717065825186</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper">
+      <option name="closed" value="true" />
+      <created>1717130706293</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717130706293</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,7 +306,8 @@
     <MESSAGE value="# Ticket Id:- rm9oUImq: Available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added  Available and cancel booking status for floor map table" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Changes in available and cancel booking status&#10; - &#10;&#10;## Why&#10;===&#10;- As per ticket's description added changes in available and cancel booking status for floor map table" />
     <MESSAGE value="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

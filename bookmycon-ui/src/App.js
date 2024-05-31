@@ -45,8 +45,7 @@ import AuditoriumList1 from './Component/User/AuditoriumList1';
 import UserFloorTable from './Component/User/UserFloorTable';
 import BookMeeting from './Component/User/BookMeeting';
 import BookingForm from './Component/User/BookingForm';
-import PieChart from './Component/User/PieChart';
-import BarChart from './Component/User/Barchart';
+
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
 // )
