@@ -34,7 +34,7 @@ const BackendApiTable = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/bookings')
+    fetch('http://localhost:8080/admins/getAllBookings')
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));

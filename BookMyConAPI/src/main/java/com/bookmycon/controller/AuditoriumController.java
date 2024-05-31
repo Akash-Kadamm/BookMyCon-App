@@ -43,7 +43,7 @@ public class AuditoriumController {
 	private AuditoriumRepository auditoriumRepository;
 	@Autowired
 	private BookingRepository bookingRepository;
-	
+
 	Logger logger=Logger.getLogger(AuditoriumController.class);
 
 	@PostMapping("/addAudi")
@@ -52,7 +52,7 @@ public class AuditoriumController {
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_ADDED.getMessage(),HttpStatus.CREATED);
 
 	}
-	
+
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Auditoriums>> getAllAuditoriums(){
 
@@ -64,7 +64,7 @@ public class AuditoriumController {
 //public List<Auditoriums> getAllAuditorium() {
 //	return auditoriumRepository.findAll();
 //}
-	
+
 //	@GetMapping("/getAuditoriunByName/{name}")
 //	public ResponseEntity<Auditoriums> getAuditoriunByName(@PathVariable String name){
 //		List<Auditoriums> audiList= auditoriumService.findByAuditoriumByName(name);
@@ -76,12 +76,12 @@ public class AuditoriumController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAuditorium(@PathVariable int id, @RequestBody Auditoriums auditorium) {
-	    logger.info("Auditorium id: "+id+" Auditorium object: "+auditorium);
+		logger.info("Auditorium id: "+id+" Auditorium object: "+auditorium);
 		logger.debug("Calling the Update Auditorium service method");
 		auditoriumService.updateAuditorium(id, auditorium);
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
 		System.out.println(id);
@@ -94,7 +94,7 @@ public class AuditoriumController {
 		auditoriumService.deleteById(id);
 		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getAudi/{id}")
 	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
 		Map<String, Object> response=new HashMap<>();

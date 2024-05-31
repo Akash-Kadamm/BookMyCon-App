@@ -109,13 +109,13 @@ export default function BookMeeting2() {
     setBookingAgenda(e.target.value);
   };
 
-  const [dateFrom, setdateFrom] = React.useState(dayjs("2023-02-20T21:11:54"));
+  const [dateFrom, setdateFrom] = React.useState(dayjs("2024-04-16T21:11:54"));
 
   const handleDateFrom = (newValue) => {
 
     axios
     .get(
-      `http://localhost:8080/admin/getAuditoriunByName/${ReactSession.get(
+      `http://localhost:0/admin/getAuditoriunByName/${ReactSession.get(
         "auditoriumName"
       )}`,
       {
@@ -131,7 +131,7 @@ export default function BookMeeting2() {
 
     setdateFrom(newValue);
   };
-  const [dateTo, setdateTo] = React.useState(dayjs("2023-02-20T21:11:54"));
+  const [dateTo, setdateTo] = React.useState(dayjs("2024-04-16T21:11:54"));
 
   const handleDateTo = (newValue) => {
     setdateTo(newValue);
@@ -306,7 +306,7 @@ export default function BookMeeting2() {
                 <Grid item xs={6}>
                   <div> From</div>
                   <FormControl variant="standard" sx={{ m: 1, minWidth: 10 }}>
-                    <InputLabel id="demo-simple-select-standard-label"></InputLabel>
+                    <InputLabel id="demo-simple-selefct-standard-label"></InputLabel>
                     <Select
                       labelId="demo-simple-select-standard-label"
                       id="demo-simple-select-standard"

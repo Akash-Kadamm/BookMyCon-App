@@ -20,61 +20,12 @@ public class BookingDTO {
 
 	private int bookingId;
 	private Auditoriums aduitoriamId;
-
-	public int getBookingId() {
-		return bookingId;
-	}
-
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
-	}
-
-	public Auditoriums getAduitoriamId() {
-		return aduitoriamId;
-	}
-
-	public void setAduitoriamId(Auditoriums aduitoriamId) {
-		this.aduitoriamId = aduitoriamId;
-	}
-
-	public User getUserId() {
-		return userId;
-	}
-
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
-
-	public LocalDateTime getBookingDateTimeFrom() {
-		return bookingDateTimeFrom;
-	}
-
-	public void setBookingDateTimeFrom(LocalDateTime bookingDateTimeFrom) {
-		this.bookingDateTimeFrom = bookingDateTimeFrom;
-	}
-
-	public LocalDateTime getBookingDateTimeTo() {
-		return bookingDateTimeTo;
-	}
-
-	public void setBookingDateTimeTo(LocalDateTime bookingDateTimeTo) {
-		this.bookingDateTimeTo = bookingDateTimeTo;
-	}
-
-	public String getBookingAgenda() {
-		return bookingAgenda;
-	}
-
-	public void setBookingAgenda(String bookingAgenda) {
-		this.bookingAgenda = bookingAgenda;
-	}
-
 	@JsonIgnore
 	private User userId;
 	private LocalDateTime bookingDateTimeFrom;
 	private LocalDateTime bookingDateTimeTo;
 	private String bookingAgenda;
-	
+
 	public static BookingDTO entityToDto (Booking entity) {
 		BookingDTO bookinDto = new BookingDTO();
 		BeanUtils.copyProperties(entity, bookinDto);

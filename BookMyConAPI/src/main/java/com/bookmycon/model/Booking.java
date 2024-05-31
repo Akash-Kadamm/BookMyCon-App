@@ -130,4 +130,3 @@ public class Booking {
     public Booking(String johnDoe, String s) {
     }
 }
-

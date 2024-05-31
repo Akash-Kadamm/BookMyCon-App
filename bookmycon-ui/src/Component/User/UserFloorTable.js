@@ -24,7 +24,7 @@ const UserFloorTable = () => {
     if (checkAvailability(booking)) {
         history.push('/booking');
     } else {
-        alert('Booking is unavailable for today.'); 
+        alert(' unavailable'); 
     }
 };
 
@@ -62,7 +62,7 @@ const UserFloorTable = () => {
                               <TableCell>{booking.bookingAgenda}</TableCell>
                               <TableCell>{checkAvailability(booking) ? (
                               <Button  component={Link} to="/auditoriumBooking" variant="contained" color="success" onClick={() => handleBookClick(booking)}> Book </Button> 
-                               ) : ( "Unavailable")}</TableCell>
+                               ) : ("Unavailable" )}</TableCell>
 
                           </TableRow>
                       ))}

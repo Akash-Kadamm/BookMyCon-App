@@ -17,32 +17,32 @@ import java.io.Serializable;
 @Entity
 @Table(name = "auditorium")
 public class Auditoriums implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="auditorium_id")
-    private int auditoriumId;
-    
-    @Column(name="auditorium_name")
-    private String auditoriumName;
-    
-    @Column(name="auditorium_location")
-    private String auditoriumLocation;
-    
-    @Column(name="auditorium_Capacity")
-    private int auditoriumCapacity;
-    
-    @Column(name="auditorium_type")
-    private String auditoriumType;
-    
-    @Column(name="auditorium_aminity")
-    private String auditoriumAminity;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="auditorium_id")
+	private int auditoriumId;
+
+	@Column(name="auditorium_name")
+	private String auditoriumName;
+
+	@Column(name="auditorium_location")
+	private String auditoriumLocation;
+
+	@Column(name="auditorium_Capacity")
+	private int auditoriumCapacity;
+
+	@Column(name="auditorium_type")
+	private String auditoriumType;
+
+	@Column(name="auditorium_aminity")
+	private String auditoriumAminity;
 
 	public Auditoriums() {
 		super();
 	}
 
 	public Auditoriums(int auditoriumId, String auditoriumName, String auditoriumLocation, int auditoriumCapacity,
-			String auditoriumType, String auditoriumAminity) {
+					   String auditoriumType, String auditoriumAminity) {
 		super();
 		this.auditoriumId = auditoriumId;
 		this.auditoriumName = auditoriumName;
@@ -108,7 +108,7 @@ public class Auditoriums implements Serializable {
 	}
 
 	public Auditoriums(String auditoriumName, String auditoriumLocation, int auditoriumCapacity, String auditoriumType,
-			String auditoriumAminity) {
+					   String auditoriumAminity) {
 		super();
 		this.auditoriumName = auditoriumName;
 		this.auditoriumLocation = auditoriumLocation;
@@ -116,8 +116,7 @@ public class Auditoriums implements Serializable {
 		this.auditoriumType = auditoriumType;
 		this.auditoriumAminity = auditoriumAminity;
 	}
-    
-    
-}
 
+
+}
 

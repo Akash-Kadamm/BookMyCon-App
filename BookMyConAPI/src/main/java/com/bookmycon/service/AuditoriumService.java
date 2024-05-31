@@ -33,22 +33,22 @@ public class AuditoriumService {
 		logger.debug("Adding auditorium: ");
 		return auditoriums;
 	}
-	
+
 
 	/*
 	 * Update the Auditorium
-	 * 
+	 *
 	 * @param Auditorium Id- Path Variable and Auditorium object
 	 * @param Auditorium
 	 * @return void
-	 * 
+	 *
 	 * */
 	@CacheEvict(value = "auditoriums",allEntries = true)
 	public void updateAuditorium(int id, Auditoriums auditorium) {
-		 logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
-		 logger.debug("Finding the Auditorium object by its id");
+		logger.info("Auditorium id:"+id+" Auditorium object: "+auditorium);
+		logger.debug("Finding the Auditorium object by its id");
 		Auditoriums updateAuditorium = auditoriumRepo.findById(id).orElse(null);
-         logger.info("Setting the updated Values and save to db ");
+		logger.info("Setting the updated Values and save to db ");
 		updateAuditorium.setAuditoriumName(auditorium.getAuditoriumName());
 		updateAuditorium.setAuditoriumLocation(auditorium.getAuditoriumLocation());
 		updateAuditorium.setAuditoriumCapacity(auditorium.getAuditoriumCapacity());
@@ -68,29 +68,29 @@ public class AuditoriumService {
 		return auditoriumRepo.findAll();
 
 	}
-	
-	
-	
+
+
+
 	public List<Auditoriums> findByAuditoriumByName(String name ) {
 
 		logger.debug("Finding auditorium by its name: {} " + name);
 		return auditoriumRepo.findByAuditoriumName(name);
 
 	}
-	
+
 	/*
 	 * Get the Auditorium By Its Id
-	 * 
+	 *
 	 * @param Auditorium Id
 	 * @return Auditorium Object
-	 * 
+	 *
 	 * */
 	public  Map<String, Object> getAuditoriumById(int id) {
 		Map<String, Object> response=new HashMap<>();
 		logger.info("Auditorium id:"+id);
-		 logger.debug("Finding the Auditorium object by its id and return object");
+		logger.debug("Finding the Auditorium object by its id and return object");
 		Auditoriums audi= auditoriumRepo.findById(id).orElse(null);
 		response.put("Auditorium", audi);
-	  return response;
+		return response;
 	}
 }
