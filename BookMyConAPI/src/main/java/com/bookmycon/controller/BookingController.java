@@ -2,6 +2,7 @@ package com.bookmycon.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -9,17 +10,10 @@ import java.util.stream.Stream;
 import com.bookmycon.repository.UserRepository;
 import com.bookmycon.utils.PdfOfBooking;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.bookmycon.model.Booking;
 import com.bookmycon.service.BookingService;
 import com.bookmycon.dto.BookingDTO;
@@ -90,6 +84,12 @@ public class BookingController {
     @GetMapping("getAllBookings/{userId}")
     public ResponseEntity<List<Booking>> getAllBookingsOfUser(@PathVariable int userId){
         return new ResponseEntity<List<Booking>>(bookingService.getBookingByUserId(userId),HttpStatus.OK);
+    }
+    @GetMapping("/booked-auditoriums/count")
+    public long getBookedAuditoriumCount(
+            @RequestParam(value = "endDate",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            @RequestParam(value = "endTime",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime endTime) {
+        return bookingService.getBookedAuditoriumCount(endDate, endTime);
     }
 
 //  @GetMapping("/get-all-bookings/{userId}")

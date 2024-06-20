@@ -2,6 +2,8 @@ package com.bookmycon.service;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +26,7 @@ public class BookingService {
 	@Autowired
 	UserRepository userRepository;
 
-	Logger logger=Logger.getLogger(BookingService.class);
+	Logger logger = Logger.getLogger(BookingService.class);
 
 	public List<com.bookmycon.model.Booking> showAll() {
 
@@ -34,7 +36,7 @@ public class BookingService {
 
 	public Booking addBooking(Booking booking) {
 		logger.info("Adding new booking: " + booking.toString());
-		return  bookingRepository.save(booking);
+		return bookingRepository.save(booking);
 
 	}
 
@@ -72,8 +74,22 @@ public class BookingService {
 	}
 
 
-	public List<Booking> getAllBookingOfUser(int userId){
+	public List<Booking> getAllBookingOfUser(int userId) {
 		logger.info("Retrieving all bookings for user with ID: " + userId);
 		return bookingRepository.findByUserId(userId);
 	}
+
+	public long getBookedAuditoriumCount(LocalDate endDate, LocalTime endTime) {
+		System.out.println(endDate);
+		System.out.println(endTime);
+		List<Booking> bookings = bookingRepository.findByBookingDateFromAndBookingDateToAndBookingTimeFromAndBookingTimeTo(endDate, endTime);
+		return bookings.size();
+	}
+	// public long getBookeCount(LocalDateTime bookingTimeFrom, LocalDateTime bookingTimeTO) {
+//    LocalDateTime bookingTimeFrom1 = bookingTimeFrom.plusHours(1); // Real-time consideration
+//    LocalDateTime bookingTimeTO1 = bookingTimeTO.minusHours(1); // Real-time consideration
+//    List<Booking> bookings = bookingRepository
+//          .findByStartTimeBetweenAndEndTimeBetween(bookingTimeFrom1, bookingTimeTO1, bookingTimeFrom, bookingTimeTO);
+//    return bookings.size();
+// }
 }

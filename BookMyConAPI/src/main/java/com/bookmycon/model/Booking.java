@@ -1,6 +1,7 @@
 package com.bookmycon.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -51,6 +52,10 @@ public class Booking {
     @JsonIgnore
     @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
     List<Order> orders;
+
+    @OneToOne
+    @JoinColumn(name = "auditorium_id")
+    private Auditoriums auditoriums;
 
     public int getBookingId() {
         return bookingId;
@@ -128,5 +133,7 @@ public class Booking {
     }
 
     public Booking(String johnDoe, String s) {
+    }
+    public void setBookingTimeTo(LocalDateTime bookingTimeTo) {
     }
 }

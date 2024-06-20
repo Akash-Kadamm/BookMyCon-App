@@ -65,4 +65,4 @@ import Footer from '../Utilities/Footer'
   )
 }
 
-export default  NonUserHomePage
+export default  NonUserHomePage;

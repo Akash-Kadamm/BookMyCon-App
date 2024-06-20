@@ -44,7 +44,8 @@ import ChatBot from './Component/Utilities/ChatBot';
 import AuditoriumList1 from './Component/User/AuditoriumList1';
 import UserFloorTable from './Component/User/UserFloorTable';
 import BookMeeting from './Component/User/BookMeeting';
-import BookingForm from './Component/User/BookingForm';
+import PieChart from './Component/User/PieChart';
+import BarChart from './Component/User/BarChart';
 
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
@@ -65,7 +66,6 @@ function App() {
   </Grid>
   <Grid item xs={9}>
   <Routes>
-    <Route exact path='bookmeet' element={<BookingForm />}/>
         <Route exact path="/" element={<NonUserHomePage />} />
         <Route exact path="/bookm" element={<BookMeeting/>}/>
         <Route exact path="/adminHomePage" element={<AdminHomePage />} />
@@ -105,7 +105,9 @@ function App() {
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           <Route path='/guest' element={<Guest/>}/>
           <Route path='/add-guest' element={<AddGuest/>}/>
-       
+          <Route path="/Piechart" element={<PieChart />} />
+          <Route path="/Barchart" element={<BarChart />} />
+    
           </Routes>
   </Grid>
 </Grid>

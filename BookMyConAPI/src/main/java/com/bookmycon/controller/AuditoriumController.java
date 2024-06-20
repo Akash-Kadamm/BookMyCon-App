@@ -117,4 +117,15 @@ public class AuditoriumController {
 		generator.generateAudi(listOfAuditoriums, response);
 	}
 
+	@GetMapping("/totalAuditoriumCount")
+	public long getAuditoriumCount() {
+		return auditoriumService.countAuditoriums();
+	}
+	@GetMapping("/booked/count")
+	public ResponseEntity<Long> countBookedAuditoriums() {
+		long count = auditoriumService.countBookedAuditoriums();
+		return ResponseEntity.ok(count);
+	}
+
+
 }

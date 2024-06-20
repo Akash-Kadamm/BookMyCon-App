@@ -1,9 +1,14 @@
 package com.bookmycon.service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.apache.log4j.Logger;
+
+import com.bookmycon.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheConfig;
@@ -92,5 +97,30 @@ public class AuditoriumService {
 		Auditoriums audi= auditoriumRepo.findById(id).orElse(null);
 		response.put("Auditorium", audi);
 		return response;
+	}
+	public long countAuditoriums() {
+		return auditoriumRepo.count();
+	}
+
+
+	public long countBookedAuditoriums() {
+		return auditoriumRepo.countBookedAuditoriums();
+	}
+
+	public boolean bookAuditorium(Integer auditoriumId, LocalDateTime bookingTimeFrom, LocalDateTime bookingTimeTo) {
+		Optional<Auditoriums> optionalAuditorium = auditoriumRepo.findById(auditoriumId);
+		if (optionalAuditorium.isPresent()) {
+			Auditoriums auditorium = optionalAuditorium.get();
+			if (!auditorium.isBooked()) {
+				Booking booking = new Booking();
+				booking.setBookingTimeFrom(LocalTime.from(bookingTimeFrom));
+				booking.setBookingTimeTo(bookingTimeTo);
+				auditorium.setBooking(booking);
+				auditorium.setBooked(true);
+				auditoriumRepo.save(auditorium);
+				return true;
+			}
+		}
+		return false;
 	}
 }

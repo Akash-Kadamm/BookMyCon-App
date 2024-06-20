@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Auditoriums.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/AuditoriumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/repository/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookMeeting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BookingForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/NonUserHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/NonUserHomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,22 +87,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.BookMyConApplication.executor": "Run",
-    "Application.ServiceRegistryApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev__zeelp",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/zeelp/Documents/BookMyCon-App-main/BookMyCon-App-main",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.BookMyConApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__zeelp&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zeelp/Desktop/BookMyCon-App&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bookmycon.controller" />
