@@ -1,56 +1,63 @@
-// import React, { useState } from 'react';
-// import { Button } from '@material-ui/core';
-// import { useNavigate } from 'react-router-dom';
-// import "../../../src/App.css";
+import React, { useState } from 'react';
+import { Button } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
+import "../../../src/App.css";
  
-// const ModalPieChart = () => {
-//   const [open, setOpen] = useState(false);
-//   const navigate = useNavigate();
+const ModalPieChart = () => {
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
  
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
+  const handleOpen = () => {
+    setOpen(true);
+  };
  
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
+  const handleClose = () => {
+    setOpen(false);
+  };
  
-//   const handleViewTable = () => {
+  const handleViewTable = () => {
    
-//     navigate('/piechart');
-//   };
-//   const handleViewBar = () => {
+    navigate('/piechart');
+  };
+  const handleViewBar = () => {
    
-//     navigate('/BarChart');
-//   };
+    navigate('/BarChart');
+  };
  
-//   return (
-//     <div className="position-relative">
+  return (
+    <div className="position-relative">
      
-//       <div className="user-floor-map">
+      <div className="user-floor-map">
        
-//       </div>
+      </div>
  
-//       {/* Buttons */}
-//       <div >
-//       <div className="Button1">
-//         <Button variant="contained" color="default" onClick={handleViewBar}>
-//           View as BarChart
-//         </Button>
-//         <br></br>
-// <hr></hr>
+      {/* Buttons */}
+      <div >
+      <div className="Button1">
+        <Button variant="contained" color="default" onClick={handleViewBar}>
+          View as BarChart
+        </Button>
+        <br></br>
+<hr></hr>
  
-//         <Button variant="contained" color="default" onClick={handleViewTable}>
-//           View as PieChart
-//         </Button>
+        <Button variant="contained" color="default" onClick={handleViewTable}>
+          View as PieChart
+        </Button>
        
-//       </div>
-
+      </div>
+{/*
+      <div className="Button2">
+        <Button variant="contained" color="default" onClick={handleViewTable}>
+          View as PieChart
+        </Button>
+ 
+      </div> */}
+ 
    
-//     </div>
+    </div>
  
-//     </div>
-//   );
-// };
+    </div>
+  );
+};
  
-// export default ModalPieChart;
+export default ModalPieChart;

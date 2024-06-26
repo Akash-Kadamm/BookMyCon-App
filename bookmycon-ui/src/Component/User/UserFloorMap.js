@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import BookMeeting from "../User/BookMeeting";
 import { borderRadius } from "@mui/system";
-import ModalPieChart from "./ModalPieChart";
+
 ReactSession.setStoreType("localStorage");
 export const UserFloorMap = () => {
   const navigate = useNavigate();
@@ -420,18 +420,19 @@ export const UserFloorMap = () => {
      <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
           <Grid item style={{ marginLeft: '30vh' }}>
             <Button component={Link} to="/floortable" variant="contained" color="primary">
-              Watch Table
+              Check Table
             </Button>
           </Grid>
         </Grid>
-       
-
-        <Grid item style={{ marginLeft: '75vh' }}>
-         
-         <ModalPieChart/>
-       
+         <br></br>
+        <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
+          <Grid item style={{ marginLeft: '30vh' }}>
+            <Button component={Link} to="/showAudis" variant="contained" color="primary">
+              Check Auditoriums
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item style={{ marginLeft: '112vh' }}>
+         <Grid item style={{ marginLeft: '112vh' }}>
           <Button component={Link} to="/floormain" variant="contained" color="secondary" >
             Back
           </Button>
