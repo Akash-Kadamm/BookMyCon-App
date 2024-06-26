@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:Added Total auditoirum count and booked count&#10;&#10;## Why&#10;===&#10;- As per ticket's description Added Total auditoirum count and booked count">
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing">
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BarChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartButtons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ShowAuditoirum.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AuditoriumList1.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AuditoriumList1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718878176298</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing">
+      <option name="closed" value="true" />
+      <created>1719383800094</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719383800094</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,7 +330,8 @@
     <MESSAGE value="# Ticket Id:- rm9oUImq: Added PieChart and BarChart &#10;&#10;## Why&#10;===&#10;- As per ticket's description added PieChart and BarChart" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:Added Total auditoirum count and booked count&#10;&#10;## Why&#10;===&#10;- As per ticket's description Added Total auditoirum count and booked count" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:Added Total auditoirum count and booked count&#10;&#10;## Why&#10;===&#10;- As per ticket's description Added Total auditoirum count and booked count" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

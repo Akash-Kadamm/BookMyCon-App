@@ -40,7 +40,7 @@ export const UserHomePage = () => {
      </div>    
     </Grid>
     <Grid item xs={6}>
-    <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/floormap")}} >
+    <div style={{color: "#9c27b0", textAlign:"left"}} onClick={()=>{navigate("/floormain")}} >
     <MapIcon sx={{ fontSize: 40 }} color="secondary"  />
     Floor Map
      </div>    
