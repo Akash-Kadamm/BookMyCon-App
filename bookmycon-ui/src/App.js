@@ -46,6 +46,7 @@ import UserFloorTable from './Component/User/UserFloorTable';
 import BookMeeting from './Component/User/BookMeeting';
 import PieChart from './Component/User/PieChart';
 import BarChart from './Component/User/BarChart';
+import ShowAuditorium from './Component/User/AuditoriumList1';
 
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
@@ -107,6 +108,7 @@ function App() {
           <Route path='/add-guest' element={<AddGuest/>}/>
           <Route path="/Piechart" element={<PieChart />} />
           <Route path="/Barchart" element={<BarChart />} />
+          <Route path="/showAudis" element={<ShowAuditorium />} />
     
           </Routes>
   </Grid>
