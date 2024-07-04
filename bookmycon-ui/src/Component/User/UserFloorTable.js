@@ -10,9 +10,10 @@ const UserFloorTable = () => {
   
   const floorstyle = {
     marginLeft: 73,
-    maxWidth: 1200, 
+    width: 1200, 
    
 };
+
   const history = createBrowserHistory();
 
   const checkAvailability = (booking) => {
@@ -70,7 +71,7 @@ const UserFloorTable = () => {
                   </TableBody>
               </Table>
           </TableContainer>  
-          <Grid item style={{ marginLeft: '75vh' }}>
+          <Grid item style={{ marginLeft: '57vh' }}>
          
          <ModalPieChart/>
        

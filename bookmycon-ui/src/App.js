@@ -36,6 +36,7 @@ import { ReportPage } from './Component/Admin/ReportPage';
 import  UserFloorCards from './Component/User/UserFloorCards';
 import AddGuest from './Component/User/AddGuest';
 import Guest from './Component/User/Guest';
+import GuestUpdate from './Component/User/GuestUpdate';
 import AddHousekeepingRequests from './Component/User/AddHousekeepingRequests';
 import { DeleteHousekeepingRequest } from './Component/Admin/DeleteHousekeepingRequest';
 import { GetHousekeepingRequests } from './Component/Admin/GetHousekeepingRequests';
@@ -47,6 +48,7 @@ import BookMeeting from './Component/User/BookMeeting';
 import PieChart from './Component/User/PieChart';
 import BarChart from './Component/User/BarChart';
 import ShowAuditorium from './Component/User/ShowAuditoirum';
+import BookingForm from './Component/User/BookingForm';
 
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
@@ -62,11 +64,12 @@ function App() {
        
 <Grid container>
   
-  <Grid item xs={3}>
+  <Grid item xs={1.8}>
   <UserDashboard/>
   </Grid>
-  <Grid item xs={9}>
+  <Grid item xs={10.2}>
   <Routes>
+        <Route path ="/demo" element={<BookingForm />} />
         <Route exact path="/" element={<NonUserHomePage />} />
         <Route exact path="/bookm" element={<BookMeeting/>}/>
         <Route exact path="/adminHomePage" element={<AdminHomePage />} />
@@ -105,6 +108,7 @@ function App() {
           <Route path='/deleteHousekeeping' element={<DeleteHousekeepingRequest />} />
           <Route path='/getHousekeeping' element={<GetHousekeepingRequests />} />
           <Route path='/guest' element={<Guest/>}/>
+          <Route path='/guest-update' element={<GuestUpdate/>}/>
           <Route path='/add-guest' element={<AddGuest/>}/>
           <Route path="/Piechart" element={<PieChart />} />
           <Route path="/Barchart" element={<BarChart />} />

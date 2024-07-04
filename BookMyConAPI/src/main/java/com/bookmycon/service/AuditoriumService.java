@@ -20,7 +20,7 @@ import com.bookmycon.model.Auditoriums;
 import com.bookmycon.repository.AuditoriumRepository;
 
 @Service
-public class AuditoriumService {
+public class 	AuditoriumService {
 
 	@Autowired
 	AuditoriumRepository auditoriumRepo;

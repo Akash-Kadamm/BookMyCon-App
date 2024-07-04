@@ -38,6 +38,8 @@ public class BookingController {
         return new ResponseEntity<Booking>(bookingService.addBooking(booking), HttpStatus.CREATED);
     }
 
+    @PostMapping("")
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Booking>> getBookingById(@PathVariable(value = "id") int id) {
         Optional<Booking> booking = bookingService.getBookingById(id);

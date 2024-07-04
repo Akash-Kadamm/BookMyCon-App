@@ -82,18 +82,37 @@ public class AuditoriumController {
 		return new ResponseEntity<Object>(ResponseMessage.AUDITORIUM_UPDATED.getMessage(), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
-		System.out.println(id);
-		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
-		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
-		for  (Booking booking : listBooking) {
-			booking.setAduitoriamId(null);
-			bookingService.addBooking(booking);
-		}
-		auditoriumService.deleteById(id);
-		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
-	}
+//	@DeleteMapping("/{id}")
+//	public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
+//		System.out.println(id);
+//		Auditoriums auditoriumObj= (Auditoriums)auditoriumRepository.getById(id);
+//		List<Booking> listBooking= bookingRepository.findByAduitoriamId(auditoriumObj);
+//		for  (Booking booking : listBooking) {
+//			booking.setAduitoriamId(null);
+//			bookingService.addBooking(booking);
+//		}
+//		auditoriumService.deleteById(id);
+//		return new ResponseEntity<String>("record deleted", HttpStatus.OK);
+//	}
+   @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAuditorium(@PathVariable int id) {
+	   try {
+		   Auditoriums auditoriumObj = auditoriumRepository.findById(id)
+				   .orElseThrow(() -> new RuntimeException("Auditorium not found with id " + id));
+
+		   List<Booking> listBooking = bookingRepository.findByAduitoriamId(auditoriumObj);
+		   for (Booking booking : listBooking) {
+			   booking.setAduitoriamId(null);
+			   bookingService.addBooking(booking);
+		   }
+
+		   auditoriumService.deleteById(id);
+		   return new ResponseEntity<>("Record deleted", HttpStatus.OK);
+	   } catch (Exception e) {
+		   e.printStackTrace();
+		   return new ResponseEntity<>("Error deleting record", HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
+   }
 
 	@GetMapping("/getAudi/{id}")
 	public ResponseEntity<Object> getAuditoriumByID(@PathVariable int id) {
