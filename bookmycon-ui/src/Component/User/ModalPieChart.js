@@ -25,38 +25,19 @@ const ModalPieChart = () => {
   };
  
   return (
-    <div className="position-relative">
-     
-      <div className="user-floor-map">
-       
-      </div>
- 
-      {/* Buttons */}
-      <div >
-      <div className="Button1">
-        <Button variant="contained" color="default" onClick={handleViewBar}>
-          View as BarChart
-        </Button>
-        <br></br>
-<hr></hr>
- 
-        <Button variant="contained" color="default" onClick={handleViewTable}>
-          View as PieChart
-        </Button>
-       
-      </div>
-{/*
-      <div className="Button2">
-        <Button variant="contained" color="default" onClick={handleViewTable}>
-          View as PieChart
-        </Button>
- 
-      </div> */}
- 
-   
-    </div>
- 
-    </div>
+    <div className="position-relative" style={{ display: 'flex',  alignItems: 'center', gap: '20px' }}>
+  <div className="Button1">
+    <Button variant="contained" color="default" onClick={handleViewBar}>
+      View as BarChart
+    </Button>
+  </div>
+  <div className="Button2">
+    <Button variant="contained" color="default" onClick={handleViewTable}>
+      View as PieChart
+    </Button>
+  </div>
+</div>
+
   );
 };
  

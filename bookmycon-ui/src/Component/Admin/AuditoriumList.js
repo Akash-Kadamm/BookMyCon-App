@@ -50,7 +50,7 @@ export const AuditoriumList = () => {
 
   const getAllAuditorium = () => {
     axios
-      .get("http://localhost:8080/admins/getAllBookings")
+      .get("http://localhost:8080/admin/getAll")
       .then((response) => setAuditorium(response.data))
       .catch((error) => setErrorMsg("error occered "));
   };

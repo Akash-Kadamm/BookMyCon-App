@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color:#f7f4f8;
+  height: 1200px;
 }
 
 .App-logo {
@@ -21,7 +23,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-link {
@@ -111,14 +113,14 @@ pre.message {
 	text-align: center;
 }
 
-label {
+/* label {
 	color: #999;
 	display: inline-block;
 	font-size: 0.85em;
 	font-weight: bold;
 	margin: 1em 0;
 	text-transform: uppercase;
-}
+} */
 
 .hint {
 	margin: 15px 0;

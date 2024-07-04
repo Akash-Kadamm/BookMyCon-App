@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,19 +9,21 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Button, Typography, Box } from '@mui/material';
 import fileDownload from 'js-file-download';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
+import PassIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 const Guest = () => {
-
-  const [guests, setGuests] = useState([])
-  const [errorMessage, setErrorMessage] = useState('')
-  const navigate = useNavigate()
+  const [guests, setGuests] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getAllGuest()
-  }, [])
+    getAllGuest();
+  }, []);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -37,72 +39,84 @@ const Guest = () => {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
       border: 0,
     },
   }));
 
-
-  const addGuest = () =>{
-    navigate('/add-guest')
-  }
+  const addGuest = () => {
+    navigate('/add-guest');
+  };
 
   const getAllGuest = () => {
-    axios.get('http://localhost:8080/guest/allGuest/' + JSON.parse(sessionStorage.getItem("userLogin")).userId).then((response) => {
-      
-        setGuests(response.data)
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
+    axios
+      .get('http://localhost:8080/guest/allGuest/' + JSON.parse(sessionStorage.getItem('userLogin')).userId)
+      .then((response) => {
+        setGuests(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const deleteGuest = (guestId) => {
-    axios.delete('http://localhost:8080/guest/delete-guest/' + guestId).then((response) => {
-      setErrorMessage('')
-      getAllGuest()
-    }).catch((error) => {
-      setErrorMessage(error.response.data)
-    })
-  }
+    axios
+      .delete('http://localhost:8080/guest/delete-guest/' + guestId)
+      .then((response) => {
+        setErrorMessage('');
+        getAllGuest();
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data);
+      });
+  };
 
-  const updateGuest = () =>{
-    navigate("/guest-update")
-  }
+  const updateGuest = () => {
+    navigate('/guest-update');
+  };
 
   const handleGuestPass = (guestName) => {
-    axios({url:"http://localhost:8080/guest/export-to-pass/" + guestName,method:"GET",responseType:"blob"}).then((response) => {
-        fileDownload(response.data,'GuestPass.pdf')
-        console.log(response)
-    }).catch((error) => {
-      console.log(error)
+    axios({
+      url: 'http://localhost:8080/guest/export-to-pass/' + guestName,
+      method: 'GET',
+      responseType: 'blob',
     })
-  }
+      .then((response) => {
+        fileDownload(response.data, 'GuestPass.pdf');
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    return (
-        <div>
-            <Typography variant='h3' sx={{ color: 'Black' }}>{errorMessage}</Typography>
-      <Typography variant='h4' color={"crimson"}> Guest List</Typography>
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 4 }}>
+      <Typography variant="h3" sx={{ color: 'red', marginBottom: 2 }}>
+        {errorMessage}
+      </Typography>
+      <Typography variant="h4" color="primary" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
+        Guest List
+      </Typography>
 
       <Button
         className="m-2"
-          onClick={() => {
-            addGuest();
-            }}
+        onClick={addGuest}
         variant="contained"
-       color="success"
-        >
-        Add
-        </Button>
+        color="success"
+        startIcon={<AddIcon />}
+        sx={{ marginBottom: 2 }}
+      >
+        Add Guest
+      </Button>
 
-<hr/>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ maxWidth: 900 }}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell align="right">#</StyledTableCell>
               <StyledTableCell>Guest Name</StyledTableCell>
-              <StyledTableCell >Guest Email ID</StyledTableCell>
+              <StyledTableCell>Guest Email ID</StyledTableCell>
               <StyledTableCell align="left">Company Name</StyledTableCell>
               <StyledTableCell align="left">Mobile No.</StyledTableCell>
               <StyledTableCell align="left">Guest Images</StyledTableCell>
@@ -119,24 +133,53 @@ const Guest = () => {
                 <StyledTableCell align="left">{guest.guestEmail}</StyledTableCell>
                 <StyledTableCell align="left">{guest.guestCompany}</StyledTableCell>
                 <StyledTableCell align="left">{guest.guestMobileNo}</StyledTableCell>
-                <StyledTableCell align="left"><Avatar alt="Guest" variant='square' sx={{ borderRadius: 3, width: 150, height: 90 }} src={"http://localhost:8080/" + guest.thumbnail} /></StyledTableCell>
-                <StyledTableCell align='left'>
-                  <Button color='info' size="small" variant="outlined" sx={{ margin: 3 }} onClick={()=>handleGuestPass(guest.guestName)}
-                                        color="success"
-                                        size="small"
-                                        variant="contained"> Pass</Button>
-
-                  <Button color='error' size="small" sx={{ margin: 3 }} variant="outlined" startIcon={<DeleteIcon/>} onClick={() => deleteGuest(guest.guestId)}>Delete</Button>
-                  <Button color='success' size="small" variant="contained" 
-                  onClick={() => updateGuest() }>Upadte</Button>
+                <StyledTableCell align="left">
+                  <Avatar
+                    alt="Guest"
+                    variant="square"
+                    sx={{ borderRadius: 3, width: 150, height: 90 }}
+                    src={'http://localhost:8080/' + guest.thumbnail}
+                  />
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Button
+                    color="info"
+                    size="small"
+                    variant="outlined"
+                    sx={{ margin: 1 }}
+                    startIcon={<PassIcon />}
+                    onClick={() => handleGuestPass(guest.guestName)}
+                  >
+                    Pass
+                  </Button>
+                  <Button
+                    color="error"
+                    size="small"
+                    sx={{ margin: 1 }}
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => deleteGuest(guest.guestId)}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    color="success"
+                    size="small"
+                    variant="contained"
+                    sx={{ margin: 1 }}
+                    startIcon={<EditIcon />}
+                    onClick={updateGuest}
+                  >
+                    Update
+                  </Button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-        </div>
-    )
-}
+    </Box>
+  );
+};
 
-export default Guest
+export default Guest;

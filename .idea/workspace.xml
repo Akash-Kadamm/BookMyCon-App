@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing">
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/BarChart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/PieChartTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ShowAuditoirum.js" afterDir="false" />
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AuditoriumList.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AuditoriumList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Feedback.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Feedback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Guest.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Guest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Image/img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/GuestUpdate.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/GuestUpdate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/NonUserHome.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,22 +91,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.BookMyConApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev__zeelp&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zeelp/Desktop/BookMyCon-App&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.BookMyConApplication.executor": "Run",
+    "Application.ServiceRegistryApplication.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev__zeelp",
+    "jdk.selected.JAVA_MODULE": "openjdk-19",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/zeelp/Desktop/BookMyCon-App",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bookmycon.controller" />
@@ -306,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719383800094</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap">
+      <option name="closed" value="true" />
+      <created>1719387478020</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719387478020</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -331,7 +354,19 @@
     <MESSAGE value="# Ticket Id:- rm9oUImq:reverted as changes  made in controllers where not proper &#10;&#10;## Why&#10;===&#10;- As per ticket's description reverted as changes  made in controllers where not proper" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:Added Total auditoirum count and booked count&#10;&#10;## Why&#10;===&#10;- As per ticket's description Added Total auditoirum count and booked count" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iOffice_Calendar_App$BookingControllerTest.ic" NAME="BookingControllerTest Coverage Results" MODIFIED="1681886382949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
