@@ -21,6 +21,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AccountCircle } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 export const AdminFloorMap = () => {
   const navigate = useNavigate();
     const [msg, setMsg] = useState(null);
@@ -99,7 +100,7 @@ export const AdminFloorMap = () => {
     setCapacity(e.target.value);
   };
 
-  const [addAreasName, setaddAreasName] = useState("default");  
+  const [addAreasName, setaddAreasName] = useState("");  
   const handleAddAreasName = (e) => {
     setaddAreasName(e.target.value);
  };
@@ -148,6 +149,16 @@ export const AdminFloorMap = () => {
       event.preventDefault();
 
 
+    
+        
+    
+        // Reset form fields
+        setAuditoriumName('');
+        setLocation('');
+        setCapacity('');
+        setType('');
+        setAmenities('');
+      
 
 
       axios
@@ -157,6 +168,7 @@ export const AdminFloorMap = () => {
       {
         console.log(response.data);
         setAuditorium(response.data);
+        toast.success(response.data);
       
       })
 
@@ -596,16 +608,16 @@ const data3={
               alignItems="left"
               margin="normal"
               onChange={handleAddAreasName}
-             
+             placeholder="Enter Area Name"
            
               name="Location"
             
               type="Location"
               id="Location"
-              defaultValue={"Enter Auditorium Name"}
+              defaultValue={""}
             />
             <br></br>
-            <Button onClick={(evt) => addPolygon(evt)}>Add Auditorium</Button>
+            <Button onClick={(evt) => addPolygon(evt)}>Add Area Selection</Button>
 
             <h4>User Layout</h4>
 
@@ -644,7 +656,7 @@ const data3={
         >
          
           <Typography component="h1" variant="h5">
-           Update Auditorium Details
+           Add Auditorium Details
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -723,8 +735,9 @@ const data3={
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Update
+              Add Auditorium
             </Button>
+          
             </Grid>
            
              

@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import PassIcon from '@mui/icons-material/AssignmentTurnedIn';
+import { toast } from 'react-toastify';
 
 const Guest = () => {
   const [guests, setGuests] = useState([]);
@@ -65,9 +66,12 @@ const Guest = () => {
       .then((response) => {
         setErrorMessage('');
         getAllGuest();
+        toast.success("Guest Deleted")
       })
       .catch((error) => {
         setErrorMessage(error.response.data);
+        toast.error("Unable to delete Guest")
+
       });
   };
 

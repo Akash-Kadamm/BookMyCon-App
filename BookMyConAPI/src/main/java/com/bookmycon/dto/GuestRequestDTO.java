@@ -6,7 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class GuestRequestDTO {
-	
+
 	private int guestId;
 	private String guestName;
 	private String guestCompany;
@@ -15,9 +15,9 @@ public class GuestRequestDTO {
 	private MultipartFile thumbnail;
 
 	private User user;
-	
+
 	public GuestRequestDTO() {
-		
+
 	}
 
 	public GuestRequestDTO(int guestId, String guestName, String guestCompany, String guestEmail, String guestMobileNo, MultipartFile thumbnail, User user) {

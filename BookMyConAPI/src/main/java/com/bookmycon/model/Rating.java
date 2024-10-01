@@ -1,28 +1,43 @@
 package com.bookmycon.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
-@Data
-@Entity(name = "ratings")
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Entity
+@Table(name = "ratings")
 public class Rating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ratingId;
+
     private int bookingRating;
     private int snacksRating;
     private int housekeepingRating;
+    private String remarks;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    // Constructors
+    public Rating() {}
+
+    public Rating(int bookingRating, int snacksRating, int housekeepingRating, String remarks, User user) {
+        this.bookingRating = bookingRating;
+        this.snacksRating = snacksRating;
+        this.housekeepingRating = housekeepingRating;
+        this.remarks = remarks;
+        this.user = user;
+    }
+
+    // Getters and Setters
+    public int getRatingId() {
+        return ratingId;
+    }
+
+    public void setRatingId(int ratingId) {
+        this.ratingId = ratingId;
+    }
 
     public int getBookingRating() {
         return bookingRating;
@@ -32,22 +47,35 @@ public class Rating {
         this.bookingRating = bookingRating;
     }
 
-    private String remarks;
+    public int getSnacksRating() {
+        return snacksRating;
+    }
 
-//    public int getRating() {
-//        return rating;
-//    }
+    public void setSnacksRating(int snacksRating) {
+        this.snacksRating = snacksRating;
+    }
+
+    public int getHousekeepingRating() {
+        return housekeepingRating;
+    }
+
+    public void setHousekeepingRating(int housekeepingRating) {
+        this.housekeepingRating = housekeepingRating;
+    }
 
     public String getRemarks() {
         return remarks;
     }
 
-//    public void setRating(int rating) {
-//        this.rating = rating;
-//    }
-
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-// private int userId;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

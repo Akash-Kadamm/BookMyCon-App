@@ -49,7 +49,8 @@ import PieChart from './Component/User/PieChart';
 import BarChart from './Component/User/BarChart';
 import ShowAuditorium from './Component/User/ShowAuditoirum';
 import BookingForm from './Component/User/BookingForm';
-
+import AuditoriumDetails
+ from './Component/User/AudiDetails';
 // const Card = () => (
 //   <div style={{ backgroundColor: "wheat", margin: 10, height: 30, width: 90 }} />
 // )
@@ -113,6 +114,7 @@ function App() {
           <Route path="/Piechart" element={<PieChart />} />
           <Route path="/Barchart" element={<BarChart />} />
           <Route path="/showAudis" element={<ShowAuditorium />} />
+        <Route path="/book-auditorium/:auditoriumId" element={<AuditoriumDetails />} />
     
           </Routes>
   </Grid>

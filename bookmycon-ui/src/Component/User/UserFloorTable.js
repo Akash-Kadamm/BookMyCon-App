@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button,Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { createBrowserHistory } from 'history';
-import ModalPieChart from "./ModalPieChart";
+
 
 const UserFloorTable = () => {
   const [data, setData] = useState([]);
@@ -71,11 +71,7 @@ const UserFloorTable = () => {
                   </TableBody>
               </Table>
           </TableContainer>  
-          <Grid item style={{ marginLeft: '57vh' }}>
-         
-         <ModalPieChart/>
-       
-        </Grid>
+        
           <Grid container justifyContent="center" style={{ marginTop: '20px' }}> 
           <Grid item>
           <Button component={Link} to="/floormap" variant="contained" color="primary">

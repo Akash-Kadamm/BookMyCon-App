@@ -11,8 +11,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {  useNavigate } from "react-router";
-import fileDownload from 'js-file-download'
+import { useNavigate } from "react-router";
+import fileDownload from 'js-file-download';
+import { toast } from "react-toastify";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -28,7 +29,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
@@ -38,21 +38,20 @@ export const AuditoriumList = () => {
   const navigate = useNavigate();
   let [auditorium, setAuditorium] = useState([]);
   let [errorMsg, setErrorMsg] = useState("");
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getAllAuditorium();
   }, []);
 
-  const addAuditorium = () =>{
-    navigate('/add-auditorium')
-  }
+  const addAuditorium = () => {
+    navigate('/add-auditorium');
+  };
 
   const getAllAuditorium = () => {
     axios
       .get("http://localhost:8080/admin/getAll")
       .then((response) => setAuditorium(response.data))
-      .catch((error) => setErrorMsg("error occered "));
+      .catch((error) => setErrorMsg("An error occurred while fetching auditoriums"));
   };
 
   const editAuditorium = (id) => {
@@ -60,130 +59,98 @@ export const AuditoriumList = () => {
   };
 
   const deleteAudi = (id) => {
-  
-    console.log(id);
-
-    const url = `http://localhost:8080/admins/${id}`;
+    const url = `http://localhost:8080/admin/${id}`;
     axios
       .delete(url)
-      .then((response) => {
-        getAllAuditorium();
-        // console.log(response);
-
+      .then(() => {
+        toast.success("Auditorium Deleted Successfully");
+        // Update the state to remove the deleted auditorium
+        setAuditorium(auditorium.filter(audi => audi.auditoriumId !== id));
       })
-      .catch((error) => console.log("error:"));
-    // alert("deleted successfully");
+      .catch((err) => {
+        console.error("Error:", err);
+        toast.error("Failed to delete Auditorium");
+      });
   };
 
   const getReportOfAudi = () => {
-    axios({url:"http://localhost:8080/admins/export-to-pdf-audi",method:"GET",responseType:"blob"}).then((response) => {
-        fileDownload(response.data,'downlodedAudi.pdf')
-        console.log(response)
-    }).catch((error) => {
-      console.log(error)
+    axios({
+      url: "http://localhost:8080/admin/export-to-pdf-audi",
+      method: "GET",
+      responseType: "blob"
     })
-  }
+      .then((response) => {
+        fileDownload(response.data, 'downloadedAudi.pdf');
+      })
+      .catch((error) => {
+        console.error("Error generating report:", error);
+      });
+  };
 
   return (
-    <>
-      <div>
-      <h1> Auditorium Details </h1>
+    <div>
+      <h1>Auditorium Details</h1>
       <Button
         className="m-2"
-          onClick={() => {
-            addAuditorium();
-            }}
+        onClick={addAuditorium}
         variant="contained"
-       color="success"
-        >
+        color="success"
+      >
         Add
-        </Button>
-
-        <Button
+      </Button>
+      <Button
         className="m-2"
-          onClick={() => {
-            getReportOfAudi();
-            }}
+        onClick={getReportOfAudi}
         variant="contained"
-       color="success"
-        >
+        color="success"
+      >
         Report
-        </Button>
-        <hr />
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                {/* <StyledTableCell>Offer Id</StyledTableCell> */}
-                <StyledTableCell align="center">Auditorium ID</StyledTableCell>
+      </Button>
+      <hr />
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">Auditorium ID</StyledTableCell>
+              <StyledTableCell align="center">Auditorium Name</StyledTableCell>
+              <StyledTableCell align="center">Auditorium Location</StyledTableCell>
+              <StyledTableCell align="center">Auditorium Capacity</StyledTableCell>
+              <StyledTableCell align="center">Auditorium Type</StyledTableCell>
+              <StyledTableCell align="center">Auditorium Amenities</StyledTableCell>
+              <StyledTableCell align="center">Action</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {auditorium.map((audi) => (
+              <StyledTableRow key={audi.auditoriumId}>
+                <StyledTableCell align="center">{audi.auditoriumId}</StyledTableCell>
+                <StyledTableCell align="center">{audi.auditoriumName}</StyledTableCell>
+                <StyledTableCell align="center">{audi.auditoriumLocation}</StyledTableCell>
+                <StyledTableCell align="center">{audi.auditoriumCapacity}</StyledTableCell>
+                <StyledTableCell align="center">{audi.auditoriumType}</StyledTableCell>
+                <StyledTableCell align="center">{audi.auditoriumAminity}</StyledTableCell>
                 <StyledTableCell align="center">
-                  Auditorium Name
+                  <Button
+                    className="m-2"
+                    onClick={() => editAuditorium(audi.auditoriumId)}
+                    variant="outlined"
+                  >
+                    UPDATE
+                  </Button>
+                  <Button
+                    onClick={() => deleteAudi(audi.auditoriumId)}
+                    variant="outlined"
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                  >
+                    Delete
+                  </Button>
                 </StyledTableCell>
-                <StyledTableCell align="center">
-                  Auditorium Location
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  Auditorium Capacity
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  Auditorium Type
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  Auditorium Amenities
-                </StyledTableCell>
-                <StyledTableCell align="center">Action</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {auditorium.map((auditorium) => (
-                <StyledTableRow >
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumId}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumName}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumLocation}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumCapacity}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumType}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {auditorium.auditoriumAminity}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <Button
-                      className="m-2"
-                      onClick={() => {
-                        editAuditorium(auditorium.auditoriumId);
-                      }}
-                      variant="outlined"
-                    >
-                      UPDATE
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        deleteAudi(auditorium.auditoriumId);
-                      }}
-                      variant="outlined"
-                      color="error"
-                      startIcon={<DeleteIcon />}
-                    >
-                      Delete
-                    </Button>
-                  </StyledTableCell>
-
-                  {/* */}
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    </>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Guest {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int guestId;

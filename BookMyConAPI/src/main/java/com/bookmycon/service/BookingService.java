@@ -18,6 +18,10 @@ import com.bookmycon.repository.BookingRepository;
 import com.bookmycon.repository.UserRepository;
 import org.apache.log4j.Logger;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 @Service
 public class BookingService {
 
@@ -84,6 +88,19 @@ public class BookingService {
 		System.out.println(endTime);
 		List<Booking> bookings = bookingRepository.findByBookingDateFromAndBookingDateToAndBookingTimeFromAndBookingTimeTo(endDate, endTime);
 		return bookings.size();
+	}
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	public List<Object[]> getBookingDetailsWithAuditorium() {
+		String sql = "SELECT b.booking_time_from, b.booking_date_to, a.auditorium_name " +
+				"FROM booking b " +
+				"JOIN auditoriums a ON b.auditorium_id = a.auditorium_id " +
+				"WHERE b.booking_date_to > CURRENT_DATE";
+
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getResultList();
 	}
 	// public long getBookeCount(LocalDateTime bookingTimeFrom, LocalDateTime bookingTimeTO) {
 //    LocalDateTime bookingTimeFrom1 = bookingTimeFrom.plusHours(1); // Real-time consideration
