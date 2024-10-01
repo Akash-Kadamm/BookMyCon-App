@@ -14,7 +14,7 @@ public class PdfOfBooking {
         for (Booking booking:bookingList ) {
             System.out.println(booking.getBookingId());
             System.out.println(booking.getBookingAgenda());
-            System.out.println(booking.getAduitoriamId().getAuditoriumName());
+            System.out.println(booking.getAuditoriums().getAuditoriumName());
         }
     }
 //        Document document = new Document(PageSize.A4);

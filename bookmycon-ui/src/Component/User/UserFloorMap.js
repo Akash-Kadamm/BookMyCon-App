@@ -417,14 +417,14 @@ export const UserFloorMap = () => {
 
     
      
-     <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
+     {/* <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
           <Grid item style={{ marginLeft: '30vh' }}>
             <Button component={Link} to="/floortable" variant="contained" color="primary">
               Check Table
             </Button>
           </Grid>
         </Grid>
-         <br></br>
+         <br></br> */}
         <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '0vh' }}>
           <Grid item style={{ marginLeft: '30vh' }}>
             <Button component={Link} to="/showAudis" variant="contained" color="primary">

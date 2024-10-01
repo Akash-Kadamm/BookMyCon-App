@@ -4,29 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap">
+    <list default="true" id="72db3e1a-0531-44ac-805e-ab9357c99944" name="Changes" comment="# Ticket Id:- rm9oUImq: Added new dashboard ui and Login ui &#10;## Why&#10;===&#10;- As per ticket's description Added new dashboard ui and Login ui">
+      <change afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/RatingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AudiDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Chatbot-files/ActionProvider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Chatbot-files/MessageParser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Chatbot-files/StartBtn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Chatbot-files/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Chatbot.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/GuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/RatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/GuestRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/RatingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/dto/RatingDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/main/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/AuditoriumService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Guest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/model/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/service/RatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/PdfOfBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/utils/PdfOfBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AdminFloorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AdminFloorMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AuditoriumList.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/AuditoriumList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/DashBoard/UserDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/DeleteAudi.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Admin/DeleteAudi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AddGuest.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/AddGuest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Feedback.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Feedback.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Guest.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/Guest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ModalPieChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ShowAuditoirum.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ShowAuditoirum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserFloorTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/UserHomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/Registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Image/img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/GuestUpdate.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/GuestUpdate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/css/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/css/NonUserHome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewForUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/User/ViewForUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookmycon-ui/src/Component/Utilities/ChatBot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,23 +102,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.BookMyConApplication.executor": "Run",
-    "Application.ServiceRegistryApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev__zeelp",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/zeelp/Desktop/BookMyCon-App",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.BookMyConApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__zeelp&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zeelp/Desktop/BookMeeting/BookMeeting&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bookmycon.controller" />
@@ -329,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719387478020</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="# Ticket Id:- rm9oUImq: Added new dashboard ui and Login ui &#10;## Why&#10;===&#10;- As per ticket's description Added new dashboard ui and Login ui">
+      <option name="closed" value="true" />
+      <created>1720072278263</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1720072278263</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -355,14 +374,15 @@
     <MESSAGE value="# Ticket Id:- rm9oUImq:Added Total auditoirum count and booked count&#10;&#10;## Why&#10;===&#10;- As per ticket's description Added Total auditoirum count and booked count" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:Added Bar chart and Pie chart with routing &#10;## Why&#10;===&#10;- As per ticket's description Added Bar chart and Pie chart with routing" />
     <MESSAGE value="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq:Changed routing for UserFloorMap&#10;## Why&#10;===&#10;- As per ticket's description Changed routing for UserFloorMap" />
+    <MESSAGE value="# Ticket Id:- rm9oUImq: Added new dashboard ui and Login ui &#10;## Why&#10;===&#10;- As per ticket's description Added new dashboard ui and Login ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="# Ticket Id:- rm9oUImq: Added new dashboard ui and Login ui &#10;## Why&#10;===&#10;- As per ticket's description Added new dashboard ui and Login ui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/BookMyConAPI/src/main/java/com/bookmycon/controller/AuditoriumController.java</url>
-          <line>84</line>
+          <line>71</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

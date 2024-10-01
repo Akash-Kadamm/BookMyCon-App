@@ -22,35 +22,38 @@ export default function Feedback() {
   const [value3, setValue3] = React.useState(0);
   const [remarks, setRemarks] = React.useState("");
  
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
     const data = {
-      bookingRating: value1,
-      snacksRating: value2,
-      housekeepingRating: value3,
-      remarks: remarks,
-      userId: userSignIn.userId,
+        bookingRating: value1,
+        snacksRating: value2,
+        housekeepingRating: value3,
+        remarks: remarks,
+        userId: userSignIn.userId,
     };
  
     axios
-      .post("http://localhost:8080/ratings/addRating", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        toast.success("Feedback Sent Successfully");
-      })
-      .catch((err) => console.log(err + "Incorrect Data"));
- 
-    toast.error('Feedback Not Sent Successfully');
+        .post("http://localhost:8080/ratings/addRating", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response) => {
+            console.log(response.data);
+            toast.success("Feedback Sent Successfully");
+        })
+        .catch((err) => {
+            console.error("Error:", err.response ? err.response.data : err.message);
+            toast.error("Feedback Not Sent Successfully");
+        });
  
     setValue1(0);
     setValue2(0);
     setValue3(0);
     setRemarks("");
     navigate("/");
-  };
+};
+ 
  
   return (
     <Container maxWidth="sm">

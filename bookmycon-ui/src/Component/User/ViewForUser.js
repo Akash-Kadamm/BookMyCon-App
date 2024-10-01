@@ -86,11 +86,18 @@ function Row(props) {
   const [flag8, setFlag8] = React.useState(false);
   const [flag9, setFlag9] = React.useState(false);
 
+  // const handleSplit = (t) => {
+  //   const time = t.split(":");
+  //   return time;
+  // };
   const handleSplit = (t) => {
-    const time = t.split(":");
-    return time;
+    if (typeof t === 'string') {
+      return t.split(":");
+    } else {
+      console.error("handleSplit: Expected a string, but received:", t);
+      return [];
+    }
   };
-
   const handleCompare = (t1, t2) => {
     if (parseInt(t1[0]) > parseInt(t2[0])) {
       return 1;
@@ -458,12 +465,16 @@ const navigate=useNavigate();
   }
 
   const handleGuestPass=()=>{
-    axios({url:"http://localhost:8080/user/export-to-user-pass/"+JSON.parse(sessionStorage.getItem("userLogin")).userEmail,method:"GET",responseType:"blob"}).then((response) => {
-      fileDownload(response.data,'UserID.pdf')
-      console.log(response)
-  }).catch((error) => {
-    console.log(error)
-  })
+  //   axios({url:"http://localhost:8080/user/export-to-user-pass/"+JSON.parse(sessionStorage.getItem("userLogin")).userEmail,method:"GET",responseType:"blob"}).then((response) => {
+  //     fileDownload(response.data,'UserID.pdf')
+  //     console.log(response)
+  // }).catch((error) => {
+  //   console.log(error)
+  // })
+  // navigate('/add-guest')
+  console.log("user pass clicked");
+  navigate('/add-guest')
+
   }
 
   const handleFlag9 = (t1, t2) => {
@@ -517,7 +528,7 @@ const navigate=useNavigate();
           {row.bookingDateFrom}
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.aduitoriamId.auditoriumName}
+          {row.aduitoriamId?.auditoriumName}
         </TableCell>
         <StyledTableCell 
           style={{
@@ -764,14 +775,20 @@ export const ViewForUser = () => {
     //  handleAllAreas();
   }, []);
 
-  const getAllBooking = () => {
+  const getAllBooking=()=>{
+ 
+
     axios
 
       .get("http://localhost:8080/admins/getAllBookings/"+JSON.parse(sessionStorage.getItem("userLogin")).userId)
-      .then((response) => setBooking(response.data))
+      .then((response) => {setBooking(response.data)
+        console.log(response.data);
+        console.log("Current bookings:", booking);
+      })
 
       .catch((error) => setErrorMsg("error "));
   };
+
   rows = booking;
 
   
